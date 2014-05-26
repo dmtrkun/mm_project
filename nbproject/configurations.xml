@@ -1,0 +1,2302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="89">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="VL667">
+      <df name="bsp">
+        <in>MCP23S08.c</in>
+        <in>MCP23S08.h</in>
+        <in>MCP4822.c</in>
+        <in>MCP4822.h</in>
+        <in>PCF2123.c</in>
+        <in>PCF2123.h</in>
+        <in>SST25VF016.c</in>
+        <in>SST25VF016.h</in>
+        <in>SST39LF400.c</in>
+        <in>SST39LF400.h</in>
+        <in>TimeDelay.c</in>
+        <in>TimeDelay.h</in>
+        <in>TouchScreen.c</in>
+        <in>TouchScreen.h</in>
+        <in>TouchScreenAR1020.c</in>
+        <in>TouchScreenAR1020.h</in>
+        <in>TouchScreenResistive.c</in>
+        <in>TouchScreenResistive.h</in>
+        <in>board.c</in>
+        <in>board.h</in>
+      </df>
+      <df name="Configs">
+        <in>HWP_DA210_BRD_16PMP_PFLASH_QVGAv1.h</in>
+      </df>
+      <df name="Flash_pgm">
+        <in>FlashProgrammer.c</in>
+        <in>FlashProgrammer.h</in>
+        <in>comm_pkt.c</in>
+        <in>comm_pkt.h</in>
+        <in>comm_pkt_callback.c</in>
+        <in>comm_pkt_callback.h</in>
+      </df>
+      <df name="Graphics Resources">
+        <in>new.c</in>
+        <in>new.h</in>
+      </df>
+      <df name="Microchip">
+        <df name="Graphics">
+          <df name="Drivers">
+            <in>CustomDisplayDriver.c</in>
+            <in>HIT1270.c</in>
+            <in>HX8347.c</in>
+            <in>S1D13517.c</in>
+            <in>S1D13522.c</in>
+            <in>SH1101A_SSD1303.c</in>
+            <in>SSD1305.c</in>
+            <in>SSD1339.c</in>
+            <in>SSD1926.c</in>
+            <in>ST7529.c</in>
+            <in>TCON_Custom.c</in>
+            <in>TCON_HX8238.c</in>
+            <in>TCON_HX8257.c</in>
+            <in>TCON_SSD1289.c</in>
+            <in>UC1610.c</in>
+            <in>drvTFT001.c</in>
+            <in>drvTFT002.c</in>
+            <in>gfxepmp.c</in>
+            <in>mchpGfxDrv.c</in>
+            <in>mchpGfxDrvBuffer.c</in>
+            <in>mchpGfxLCC.c</in>
+          </df>
+          <in>AnalogClock.c</in>
+          <in>Button.c</in>
+          <in>Chart.c</in>
+          <in>CheckBox.c</in>
+          <in>DigitalMeter.c</in>
+          <in>EditBox.c</in>
+          <in>GOL.c</in>
+          <in>GOLFontDefault.c</in>
+          <in>GOLSchemeDefault.c</in>
+          <in>Grid.c</in>
+          <in>GroupBox.c</in>
+          <in>ListBox.c</in>
+          <in>Meter.c</in>
+          <in>Palette.c</in>
+          <in>Picture.c</in>
+          <in>Primitive.c</in>
+          <in>ProgressBar.c</in>
+          <in>RadioButton.c</in>
+          <in>RoundDial.c</in>
+          <in>Slider.c</in>
+          <in>StaticText.c</in>
+          <in>Template.c</in>
+          <in>TextEntry.c</in>
+          <in>Transitions.c</in>
+          <in>Transitions_weak.c</in>
+          <in>Window.c</in>
+        </df>
+        <df name="Include">
+          <df name="Graphics">
+            <in>AnalogClock.h</in>
+            <in>Button.h</in>
+            <in>Chart.h</in>
+            <in>CheckBox.h</in>
+            <in>CustomDisplayDriver.h</in>
+            <in>DigitalMeter.h</in>
+            <in>DisplayDriver.h</in>
+            <in>DisplayDriverInterface.h</in>
+            <in>EditBox.h</in>
+            <in>GOL.h</in>
+            <in>Graphics.h</in>
+            <in>Grid.h</in>
+            <in>GroupBox.h</in>
+            <in>HIT1270.h</in>
+            <in>HX8347.h</in>
+            <in>ListBox.h</in>
+            <in>Meter.h</in>
+            <in>Palette.h</in>
+            <in>Picture.h</in>
+            <in>Primitive.h</in>
+            <in>ProgressBar.h</in>
+            <in>RadioButton.h</in>
+            <in>RoundDial.h</in>
+            <in>S1D13517.h</in>
+            <in>S1D13522.h</in>
+            <in>SH1101A_SSD1303.h</in>
+            <in>SSD1305.h</in>
+            <in>SSD1339.h</in>
+            <in>SSD1926.h</in>
+            <in>ST7529.h</in>
+            <in>ScanCodes.h</in>
+            <in>Slider.h</in>
+            <in>StaticText.h</in>
+            <in>Template.h</in>
+            <in>TextEntry.h</in>
+            <in>Transitions.h</in>
+            <in>UC1610.h</in>
+            <in>Window.h</in>
+            <in>drvTFT001.h</in>
+            <in>drvTFT002.h</in>
+            <in>gfxcolors.h</in>
+            <in>gfxepmp.h</in>
+            <in>gfxpmp.h</in>
+            <in>gfxtcon.h</in>
+            <in>mchpGfxDrv.h</in>
+            <in>mchpGfxLCC.h</in>
+          </df>
+          <df name="PIC18 salloc">
+            <in>salloc.h</in>
+          </df>
+          <df name="USB">
+            <in>usb.h</in>
+            <in>usb_ch9.h</in>
+            <in>usb_common.h</in>
+            <in>usb_device.h</in>
+            <in>usb_function_audio.h</in>
+            <in>usb_function_ccid.h</in>
+            <in>usb_function_cdc.h</in>
+            <in>usb_function_generic.h</in>
+            <in>usb_function_hid.h</in>
+            <in>usb_function_midi.h</in>
+            <in>usb_function_msd.h</in>
+            <in>usb_function_phdc.h</in>
+            <in>usb_function_phdc_com_model.h</in>
+            <in>usb_hal.h</in>
+            <in>usb_hal_dspic33E.h</in>
+            <in>usb_hal_pic18.h</in>
+            <in>usb_hal_pic24.h</in>
+            <in>usb_hal_pic24E.h</in>
+            <in>usb_hal_pic24f.h</in>
+            <in>usb_hal_pic32.h</in>
+            <in>usb_host.h</in>
+            <in>usb_host_android.h</in>
+            <in>usb_host_audio_v1.h</in>
+            <in>usb_host_cdc.h</in>
+            <in>usb_host_cdc_interface.h</in>
+            <in>usb_host_charger.h</in>
+            <in>usb_host_generic.h</in>
+            <in>usb_host_hid.h</in>
+            <in>usb_host_hid_parser.h</in>
+            <in>usb_host_midi.h</in>
+            <in>usb_host_msd.h</in>
+            <in>usb_host_msd_scsi.h</in>
+            <in>usb_host_printer.h</in>
+            <in>usb_host_printer_esc_pos.h</in>
+            <in>usb_host_printer_pcl_5.h</in>
+            <in>usb_host_printer_postscript.h</in>
+            <in>usb_host_printer_primitives.h</in>
+            <in>usb_otg.h</in>
+            <in>usb_printer_pos_bixolon_srp_270.h</in>
+            <in>usb_printer_pos_epson_tm_t88iv.h</in>
+            <in>usb_printer_pos_seiko_dpu_v445.h</in>
+            <in>usb_printer_pos_seiko_mpu_l465.h</in>
+          </df>
+          <in>Compiler.h</in>
+          <in>GenericTypeDefs.h</in>
+          <in>LCDBlocking.h</in>
+          <in>TimeDelay.h</in>
+          <in>struct_queue.h</in>
+          <in>timer.h</in>
+          <in>uart2.h</in>
+        </df>
+      </df>
+      <df name="ParTest">
+        <in>ParTest.c</in>
+      </df>
+      <df name="RTOS">
+        <df name="Common">
+          <df name="FileSystem">
+            <df name="FatFs-0.7e">
+              <df name="src">
+                <df name="option">
+                  <in>cc932.c</in>
+                  <in>cc936.c</in>
+                  <in>cc949.c</in>
+                  <in>cc950.c</in>
+                  <in>ccsbcs.c</in>
+                  <in>syncobj.c</in>
+                </df>
+                <in>Copy of ff.c</in>
+                <in>fat_integer.h</in>
+                <in>ff.c</in>
+                <in>ff.h</in>
+              </df>
+            </df>
+          </df>
+          <df name="Full">
+            <in>BlockQ.c</in>
+            <in>PollQ.c</in>
+            <in>comtest.c</in>
+            <in>death.c</in>
+            <in>dynamic.c</in>
+            <in>events.c</in>
+            <in>flash.c</in>
+            <in>flop.c</in>
+            <in>integer.c</in>
+            <in>print.c</in>
+            <in>semtest.c</in>
+          </df>
+          <df name="include">
+            <in>AltBlckQ.h</in>
+            <in>AltBlock.h</in>
+            <in>AltPollQ.h</in>
+            <in>AltQTest.h</in>
+            <in>BlockQ.h</in>
+            <in>GenQTest.h</in>
+            <in>IntQueue.h</in>
+            <in>PollQ.h</in>
+            <in>QPeek.h</in>
+            <in>TimerDemo.h</in>
+            <in>blocktim.h</in>
+            <in>comtest.h</in>
+            <in>comtest2.h</in>
+            <in>countsem.h</in>
+            <in>crflash.h</in>
+            <in>crhook.h</in>
+            <in>death.h</in>
+            <in>dynamic.h</in>
+            <in>fileIO.h</in>
+            <in>flash.h</in>
+            <in>flop.h</in>
+            <in>integer.h</in>
+            <in>mevents.h</in>
+            <in>partest.h</in>
+            <in>print.h</in>
+            <in>recmutex.h</in>
+            <in>semtest.h</in>
+            <in>serial.h</in>
+          </df>
+          <df name="Minimal">
+            <in>AltBlckQ.c</in>
+            <in>AltBlock.c</in>
+            <in>AltPollQ.c</in>
+            <in>AltQTest.c</in>
+            <in>BlockQ.c</in>
+            <in>GenQTest.c</in>
+            <in>IntQueue.c</in>
+            <in>PollQ.c</in>
+            <in>QPeek.c</in>
+            <in>TimerDemo.c</in>
+            <in>blocktim.c</in>
+            <in>comtest.c</in>
+            <in>countsem.c</in>
+            <in>crflash.c</in>
+            <in>crhook.c</in>
+            <in>death.c</in>
+            <in>dynamic.c</in>
+            <in>flash.c</in>
+            <in>flop.c</in>
+            <in>integer.c</in>
+            <in>recmutex.c</in>
+            <in>semtest.c</in>
+          </df>
+        </df>
+        <df name="Source">
+          <df name="include">
+            <in>FreeRTOS.h</in>
+            <in>StackMacros.h</in>
+            <in>croutine.h</in>
+            <in>list.h</in>
+            <in>mpu_wrappers.h</in>
+            <in>portable.h</in>
+            <in>projdefs.h</in>
+            <in>queue.h</in>
+            <in>semphr.h</in>
+            <in>task.h</in>
+            <in>timers.h</in>
+          </df>
+          <df name="portable">
+            <df name="MemMang">
+              <in>heap_1.c</in>
+              <in>heap_2.c</in>
+              <in>heap_3.c</in>
+            </df>
+            <df name="MPLAB">
+              <df name="PIC18F_">
+                <in>port.c</in>
+                <in>portmacro.h</in>
+                <in>stdio.h</in>
+              </df>
+              <df name="PIC24_dsPIC">
+                <in>port.c</in>
+                <in>portasm_PIC24.S</in>
+                <in>portasm_dsPIC.S</in>
+                <in>portmacro.h</in>
+              </df>
+              <df name="PIC32MX_">
+                <in>ISR_Support.h</in>
+                <in>port.c</in>
+                <in>port_asm.S</in>
+                <in>portmacro.h</in>
+              </df>
+            </df>
+          </df>
+          <in>croutine.c</in>
+          <in>list.c</in>
+          <in>queue.c</in>
+          <in>tasks.c</in>
+          <in>timers.c</in>
+        </df>
+      </df>
+      <df name="serial">
+        <in>serial.c</in>
+      </df>
+      <in>CRC16.H</in>
+      <in>ExternalMemory.h</in>
+      <in>Fonts.c</in>
+      <in>FreeRTOSConfig.h</in>
+      <in>GDD_Adjust.c</in>
+      <in>GDD_Adjust.h</in>
+      <in>GDD_Alarm.c</in>
+      <in>GDD_Alarm.h</in>
+      <in>GDD_Bolus.c</in>
+      <in>GDD_Bolus.h</in>
+      <in>GDD_Calib.c</in>
+      <in>GDD_Calib.h</in>
+      <in>GDD_Calib_tmp.c</in>
+      <in>GDD_Calib_tmp.h</in>
+      <in>GDD_Checkup.c</in>
+      <in>GDD_Checkup.h</in>
+      <in>GDD_Clear.c</in>
+      <in>GDD_Clear.h</in>
+      <in>GDD_Confirm.c</in>
+      <in>GDD_Confirm.h</in>
+      <in>GDD_Error.c</in>
+      <in>GDD_Error.h</in>
+      <in>GDD_Intro.c</in>
+      <in>GDD_Intro.h</in>
+      <in>GDD_Options.c</in>
+      <in>GDD_Options.h</in>
+      <in>GDD_Prime.c</in>
+      <in>GDD_Prime.h</in>
+      <in>GDD_Pwrdown.c</in>
+      <in>GDD_Pwrdown.h</in>
+      <in>GDD_RateCalib.c</in>
+      <in>GDD_RateCalib.h</in>
+      <in>GDD_Resource.c</in>
+      <in>GDD_Resource.h</in>
+      <in>GDD_Run.c</in>
+      <in>GDD_Run.h</in>
+      <in>GDD_Screens.c</in>
+      <in>GDD_Screens.h</in>
+      <in>GDD_SetDrug.c</in>
+      <in>GDD_SetDrug.h</in>
+      <in>GDD_SetMenu.c</in>
+      <in>GDD_SetMenu.h</in>
+      <in>GDD_SetProg.c</in>
+      <in>GDD_SetProg.h</in>
+      <in>GDD_Setup.c</in>
+      <in>GDD_Setup.h</in>
+      <in>GDD_Test.c</in>
+      <in>GDD_Test.h</in>
+      <in>GDDfonts.c</in>
+      <in>GDDfonts.h</in>
+      <in>GraphicsConfig.h</in>
+      <in>HardwareProfile.h</in>
+      <in>MATHUTL.C</in>
+      <in>air_det.c</in>
+      <in>air_det.h</in>
+      <in>beep.c</in>
+      <in>beep.h</in>
+      <in>clock.c</in>
+      <in>clock.h</in>
+      <in>com.c</in>
+      <in>com.h</in>
+      <in>include.h</in>
+      <in>keypad.c</in>
+      <in>keypad.h</in>
+      <in>lcd.c</in>
+      <in>lcd.h</in>
+      <in>main.c</in>
+      <in>main.h</in>
+      <in>medfont.c</in>
+      <in>medfont.h</in>
+      <in>osapi.c</in>
+      <in>osapi.h</in>
+      <in>smallfont.c</in>
+      <in>smallfont.h</in>
+      <in>stmotor.c</in>
+      <in>stmotor.h</in>
+      <in>taskBackground.c</in>
+      <in>taskBackground.h</in>
+      <in>taskCalc.c</in>
+      <in>taskCalc.h</in>
+      <in>taskControl.c</in>
+      <in>taskControl.h</in>
+      <in>taskGraphics.c</in>
+      <in>taskGraphics.h</in>
+      <in>taskSPI.c</in>
+      <in>taskSPI.h</in>
+      <in>taskTouchScreen.c</in>
+      <in>taskTouchScreen.h</in>
+      <in>taskUSB.c</in>
+      <in>taskUSB.h</in>
+      <in>timertest.c</in>
+      <in>timertest.h</in>
+      <in>usb_callback.c</in>
+      <in>usb_config.h</in>
+      <in>usb_descriptors.c</in>
+      <in>usb_device.c</in>
+      <in>usb_device_local.h</in>
+      <in>usb_function_cdc.c</in>
+      <in>usb_hal_pic24.c</in>
+      <in>val_conv.c</in>
+      <in>val_conv.h</in>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath></executablePath>
+          <cTool>
+            <incDir>
+              <pElem>.</pElem>
+              <pElem>bsp</pElem>
+              <pElem>Configs</pElem>
+              <pElem>Flash_pgm</pElem>
+              <pElem>Graphics Resources</pElem>
+              <pElem>;Microchip/Include</pElem>
+              <pElem>Microchip/Include/Graphics</pElem>
+              <pElem>RTOS</pElem>
+              <pElem>C:/Program Files/Microchip/mplabc30/v3.31/include</pElem>
+              <pElem>C:/Program Files/Microchip/mplabc30/v3.31/support/peripheral_24F</pElem>
+              <pElem>C:/Program Files/Microchip/mplabc30/v3.31/support/PIC24F/inc</pElem>
+              <pElem>C:/Program Files/Microchip/mplabc30/v3.31/support/PIC24F/h</pElem>
+              <pElem>C:/Program Files/Microchip/mplabc30/v3.31/support/generic/h</pElem>
+            </incDir>
+            <preprocessorList>
+              <Elem>__PIC24FJ256DA210__</Elem>
+            </preprocessorList>
+          </cTool>
+          <ccTool>
+            <incDir>
+              <pElem></pElem>
+            </incDir>
+          </ccTool>
+        </makeTool>
+      </makefileType>
+      <item path="CRC16.H" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Configs/HWP_DA210_BRD_16PMP_PFLASH_QVGAv1.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="ExternalMemory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Flash_pgm/FlashProgrammer.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Flash_pgm/FlashProgrammer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Flash_pgm/comm_pkt.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Flash_pgm/comm_pkt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Flash_pgm/comm_pkt_callback.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Flash_pgm/comm_pkt_callback.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Fonts.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="FreeRTOSConfig.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Adjust.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Adjust.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Alarm.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Alarm.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Bolus.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Bolus.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Calib.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Calib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Calib_tmp.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Calib_tmp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Checkup.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Checkup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Clear.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Clear.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Confirm.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Confirm.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Error.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Error.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Intro.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Intro.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Options.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Options.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Prime.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Prime.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Pwrdown.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Pwrdown.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_RateCalib.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_RateCalib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Resource.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Resource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Run.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Run.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Screens.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Screens.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_SetDrug.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_SetDrug.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_SetMenu.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_SetMenu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_SetProg.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_SetProg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Setup.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Setup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDD_Test.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDD_Test.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GDDfonts.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="GDDfonts.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Graphics Resources/new.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Graphics Resources/new.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GraphicsConfig.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HardwareProfile.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MATHUTL.C" ex="false" tool="1" flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="Microchip/Graphics/AnalogClock.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Button.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Chart.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/CheckBox.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/DigitalMeter.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/CustomDisplayDriver.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/HIT1270.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/HX8347.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/S1D13517.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/S1D13522.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/SH1101A_SSD1303.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/SSD1305.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/SSD1339.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/SSD1926.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/ST7529.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/TCON_Custom.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/TCON_HX8238.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/TCON_HX8257.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/TCON_SSD1289.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/UC1610.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/drvTFT001.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/drvTFT002.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/gfxepmp.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/mchpGfxDrv.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/mchpGfxDrvBuffer.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Drivers/mchpGfxLCC.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/EditBox.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/GOL.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/GOLFontDefault.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/GOLSchemeDefault.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Grid.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/GroupBox.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/ListBox.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Meter.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Palette.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Picture.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Primitive.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/ProgressBar.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/RadioButton.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/RoundDial.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Slider.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/StaticText.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Template.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/TextEntry.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Transitions.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Transitions_weak.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Graphics/Window.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="Microchip/Include/Compiler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/GenericTypeDefs.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/AnalogClock.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/Button.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/Chart.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/CheckBox.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/CustomDisplayDriver.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/DigitalMeter.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/DisplayDriver.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/DisplayDriverInterface.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/EditBox.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/GOL.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/Graphics.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/Grid.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/GroupBox.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/HIT1270.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/HX8347.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/ListBox.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/Meter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/Palette.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/Picture.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/Primitive.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/ProgressBar.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/RadioButton.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/RoundDial.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/S1D13517.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/S1D13522.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/SH1101A_SSD1303.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/SSD1305.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/SSD1339.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/SSD1926.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/ST7529.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/ScanCodes.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/Slider.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/StaticText.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/Template.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/TextEntry.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/Transitions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/UC1610.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/Window.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/drvTFT001.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/drvTFT002.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/gfxcolors.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/gfxepmp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/gfxpmp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/gfxtcon.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/mchpGfxDrv.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/Graphics/mchpGfxLCC.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/LCDBlocking.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/PIC18 salloc/salloc.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/TimeDelay.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_ch9.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_device.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_function_audio.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_function_ccid.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_function_cdc.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_function_generic.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_function_hid.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_function_midi.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_function_msd.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_function_phdc.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_function_phdc_com_model.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_hal.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_hal_dspic33E.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_hal_pic18.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_hal_pic24.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_hal_pic24E.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_hal_pic24f.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_hal_pic32.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_android.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_audio_v1.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_cdc.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_cdc_interface.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_charger.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_generic.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_hid.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_hid_parser.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_midi.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_msd.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_msd_scsi.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_printer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_printer_esc_pos.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_printer_pcl_5.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_printer_postscript.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_host_printer_primitives.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_otg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_printer_pos_bixolon_srp_270.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_printer_pos_epson_tm_t88iv.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_printer_pos_seiko_dpu_v445.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/USB/usb_printer_pos_seiko_mpu_l465.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Microchip/Include/struct_queue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/timer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Microchip/Include/uart2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ParTest/ParTest.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/FileSystem/FatFs-0.7e/src/Copy of ff.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>RTOS/Common/FileSystem/FatFs-0.7e/src</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/FileSystem/FatFs-0.7e/src/fat_integer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="RTOS/Common/FileSystem/FatFs-0.7e/src/ff.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>RTOS/Common/FileSystem/FatFs-0.7e/src</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/FileSystem/FatFs-0.7e/src/ff.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="RTOS/Common/FileSystem/FatFs-0.7e/src/option/cc932.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/FileSystem/FatFs-0.7e/src/option/cc936.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/FileSystem/FatFs-0.7e/src/option/cc949.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/FileSystem/FatFs-0.7e/src/option/cc950.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/FileSystem/FatFs-0.7e/src/option/ccsbcs.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/FileSystem/FatFs-0.7e/src/option/syncobj.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Full/BlockQ.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Full/PollQ.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Full/comtest.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Full/death.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Full/dynamic.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Full/events.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Full/flash.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Full/flop.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Full/integer.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Full/print.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Full/semtest.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/AltBlckQ.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/AltBlock.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/AltPollQ.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/AltQTest.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/BlockQ.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/GenQTest.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/IntQueue.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/PollQ.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/QPeek.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/TimerDemo.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/blocktim.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/comtest.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/countsem.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/crflash.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/crhook.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/death.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/dynamic.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/flash.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/flop.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/integer.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/recmutex.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/Minimal/semtest.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Common/include/AltBlckQ.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/AltBlock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/AltPollQ.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/AltQTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/BlockQ.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/GenQTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/IntQueue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/PollQ.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/QPeek.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/TimerDemo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/blocktim.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/comtest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/comtest2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/countsem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/crflash.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/crhook.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/death.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/dynamic.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/fileIO.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/flash.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/flop.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/integer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/mevents.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/partest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/print.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/recmutex.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/semtest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Common/include/serial.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Source/croutine.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>RTOS/Source</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="RTOS/Source/include/FreeRTOS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Source/include/StackMacros.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Source/include/croutine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Source/include/list.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Source/include/mpu_wrappers.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Source/include/portable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Source/include/projdefs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Source/include/queue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Source/include/semphr.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Source/include/task.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Source/include/timers.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RTOS/Source/list.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>RTOS/Source</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="RTOS/Source/portable/MPLAB/PIC18F_/port.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Source/portable/MPLAB/PIC18F_/portmacro.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="RTOS/Source/portable/MPLAB/PIC18F_/stdio.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="RTOS/Source/portable/MPLAB/PIC24_dsPIC/port.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Source/portable/MPLAB/PIC24_dsPIC/portasm_PIC24.S"
+            ex="false"
+            tool="4"
+            flavor2="0">
+      </item>
+      <item path="RTOS/Source/portable/MPLAB/PIC24_dsPIC/portasm_dsPIC.S"
+            ex="false"
+            tool="4"
+            flavor2="0">
+      </item>
+      <item path="RTOS/Source/portable/MPLAB/PIC24_dsPIC/portmacro.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="RTOS/Source/portable/MPLAB/PIC32MX_/ISR_Support.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="RTOS/Source/portable/MPLAB/PIC32MX_/port.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Source/portable/MPLAB/PIC32MX_/port_asm.S"
+            ex="false"
+            tool="4"
+            flavor2="0">
+      </item>
+      <item path="RTOS/Source/portable/MPLAB/PIC32MX_/portmacro.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="RTOS/Source/portable/MemMang/heap_1.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Source/portable/MemMang/heap_2.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Source/portable/MemMang/heap_3.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="RTOS/Source/queue.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>RTOS/Source</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="RTOS/Source/tasks.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>RTOS/Source</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="RTOS/Source/timers.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem>RTOS/Source</pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="air_det.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="air_det.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="beep.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="beep.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="bsp/MCP23S08.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="bsp/MCP23S08.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="bsp/MCP4822.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="bsp/MCP4822.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="bsp/PCF2123.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="bsp/PCF2123.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="bsp/SST25VF016.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="bsp/SST25VF016.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="bsp/SST39LF400.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="bsp/SST39LF400.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="bsp/TimeDelay.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="bsp/TimeDelay.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="bsp/TouchScreen.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="bsp/TouchScreen.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="bsp/TouchScreenAR1020.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="bsp/TouchScreenAR1020.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="bsp/TouchScreenResistive.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="bsp/TouchScreenResistive.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="bsp/board.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="bsp/board.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="clock.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="clock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="com.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="com.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <folder path="VL667/Flash_pgm">
+        <cTool>
+          <incDir>
+            <pElem>Flash_pgm</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="VL667/Graphics Resources">
+        <cTool>
+          <incDir>
+            <pElem>Graphics Resources</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="VL667/Microchip/Graphics/Drivers">
+        <cTool>
+          <incDir>
+            <pElem>Microchip/Graphics/Drivers</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="VL667/ParTest">
+        <cTool>
+          <incDir>
+            <pElem>ParTest</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="VL667/RTOS/Common/FileSystem/FatFs-0.7e/src/option">
+        <cTool>
+          <incDir>
+            <pElem>RTOS/Common/FileSystem/FatFs-0.7e/src/option</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="VL667/RTOS/Common/Full">
+        <cTool>
+          <incDir>
+            <pElem>RTOS/Common/Full</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="VL667/RTOS/Common/Minimal">
+        <cTool>
+          <incDir>
+            <pElem>RTOS/Common/Minimal</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="VL667/RTOS/Source/portable/MPLAB/PIC18F_">
+        <cTool>
+          <incDir>
+            <pElem>RTOS/Source/portable/MPLAB/PIC18F_</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="VL667/RTOS/Source/portable/MPLAB/PIC24_dsPIC">
+        <cTool>
+          <incDir>
+            <pElem>RTOS/Source/portable/MPLAB/PIC24_dsPIC</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="VL667/RTOS/Source/portable/MPLAB/PIC32MX_">
+        <cTool>
+          <incDir>
+            <pElem>RTOS/Source/portable/MPLAB/PIC32MX_</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="VL667/RTOS/Source/portable/MemMang">
+        <cTool>
+          <incDir>
+            <pElem>RTOS/Source/portable/MemMang</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="VL667/bsp">
+        <cTool>
+          <incDir>
+            <pElem>bsp</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <folder path="VL667/serial">
+        <cTool>
+          <incDir>
+            <pElem>serial</pElem>
+          </incDir>
+        </cTool>
+      </folder>
+      <item path="include.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="keypad.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="keypad.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="lcd.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="lcd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="main.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="medfont.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="medfont.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="osapi.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="osapi.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="serial/serial.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+        </cTool>
+      </item>
+      <item path="smallfont.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="smallfont.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="stmotor.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="stmotor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="taskBackground.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="taskBackground.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="taskCalc.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="taskCalc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="taskControl.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="taskControl.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="taskGraphics.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="taskGraphics.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="taskSPI.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="taskSPI.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="taskTouchScreen.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="taskTouchScreen.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="taskUSB.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="taskUSB.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="timertest.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="timertest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="usb_callback.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="usb_config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="usb_descriptors.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="usb_device.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="usb_device_local.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="usb_function_cdc.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="usb_hal_pic24.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="val_conv.c" ex="false" tool="0" flavor2="2">
+        <cTool>
+          <incDir>
+            <pElem></pElem>
+          </incDir>
+        </cTool>
+      </item>
+      <item path="val_conv.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

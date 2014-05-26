@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="89">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="VL667">
+      <df name="bsp">
+        <in>MCP23S08.c</in>
+        <in>MCP23S08.h</in>
+        <in>MCP4822.c</in>
+        <in>MCP4822.h</in>
+        <in>PCF2123.c</in>
+        <in>PCF2123.h</in>
+        <in>SST25VF016.c</in>
+        <in>SST25VF016.h</in>
+        <in>SST39LF400.c</in>
+        <in>SST39LF400.h</in>
+        <in>TimeDelay.c</in>
+        <in>TimeDelay.h</in>
+        <in>TouchScreen.c</in>
+        <in>TouchScreen.h</in>
+        <in>TouchScreenAR1020.c</in>
+        <in>TouchScreenAR1020.h</in>
+        <in>TouchScreenResistive.c</in>
+        <in>TouchScreenResistive.h</in>
+        <in>board.c</in>
+        <in>board.h</in>
+      </df>
+      <df name="Configs">
+        <in>HWP_DA210_BRD_16PMP_PFLASH_QVGAv1.h</in>
+      </df>
+      <df name="Flash_pgm">
+        <in>FlashProgrammer.c</in>
+        <in>FlashProgrammer.h</in>
+        <in>comm_pkt.c</in>
+        <in>comm_pkt.h</in>
+        <in>comm_pkt_callback.c</in>
+        <in>comm_pkt_callback.h</in>
+      </df>
+      <df name="Graphics Resources">
+        <df name="oldver">
+        </df>
+        <in>new.c</in>
+        <in>new.h</in>
+      </df>
+      <df name="Microchip">
+        <df name="Graphics">
+          <df name="Drivers">
+            <in>CustomDisplayDriver.c</in>
+            <in>HIT1270.c</in>
+            <in>HX8347.c</in>
+            <in>S1D13517.c</in>
+            <in>S1D13522.c</in>
+            <in>SH1101A_SSD1303.c</in>
+            <in>SSD1305.c</in>
+            <in>SSD1339.c</in>
+            <in>SSD1926.c</in>
+            <in>ST7529.c</in>
+            <in>TCON_Custom.c</in>
+            <in>TCON_HX8238.c</in>
+            <in>TCON_HX8257.c</in>
+            <in>TCON_SSD1289.c</in>
+            <in>UC1610.c</in>
+            <in>drvTFT001.c</in>
+            <in>drvTFT002.c</in>
+            <in>gfxepmp.c</in>
+            <in>mchpGfxDrv.c</in>
+            <in>mchpGfxDrvBuffer.c</in>
+            <in>mchpGfxLCC.c</in>
+          </df>
+          <df name="Fonts">
+            <df name="Droid_Sans">
+            </df>
+          </df>
+          <in>AnalogClock.c</in>
+          <in>Button.c</in>
+          <in>Chart.c</in>
+          <in>CheckBox.c</in>
+          <in>DigitalMeter.c</in>
+          <in>EditBox.c</in>
+          <in>GOL.c</in>
+          <in>GOLFontDefault.c</in>
+          <in>GOLSchemeDefault.c</in>
+          <in>Grid.c</in>
+          <in>GroupBox.c</in>
+          <in>ListBox.c</in>
+          <in>Meter.c</in>
+          <in>Palette.c</in>
+          <in>Picture.c</in>
+          <in>Primitive.c</in>
+          <in>ProgressBar.c</in>
+          <in>RadioButton.c</in>
+          <in>RoundDial.c</in>
+          <in>Slider.c</in>
+          <in>StaticText.c</in>
+          <in>Template.c</in>
+          <in>TextEntry.c</in>
+          <in>Transitions.c</in>
+          <in>Transitions_weak.c</in>
+          <in>Window.c</in>
+        </df>
+        <df name="Include">
+          <df name="Graphics">
+            <in>AnalogClock.h</in>
+            <in>Button.h</in>
+            <in>Chart.h</in>
+            <in>CheckBox.h</in>
+            <in>CustomDisplayDriver.h</in>
+            <in>DigitalMeter.h</in>
+            <in>DisplayDriver.h</in>
+            <in>DisplayDriverInterface.h</in>
+            <in>EditBox.h</in>
+            <in>GOL.h</in>
+            <in>Graphics.h</in>
+            <in>Grid.h</in>
+            <in>GroupBox.h</in>
+            <in>HIT1270.h</in>
+            <in>HX8347.h</in>
+            <in>ListBox.h</in>
+            <in>Meter.h</in>
+            <in>Palette.h</in>
+            <in>Picture.h</in>
+            <in>Primitive.h</in>
+            <in>ProgressBar.h</in>
+            <in>RadioButton.h</in>
+            <in>RoundDial.h</in>
+            <in>S1D13517.h</in>
+            <in>S1D13522.h</in>
+            <in>SH1101A_SSD1303.h</in>
+            <in>SSD1305.h</in>
+            <in>SSD1339.h</in>
+            <in>SSD1926.h</in>
+            <in>ST7529.h</in>
+            <in>ScanCodes.h</in>
+            <in>Slider.h</in>
+            <in>StaticText.h</in>
+            <in>Template.h</in>
+            <in>TextEntry.h</in>
+            <in>Transitions.h</in>
+            <in>UC1610.h</in>
+            <in>Window.h</in>
+            <in>drvTFT001.h</in>
+            <in>drvTFT002.h</in>
+            <in>gfxcolors.h</in>
+            <in>gfxepmp.h</in>
+            <in>gfxpmp.h</in>
+            <in>gfxtcon.h</in>
+            <in>mchpGfxDrv.h</in>
+            <in>mchpGfxLCC.h</in>
+          </df>
+          <df name="PIC18 salloc">
+            <in>salloc.h</in>
+          </df>
+          <df name="USB">
+            <in>usb.h</in>
+            <in>usb_ch9.h</in>
+            <in>usb_common.h</in>
+            <in>usb_device.h</in>
+            <in>usb_function_audio.h</in>
+            <in>usb_function_ccid.h</in>
+            <in>usb_function_cdc.h</in>
+            <in>usb_function_generic.h</in>
+            <in>usb_function_hid.h</in>
+            <in>usb_function_midi.h</in>
+            <in>usb_function_msd.h</in>
+            <in>usb_function_phdc.h</in>
+            <in>usb_function_phdc_com_model.h</in>
+            <in>usb_hal.h</in>
+            <in>usb_hal_dspic33E.h</in>
+            <in>usb_hal_pic18.h</in>
+            <in>usb_hal_pic24.h</in>
+            <in>usb_hal_pic24E.h</in>
+            <in>usb_hal_pic24f.h</in>
+            <in>usb_hal_pic32.h</in>
+            <in>usb_host.h</in>
+            <in>usb_host_android.h</in>
+            <in>usb_host_audio_v1.h</in>
+            <in>usb_host_cdc.h</in>
+            <in>usb_host_cdc_interface.h</in>
+            <in>usb_host_charger.h</in>
+            <in>usb_host_generic.h</in>
+            <in>usb_host_hid.h</in>
+            <in>usb_host_hid_parser.h</in>
+            <in>usb_host_midi.h</in>
+            <in>usb_host_msd.h</in>
+            <in>usb_host_msd_scsi.h</in>
+            <in>usb_host_printer.h</in>
+            <in>usb_host_printer_esc_pos.h</in>
+            <in>usb_host_printer_pcl_5.h</in>
+            <in>usb_host_printer_postscript.h</in>
+            <in>usb_host_printer_primitives.h</in>
+            <in>usb_otg.h</in>
+            <in>usb_printer_pos_bixolon_srp_270.h</in>
+            <in>usb_printer_pos_epson_tm_t88iv.h</in>
+            <in>usb_printer_pos_seiko_dpu_v445.h</in>
+            <in>usb_printer_pos_seiko_mpu_l465.h</in>
+          </df>
+          <in>Compiler.h</in>
+          <in>GenericTypeDefs.h</in>
+          <in>LCDBlocking.h</in>
+          <in>TimeDelay.h</in>
+          <in>struct_queue.h</in>
+          <in>timer.h</in>
+          <in>uart2.h</in>
+        </df>
+      </df>
+      <df name="output">
+      </df>
+      <df name="ParTest">
+        <in>ParTest.c</in>
+      </df>
+      <df name="RTOS">
+        <df name="Common">
+          <df name="FileSystem">
+            <df name="FatFs-0.7e">
+              <df name="doc">
+                <df name="en">
+                </df>
+                <df name="img">
+                </df>
+                <df name="ja">
+                </df>
+              </df>
+              <df name="src">
+                <df name="option">
+                  <in>cc932.c</in>
+                  <in>cc936.c</in>
+                  <in>cc949.c</in>
+                  <in>cc950.c</in>
+                  <in>ccsbcs.c</in>
+                  <in>syncobj.c</in>
+                </df>
+                <in>Copy of ff.c</in>
+                <in>fat_integer.h</in>
+                <in>ff.c</in>
+                <in>ff.h</in>
+              </df>
+            </df>
+          </df>
+          <df name="Full">
+            <in>BlockQ.c</in>
+            <in>PollQ.c</in>
+            <in>comtest.c</in>
+            <in>death.c</in>
+            <in>dynamic.c</in>
+            <in>events.c</in>
+            <in>flash.c</in>
+            <in>flop.c</in>
+            <in>integer.c</in>
+            <in>print.c</in>
+            <in>semtest.c</in>
+          </df>
+          <df name="include">
+            <in>AltBlckQ.h</in>
+            <in>AltBlock.h</in>
+            <in>AltPollQ.h</in>
+            <in>AltQTest.h</in>
+            <in>BlockQ.h</in>
+            <in>GenQTest.h</in>
+            <in>IntQueue.h</in>
+            <in>PollQ.h</in>
+            <in>QPeek.h</in>
+            <in>TimerDemo.h</in>
+            <in>blocktim.h</in>
+            <in>comtest.h</in>
+            <in>comtest2.h</in>
+            <in>countsem.h</in>
+            <in>crflash.h</in>
+            <in>crhook.h</in>
+            <in>death.h</in>
+            <in>dynamic.h</in>
+            <in>fileIO.h</in>
+            <in>flash.h</in>
+            <in>flop.h</in>
+            <in>integer.h</in>
+            <in>mevents.h</in>
+            <in>partest.h</in>
+            <in>print.h</in>
+            <in>recmutex.h</in>
+            <in>semtest.h</in>
+            <in>serial.h</in>
+          </df>
+          <df name="Minimal">
+            <in>AltBlckQ.c</in>
+            <in>AltBlock.c</in>
+            <in>AltPollQ.c</in>
+            <in>AltQTest.c</in>
+            <in>BlockQ.c</in>
+            <in>GenQTest.c</in>
+            <in>IntQueue.c</in>
+            <in>PollQ.c</in>
+            <in>QPeek.c</in>
+            <in>TimerDemo.c</in>
+            <in>blocktim.c</in>
+            <in>comtest.c</in>
+            <in>countsem.c</in>
+            <in>crflash.c</in>
+            <in>crhook.c</in>
+            <in>death.c</in>
+            <in>dynamic.c</in>
+            <in>flash.c</in>
+            <in>flop.c</in>
+            <in>integer.c</in>
+            <in>recmutex.c</in>
+            <in>semtest.c</in>
+          </df>
+        </df>
+        <df name="Source">
+          <df name="include">
+            <in>FreeRTOS.h</in>
+            <in>StackMacros.h</in>
+            <in>croutine.h</in>
+            <in>list.h</in>
+            <in>mpu_wrappers.h</in>
+            <in>portable.h</in>
+            <in>projdefs.h</in>
+            <in>queue.h</in>
+            <in>semphr.h</in>
+            <in>task.h</in>
+            <in>timers.h</in>
+          </df>
+          <df name="portable">
+            <df name="MemMang">
+              <in>heap_1.c</in>
+              <in>heap_2.c</in>
+              <in>heap_3.c</in>
+            </df>
+            <df name="MPLAB">
+              <df name="PIC18F_">
+                <in>port.c</in>
+                <in>portmacro.h</in>
+                <in>stdio.h</in>
+              </df>
+              <df name="PIC24_dsPIC">
+                <in>port.c</in>
+                <in>portasm_PIC24.S</in>
+                <in>portasm_dsPIC.S</in>
+                <in>portmacro.h</in>
+              </df>
+              <df name="PIC32MX_">
+                <in>ISR_Support.h</in>
+                <in>port.c</in>
+                <in>port_asm.S</in>
+                <in>portmacro.h</in>
+              </df>
+            </df>
+          </df>
+          <in>croutine.c</in>
+          <in>list.c</in>
+          <in>queue.c</in>
+          <in>tasks.c</in>
+          <in>timers.c</in>
+        </df>
+      </df>
+      <df name="serial">
+        <in>serial.c</in>
+      </df>
+      <df name="tmp">
+      </df>
+      <df name="VLG_MEMAD.X">
+        <df name="build">
+          <df name="default">
+            <df name="production">
+              <df name="_ext">
+                <df name="1111096632">
+                </df>
+                <df name="1360920944">
+                </df>
+                <df name="1472">
+                </df>
+                <df name="1575306571">
+                </df>
+                <df name="1713430119">
+                </df>
+                <df name="1724691511">
+                </df>
+                <df name="1840719093">
+                </df>
+                <df name="638940289">
+                </df>
+                <df name="771517865">
+                </df>
+                <df name="798298840">
+                </df>
+                <df name="809743516">
+                </df>
+                <df name="821501661">
+                </df>
+              </df>
+            </df>
+          </df>
+        </df>
+        <df name="dist">
+          <df name="default">
+            <df name="production">
+            </df>
+          </df>
+        </df>
+      </df>
+      <in>CRC16.H</in>
+      <in>ExternalMemory.h</in>
+      <in>Fonts.c</in>
+      <in>FreeRTOSConfig.h</in>
+      <in>GDD_Adjust.c</in>
+      <in>GDD_Adjust.h</in>
+      <in>GDD_Alarm.c</in>
+      <in>GDD_Alarm.h</in>
+      <in>GDD_Bolus.c</in>
+      <in>GDD_Bolus.h</in>
+      <in>GDD_Calib.c</in>
+      <in>GDD_Calib.h</in>
+      <in>GDD_Calib_tmp.c</in>
+      <in>GDD_Calib_tmp.h</in>
+      <in>GDD_Checkup.c</in>
+      <in>GDD_Checkup.h</in>
+      <in>GDD_Clear.c</in>
+      <in>GDD_Clear.h</in>
+      <in>GDD_Confirm.c</in>
+      <in>GDD_Confirm.h</in>
+      <in>GDD_Error.c</in>
+      <in>GDD_Error.h</in>
+      <in>GDD_Intro.c</in>
+      <in>GDD_Intro.h</in>
+      <in>GDD_Options.c</in>
+      <in>GDD_Options.h</in>
+      <in>GDD_Prime.c</in>
+      <in>GDD_Prime.h</in>
+      <in>GDD_Pwrdown.c</in>
+      <in>GDD_Pwrdown.h</in>
+      <in>GDD_RateCalib.c</in>
+      <in>GDD_RateCalib.h</in>
+      <in>GDD_Resource.c</in>
+      <in>GDD_Resource.h</in>
+      <in>GDD_Run.c</in>
+      <in>GDD_Run.h</in>
+      <in>GDD_Screens.c</in>
+      <in>GDD_Screens.h</in>
+      <in>GDD_SetDrug.c</in>
+      <in>GDD_SetDrug.h</in>
+      <in>GDD_SetMenu.c</in>
+      <in>GDD_SetMenu.h</in>
+      <in>GDD_SetProg.c</in>
+      <in>GDD_SetProg.h</in>
+      <in>GDD_Setup.c</in>
+      <in>GDD_Setup.h</in>
+      <in>GDD_Test.c</in>
+      <in>GDD_Test.h</in>
+      <in>GDDfonts.c</in>
+      <in>GDDfonts.h</in>
+      <in>GraphicsConfig.h</in>
+      <in>HardwareProfile.h</in>
+      <in>MATHUTL.C</in>
+      <in>air_det.c</in>
+      <in>air_det.h</in>
+      <in>beep.c</in>
+      <in>beep.h</in>
+      <in>clock.c</in>
+      <in>clock.h</in>
+      <in>com.c</in>
+      <in>com.h</in>
+      <in>include.h</in>
+      <in>keypad.c</in>
+      <in>keypad.h</in>
+      <in>lcd.c</in>
+      <in>lcd.h</in>
+      <in>main.c</in>
+      <in>main.h</in>
+      <in>medfont.c</in>
+      <in>medfont.h</in>
+      <in>osapi.c</in>
+      <in>osapi.h</in>
+      <in>smallfont.c</in>
+      <in>smallfont.h</in>
+      <in>stmotor.c</in>
+      <in>stmotor.h</in>
+      <in>taskBackground.c</in>
+      <in>taskBackground.h</in>
+      <in>taskCalc.c</in>
+      <in>taskCalc.h</in>
+      <in>taskControl.c</in>
+      <in>taskControl.h</in>
+      <in>taskGraphics.c</in>
+      <in>taskGraphics.h</in>
+      <in>taskSPI.c</in>
+      <in>taskSPI.h</in>
+      <in>taskTouchScreen.c</in>
+      <in>taskTouchScreen.h</in>
+      <in>taskUSB.c</in>
+      <in>taskUSB.h</in>
+      <in>timertest.c</in>
+      <in>timertest.h</in>
+      <in>usb_callback.c</in>
+      <in>usb_config.h</in>
+      <in>usb_descriptors.c</in>
+      <in>usb_device.c</in>
+      <in>usb_device_local.h</in>
+      <in>usb_function_cdc.c</in>
+      <in>usb_hal_pic24.c</in>
+      <in>val_conv.c</in>
+      <in>val_conv.h</in>
+    </df>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <platform>3</platform>
+      </toolsSet>
+      <compile>
+        <compiledirpicklist>
+          <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
+        </compiledirpicklist>
+        <compiledir>${AUTO_FOLDER}</compiledir>
+        <compilecommandpicklist>
+          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
+        </compilecommandpicklist>
+        <compilecommand>${AUTO_COMPILE}</compilecommand>
+      </compile>
+      <dbx_gdbdebugger version="1">
+        <gdb_pathmaps>
+        </gdb_pathmaps>
+        <gdb_interceptlist>
+          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
+        </gdb_interceptlist>
+        <gdb_options>
+          <DebugOptions>
+          </DebugOptions>
+        </gdb_options>
+        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
+      </dbx_gdbdebugger>
+      <nativedebugger version="1">
+        <engine>gdb</engine>
+      </nativedebugger>
+      <runprofile version="9">
+        <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+        </runcommandpicklist>
+        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <rundir>.</rundir>
+        <buildfirst>false</buildfirst>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+        </environment>
+      </runprofile>
+    </conf>
+  </confs>
+</configurationDescriptor>

@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="62">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="Bsp Headers" displayName="Bsp Headers" projectFiles="true">
+        <itemPath>../bsp/TouchScreenResistive.h</itemPath>
+        <itemPath>../bsp/SST39LF400.h</itemPath>
+        <itemPath>../bsp/TouchScreen.h</itemPath>
+        <itemPath>../bsp/TimeDelay.h</itemPath>
+        <itemPath>../bsp/MCP23S08.h</itemPath>
+        <itemPath>../bsp/board.h</itemPath>
+        <itemPath>../bsp/SST25VF016.h</itemPath>
+        <itemPath>../bsp/TouchScreenAR1020.h</itemPath>
+        <itemPath>../bsp/MCP4822.h</itemPath>
+        <itemPath>../bsp/PCF2123.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="displdrv Headers"
+                     displayName="displdrv Headers"
+                     projectFiles="true">
+        <itemPath>../Microchip/Include/Graphics/mchpGfxDrv.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/gfxepmp.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/gfxtcon.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/DisplayDriver.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="Flash_pgm Headers"
+                     displayName="Flash_pgm Headers"
+                     projectFiles="true">
+        <itemPath>../Flash_pgm/comm_pkt.h</itemPath>
+        <itemPath>../Flash_pgm/comm_pkt_callback.h</itemPath>
+        <itemPath>../Flash_pgm/FlashProgrammer.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="GraphLib Headers"
+                     displayName="GraphLib Headers"
+                     projectFiles="true">
+        <itemPath>../Microchip/Include/GenericTypeDefs.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/Window.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/Button.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/CheckBox.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/EditBox.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/GOL.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/Graphics.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/GroupBox.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/ListBox.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/Meter.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/Picture.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/Primitive.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/ProgressBar.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/RadioButton.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/RoundDial.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/Slider.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/StaticText.h</itemPath>
+        <itemPath>../Microchip/Include/Graphics/DigitalMeter.h</itemPath>
+      </logicalFolder>
+      <itemPath>../RTOS/Source/include/semphr.h</itemPath>
+      <itemPath>../RTOS/Source/include/task.h</itemPath>
+      <itemPath>../RTOS/Source/include/croutine.h</itemPath>
+      <itemPath>../RTOS/Source/include/queue.h</itemPath>
+      <itemPath>../FreeRTOSConfig.h</itemPath>
+      <itemPath>../GraphicsConfig.h</itemPath>
+      <itemPath>../taskTouchScreen.h</itemPath>
+      <itemPath>../taskGraphics.h</itemPath>
+      <itemPath>../GDD_Screens.h</itemPath>
+      <itemPath>../GDD_Resource.h</itemPath>
+      <itemPath>../Configs/HWP_DA210_BRD_16PMP_PFLASH_QVGAv1.h</itemPath>
+      <itemPath>../HardwareProfile.h</itemPath>
+      <itemPath>../include.h</itemPath>
+      <itemPath>../GDD_Options.h</itemPath>
+      <itemPath>../beep.h</itemPath>
+      <itemPath>../GDD_Clear.h</itemPath>
+      <itemPath>../Graphics Resources/new.h</itemPath>
+      <itemPath>../usb_config.h</itemPath>
+      <itemPath>../ExternalMemory.h</itemPath>
+      <itemPath>../GDD_Test.h</itemPath>
+      <itemPath>../GDD_SetProg.h</itemPath>
+      <itemPath>../taskBackground.h</itemPath>
+      <itemPath>../GDD_Adjust.h</itemPath>
+      <itemPath>../main.h</itemPath>
+      <itemPath>../GDD_SetDrug.h</itemPath>
+      <itemPath>../CRC16.H</itemPath>
+      <itemPath>../GDD_Prime.h</itemPath>
+      <itemPath>../stmotor.h</itemPath>
+      <itemPath>../air_det.h</itemPath>
+      <itemPath>../clock.h</itemPath>
+      <itemPath>../keypad.h</itemPath>
+      <itemPath>../taskSPI.h</itemPath>
+      <itemPath>../GDD_Run.h</itemPath>
+      <itemPath>../GDD_Confirm.h</itemPath>
+      <itemPath>../GDD_Pwrdown.h</itemPath>
+      <itemPath>../GDD_Alarm.h</itemPath>
+      <itemPath>../taskControl.h</itemPath>
+      <itemPath>../taskCalc.h</itemPath>
+      <itemPath>../GDD_Calib.h</itemPath>
+      <itemPath>../GDD_Bolus.h</itemPath>
+      <itemPath>../GDD_SetMenu.h</itemPath>
+      <itemPath>../GDD_Setup.h</itemPath>
+      <itemPath>../GDD_Checkup.h</itemPath>
+      <itemPath>../GDD_RateCalib.h</itemPath>
+      <itemPath>../taskUSB.h</itemPath>
+      <itemPath>../com.h</itemPath>
+      <itemPath>../val_conv.h</itemPath>
+      <itemPath>../taskUART.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="LinkerScript"
+                   displayName="Linker Files"
+                   projectFiles="true">
+      <itemPath>../app_hid_boot_p24FJ256DA210.gld</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="Bsp Source" displayName="Bsp Source" projectFiles="true">
+        <itemPath>../bsp/TouchScreenResistive.c</itemPath>
+        <itemPath>../bsp/SST39LF400.c</itemPath>
+        <itemPath>../bsp/TouchScreen.c</itemPath>
+        <itemPath>../bsp/TimeDelay.c</itemPath>
+        <itemPath>../bsp/MCP23S08.c</itemPath>
+        <itemPath>../bsp/board.c</itemPath>
+        <itemPath>../bsp/SST25VF016.c</itemPath>
+        <itemPath>../bsp/TouchScreenAR1020.c</itemPath>
+        <itemPath>../bsp/MCP4822.c</itemPath>
+        <itemPath>../bsp/PCF2123.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="displdrv Source"
+                     displayName="displdrv Source"
+                     projectFiles="true">
+        <itemPath>../Microchip/Graphics/Drivers/TCON_SSD1289.c</itemPath>
+        <itemPath>../Microchip/Graphics/Drivers/gfxepmp.c</itemPath>
+        <itemPath>../Microchip/Graphics/Drivers/mchpGfxDrv.c</itemPath>
+        <itemPath>../Microchip/Graphics/Drivers/mchpGfxDrvBuffer.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="Flash_pgm Source"
+                     displayName="Flash_pgm Source"
+                     projectFiles="true">
+        <itemPath>../Flash_pgm/FlashProgrammer.c</itemPath>
+        <itemPath>../Flash_pgm/comm_pkt_callback.c</itemPath>
+        <itemPath>../Flash_pgm/comm_pkt.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="FreeRTOS Source"
+                     displayName="FreeRTOS Source"
+                     projectFiles="true">
+        <itemPath>../RTOS/Source/portable/MemMang/heap_1.c</itemPath>
+        <itemPath>../RTOS/Source/portable/MPLAB/PIC24_dsPIC/port.c</itemPath>
+        <itemPath>../RTOS/Source/portable/MPLAB/PIC24_dsPIC/portasm_PIC24.S</itemPath>
+        <itemPath>../RTOS/Source/tasks.c</itemPath>
+        <itemPath>../RTOS/Source/croutine.c</itemPath>
+        <itemPath>../RTOS/Source/timers.c</itemPath>
+        <itemPath>../RTOS/Source/queue.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="GraphLib Source"
+                     displayName="GraphLib Source"
+                     projectFiles="true">
+        <itemPath>../Microchip/Graphics/Window.c</itemPath>
+        <itemPath>../Microchip/Graphics/Button.c</itemPath>
+        <itemPath>../Microchip/Graphics/CheckBox.c</itemPath>
+        <itemPath>../Microchip/Graphics/EditBox.c</itemPath>
+        <itemPath>../Microchip/Graphics/GOL.c</itemPath>
+        <itemPath>../Microchip/Graphics/GOLFontDefault.c</itemPath>
+        <itemPath>../Microchip/Graphics/GroupBox.c</itemPath>
+        <itemPath>../Microchip/Graphics/ListBox.c</itemPath>
+        <itemPath>../Microchip/Graphics/Meter.c</itemPath>
+        <itemPath>../Microchip/Graphics/Picture.c</itemPath>
+        <itemPath>../Microchip/Graphics/Primitive.c</itemPath>
+        <itemPath>../Microchip/Graphics/ProgressBar.c</itemPath>
+        <itemPath>../Microchip/Graphics/RadioButton.c</itemPath>
+        <itemPath>../Microchip/Graphics/RoundDial.c</itemPath>
+        <itemPath>../Microchip/Graphics/Slider.c</itemPath>
+        <itemPath>../Microchip/Graphics/StaticText.c</itemPath>
+        <itemPath>../Microchip/Graphics/GOLSchemeDefault.c</itemPath>
+        <itemPath>../Microchip/Graphics/DigitalMeter.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="Standard Demo Source"
+                     displayName="Standard Demo Source"
+                     projectFiles="true">
+        <itemPath>../RTOS/Common/Minimal/BlockQ.c</itemPath>
+        <itemPath>../RTOS/Common/Minimal/blocktim.c</itemPath>
+        <itemPath>../RTOS/Common/Minimal/comtest.c</itemPath>
+        <itemPath>../RTOS/Common/Minimal/integer.c</itemPath>
+      </logicalFolder>
+      <itemPath>../main.c</itemPath>
+      <itemPath>../RTOS/Source/list.c</itemPath>
+      <itemPath>../ParTest/ParTest.c</itemPath>
+      <itemPath>../lcd.c</itemPath>
+      <itemPath>../taskTouchScreen.c</itemPath>
+      <itemPath>../taskGraphics.c</itemPath>
+      <itemPath>../smallfont.c</itemPath>
+      <itemPath>../medfont.c</itemPath>
+      <itemPath>../GDD_Screens.c</itemPath>
+      <itemPath>../GDD_Resource.c</itemPath>
+      <itemPath>../osapi.c</itemPath>
+      <itemPath>../GDD_Options.c</itemPath>
+      <itemPath>../GDD_Intro.c</itemPath>
+      <itemPath>../beep.c</itemPath>
+      <itemPath>../GDD_Clear.c</itemPath>
+      <itemPath>../Graphics Resources/new.c</itemPath>
+      <itemPath>../usb_callback.c</itemPath>
+      <itemPath>../usb_descriptors.c</itemPath>
+      <itemPath>../usb_device.c</itemPath>
+      <itemPath>../GDD_Test.c</itemPath>
+      <itemPath>../GDD_SetProg.c</itemPath>
+      <itemPath>../taskBackground.c</itemPath>
+      <itemPath>../GDD_Adjust.c</itemPath>
+      <itemPath>../GDD_SetDrug.c</itemPath>
+      <itemPath>../MATHUTL.C</itemPath>
+      <itemPath>../GDD_Prime.c</itemPath>
+      <itemPath>../stmotor.c</itemPath>
+      <itemPath>../air_det.c</itemPath>
+      <itemPath>../clock.c</itemPath>
+      <itemPath>../keypad.c</itemPath>
+      <itemPath>../taskSPI.c</itemPath>
+      <itemPath>../GDD_Confirm.c</itemPath>
+      <itemPath>../GDD_Run.c</itemPath>
+      <itemPath>../GDD_Pwrdown.c</itemPath>
+      <itemPath>../GDD_Alarm.c</itemPath>
+      <itemPath>../taskControl.c</itemPath>
+      <itemPath>../taskCalc.c</itemPath>
+      <itemPath>../GDD_Calib.c</itemPath>
+      <itemPath>../GDD_Bolus.c</itemPath>
+      <itemPath>../GDD_SetMenu.c</itemPath>
+      <itemPath>../GDD_Setup.c</itemPath>
+      <itemPath>../GDD_Checkup.c</itemPath>
+      <itemPath>../GDD_RateCalib.c</itemPath>
+      <itemPath>../taskUSB.c</itemPath>
+      <itemPath>../usb_hal_pic24.c</itemPath>
+      <itemPath>../usb_function_cdc.c</itemPath>
+      <itemPath>../com.c</itemPath>
+      <itemPath>../val_conv.c</itemPath>
+      <itemPath>../taskUART.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>../</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="default" type="2">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <targetDevice>PIC24FJ256DA210</targetDevice>
+        <targetHeader></targetHeader>
+        <targetPluginBoard></targetPluginBoard>
+        <platformTool>ICD3PlatformTool</platformTool>
+        <languageToolchain>C30</languageToolchain>
+        <languageToolchainVersion>3_31</languageToolchainVersion>
+        <platform>3</platform>
+      </toolsSet>
+      <compileType>
+        <linkerTool>
+          <linkerLibItems>
+          </linkerLibItems>
+        </linkerTool>
+        <loading>
+          <useAlternateLoadableFile>false</useAlternateLoadableFile>
+          <parseOnProdLoad>false</parseOnProdLoad>
+          <alternateLoadableFile></alternateLoadableFile>
+        </loading>
+      </compileType>
+      <makeCustomizationType>
+        <makeCustomizationPreStepEnabled>true</makeCustomizationPreStepEnabled>
+        <makeCustomizationPreStep>del ..\output\*.hex</makeCustomizationPreStep>
+        <makeCustomizationPostStepEnabled>true</makeCustomizationPostStepEnabled>
+        <makeCustomizationPostStep>copy ${ImagePath} ..\output</makeCustomizationPostStep>
+        <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
+        <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
+        <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
+      </makeCustomizationType>
+      <item path="../Microchip/Graphics/Drivers/mchpGfxDrvBuffer.c"
+            ex="false"
+            overriding="true">
+        <C30>
+          <property key="code-model" value="large-code"/>
+          <property key="const-model" value="default"/>
+          <property key="data-model" value="large-data"/>
+          <property key="enable-all-warnings" value="true"/>
+          <property key="enable-ansi-std" value="false"/>
+          <property key="enable-ansi-warnings" value="false"/>
+          <property key="enable-fatal-warnings" value="false"/>
+          <property key="enable-large-arrays" value="true"/>
+          <property key="enable-omit-frame-pointer" value="false"/>
+          <property key="enable-procedural-abstraction" value="false"/>
+          <property key="enable-short-double" value="false"/>
+          <property key="enable-symbols" value="true"/>
+          <property key="enable-unroll-loops" value="false"/>
+          <property key="extra-include-directories"
+                    value="../bsp;../Include/Graphics;../Microchip/Include;../Microchip/Include/Graphics;../../../../include;../../../../../..;../../../../..;../../../include;..;../../../..;../../..;../..;../include;../../include;../Source/include;../Common/include;../../Source/include;../../Common/include;../../../Source/include;../../../Common/include;../RTOS/Source/include;../RTOS/Common/include;../../RTOS/Common/include;../../RTOS/Source/include;../../../RTOS/Common/include;../../../RTOS/Source/include;../Configs;../Graphics Resources;../Flash_pgm;"/>
+          <property key="isolate-each-function" value="false"/>
+          <property key="optimization-level" value="1"/>
+          <property key="post-instruction-scheduling" value="no-schedule-insns2"/>
+          <property key="pre-instruction-scheduling" value="no-schedule-insns"/>
+          <property key="preprocessor-macros" value="MPLAB_PIC24_PORT"/>
+          <property key="scalar-model" value="large-scalar"/>
+          <appendMe value="-fno-omit-frame-pointer "/>
+        </C30>
+        <C30-AS>
+          <property key="assembler-symbols" value=""/>
+          <property key="expand-macros" value="false"/>
+          <property key="extra-include-directories-for-assembler" value="..;"/>
+          <property key="extra-include-directories-for-preprocessor"
+                    value="../bsp;../Include/Graphics;../Microchip/Include;../Microchip/Include/Graphics;../../../../include;../../../../../..;../../../../..;../../../include;..;../../../..;../../..;../..;../include;../../include;../Source/include;../Common/include;../../Source/include;../../Common/include;../../../Source/include;../../../Common/include;../RTOS/Source/include;../RTOS/Common/include;../../RTOS/Common/include;../../RTOS/Source/include;../../../RTOS/Common/include;../../../RTOS/Source/include;../Configs;../Graphics Resources;../Flash_pgm;"/>
+          <property key="false-conditionals" value="false"/>
+          <property key="keep-locals" value="false"/>
+          <property key="list-assembly" value="false"/>
+          <property key="list-file" value=""/>
+          <property key="list-section-info" value="false"/>
+          <property key="list-source" value="false"/>
+          <property key="list-symbols" value="false"/>
+          <property key="omit-debug-dirs" value="false"/>
+          <property key="omit-forms" value="false"/>
+          <property key="preprocessor-macros" value=""/>
+          <property key="relax" value="false"/>
+          <property key="warning-level" value="emit-warnings"/>
+          <appendMe value="-g "/>
+        </C30-AS>
+        <C30-LD>
+          <property key="boot-eeprom" value="no_eeprom"/>
+          <property key="boot-flash" value="no_flash"/>
+          <property key="boot-ram" value="no_ram"/>
+          <property key="boot-write-protect" value="no_write_protect"/>
+          <property key="enable-check-sections" value="false"/>
+          <property key="enable-data-init" value="true"/>
+          <property key="enable-default-isr" value="true"/>
+          <property key="enable-handles" value="true"/>
+          <property key="enable-pack-data" value="true"/>
+          <property key="extra-lib-directories"
+                    value="/C:/Program Files/Microchip/mplabc30/v3.30/lib/PIC24F;..;"/>
+          <property key="general-code-protect" value="no_code_protect"/>
+          <property key="general-write-protect" value="no_write_protect"/>
+          <property key="generate-cross-reference-file" value="false"/>
+          <property key="heap-size" value=""/>
+          <property key="input-libraries" value=""/>
+          <property key="linker-symbols" value=""/>
+          <property key="map-file" value="&quot;${DISTDIR}/VLG_MEMAD.X.${IMAGE_TYPE}.map&quot;"/>
+          <property key="preprocessor-macros" value=""/>
+          <property key="remove-unused-sections" value="false"/>
+          <property key="report-memory-usage" value="true"/>
+          <property key="secure-eeprom" value="no_eeprom"/>
+          <property key="secure-flash" value="no_flash"/>
+          <property key="secure-ram" value="no_ram"/>
+          <property key="secure-write-protect" value="no_write_protect"/>
+          <property key="stack-size" value=""/>
+          <property key="symbol-stripping" value=""/>
+          <property key="trace-symbols" value=""/>
+          <property key="warn-section-align" value="false"/>
+        </C30-LD>
+        <C30Global>
+          <property key="fast-math" value="false"/>
+          <property key="legacy-libc" value="false"/>
+        </C30Global>
+      </item>
+      <C30>
+        <property key="code-model" value="large-code"/>
+        <property key="const-model" value="default"/>
+        <property key="data-model" value="large-data"/>
+        <property key="enable-all-warnings" value="true"/>
+        <property key="enable-ansi-std" value="false"/>
+        <property key="enable-ansi-warnings" value="false"/>
+        <property key="enable-fatal-warnings" value="false"/>
+        <property key="enable-large-arrays" value="false"/>
+        <property key="enable-omit-frame-pointer" value="true"/>
+        <property key="enable-procedural-abstraction" value="false"/>
+        <property key="enable-short-double" value="false"/>
+        <property key="enable-symbols" value="true"/>
+        <property key="enable-unroll-loops" value="false"/>
+        <property key="extra-include-directories"
+                  value="..\;..\..\;..\..\..\;..\..\..\..\;..\Configs;..\..\Configs;..\..\..\Configs;..\bsp;..\..\bsp;..\..\..\bsp;..\Flash_pgm;..\..\Flash_pgm;..\..\..\Flash_pgm;..\Graphics Resources;..\..\Graphics Resources;..\..\..\Graphics Resources;..\Microchip\Include;..\..\Microchip\Include;..\..\..\Microchip\Include;..\RTOS\Common\include;..\..\RTOS\Common\include;..\..\..\RTOS\Common\include;..\RTOS\Source\include;..\..\RTOS\Source\include;..\..\..\RTOS\Source\include;..\include;..\..\include;..\..\..\include;..\..\..\..\include;..\Common\include;..\..\Common\include;..\..\..\Common\include;..\Source\include;..\..\Source\include;..\..\..\Source\include;..;..\Include\Graphics;..\Include\USB;..\Microchip\Include\Graphics;..\..\Microchip\Include\Graphics;..\..\..\Microchip\Include\Graphics;..\Microchip\Include\USB;..\..\Microchip\Include\USB;..\..\..\Microchip\Include\USB"/>
+        <property key="isolate-each-function" value="false"/>
+        <property key="optimization-level" value="s"/>
+        <property key="post-instruction-scheduling" value="no-schedule-insns2"/>
+        <property key="pre-instruction-scheduling" value="no-schedule-insns"/>
+        <property key="preprocessor-macros" value="MPLAB_PIC24_PORT"/>
+        <property key="scalar-model" value="large-scalar"/>
+      </C30>
+      <C30-AS>
+        <property key="assembler-symbols" value=""/>
+        <property key="expand-macros" value="false"/>
+        <property key="extra-include-directories-for-assembler" value=".."/>
+        <property key="extra-include-directories-for-preprocessor"
+                  value="../bsp;../Include/Graphics;../Microchip/Include;../Microchip/Include/Graphics;../../../../include;../../../../../..;../../../../..;../../../include;..;../../../..;../../..;../..;../include;../../include;../Source/include;../Common/include;../../Source/include;../../Common/include;../../../Source/include;../../../Common/include;../RTOS/Source/include;../RTOS/Common/include;../../RTOS/Common/include;../../RTOS/Source/include;../../../RTOS/Common/include;../../../RTOS/Source/include;../Configs;../Graphics Resources;../Flash_pgm"/>
+        <property key="false-conditionals" value="false"/>
+        <property key="keep-locals" value="false"/>
+        <property key="list-assembly" value="false"/>
+        <property key="list-section-info" value="false"/>
+        <property key="list-source" value="false"/>
+        <property key="list-symbols" value="false"/>
+        <property key="oXC16asm-list-to-file" value="false"/>
+        <property key="omit-debug-dirs" value="false"/>
+        <property key="omit-forms" value="false"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="relax" value="false"/>
+        <property key="warning-level" value="emit-warnings"/>
+        <appendMe value="-g "/>
+      </C30-AS>
+      <C30-LD>
+        <property key="boot-eeprom" value="no_eeprom"/>
+        <property key="boot-flash" value="no_flash"/>
+        <property key="boot-ram" value="no_ram"/>
+        <property key="boot-write-protect" value="no_write_protect"/>
+        <property key="enable-check-sections" value="false"/>
+        <property key="enable-data-init" value="true"/>
+        <property key="enable-default-isr" value="true"/>
+        <property key="enable-handles" value="true"/>
+        <property key="enable-pack-data" value="true"/>
+        <property key="extra-lib-directories"
+                  value="/C:/Program Files/Microchip/mplabc30/v3.30/lib/PIC24F;.."/>
+        <property key="general-code-protect" value="no_code_protect"/>
+        <property key="general-write-protect" value="no_write_protect"/>
+        <property key="generate-cross-reference-file" value="false"/>
+        <property key="heap-size" value="4000"/>
+        <property key="input-libraries" value=""/>
+        <property key="linker-symbols" value="__ICD2RAM=1"/>
+        <property key="map-file" value="&quot;${DISTDIR}/VLG_MEMAD.X.${IMAGE_TYPE}.map&quot;"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="remove-unused-sections" value="false"/>
+        <property key="report-memory-usage" value="true"/>
+        <property key="secure-eeprom" value="no_eeprom"/>
+        <property key="secure-flash" value="no_flash"/>
+        <property key="secure-ram" value="no_ram"/>
+        <property key="secure-write-protect" value="no_write_protect"/>
+        <property key="stack-size" value=""/>
+        <property key="symbol-stripping" value=""/>
+        <property key="trace-symbols" value=""/>
+        <property key="warn-section-align" value="true"/>
+      </C30-LD>
+      <C30Global>
+        <property key="fast-math" value="false"/>
+        <property key="legacy-libc" value="true"/>
+        <property key="output-file-format" value="elf"/>
+      </C30Global>
+      <ICD3PlatformTool>
+        <property key="ADC 1" value="true"/>
+        <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="CLOCK CONTROL" value="true"/>
+        <property key="COMPARATOR" value="true"/>
+        <property key="CRC" value="true"/>
+        <property key="CTMU" value="true"/>
+        <property key="Freeze All Other Peripherals" value="true"/>
+        <property key="GRAPHICS" value="true"/>
+        <property key="I2C1" value="true"/>
+        <property key="I2C2" value="true"/>
+        <property key="I2C3" value="true"/>
+        <property key="INPUT CAPTURE 1" value="true"/>
+        <property key="INPUT CAPTURE 2" value="true"/>
+        <property key="INPUT CAPTURE 3" value="true"/>
+        <property key="INPUT CAPTURE 4" value="true"/>
+        <property key="INPUT CAPTURE 5" value="true"/>
+        <property key="INPUT CAPTURE 6" value="true"/>
+        <property key="INPUT CAPTURE 7" value="true"/>
+        <property key="INPUT CAPTURE 8" value="true"/>
+        <property key="INPUT CAPTURE 9" value="true"/>
+        <property key="OUTPUT COMPARE 1" value="true"/>
+        <property key="OUTPUT COMPARE 2" value="true"/>
+        <property key="OUTPUT COMPARE 3" value="true"/>
+        <property key="OUTPUT COMPARE 4" value="true"/>
+        <property key="OUTPUT COMPARE 5" value="true"/>
+        <property key="OUTPUT COMPARE 6" value="true"/>
+        <property key="OUTPUT COMPARE 7" value="true"/>
+        <property key="OUTPUT COMPARE 8" value="true"/>
+        <property key="OUTPUT COMPARE 9" value="true"/>
+        <property key="PARALLEL MASTER/SLAVE PORT" value="true"/>
+        <property key="RTCC" value="true"/>
+        <property key="SPI 1" value="true"/>
+        <property key="SPI 2" value="true"/>
+        <property key="SPI 3" value="true"/>
+        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
+        <property key="TIMER1" value="true"/>
+        <property key="TIMER2" value="true"/>
+        <property key="TIMER3" value="true"/>
+        <property key="TIMER4" value="true"/>
+        <property key="TIMER5" value="true"/>
+        <property key="ToolFirmwareFilePath"
+                  value="Press to browse for a specific firmware version"/>
+        <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="UART 1" value="true"/>
+        <property key="UART 2" value="true"/>
+        <property key="UART 3" value="true"/>
+        <property key="UART 4" value="true"/>
+        <property key="UCNFG1" value="true"/>
+        <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="firmware.download.all" value="false"/>
+        <property key="hwtoolclock.frcindebug" value="false"/>
+        <property key="memories.aux" value="false"/>
+        <property key="memories.bootflash" value="false"/>
+        <property key="memories.configurationmemory" value="false"/>
+        <property key="memories.eeprom" value="true"/>
+        <property key="memories.flashdata" value="true"/>
+        <property key="memories.id" value="true"/>
+        <property key="memories.programmemory" value="true"/>
+        <property key="memories.programmemory.end" value="0x2abf7"/>
+        <property key="memories.programmemory.start" value="0x0"/>
+        <property key="poweroptions.powerenable" value="false"/>
+        <property key="programoptions.eraseb4program" value="true"/>
+        <property key="programoptions.preserveeeprom" value="false"/>
+        <property key="programoptions.preserveprogramrange" value="false"/>
+        <property key="programoptions.preserveprogramrange.end" value="0xff"/>
+        <property key="programoptions.preserveprogramrange.start" value="0x0"/>
+        <property key="programoptions.preserveuserid" value="false"/>
+        <property key="programoptions.testmodeentrymethod" value="VPPFirst"/>
+        <property key="programoptions.usehighvoltageonmclr" value="false"/>
+        <property key="programoptions.uselvpprogramming" value="false"/>
+        <property key="voltagevalue" value="3.25"/>
+      </ICD3PlatformTool>
+    </conf>
+    <conf name="Release" type="2">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <targetDevice>PIC24FJ256DA210</targetDevice>
+        <targetHeader></targetHeader>
+        <targetPluginBoard></targetPluginBoard>
+        <platformTool>ICD3PlatformTool</platformTool>
+        <languageToolchain>C30</languageToolchain>
+        <languageToolchainVersion>3_31</languageToolchainVersion>
+        <platform>3</platform>
+      </toolsSet>
+      <compileType>
+        <linkerTool>
+          <linkerLibItems>
+          </linkerLibItems>
+        </linkerTool>
+        <loading>
+          <useAlternateLoadableFile>false</useAlternateLoadableFile>
+          <parseOnProdLoad>false</parseOnProdLoad>
+          <alternateLoadableFile></alternateLoadableFile>
+        </loading>
+      </compileType>
+      <makeCustomizationType>
+        <makeCustomizationPreStepEnabled>true</makeCustomizationPreStepEnabled>
+        <makeCustomizationPreStep>del ..\output\*.hex</makeCustomizationPreStep>
+        <makeCustomizationPostStepEnabled>true</makeCustomizationPostStepEnabled>
+        <makeCustomizationPostStep>copy ${ImagePath} ..\output</makeCustomizationPostStep>
+        <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
+        <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
+        <makeCustomizationNormalizeHexFile>true</makeCustomizationNormalizeHexFile>
+      </makeCustomizationType>
+      <item path="../Microchip/Graphics/Drivers/mchpGfxDrvBuffer.c"
+            ex="false"
+            overriding="true">
+        <C30>
+          <property key="code-model" value="large-code"/>
+          <property key="const-model" value="default"/>
+          <property key="data-model" value="large-data"/>
+          <property key="enable-all-warnings" value="true"/>
+          <property key="enable-ansi-std" value="false"/>
+          <property key="enable-ansi-warnings" value="false"/>
+          <property key="enable-fatal-warnings" value="false"/>
+          <property key="enable-large-arrays" value="true"/>
+          <property key="enable-omit-frame-pointer" value="false"/>
+          <property key="enable-procedural-abstraction" value="false"/>
+          <property key="enable-short-double" value="false"/>
+          <property key="enable-symbols" value="true"/>
+          <property key="enable-unroll-loops" value="false"/>
+          <property key="extra-include-directories"
+                    value="../bsp;../Include/Graphics;../Microchip/Include;../Microchip/Include/Graphics;../../../../include;../../../../../..;../../../../..;../../../include;..;../../../..;../../..;../..;../include;../../include;../Source/include;../Common/include;../../Source/include;../../Common/include;../../../Source/include;../../../Common/include;../RTOS/Source/include;../RTOS/Common/include;../../RTOS/Common/include;../../RTOS/Source/include;../../../RTOS/Common/include;../../../RTOS/Source/include;../Configs;../Graphics Resources;../Flash_pgm;"/>
+          <property key="isolate-each-function" value="false"/>
+          <property key="optimization-level" value="1"/>
+          <property key="post-instruction-scheduling" value="no-schedule-insns2"/>
+          <property key="pre-instruction-scheduling" value="no-schedule-insns"/>
+          <property key="preprocessor-macros" value="MPLAB_PIC24_PORT"/>
+          <property key="scalar-model" value="large-scalar"/>
+          <appendMe value="-fno-omit-frame-pointer "/>
+        </C30>
+        <C30-AS>
+          <property key="assembler-symbols" value=""/>
+          <property key="expand-macros" value="false"/>
+          <property key="extra-include-directories-for-assembler" value="..;"/>
+          <property key="extra-include-directories-for-preprocessor"
+                    value="../bsp;../Include/Graphics;../Microchip/Include;../Microchip/Include/Graphics;../../../../include;../../../../../..;../../../../..;../../../include;..;../../../..;../../..;../..;../include;../../include;../Source/include;../Common/include;../../Source/include;../../Common/include;../../../Source/include;../../../Common/include;../RTOS/Source/include;../RTOS/Common/include;../../RTOS/Common/include;../../RTOS/Source/include;../../../RTOS/Common/include;../../../RTOS/Source/include;../Configs;../Graphics Resources;../Flash_pgm;"/>
+          <property key="false-conditionals" value="false"/>
+          <property key="keep-locals" value="false"/>
+          <property key="list-assembly" value="false"/>
+          <property key="list-file" value=""/>
+          <property key="list-section-info" value="false"/>
+          <property key="list-source" value="false"/>
+          <property key="list-symbols" value="false"/>
+          <property key="omit-debug-dirs" value="false"/>
+          <property key="omit-forms" value="false"/>
+          <property key="preprocessor-macros" value=""/>
+          <property key="relax" value="false"/>
+          <property key="warning-level" value="emit-warnings"/>
+          <appendMe value="-g "/>
+        </C30-AS>
+        <C30-LD>
+          <property key="boot-eeprom" value="no_eeprom"/>
+          <property key="boot-flash" value="no_flash"/>
+          <property key="boot-ram" value="no_ram"/>
+          <property key="boot-write-protect" value="no_write_protect"/>
+          <property key="enable-check-sections" value="false"/>
+          <property key="enable-data-init" value="true"/>
+          <property key="enable-default-isr" value="true"/>
+          <property key="enable-handles" value="true"/>
+          <property key="enable-pack-data" value="true"/>
+          <property key="extra-lib-directories"
+                    value="/C:/Program Files/Microchip/mplabc30/v3.30/lib/PIC24F;..;"/>
+          <property key="general-code-protect" value="no_code_protect"/>
+          <property key="general-write-protect" value="no_write_protect"/>
+          <property key="generate-cross-reference-file" value="false"/>
+          <property key="heap-size" value=""/>
+          <property key="input-libraries" value=""/>
+          <property key="linker-symbols" value=""/>
+          <property key="map-file" value="&quot;${DISTDIR}/VLG_MEMAD.X.${IMAGE_TYPE}.map&quot;"/>
+          <property key="preprocessor-macros" value=""/>
+          <property key="remove-unused-sections" value="false"/>
+          <property key="report-memory-usage" value="true"/>
+          <property key="secure-eeprom" value="no_eeprom"/>
+          <property key="secure-flash" value="no_flash"/>
+          <property key="secure-ram" value="no_ram"/>
+          <property key="secure-write-protect" value="no_write_protect"/>
+          <property key="stack-size" value=""/>
+          <property key="symbol-stripping" value=""/>
+          <property key="trace-symbols" value=""/>
+          <property key="warn-section-align" value="false"/>
+        </C30-LD>
+        <C30Global>
+          <property key="fast-math" value="false"/>
+          <property key="legacy-libc" value="false"/>
+        </C30Global>
+      </item>
+      <C30>
+        <property key="code-model" value="large-code"/>
+        <property key="const-model" value="default"/>
+        <property key="data-model" value="large-data"/>
+        <property key="enable-all-warnings" value="true"/>
+        <property key="enable-ansi-std" value="false"/>
+        <property key="enable-ansi-warnings" value="false"/>
+        <property key="enable-fatal-warnings" value="false"/>
+        <property key="enable-large-arrays" value="false"/>
+        <property key="enable-omit-frame-pointer" value="true"/>
+        <property key="enable-procedural-abstraction" value="false"/>
+        <property key="enable-short-double" value="false"/>
+        <property key="enable-symbols" value="true"/>
+        <property key="enable-unroll-loops" value="false"/>
+        <property key="extra-include-directories"
+                  value="../bsp;../Include/Graphics;../Microchip/Include;../Microchip/Include/Graphics;../../../../include;../../../../../..;../../../../..;../../../include;..;../../../..;../../..;../..;../include;../../include;../Source/include;../Common/include;../../Source/include;../../Common/include;../../../Source/include;../../../Common/include;../RTOS/Source/include;../RTOS/Common/include;../../RTOS/Common/include;../../RTOS/Source/include;../../../RTOS/Common/include;../../../RTOS/Source/include;../Configs;../Graphics Resources;../Flash_pgm"/>
+        <property key="isolate-each-function" value="false"/>
+        <property key="optimization-level" value="s"/>
+        <property key="post-instruction-scheduling" value="no-schedule-insns2"/>
+        <property key="pre-instruction-scheduling" value="no-schedule-insns"/>
+        <property key="preprocessor-macros" value="MPLAB_PIC24_PORT"/>
+        <property key="scalar-model" value="large-scalar"/>
+      </C30>
+      <C30-AS>
+        <property key="assembler-symbols" value=""/>
+        <property key="expand-macros" value="false"/>
+        <property key="extra-include-directories-for-assembler" value=".."/>
+        <property key="extra-include-directories-for-preprocessor"
+                  value="../bsp;../Include/Graphics;../Microchip/Include;../Microchip/Include/Graphics;../../../../include;../../../../../..;../../../../..;../../../include;..;../../../..;../../..;../..;../include;../../include;../Source/include;../Common/include;../../Source/include;../../Common/include;../../../Source/include;../../../Common/include;../RTOS/Source/include;../RTOS/Common/include;../../RTOS/Common/include;../../RTOS/Source/include;../../../RTOS/Common/include;../../../RTOS/Source/include;../Configs;../Graphics Resources;../Flash_pgm"/>
+        <property key="false-conditionals" value="false"/>
+        <property key="keep-locals" value="false"/>
+        <property key="list-assembly" value="false"/>
+        <property key="list-file" value=""/>
+        <property key="list-section-info" value="false"/>
+        <property key="list-source" value="false"/>
+        <property key="list-symbols" value="false"/>
+        <property key="omit-debug-dirs" value="false"/>
+        <property key="omit-forms" value="false"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="relax" value="false"/>
+        <property key="warning-level" value="emit-warnings"/>
+        <appendMe value="-g "/>
+      </C30-AS>
+      <C30-LD>
+        <property key="boot-eeprom" value="no_eeprom"/>
+        <property key="boot-flash" value="no_flash"/>
+        <property key="boot-ram" value="no_ram"/>
+        <property key="boot-write-protect" value="no_write_protect"/>
+        <property key="enable-check-sections" value="false"/>
+        <property key="enable-data-init" value="true"/>
+        <property key="enable-default-isr" value="true"/>
+        <property key="enable-handles" value="true"/>
+        <property key="enable-pack-data" value="true"/>
+        <property key="extra-lib-directories"
+                  value="/C:/Program Files/Microchip/mplabc30/v3.30/lib/PIC24F;.."/>
+        <property key="general-code-protect" value="no_code_protect"/>
+        <property key="general-write-protect" value="no_write_protect"/>
+        <property key="generate-cross-reference-file" value="false"/>
+        <property key="heap-size" value="4000"/>
+        <property key="input-libraries" value=""/>
+        <property key="linker-symbols" value="__ICD2RAM=1"/>
+        <property key="map-file" value="&quot;${DISTDIR}/VLG_MEMAD.X.${IMAGE_TYPE}.map&quot;"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="remove-unused-sections" value="false"/>
+        <property key="report-memory-usage" value="true"/>
+        <property key="secure-eeprom" value="no_eeprom"/>
+        <property key="secure-flash" value="no_flash"/>
+        <property key="secure-ram" value="no_ram"/>
+        <property key="secure-write-protect" value="no_write_protect"/>
+        <property key="stack-size" value=""/>
+        <property key="symbol-stripping" value=""/>
+        <property key="trace-symbols" value=""/>
+        <property key="warn-section-align" value="true"/>
+      </C30-LD>
+      <C30Global>
+        <property key="fast-math" value="false"/>
+        <property key="legacy-libc" value="true"/>
+        <property key="output-file-format" value="elf"/>
+      </C30Global>
+      <ICD3PlatformTool>
+        <property key="ADC 1" value="true"/>
+        <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="CLOCK CONTROL" value="true"/>
+        <property key="COMPARATOR" value="true"/>
+        <property key="CRC" value="true"/>
+        <property key="CTMU" value="true"/>
+        <property key="Freeze All Other Peripherals" value="true"/>
+        <property key="GRAPHICS" value="true"/>
+        <property key="I2C1" value="true"/>
+        <property key="I2C2" value="true"/>
+        <property key="I2C3" value="true"/>
+        <property key="INPUT CAPTURE 1" value="true"/>
+        <property key="INPUT CAPTURE 2" value="true"/>
+        <property key="INPUT CAPTURE 3" value="true"/>
+        <property key="INPUT CAPTURE 4" value="true"/>
+        <property key="INPUT CAPTURE 5" value="true"/>
+        <property key="INPUT CAPTURE 6" value="true"/>
+        <property key="INPUT CAPTURE 7" value="true"/>
+        <property key="INPUT CAPTURE 8" value="true"/>
+        <property key="INPUT CAPTURE 9" value="true"/>
+        <property key="OUTPUT COMPARE 1" value="true"/>
+        <property key="OUTPUT COMPARE 2" value="true"/>
+        <property key="OUTPUT COMPARE 3" value="true"/>
+        <property key="OUTPUT COMPARE 4" value="true"/>
+        <property key="OUTPUT COMPARE 5" value="true"/>
+        <property key="OUTPUT COMPARE 6" value="true"/>
+        <property key="OUTPUT COMPARE 7" value="true"/>
+        <property key="OUTPUT COMPARE 8" value="true"/>
+        <property key="OUTPUT COMPARE 9" value="true"/>
+        <property key="PARALLEL MASTER/SLAVE PORT" value="true"/>
+        <property key="RTCC" value="true"/>
+        <property key="SPI 1" value="true"/>
+        <property key="SPI 2" value="true"/>
+        <property key="SPI 3" value="true"/>
+        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
+        <property key="TIMER1" value="true"/>
+        <property key="TIMER2" value="true"/>
+        <property key="TIMER3" value="true"/>
+        <property key="TIMER4" value="true"/>
+        <property key="TIMER5" value="true"/>
+        <property key="ToolFirmwareFilePath"
+                  value="Press to browse for a specific firmware version"/>
+        <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="UART 1" value="true"/>
+        <property key="UART 2" value="true"/>
+        <property key="UART 3" value="true"/>
+        <property key="UART 4" value="true"/>
+        <property key="UCNFG1" value="true"/>
+        <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="firmware.download.all" value="false"/>
+        <property key="hwtoolclock.frcindebug" value="false"/>
+        <property key="memories.aux" value="false"/>
+        <property key="memories.bootflash" value="false"/>
+        <property key="memories.configurationmemory" value="false"/>
+        <property key="memories.eeprom" value="true"/>
+        <property key="memories.flashdata" value="true"/>
+        <property key="memories.id" value="true"/>
+        <property key="memories.programmemory" value="true"/>
+        <property key="memories.programmemory.end" value="0x2abf7"/>
+        <property key="memories.programmemory.start" value="0x0"/>
+        <property key="poweroptions.powerenable" value="false"/>
+        <property key="programoptions.eraseb4program" value="true"/>
+        <property key="programoptions.preserveeeprom" value="false"/>
+        <property key="programoptions.preserveprogramrange" value="false"/>
+        <property key="programoptions.preserveprogramrange.end" value="0xff"/>
+        <property key="programoptions.preserveprogramrange.start" value="0x0"/>
+        <property key="programoptions.preserveuserid" value="false"/>
+        <property key="programoptions.testmodeentrymethod" value="VPPFirst"/>
+        <property key="programoptions.usehighvoltageonmclr" value="false"/>
+        <property key="programoptions.uselvpprogramming" value="false"/>
+        <property key="voltagevalue" value="3.25"/>
+      </ICD3PlatformTool>
+    </conf>
+  </confs>
+</configurationDescriptor>
