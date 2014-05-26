@@ -259,13 +259,12 @@ void taskGraphics(void* pvParameter)
 					GOLMsg(pMsg);
 					break;
 				case MSG_INPUT_EVENT:
-					// process events from the touchscreen
+					// process events from the calc task
 					pMsg = &msg.data.golMsg;
 //					pressx = pMsg->param1;
 					/*pMsg->param2 - BTN_MSG_PRESSED */
 					GOLMsgCallback(pMsg->param2, NULL, pMsg);
 					break;
-				
 				
 				default:
 					break;

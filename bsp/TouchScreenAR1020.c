@@ -82,7 +82,6 @@ BYTE                ARData[5];
 
 #define CALIBRATION_DELAY   300				// delay between calibration touch points
 
-
 extern NVM_READ_FUNC           pCalDataRead;                  // function pointer to data read
 extern NVM_WRITE_FUNC          pCalDataWrite;                // function pointer to data write
 extern NVM_SECTORERASE_FUNC    pCalDataSectorErase;    // function pointer to data sector erase
@@ -196,24 +195,21 @@ void TouchDetectPosition(void) //Routine for touch messages including cap and re
 	AR1020_TOUCH_REPORT_PACKET touchReport;
 	BYTE i;
 
-//DMK    if(!SPILock(spiInitData.channel))
-//DMK        return;
-
-	if ((TouchScreenPacketReady()) && (detectPosition)) {
-//DMK        DRV_SPI_Initialize(spiInitData.channel, (DRV_SPI_INIT_DATA *)&spiInitData);
-
-//        TouchScreenChipEnable();
+	if ((TouchScreenPacketReady()) && (detectPosition))
+	{
 		CS_MUX(CS3_TSC, 1);  // Enable SPI Communication to  AR1020
-
-		for (i = 0; i < sizeof(AR1020_TOUCH_REPORT_PACKET); i++) {
+		for (i = 0; i < sizeof(AR1020_TOUCH_REPORT_PACKET); i++)
+		{
 			touchReport.packet[i] = GetByte();
 		}
 
 		xcor = -1;
 		ycor = -1;
 
-		if (touchReport.startBit) {
-			if (touchReport.pen) {
+		if (touchReport.startBit)
+		{
+			if (touchReport.pen)
+			{
 #ifdef TOUCHSCREEN_RESISTIVE_SWAP_XY
 				xc = (long) touchReport.highY;
 				xc <<= 7;
@@ -244,19 +240,14 @@ void TouchDetectPosition(void) //Routine for touch messages including cap and re
 
 				xcor = xc;
 				ycor = GetMaxY() - yc;
-			} else {
+			} else
+			{
 				xcor = -1;
 				ycor = -1;
-
 			}
-
 		}
-
-//        TouchScreenChipDisable();
 		CS_MUX(CS3_TSC, 0);  // Disable SPI Communication to  AR1020
 	}
-
-//DMK    SPIUnLock(spiInitData.channel);
 }
 
 /*********************************************************************
@@ -271,177 +262,94 @@ void TouchDetectPosition(void) //Routine for touch messages including cap and re
 * Overview: sets ADC 
 * Note: none
 ********************************************************************/
-void TouchHardwareInit(void *initValues)
-{
-  	unsigned char i;
+void TouchHardwareInit(void *initValues) {
+	unsigned char i;
 	unsigned int SPICON1Value;
-  	unsigned int SPICON2Value;
+	unsigned int SPICON2Value;
 	unsigned int SPISTATValue;
-    
+
 	TouchScreenConfigPacketReady();
 
-//DMK    DRV_SPI_Initialize(((DRV_SPI_INIT_DATA *)initValues)->channel, (DRV_SPI_INIT_DATA *)initValues);
-    
-//DMK    memcpy(&spiInitData, initValues, sizeof(DRV_SPI_INIT_DATA));
+	// Set SPI for AR1020
 
-    // Set IOs directions for AR1020 SPI
-
-//    TouchScreenChipDisable();
-	  CS_MUX(CS3_TSC,0);  // Disable SPI Communication to  AR1020
-//DMK    TouchScreenChipDirection();
+	CS_MUX(CS3_TSC, 0);  // Disable SPI Communication to  AR1020
 	CloseSPI1();
-   
-   SPICON1Value = ENABLE_SCK_PIN & ENABLE_SDO_PIN & SPI_MODE16_OFF &
-   SPI_SMP_OFF & 
-   SPI_CKE_OFF & CLK_POL_ACTIVE_HIGH &  /*Mode 1.1*/
-   SLAVE_ENABLE_OFF &
-   MASTER_ENABLE_ON &
-   SEC_PRESCAL_2_1 &
-   PRI_PRESCAL_1_1;
-//   SEC_PRESCAL_2_1 &
-//   PRI_PRESCAL_4_1;
 
+	SPICON1Value = ENABLE_SCK_PIN & ENABLE_SDO_PIN & SPI_MODE16_OFF
+			& SPI_SMP_OFF & SPI_CKE_OFF & CLK_POL_ACTIVE_HIGH & /*Mode 1.1*/
+			SLAVE_ENABLE_OFF & MASTER_ENABLE_ON & SEC_PRESCAL_2_1 & PRI_PRESCAL_1_1;
 
+	SPICON2Value = 0x0000;
+	SPISTATValue = SPI_ENABLE & SPI_IDLE_CON & SPI_RX_OVFLOW_CLR;
+	OpenSPI1(SPICON1Value, SPICON2Value, SPISTATValue);
 
-//   SPICON2Value = FRAME_ENABLE_OFF;
-   SPICON2Value = 0x0000;
+	DelayMs(100);                                            //asked for in spec
+	for (i = 0; i < TOUCH_AR1020_REG_INIT_SIZE; i++)
+		TouchAR1020RegisterWrite(regInit[i].startRegOffset,
+				(TOUCH_AR1020_REG *) regInit[i].values, regInit[i].size);
 
-   SPISTATValue = SPI_ENABLE & SPI_IDLE_CON &
-   SPI_RX_OVFLOW_CLR;
-
-   OpenSPI1(SPICON1Value,SPICON2Value,SPISTATValue );
-
-    DelayMs(100);                                                 //asked for in spec
-    for(i = 0; i < TOUCH_AR1020_REG_INIT_SIZE; i++)
-        TouchAR1020RegisterWrite(regInit[i].startRegOffset, (TOUCH_AR1020_REG *)regInit[i].values, regInit[i].size);
-//        TouchAR1020RegisterWrite(TOUCH_AR1020_REG_PEN_UP_DELAY, 80, 1);
-    
-    while(TouchAR1020SendCommandAndGetResponce(TOUCH_AR1020_CMD_ENABLE_TOUCH, NULL, 0) != TOUCHAR1020_RESP_SUCCESS);          //Enable Touch Messages
-    detectPosition = 1;
-
+	while (TouchAR1020SendCommandAndGetResponce(TOUCH_AR1020_CMD_ENABLE_TOUCH, NULL, 0) != TOUCHAR1020_RESP_SUCCESS);  //Enable Touch Messages
+	detectPosition = 1;
 }
-
-
-//    while(TouchAR1020SendCommandAndGetResponce(TOUCH_AR1020_CMD_DISABLE_TOUCH, NULL, 0) != TOUCHAR1020_RESP_SUCCESS);          //Disable Touch Messages
-//    DelayMs(100);                                                 //asked for in spec
-//    for(i = 0; i < TOUCH_AR1020_REG_INIT_SIZE; i++)
-//        TouchAR1020RegisterWrite(regInit[i].startRegOffset, (TOUCH_AR1020_REG *)regInit[i].values, regInit[i].size);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*********************************************************************
 * Function: SHORT TouchGetX()
-*
 * PreCondition: none
-*
 * Input: none
-*
 * Output: x coordinate
-*
 * Side Effects: none
-*
 * Overview: returns x coordinate if touch screen is pressed
 *           and -1 if not
-*
 * Note: none
 *
 ********************************************************************/
 SHORT TouchGetX(void)
 {
-#ifdef TOUCHSCREEN_RESISTIVE_SWAP_XY
-    return (SHORT)ycor;
-#else
     return (SHORT)xcor;
-#endif
 }
 /*********************************************************************
 * Function: SHORT TouchGetRawX()
-*
 * PreCondition: none
-*
 * Input: none
-*
 * Output: x raw value
-*
 * Side Effects: none
-*
 * Overview: returns x coordinate if touch screen is pressed
 *           and -1 if not
-*
 * Note: none
-*
 ********************************************************************/
 SHORT TouchGetRawX(void)
 {
-#ifdef TOUCHSCREEN_RESISTIVE_SWAP_XY
-    return (SHORT)ycor;
-#else
     return (SHORT)xcor;
-#endif
-
 }
 /*********************************************************************
 * Function: SHORT TouchGetY()
-*
 * PreCondition: none
-*
 * Input: none
-*
 * Output: y coordinate
-*
 * Side Effects: none
-*
 * Overview: returns y coordinate if touch screen is pressed
 *           and -1 if not
-*
 * Note: none
-*
 ********************************************************************/
 SHORT TouchGetY(void)
 {
-    #ifdef TOUCHSCREEN_RESISTIVE_SWAP_XY
-    return (SHORT)xcor;
-    #else
     return (SHORT)ycor;
-    #endif
 }
 
 /*********************************************************************
 * Function: SHORT TouchGetRawY()
-*
 * PreCondition: none
-*
 * Input: none
-*
 * Output: raw y value
-*
 * Side Effects: none
-*
 * Overview: returns y coordinate if touch screen is pressed
 *           and -1 if not
-*
 * Note: none
-*
 ********************************************************************/
 SHORT TouchGetRawY(void)
 {
-#ifdef TOUCHSCREEN_RESISTIVE_SWAP_XY
-    return (SHORT)xcor;
-#else
     return (SHORT)ycor;
-#endif
 }
 #if 0
 /*********************************************************************

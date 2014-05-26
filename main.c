@@ -12,10 +12,9 @@
 //#include "usb.h"
 //#include "usb_function_generic.h"
 
-
-    _CONFIG1( WDTPS_PS32768 & FWPSA_PR128 & ALTVREF_ALTVREDIS & WINDIS_OFF & FWDTEN_OFF & ICS_PGx2 & GWRP_OFF & GCP_OFF & JTAGEN_OFF) 
-    _CONFIG2( POSCMOD_HS & IOL1WAY_OFF & OSCIOFNC_OFF & FCKSM_CSDCMD & FNOSC_PRIPLL & PLL96MHZ_ON & PLLDIV_DIV2 & IESO_OFF)
-    _CONFIG3( WPFP_WPFP255 & SOSCSEL_EC & WUTSEL_LEG & ALTPMP_ALTPMPEN & WPDIS_WPDIS & WPCFG_WPCFGDIS & WPEND_WPENDMEM) 
+_CONFIG1( WDTPS_PS32768 & FWPSA_PR128 & ALTVREF_ALTVREDIS & WINDIS_OFF & FWDTEN_OFF & ICS_PGx2 & GWRP_OFF & GCP_OFF & JTAGEN_OFF)
+_CONFIG2( POSCMOD_HS & IOL1WAY_OFF & OSCIOFNC_OFF & FCKSM_CSDCMD & FNOSC_PRIPLL & PLL96MHZ_ON & PLLDIV_DIV2 & IESO_OFF)
+_CONFIG3( WPFP_WPFP255 & SOSCSEL_EC & WUTSEL_LEG & ALTPMP_ALTPMPEN & WPDIS_WPDIS & WPCFG_WPCFGDIS & WPEND_WPENDMEM)
 
 //portCHAR pcTraceBuf__[1000] __attribute__((aligned(2)));
 //portCHAR* pcTraceBuf = pcTraceBuf__;
@@ -23,21 +22,17 @@
 //#define GRC_CRC32_EXTERNAL_MARKER 0xFCEECE8Bul
 //#define GRC_CRC32_EXTERNAL_ADDR 0x00010B70ul
 extern USB_HANDLE USBGenericInHandle;
-	// parallel flash
+// parallel flash
 #define FLASHInit()             				
 #define ChipErase()                     SST39LF400ChipErase();
 #define WriteArray(address, pdata, len) SST39LF400WriteArray(address, pdata, len)
 #define ReadArray(address, pdata, len)  SST39LF400ReadArray(address, pdata, len)
 
-
 /*-----------------------------------------------------------*/
-
-
 /*
- * Setup the processor ready for the demo.
+ * Hardware Init
  */
 static void prvSetupHardware( void );
-
 
 //unsigned char tempor_byte1, tempor_byte2;
 

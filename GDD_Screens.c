@@ -127,7 +127,7 @@ void CreateSchemes(void)
 	
 	// Initialize the GOL
 	GOLInit();
-	ANSAbits.ANSA7 = 1;  //because GOLInit reinitialise PRESS2  analog input back to digital
+//	ANSAbits.ANSA7 = 1;  //because GOLInit reinitialise PRESS2  analog input back to digital
 
 
 	if(green_sch != NULL) free(green_sch);
