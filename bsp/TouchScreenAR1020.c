@@ -190,65 +190,71 @@ static BYTE detectPosition;
 * Overview: AR1020 ISR
 * Note: none
 ********************************************************************/
-void TouchDetectPosition(void)            //Routine for touch messages including cap and resistive
+void TouchDetectPosition(void) //Routine for touch messages including cap and resistive
 {
-    static long xc,yc;
-    AR1020_TOUCH_REPORT_PACKET touchReport;
-    BYTE i;
+	static long xc, yc;
+	AR1020_TOUCH_REPORT_PACKET touchReport;
+	BYTE i;
 
 //DMK    if(!SPILock(spiInitData.channel))
 //DMK        return;
 
-    if((TouchScreenPacketReady()) && (detectPosition))
-    {
+	if ((TouchScreenPacketReady()) && (detectPosition)) {
 //DMK        DRV_SPI_Initialize(spiInitData.channel, (DRV_SPI_INIT_DATA *)&spiInitData);
-        
+
 //        TouchScreenChipEnable();
-			  CS_MUX(CS3_TSC,1);  // Enable SPI Communication to  AR1020
+		CS_MUX(CS3_TSC, 1);  // Enable SPI Communication to  AR1020
 
-        for(i = 0; i < sizeof(AR1020_TOUCH_REPORT_PACKET); i++)
-        {
-            touchReport.packet[i] = GetByte();
-        }
+		for (i = 0; i < sizeof(AR1020_TOUCH_REPORT_PACKET); i++) {
+			touchReport.packet[i] = GetByte();
+		}
 
-        xcor = -1;
-        ycor = -1;
+		xcor = -1;
+		ycor = -1;
 
-        if(touchReport.startBit)
-        {
-            if(touchReport.pen)
-            {
-                xc = (long)touchReport.highX;
-                xc <<= 7;
-                xc |= (long)touchReport.lowX;
-                xc *= GetMaxX();
-                xc >>= 11;
-                xc++;
-                xc >>= 1;
+		if (touchReport.startBit) {
+			if (touchReport.pen) {
+#ifdef TOUCHSCREEN_RESISTIVE_SWAP_XY
+				xc = (long) touchReport.highY;
+				xc <<= 7;
+				xc |= (long) touchReport.lowY;
+#else
+				xc = (long) touchReport.highX;
+				xc <<= 7;
+				xc |= (long) touchReport.lowX;
+#endif
+				xc *= GetMaxX();
+				xc >>= 11;
+				xc++;
+				xc >>= 1;
 
-                yc = (long)touchReport.highY;
-                yc <<= 7;
-                yc |= (long)touchReport.lowY;
-                yc *= GetMaxY();
-                yc >>= 11;
-                yc++;
-                yc >>= 1;
+#ifdef TOUCHSCREEN_RESISTIVE_SWAP_XY
+				yc = (long) touchReport.highX;
+				yc <<= 7;
+				yc |= (long) touchReport.lowX;
+#else
+				yc = (long) touchReport.highY;
+				yc <<= 7;
+				yc |= (long) touchReport.lowY;
+#endif
+				yc *= GetMaxY();
+				yc >>= 11;
+				yc++;
+				yc >>= 1;
 
-                xcor = xc;
-                ycor = GetMaxY() - yc;
-        }
-	else
-	{
-            xcor = -1;
-            ycor = -1;
-		
-	}
-      
-    }
+				xcor = xc;
+				ycor = GetMaxY() - yc;
+			} else {
+				xcor = -1;
+				ycor = -1;
+
+			}
+
+		}
 
 //        TouchScreenChipDisable();
-			  CS_MUX(CS3_TSC,0);  // Disable SPI Communication to  AR1020
-    }
+		CS_MUX(CS3_TSC, 0);  // Disable SPI Communication to  AR1020
+	}
 
 //DMK    SPIUnLock(spiInitData.channel);
 }
