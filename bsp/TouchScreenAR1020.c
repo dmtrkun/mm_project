@@ -238,8 +238,16 @@ void TouchDetectPosition(void) //Routine for touch messages including cap and re
 				yc++;
 				yc >>= 1;
 
-				xcor = xc;
+#ifdef TOUCHSCREEN_RESISTIVE_FLIP_X
+				xcor = GetMaxX() - xc;
+#else
+                                xcor = xc;
+#endif
+#ifdef TOUCHSCREEN_RESISTIVE_FLIP_Y
 				ycor = GetMaxY() - yc;
+#else
+				ycor = yc;
+#endif
 			} else
 			{
 				xcor = -1;

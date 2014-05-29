@@ -169,17 +169,17 @@ void CreateSchemes(void)
 //	topbar->pFont = (void*)&arial_narrow_0_0_0_14;
 	topbar->pFont = (void*)&Arial_Narrow_26;
 	
-	if(basicbig != NULL) free(basicbig);
-	basicbig = GOLCreateScheme();
-	basicbig->Color0 = 19583;
-	basicbig->Color1 = 64969;
-	basicbig->ColorDisabled = 55070;
-	basicbig->CommonBkColor = 59196;
-	basicbig->EmbossDkColor = 6172;
-	basicbig->EmbossLtColor = 44765;
-	basicbig->TextColor0 = 64520;
-	basicbig->TextColor1 = 31;
-	basicbig->pFont = (void*)&arial_narrow_0_0_0_20;
+//	if(basicbig != NULL) free(basicbig);
+//	basicbig = GOLCreateScheme();
+//	basicbig->Color0 = 19583;
+//	basicbig->Color1 = 64969;
+//	basicbig->ColorDisabled = 55070;
+//	basicbig->CommonBkColor = 59196;
+//	basicbig->EmbossDkColor = 6172;
+//	basicbig->EmbossLtColor = 44765;
+//	basicbig->TextColor0 = 64520;
+//	basicbig->TextColor1 = 31;
+//	basicbig->pFont = (void*)&arial_narrow_0_0_0_20;
 	
 	if(defscheme != NULL) free(defscheme);
 	defscheme = GOLCreateScheme();

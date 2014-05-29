@@ -71,22 +71,13 @@
  * The next four byte is the generated 32-bit CRC.  The application can compare the value read from the
  * external memory to the value of GRC_CRC32_EXTERNAL_MARKER to verify that the data is valid.
  *****************************************************************************/
-#define GRC_CRC32_EXTERNAL_MARKER 0xDC402B2Eul
-#define GRC_CRC32_EXTERNAL_ADDR 0x000137E0ul
+#define GRC_CRC32_EXTERNAL_MARKER 0x8CBE44A5ul
+#define GRC_CRC32_EXTERNAL_ADDR 0x00013780ul
 
 /*****************************************************************************
  * SECTION:  BITMAPS
  *****************************************************************************/
 
-/*********************************
- * Bitmap Structure
- * Label: Wait_temp
- * Description:  30x30 pixels, 8-bits per pixel
- ***********************************/
-extern const GFX_IMAGE_HEADER Wait_temp;
-#define Wait_temp_WIDTH     (30)
-#define Wait_temp_HEIGHT    (30)
-#define Wait_temp_SIZE      (1418)
 /*********************************
  * Bitmap Structure
  * Label: Intro
@@ -171,21 +162,21 @@ extern const GFX_IMAGE_HEADER Rarrow_press;
 /*********************************
  * Bitmap Structure
  * Label: Larrow
- * Description:  55x30 pixels, 16-bits per pixel
+ * Description:  55x30 pixels, 8-bits per pixel
  ***********************************/
 extern const GFX_IMAGE_HEADER Larrow;
 #define Larrow_WIDTH     (55)
 #define Larrow_HEIGHT    (30)
-#define Larrow_SIZE      (3306)
+#define Larrow_SIZE      (2168)
 /*********************************
  * Bitmap Structure
  * Label: Rarrow
- * Description:  55x30 pixels, 16-bits per pixel
+ * Description:  55x30 pixels, 8-bits per pixel
  ***********************************/
 extern const GFX_IMAGE_HEADER Rarrow;
 #define Rarrow_WIDTH     (55)
 #define Rarrow_HEIGHT    (30)
-#define Rarrow_SIZE      (3306)
+#define Rarrow_SIZE      (2168)
 /*********************************
  * Bitmap Structure
  * Label: drug_Adrenaline

@@ -69,11 +69,11 @@ void CheckExternalFlashHex()
 
 	if(!DA210DEVBOARD_SST39LF400CheckID())
 	{
-		pStr = msgStr8 ;
-        setProgram = TRUE;
-    }
+            pStr = msgStr8 ;
+            setProgram = TRUE;
+        }
 	else
-		pStr = msgStr1;
+            pStr = msgStr1;
 	
 	// check if the CRC matches the data stored in the external flash memory
     expectedCRC.mchpCRCData = GRC_CRC32_EXTERNAL_MARKER;
@@ -141,12 +141,11 @@ void CheckExternalFlashHex()
         DelayMs(10);
 
 #endif
-
         
 		MCP23S08Write(IODIR, 0x47 ); // Directions Out In Out Out Out In In In  -  set WDI output
 		while(1); //Wait to WDI reset
 				 
-				// Force Reset to force the checking of the flash memory if programming was a success
+		// Force Reset to force the checking of the flash memory if programming was a success
         Reset();
     }
     
@@ -194,8 +193,6 @@ WORD ExternalMemoryCallback(IMAGE_EXTERNAL *memory, LONG offset, WORD nCount, vo
     return (nCount);
 }
 #endif
-
-
 
 /*-----------------------------------------------------------*/
 

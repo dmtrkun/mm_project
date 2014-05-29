@@ -20,7 +20,7 @@ GDD_SCREENSPUB	GOL_SCHEME* basicscheme;
 GDD_SCREENSPUB	GOL_SCHEME* defscheme;
 GDD_SCREENSPUB	GOL_SCHEME* topbar;
 GDD_SCREENSPUB	GOL_SCHEME* botbar;
-GDD_SCREENSPUB	GOL_SCHEME* basicbig;
+//GDD_SCREENSPUB	GOL_SCHEME* basicbig;
 GDD_SCREENSPUB	GOL_SCHEME* green_sch;
 GDD_SCREENSPUB	GOL_SCHEME* btnSchemeSmall;		// black buttons, small font
 GDD_SCREENSPUB	GOL_SCHEME* btnSchemeMedium;	// black buttons, medium font

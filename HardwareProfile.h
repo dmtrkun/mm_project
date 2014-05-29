@@ -10,7 +10,7 @@
 
 #define PIC24FJ256DA210_DEV_BOARD
 
-//#define BEEP_DISABLE
+#define BEEP_DISABLE
 //#define MOTORCHK_DIS
 //#define NOSET_DIS
 //#define UPOCCL_DIS

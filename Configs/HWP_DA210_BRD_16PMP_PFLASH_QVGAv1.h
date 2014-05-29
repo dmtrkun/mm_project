@@ -504,7 +504,7 @@
         #define DISP_HOR_RESOLUTION		480
         #define DISP_VER_RESOLUTION		272
         #define DISP_DATA_WIDTH			16
-        #define DISP_INV_LSHIFT
+//        #define DISP_INV_LSHIFT
         #define DISP_HOR_PULSE_WIDTH    1
         #define DISP_HOR_BACK_PORCH    	40
         #define DISP_HOR_FRONT_PORCH    5
@@ -868,19 +868,6 @@
 	#elif defined (GFX_USE_DISPLAY_PANEL_TFT_FSK430WQAV4F_420272)
 		#define BACKLIGHT_ENABLE_LEVEL      0
 		#define BACKLIGHT_DISABLE_LEVEL     1
-    #elif defined (GFX_USE_DISPLAY_PANEL_PH480272T_005_I11Q)    
-//        #define BACKLIGHT_ENABLE_LEVEL      1
-//        #define BACKLIGHT_DISABLE_LEVEL     0
-    #elif defined (GFX_USE_DISPLAY_PANEL_TFT_800480_33_E)    
-//        #define BACKLIGHT_ENABLE_LEVEL      0
-//        #define BACKLIGHT_DISABLE_LEVEL     1
-    #elif defined (GFX_USE_DISPLAY_PANEL_TFT_640480_8_E)    
-//        #define BACKLIGHT_ENABLE_LEVEL      0
-//        #define BACKLIGHT_DISABLE_LEVEL     1
-    #else
-        // default setting is logic low  
-//        #define BACKLIGHT_ENABLE_LEVEL      0
-//        #define BACKLIGHT_DISABLE_LEVEL     1
     #endif    
 
     
@@ -1708,15 +1695,15 @@
                 defined (GFX_USE_DISPLAY_PANEL_TFT_FSK430WQAV4F_420272)
 
 			#if (DISP_ORIENTATION == 0)	
-				#define TOUCHSCREEN_RESISTIVE_SWAP_XY
+//				#define TOUCHSCREEN_RESISTIVE_SWAP_XY
 				#define TOUCHSCREEN_RESISTIVE_FLIP_Y
 			#elif (DISP_ORIENTATION == 180)	
 				#define TOUCHSCREEN_RESISTIVE_SWAP_XY
 				#define TOUCHSCREEN_RESISTIVE_FLIP_X
 			#elif (DISP_ORIENTATION == 270)	
 				#define TOUCHSCREEN_RESISTIVE_SWAP_XY
-//				#define TOUCHSCREEN_RESISTIVE_FLIP_X
-//				#define TOUCHSCREEN_RESISTIVE_FLIP_Y
+				#define TOUCHSCREEN_RESISTIVE_FLIP_X
+				#define TOUCHSCREEN_RESISTIVE_FLIP_Y
 			#endif	
 
              #endif
@@ -2254,7 +2241,7 @@
 #if defined (PIC24FJ256DA210_DEV_BOARD)
 	#if defined (GFX_EPMP_CS1_BASE_ADDRESS)
 
-		#define GFX_COMPRESSED_BUFFER_SIZE              (13950)
+		#define GFX_COMPRESSED_BUFFER_SIZE              (4136)//(13950)
         #define GFX_DECOMPRESSED_BUFFER_SIZE            (38034)//(19216)
         #define GFX_IPU_TEMP_DATA_TRANSFER_ARRAY_SIZE   (1024)
 
