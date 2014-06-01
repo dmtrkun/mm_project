@@ -180,11 +180,11 @@
 #endif // #ifdef USE_COMP_IPU
 
 // check if we can use the driver OutChar
-#if (DISP_ORIENTATION == 0)
+//#if (DISP_ORIENTATION == 0)
     #if !(defined(USE_ANTIALIASED_FONTS))
         #define USE_DRV_FONT
     #endif
-#endif    
+//#endif
 
 // Color
 GFX_COLOR   _color;
