@@ -8,25 +8,25 @@
 #include "include.h"
 
 // Strings
-const __prog__ XCHAR __attribute__((space(prog))) Calib_OBJ_STATICTEXT_0_text[] = "CALIBRATION";
+const __prog__ GFX_XCHAR __attribute__((space(prog))) Calib_OBJ_STATICTEXT_0_text[] = "CALIBRATION";
 
-//const XCHAR Calib_OBJ_BUTTON_0_text[] = "EXIT";
-const XCHAR Calib_OBJ_BUTTON_1_text[] = "CONTINUE";
-//const XCHAR Calib_OBJ_BUTTON_2_text[] = "SAVE";
+//const GFX_XCHAR Calib_OBJ_BUTTON_0_text[] = "EXIT";
+const GFX_XCHAR Calib_OBJ_BUTTON_1_text[] = "CONTINUE";
+//const GFX_XCHAR Calib_OBJ_BUTTON_2_text[] = "SAVE";
 
-const __prog__ XCHAR __attribute__((space(prog))) Calib_msg_0[] = {
+const __prog__ GFX_XCHAR __attribute__((space(prog))) Calib_msg_0[] = {
 	"1.OPEN THE DOOR\r\n2.TAKE SET OUT\r\n3.PRESS CONTINUE",
 };
-const __prog__ XCHAR __attribute__((space(prog))) Calib_msg_1[] = {
+const __prog__ GFX_XCHAR __attribute__((space(prog))) Calib_msg_1[] = {
 	"4.INSERT \"CALLSET\"\r\n5. CLOSE THE DOOR\r\n6.APPLY ZERO PRESSURE\r\n7.PRESS CONTINUE",
 };
-const __prog__ XCHAR __attribute__((space(prog))) Calib_msg_2[] = {
+const __prog__ GFX_XCHAR __attribute__((space(prog))) Calib_msg_2[] = {
 	"8.APPLY 300mmHg\r\nTO \"CALSET\"\r\n9.PRESS CONTINUE",
 };
-const __prog__ XCHAR __attribute__((space(prog))) Calib_msg_3[] = {
+const __prog__ GFX_XCHAR __attribute__((space(prog))) Calib_msg_3[] = {
 	"END OF CALIBRATION.\r\nPRESS SAVE TO\r\nSTORE CALIBRATION\r\nRESULTS. THANKS",
 };
-const __prog__ XCHAR __attribute__((space(prog))) Calib_msg_4[] = {
+const __prog__ GFX_XCHAR __attribute__((space(prog))) Calib_msg_4[] = {
 	"ERROR CALIBRATION"
 };
 #define END_CLBR_PG				3
@@ -51,7 +51,7 @@ unsigned int zero_press2_tmp;
 unsigned int calib_page;
 static unsigned int calibr_val;
 static unsigned int elapsedTime;
-static XCHAR	calib_str[87];
+static GFX_XCHAR	calib_str[87];
 static unsigned char time_halfsec;
 
 
@@ -66,11 +66,11 @@ static unsigned char time_halfsec;
 void CreateCalib(void)
 {
 	_prog_addressT p;
-	GOLFree();
-	SetColor(BLUE_LIGHT);
-	ClearDevice();
+	GFX_GOL_ObjectListFree();
+	GFX_ColorSet(BLUE_LIGHT);
+	GFX_ScreenClear();
 	xTimerStart( xTimers[ 1 ], 0 );
-	memcpy(basicscheme, defscheme, sizeof(GOL_SCHEME));
+	memcpy(basicscheme, defscheme, sizeof(GFX_GOL_OBJ_SCHEME));
 	basicscheme->pFont = (void*)&Arial_Narrow_Bold_18;
 	 
 	calib_page = page_create;
@@ -95,8 +95,8 @@ void CreateCalib(void)
 			break;
 	}
 	_strncpy_p2d16(str_buf1,p,128);
-	StCreate(Calib_OBJ_STATICTEXT_1,5,40,238,200,ST_DRAW/*|ST_CENTER_ALIGN*/,str_buf1,basicscheme);
-//	StCreate(Calib_OBJ_STATICTEXT_1,5,40,238,200,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)Calib_msg[calib_page],defscheme);
+	GFX_GOL_StaticTextCreate(Calib_OBJ_STATICTEXT_1,5,40,238,200,GFX_GOL_STATICTEXT_DRAW_STATE/*|ST_CENTER_ALIGN*/,str_buf1,GFX_ALIGN_LEFT,basicscheme);
+//	GFX_GOL_StaticTextCreate(Calib_OBJ_STATICTEXT_1,5,40,238,200,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,(GFX_XCHAR*)Calib_msg[calib_page],defscheme);
 	if(calib_page == 0)
 	{
 		calibr_val = 0xfff;
@@ -104,41 +104,41 @@ void CreateCalib(void)
 		zero_press2_tmp = 0xFFF;
 		calib_status = PREPARE_ZERO_CLBR;  //Stop any calibration process
   }
-	BtnCreate(Calib_OBJ_BUTTON_0,5,277,66,313,5,BTN_DRAW,NULL,(XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+	BtnCreate(Calib_OBJ_BUTTON_0,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
 	if (calib_page != ERROR_CLBR_PG)
 	{
 		if (calib_page == END_CLBR_PG)
-			BtnCreate(Calib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(XCHAR*)SAVE_OBJ_BUTTON_text,botbar);
+			BtnCreate(Calib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)SAVE_OBJ_BUTTON_text,botbar);
 		else	 
-			BtnCreate(Calib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_1_text,botbar);
+			BtnCreate(Calib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Calib_OBJ_BUTTON_1_text,botbar);
 	}
 	
 	_init_prog_address(p, Calib_OBJ_STATICTEXT_0_text);
 	_strncpy_p2d16(gStr1,p,128);
-	StCreate(Calib_OBJ_STATICTEXT_0,1,0,238,30,ST_DRAW|ST_CENTER_ALIGN,gStr1,topbar);
-//	StCreate(Calib_OBJ_STATICTEXT_0,1,0,238,30,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)Calib_OBJ_STATICTEXT_0_text,topbar);
-	PictCreate(Calib_OBJ_PICTURE_1,202,64,235,263,PICT_DRAW, IMAGE_NORMAL, (GFX_IMAGE_HEADER *)&Pressbar_img,basicscheme);
+	GFX_GOL_StaticTextCreate(Calib_OBJ_STATICTEXT_0,1,0,238,30,GFX_GOL_STATICTEXT_DRAW_STATE,gStr1,GFX_ALIGN_CENTER,topbar);
+//	GFX_GOL_StaticTextCreate(Calib_OBJ_STATICTEXT_0,1,0,238,30,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,(GFX_XCHAR*)Calib_OBJ_STATICTEXT_0_text,topbar);
+	GFX_GOL_PictureControlCreate(Calib_OBJ_PICTURE_1,202,64,235,263,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pressbar_img,basicscheme);
 	
 
-	PictCreate(Calib_OBJ_PICTURE_0, 210,0,239,30, PICT_DRAW|PICT_HIDE , IMAGE_NORMAL, getWaitImg(), topbar);
+	GFX_GOL_PictureControlCreate(Calib_OBJ_PICTURE_0, 210,0,239,30, PICT_DRAW|PICT_HIDE , IMAGE_NORMAL, getWaitImg(), topbar);
 	
 	sprintf(calib_str,"Z1=%d   Z2=%d\r\nS1=%d   S1=%d\r\nC1=%d   C2=%d",zero_press1_tmp,zero_press2_tmp,set_press1_tmp,set_press2_tmp,scale_press1_tmp,scale_press2_tmp);
-	StCreate(Calib_OBJ_STATICTEXT_2,5,174,170,268,ST_DRAW,(XCHAR*)calib_str,blackScheme);
+	GFX_GOL_StaticTextCreate(Calib_OBJ_STATICTEXT_2,5,174,170,268,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)calib_str,GFX_ALIGN_LEFT,blackScheme);
 
 
 }
 void CreatePrimitivesForCalib(void){
 //		SetLineType(0);
 //		SetLineThickness(0);
-//		SetColor(BLUE_DARK);
-//		while(!Bar(0,279,239,319));
+//		GFX_ColorSet(BLUE_DARK);
+//		while(!GFX_BarDraw(0,279,239,319));
 }
 
 
 
 
 /*********************************************************************
- * Function:        WORD msgMain(WORD objMsg, OBJ_HEADER* pObj)
+ * Function:        WORD msgMain(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
  *
  * PreCondition:    None
  *
@@ -154,7 +154,7 @@ void CreatePrimitivesForCalib(void){
  * Note:            
  ********************************************************************/
 
-WORD msgCalib(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+WORD msgCalib(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
 	if(pObj == NULL)
 	{
@@ -171,17 +171,17 @@ WORD msgCalib(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		return 1;	
 	}
 	 
-	switch (GetObjID(pObj)) {
+	switch (GFX_GOL_ObjectIDGet(pObj)) {
 		
 		case Calib_OBJ_BUTTON_0:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
    	     			xTimerStop( xTimers[ 1 ], 0 );
 				GDDPrevScreen();
 			}	
 			return 1;
 		case Calib_OBJ_BUTTON_1:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				if(calib_status < END_CLBR)
 				{
 //					pObj = GOLFindObject(Calib_OBJ_BUTTON_1);
@@ -223,7 +223,7 @@ WORD msgCalib(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 
 void UpdateCalib(void)
 {
-	OBJ_HEADER* pObj;
+	GFX_GOL_OBJ_HEADER* pObj;
 	static unsigned char i;
 	static unsigned long lastClock;
 //	unsignedsigned int elapsedTime;

@@ -8,24 +8,24 @@
 #include "include.h"
 #include <stdio.h>
 
-const XCHAR Adjust_OBJ_BUTTON_0_text[] = "0";
-const XCHAR Adjust_OBJ_BUTTON_1_text[] = "1";
-const XCHAR Adjust_OBJ_BUTTON_2_text[] = "2";
-const XCHAR Adjust_OBJ_BUTTON_3_text[] = "3";
-const XCHAR Adjust_OBJ_BUTTON_4_text[] = "4";
-const XCHAR Adjust_OBJ_BUTTON_5_text[] = "5";
-const XCHAR Adjust_OBJ_BUTTON_6_text[] = "6";
-const XCHAR Adjust_OBJ_BUTTON_7_text[] = "7";
-const XCHAR Adjust_OBJ_BUTTON_8_text[] = "8";
-const XCHAR Adjust_OBJ_BUTTON_9_text[] = "9";
-const XCHAR Adjust_OBJ_BUTTON_10_text[] = ".";
-const XCHAR Adjust_OBJ_BUTTON_11_text[] = "NO LIMIT";
+const GFX_XCHAR Adjust_OBJ_BUTTON_0_text[] = "0";
+const GFX_XCHAR Adjust_OBJ_BUTTON_1_text[] = "1";
+const GFX_XCHAR Adjust_OBJ_BUTTON_2_text[] = "2";
+const GFX_XCHAR Adjust_OBJ_BUTTON_3_text[] = "3";
+const GFX_XCHAR Adjust_OBJ_BUTTON_4_text[] = "4";
+const GFX_XCHAR Adjust_OBJ_BUTTON_5_text[] = "5";
+const GFX_XCHAR Adjust_OBJ_BUTTON_6_text[] = "6";
+const GFX_XCHAR Adjust_OBJ_BUTTON_7_text[] = "7";
+const GFX_XCHAR Adjust_OBJ_BUTTON_8_text[] = "8";
+const GFX_XCHAR Adjust_OBJ_BUTTON_9_text[] = "9";
+const GFX_XCHAR Adjust_OBJ_BUTTON_10_text[] = ".";
+const GFX_XCHAR Adjust_OBJ_BUTTON_11_text[] = "NO LIMIT";
 
-const XCHAR Adjust_OBJ_BUTTON_12_text[] = "CLEAR";
-//const XCHAR Adjust_OBJ_BUTTON_13_text[] = "EXIT";
-const XCHAR Adjust_OBJ_BUTTON_14_text[] = "OK";
+const GFX_XCHAR Adjust_OBJ_BUTTON_12_text[] = "CLEAR";
+//const GFX_XCHAR Adjust_OBJ_BUTTON_13_text[] = "EXIT";
+const GFX_XCHAR Adjust_OBJ_BUTTON_14_text[] = "OK";
 
-//const XCHAR Adjust_OBJ_EDITBOX_0_text[] = "289.6";
+//const GFX_XCHAR Adjust_OBJ_EDITBOX_0_text[] = "289.6";
 
 #define Adjust_OBJ_BUTTON_0   0
 #define Adjust_OBJ_BUTTON_1   1
@@ -63,31 +63,31 @@ void CreateAdjust(void)
 {
 	state = 0;
 	dig_place = 4;
-	GOLFree();
-	SetColor(BLUE_LIGHT);
-	ClearDevice();
+	GFX_GOL_ObjectListFree();
+	GFX_ColorSet(BLUE_LIGHT);
+	GFX_ScreenClear();
 
-	BtnCreate(Adjust_OBJ_BUTTON_1,13,92,75,129,5,BTN_DRAW,NULL,(XCHAR*)Adjust_OBJ_BUTTON_1_text,defscheme);
-	BtnCreate(Adjust_OBJ_BUTTON_2,89,92,152,129,5,BTN_DRAW,NULL,(XCHAR*)Adjust_OBJ_BUTTON_2_text,defscheme);
-	BtnCreate(Adjust_OBJ_BUTTON_3,164,92,227,129,5,BTN_DRAW,NULL,(XCHAR*)Adjust_OBJ_BUTTON_3_text,defscheme);
+	BtnCreate(Adjust_OBJ_BUTTON_1,13,92,75,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_1_text,defscheme);
+	BtnCreate(Adjust_OBJ_BUTTON_2,89,92,152,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_2_text,defscheme);
+	BtnCreate(Adjust_OBJ_BUTTON_3,164,92,227,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_3_text,defscheme);
 	
-	BtnCreate(Adjust_OBJ_BUTTON_4,13,138,75,175,5,BTN_DRAW,NULL,(XCHAR*)Adjust_OBJ_BUTTON_4_text,defscheme);
-	BtnCreate(Adjust_OBJ_BUTTON_5,89,138,152,175,5,BTN_DRAW,NULL,(XCHAR*)Adjust_OBJ_BUTTON_5_text,defscheme);
-	BtnCreate(Adjust_OBJ_BUTTON_6,164,138,227,175,5,BTN_DRAW,NULL,(XCHAR*)Adjust_OBJ_BUTTON_6_text,defscheme);
+	BtnCreate(Adjust_OBJ_BUTTON_4,13,138,75,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_4_text,defscheme);
+	BtnCreate(Adjust_OBJ_BUTTON_5,89,138,152,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_5_text,defscheme);
+	BtnCreate(Adjust_OBJ_BUTTON_6,164,138,227,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_6_text,defscheme);
 	
-	BtnCreate(Adjust_OBJ_BUTTON_7,13,184,75,221,5,BTN_DRAW,NULL,(XCHAR*)Adjust_OBJ_BUTTON_7_text,defscheme);
-	BtnCreate(Adjust_OBJ_BUTTON_8,89,184,152,221,5,BTN_DRAW,NULL,(XCHAR*)Adjust_OBJ_BUTTON_8_text,defscheme);
-	BtnCreate(Adjust_OBJ_BUTTON_9,164,184,227,221,5,BTN_DRAW,NULL,(XCHAR*)Adjust_OBJ_BUTTON_9_text,defscheme);
+	BtnCreate(Adjust_OBJ_BUTTON_7,13,184,75,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_7_text,defscheme);
+	BtnCreate(Adjust_OBJ_BUTTON_8,89,184,152,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_8_text,defscheme);
+	BtnCreate(Adjust_OBJ_BUTTON_9,164,184,227,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_9_text,defscheme);
 	
-	BtnCreate(Adjust_OBJ_BUTTON_10,13,229,75,266,5,BTN_DRAW,NULL,(XCHAR*)Adjust_OBJ_BUTTON_10_text,defscheme);
-	BtnCreate(Adjust_OBJ_BUTTON_0,89,229,152,266,5,BTN_DRAW,NULL,(XCHAR*)Adjust_OBJ_BUTTON_0_text,defscheme);
+	BtnCreate(Adjust_OBJ_BUTTON_10,13,229,75,266,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_10_text,defscheme);
+	BtnCreate(Adjust_OBJ_BUTTON_0,89,229,152,266,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_0_text,defscheme);
 	if(page_create == 1)
 		BtnCreate(Adjust_OBJ_BUTTON_11,164,229,227,266,5,BTN_DRAW,(void *)&NoLimit,NULL,defscheme);
 	 
 
-	BtnCreate(Adjust_OBJ_BUTTON_12,7,277,67,312,5,BTN_DRAW,NULL,(XCHAR*)Adjust_OBJ_BUTTON_12_text,botbar);
-	BtnCreate(Adjust_OBJ_BUTTON_13,90,277,150,312,5,BTN_DRAW,NULL,(XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
-	BtnCreate(Adjust_OBJ_BUTTON_14,172,277,232,312,5,BTN_DRAW,NULL,(XCHAR*)Adjust_OBJ_BUTTON_14_text,botbar);
+	BtnCreate(Adjust_OBJ_BUTTON_12,7,277,67,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_12_text,botbar);
+	BtnCreate(Adjust_OBJ_BUTTON_13,90,277,150,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+	BtnCreate(Adjust_OBJ_BUTTON_14,172,277,232,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_14_text,botbar);
 
 	if(inp_param != NULL)
 		pSpecs = (PARA_SPECS_t *)inp_param;
@@ -124,9 +124,9 @@ void CreateAdjust(void)
 	}
 	
 	
-	pAdjust_OBJ_EDITBOX_0 = EbCreate(Adjust_OBJ_EDITBOX_0,55,45,185,84,EB_DRAW/*EB_CARET|EB_FOCUSED|EB_DRAW_CARET*/,adj_val_str/*8(XCHAR*)Adjust_OBJ_EDITBOX_0_text*/,16,defscheme);
+	pAdjust_OBJ_EDITBOX_0 = EbCreate(Adjust_OBJ_EDITBOX_0,55,45,185,84,EB_DRAW/*EB_CARET|EB_FOCUSED|EB_DRAW_CARET*/,adj_val_str/*8(GFX_XCHAR*)Adjust_OBJ_EDITBOX_0_text*/,16,defscheme);
 
-	StCreate(Adjust_OBJ_STATICTEXT_0,1,0,239,30,ST_DRAW,(XCHAR*)pSpecs->title,topbar);
+	GFX_GOL_StaticTextCreate(Adjust_OBJ_STATICTEXT_0,1,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)pSpecs->title,GFX_ALIGN_LEFT,topbar);
 	
 
 }
@@ -134,13 +134,13 @@ void CreatePrimitivesForAdjust(void){
 //		SetLineType(0);
 //		SetLineThickness(0);
 //		SetColor(11542);
-//		while(!Bar(0,279,239,319));
+//		while(!GFX_BarDraw(0,279,239,319));
 }
 
 
 
 /*********************************************************************
- * Function:        WORD msgMain(WORD objMsg, OBJ_HEADER* pObj)
+ * Function:        WORD msgMain(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
  *
  * PreCondition:    None
  *
@@ -156,11 +156,11 @@ void CreatePrimitivesForAdjust(void){
  * Note:            
  ********************************************************************/
 
-WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+WORD msgAdjust(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
-//	OBJ_HEADER* pSetPoint;
+//	GFX_GOL_OBJ_HEADER* pSetPoint;
 //	SHORT dialVal;
-//	OBJ_HEADER* pOtherObj;
+//	GFX_GOL_OBJ_HEADER* pOtherObj;
 	float adj_val_tmp;
 	if(pObj == NULL)
 	{
@@ -178,7 +178,7 @@ WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		return 1;	
 	}
 
-	switch (GetObjID(pObj)) {
+	switch (GFX_GOL_ObjectIDGet(pObj)) {
 		
 		case Adjust_OBJ_BUTTON_0:
 		case Adjust_OBJ_BUTTON_1:
@@ -190,7 +190,7 @@ WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		case Adjust_OBJ_BUTTON_7:
 		case Adjust_OBJ_BUTTON_8:
 		case Adjust_OBJ_BUTTON_9:
-			if (objMsg == BTN_MSG_RELEASED) 
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 			{
 				if(pSpecs->unit == TYPE_TIMEINTERVAL)
 				{
@@ -199,7 +199,7 @@ WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 
 					if(dig_place > 3)
 					{
-						adj_vali_tmp = GetObjID(pObj)*10;
+						adj_vali_tmp = GFX_GOL_ObjectIDGet(pObj)*10;
 						if(adj_vali_tmp > 24)
 							cmdAdjust_clear();
 						else 
@@ -210,7 +210,7 @@ WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 					}
 			  		else if(dig_place > 2)
 					{
-						adj_vali_tmp = adj_time.tm_hour + GetObjID(pObj);
+						adj_vali_tmp = adj_time.tm_hour + GFX_GOL_ObjectIDGet(pObj);
 						if(adj_vali_tmp > 24)
 						{
 							cmdAdjust_clear();
@@ -225,7 +225,7 @@ WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 					}
 					else if(dig_place > 1)
 					{
-						adj_vali_tmp = GetObjID(pObj)*10;
+						adj_vali_tmp = GFX_GOL_ObjectIDGet(pObj)*10;
 						if(adj_vali_tmp > 59)
 						{
 							cmdAdjust_clear();
@@ -240,7 +240,7 @@ WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 					}
 					else
 					{
-						adj_vali_tmp = adj_time.tm_min + GetObjID(pObj);
+						adj_vali_tmp = adj_time.tm_min + GFX_GOL_ObjectIDGet(pObj);
 						if(adj_vali_tmp > 59)
 						{
 							cmdAdjust_clear();
@@ -268,11 +268,11 @@ WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 				{
 					if(state == 0)
 					{
-						adj_vali = (int)GetObjID(pObj);
+						adj_vali = (int)GFX_GOL_ObjectIDGet(pObj);
 						state = 1;
 					}
 					else
-						adj_vali = adj_vali*10 + (int)GetObjID(pObj);
+						adj_vali = adj_vali*10 + (int)GFX_GOL_ObjectIDGet(pObj);
 						
 					ValToStr(pSpecs->unit, adj_vali, adj_val, padj_val, adj_val_str);
 					if(pAdjust_OBJ_EDITBOX_0 != NULL)
@@ -288,7 +288,7 @@ WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			  		return 1;
 			  	if(state == 2)
 			  	{
-		  			adj_val_tmp = adj_val + (float)GetObjID(pObj)*0.1;
+		  			adj_val_tmp = adj_val + (float)GFX_GOL_ObjectIDGet(pObj)*0.1;
 		  			state = 3;
 			  	}
 			  	else if(state == 1)
@@ -297,11 +297,11 @@ WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 //					if(page_display == ADJUST_INFTIME)
 				  	;
 					else
-						adj_val_tmp = adj_val*10.0 + (float)GetObjID(pObj);
+						adj_val_tmp = adj_val*10.0 + (float)GFX_GOL_ObjectIDGet(pObj);
 				}
 				else
 			  	{
-			  		adj_val_tmp = (float)GetObjID(pObj);
+			  		adj_val_tmp = (float)GFX_GOL_ObjectIDGet(pObj);
 					state = 1;
 			  	}
 
@@ -363,7 +363,7 @@ WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			}	
 			return 1;
 		case Adjust_OBJ_BUTTON_10:
-			if (objMsg == BTN_MSG_RELEASED) {   //				EbAddChar(pAdjust_OBJ_EDITBOX_0,'.');
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {   //				EbAddChar(pAdjust_OBJ_EDITBOX_0,'.');
 				
 				if(no_limit && page_display == ADJUST_VTBI)
 						sprintf(adj_val_str,"NO LIMIT");
@@ -376,7 +376,7 @@ WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 					SetState(pAdjust_OBJ_EDITBOX_0, EB_DRAW);
 				}
 
-//				adj_val + (float)GetObjID(pObj);
+//				adj_val + (float)GFX_GOL_ObjectIDGet(pObj);
 //				if(adj_val < 100.0)
 //				{
 //					SetState(pAdjust_OBJ_EDITBOX_0, EB_DRAW);
@@ -392,7 +392,7 @@ WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			{
 				BtnSetBitmap(pObj, (char *)&NoLimit);
 				SetState((BUTTON*) pObj, BTN_DRAW);
-				if (objMsg == BTN_MSG_RELEASED)
+				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED)
 				{
 			  		if(state != 3)
 					{
@@ -408,7 +408,7 @@ WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			}	
 			return 1;
 		case Adjust_OBJ_BUTTON_12:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				state = 0;
 				no_limit = 0;
 				adj_val = 0.0;
@@ -424,13 +424,13 @@ WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			}	
 			return 1;
 		case Adjust_OBJ_BUTTON_13:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 //				GDDSetScreen(CREATE_SCREEN_CLEAR,0,NULL);
 				GDDPrevScreen();
 			}	
 			return 1;
 		case Adjust_OBJ_BUTTON_14:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				if(pSpecs->type_var == PARA_FLOAT)
 					*((float*)padj_val) = adj_val;
 				else if(pSpecs->type_var == PARA_DATA)
@@ -469,7 +469,7 @@ void cmdAdjust_clear(void)
 
 void UpdateAdjust(void)
 {
-//	OBJ_HEADER* pObj;
+//	GFX_GOL_OBJ_HEADER* pObj;
 	 
 }
 

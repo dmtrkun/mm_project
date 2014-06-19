@@ -5,9 +5,9 @@
 
 // Strings
 
-//const XCHAR Alarm_OBJ_BUTTON_0_text[] = "EXIT";
-const XCHAR Alarm_OBJ_BUTTON_1_text[] = "RESTART INFUSION";
-const XCHAR Alarm_OBJ_BUTTON_2_text[] = "MUTE";
+//const GFX_XCHAR Alarm_OBJ_BUTTON_0_text[] = "EXIT";
+const GFX_XCHAR Alarm_OBJ_BUTTON_1_text[] = "RESTART INFUSION";
+const GFX_XCHAR Alarm_OBJ_BUTTON_2_text[] = "MUTE";
 
 #define Alarm_OBJ_STATICTEXT_0		0
 #define Alarm_OBJ_STATICTEXT_1		1
@@ -27,9 +27,9 @@ const XCHAR Alarm_OBJ_BUTTON_2_text[] = "MUTE";
 static unsigned char time_halfsec;
 static unsigned char mute;
 static WORD  bk_color;
-static GOL_SCHEME*	pScheme_alarm1;
-static GOL_SCHEME*	pScheme_alarm2;
-static GOL_SCHEME*	pScheme_alarm3;
+static GFX_GOL_OBJ_SCHEME*	pScheme_alarm1;
+static GFX_GOL_OBJ_SCHEME*	pScheme_alarm2;
+static GFX_GOL_OBJ_SCHEME*	pScheme_alarm3;
 static CONTROL_MSG cMsg;
 static unsigned char hrdwr_err;
 static unsigned long batt_live_time;
@@ -37,19 +37,19 @@ static unsigned long batt_live_time;
 
 void AlarmShemes(void)
 {
-	pScheme_alarm1 = GOLCreateScheme();
-	memcpy(pScheme_alarm1, defscheme, sizeof(GOL_SCHEME));
+	pScheme_alarm1 = CreateScheme();
+	memcpy(pScheme_alarm1, defscheme, sizeof(GFX_GOL_OBJ_SCHEME));
 	pScheme_alarm1->CommonBkColor = RED;
 	pScheme_alarm1->TextColor0 = BLACK;
 	pScheme_alarm1->Color1 = RED;
 	pScheme_alarm1->pFont = (void*)&Arial_Narrow_36;
 	
-	pScheme_alarm2 = GOLCreateScheme();
-	memcpy(pScheme_alarm2, pScheme_alarm1, sizeof(GOL_SCHEME));
+	pScheme_alarm2 = CreateScheme();
+	memcpy(pScheme_alarm2, pScheme_alarm1, sizeof(GFX_GOL_OBJ_SCHEME));
 	pScheme_alarm2->pFont = (void*)&Arial_Narrow_Bold_18;
 
-	pScheme_alarm3 = GOLCreateScheme();
-	memcpy(pScheme_alarm3, defscheme, sizeof(GOL_SCHEME));
+	pScheme_alarm3 = CreateScheme();
+	memcpy(pScheme_alarm3, defscheme, sizeof(GFX_GOL_OBJ_SCHEME));
 	pScheme_alarm3->CommonBkColor = WHITE;
 	pScheme_alarm3->TextColor0 = BLACK;
 	pScheme_alarm3->Color1 = YELLOW;
@@ -58,9 +58,9 @@ void AlarmShemes(void)
 
 void CreateAlarm(void)
 {
-	GOL_SCHEME*	pScheme;
+	GFX_GOL_OBJ_SCHEME*	pScheme;
 	_prog_addressT p;
-	XCHAR *p_add;
+	GFX_XCHAR *p_add;
 
 	if(page_create != ACFAIL_ALRM_SCR)
 		Beep(500);
@@ -69,10 +69,10 @@ void CreateAlarm(void)
 	mute = 0;
 	xTimerStart( xTimers[ 1 ], 0 );
 
-	GOLFree();
+	GFX_GOL_ObjectListFree();
 	bk_color = Alarm_Specs[page_create].bckgr_color;
-	SetColor(bk_color);
-	ClearDevice();
+	GFX_ColorSet(bk_color);
+	GFX_ScreenClear();
 
 	pScheme_alarm1->CommonBkColor = bk_color;
 	pScheme_alarm1->Color1 = bk_color;
@@ -83,10 +83,10 @@ void CreateAlarm(void)
 	/*Build title*/
 	
 	if(Alarm_Specs[page_create].title != NULL)
-		StCreate(Alarm_OBJ_STATICTEXT_0,0,0,239,30,ST_DRAW|ST_CENTER_ALIGN,Alarm_Specs[page_create].title,topbar);
+		GFX_GOL_StaticTextCreate(Alarm_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,Alarm_Specs[page_create].title,GFX_ALIGN_CENTER,topbar);
 	/*Build alarm name */
 	if(Alarm_Specs[page_create].name != NULL)
-		StCreate(Alarm_OBJ_STATICTEXT_1,10,38,230,115,ST_DRAW|ST_CENTER_ALIGN,Alarm_Specs[page_create].name,pScheme_alarm1);
+		GFX_GOL_StaticTextCreate(Alarm_OBJ_STATICTEXT_1,10,38,230,115,GFX_GOL_STATICTEXT_DRAW_STATE,Alarm_Specs[page_create].name,GFX_ALIGN_CENTER,pScheme_alarm1);
 	
 	if(page_create == ACFAIL_ALRM_SCR)
 	{
@@ -95,21 +95,21 @@ void CreateAlarm(void)
 //			p_add = Alarm_Specs[page_create].descr;
 //			_init_prog_address(p, p_add);
 //			_strncpy_p2d16(str_buf1,p,128);
-//			StCreate(Alarm_OBJ_STATICTEXT_2,10,150,140,200,ST_DRAW,str_buf1,pScheme_alarm2);
-			StCreate(Alarm_OBJ_STATICTEXT_2,10,150,140,200,ST_DRAW,Alarm_Specs[page_create].descr,pScheme_alarm2);
+//			GFX_GOL_StaticTextCreate(Alarm_OBJ_STATICTEXT_2,10,150,140,200,GFX_GOL_STATICTEXT_DRAW_STATE,str_buf1,pScheme_alarm2);
+			GFX_GOL_StaticTextCreate(Alarm_OBJ_STATICTEXT_2,10,150,140,200,GFX_GOL_STATICTEXT_DRAW_STATE,Alarm_Specs[page_create].descr,GFX_ALIGN_LEFT,pScheme_alarm2);
 		}
-		PictCreate(Alarm_OBJ_PICTURE_2,162,150,195,273,PICT_DRAW, IMAGE_NORMAL, (GFX_IMAGE_HEADER *)&BBat_img,pScheme_alarm2);
+		GFX_GOL_PictureControlCreate(Alarm_OBJ_PICTURE_2,162,150,195,273,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&BBat_img,pScheme_alarm2);
 		/*Build battery time meter */
 		
 		batt_live_time = /*6h max*/(6L*3600L *(unsigned long)batlevel)/10L;
 		strftime(gStr1, 100, "%HHr : %MMin", localtime(&batt_live_time));
-		memcpy(basicscheme, defscheme, sizeof(GOL_SCHEME));
+		memcpy(basicscheme, defscheme, sizeof(GFX_GOL_OBJ_SCHEME));
 		basicscheme->CommonBkColor = GREEN;
 		basicscheme->TextColor0 = BLACK;
 		basicscheme->Color1 = YELLOW;
 		basicscheme->pFont = (void*)&Arial_Narrow_26;
 
-		StCreate(Alarm_OBJ_STATICTEXT_3,10,207,140,240,ST_DRAW,gStr1,basicscheme);
+		GFX_GOL_StaticTextCreate(Alarm_OBJ_STATICTEXT_3,10,207,140,240,GFX_GOL_STATICTEXT_DRAW_STATE,gStr1,GFX_ALIGN_LEFT,basicscheme);
 	
 	}
 	
@@ -117,14 +117,14 @@ void CreateAlarm(void)
 	{
 		/*Build alarm description */
 		if(Alarm_Specs[page_create].descr != NULL)
-			StCreate(Alarm_OBJ_STATICTEXT_2,10,116,230,200,ST_DRAW,Alarm_Specs[page_create].descr,pScheme_alarm2);
+			GFX_GOL_StaticTextCreate(Alarm_OBJ_STATICTEXT_2,10,116,230,200,GFX_GOL_STATICTEXT_DRAW_STATE,Alarm_Specs[page_create].descr,GFX_ALIGN_LEFT,pScheme_alarm2);
 		
 		
 		/*Build alarm solution */
 		if(Alarm_Specs[page_create].solut != NULL)
 		{
 			sprintf(gStr1,"%s %dml/hr",Alarm_Specs[page_create].solut,(int)vol_para.rate);
-			StCreate(Alarm_OBJ_STATICTEXT_3,10,207,230,267,ST_DRAW,gStr1,pScheme_alarm3);
+			GFX_GOL_StaticTextCreate(Alarm_OBJ_STATICTEXT_3,10,207,230,267,GFX_GOL_STATICTEXT_DRAW_STATE,gStr1,GFX_ALIGN_LEFT,pScheme_alarm3);
 		}
 		
 	}
@@ -132,27 +132,27 @@ void CreateAlarm(void)
 	{
 		/*Build alarm description */
 		if(Alarm_Specs[page_create].descr != NULL)
-			StCreate(Alarm_OBJ_STATICTEXT_2,10,116,230,200,ST_DRAW,Alarm_Specs[page_create].descr,pScheme_alarm2);
+			GFX_GOL_StaticTextCreate(Alarm_OBJ_STATICTEXT_2,10,116,230,200,GFX_GOL_STATICTEXT_DRAW_STATE,Alarm_Specs[page_create].descr,GFX_ALIGN_LEFT,pScheme_alarm2);
 		/*Build alarm solution */
 		if(Alarm_Specs[page_create].solut != NULL)
-			StCreate(Alarm_OBJ_STATICTEXT_3,10,207,230,267,ST_DRAW,Alarm_Specs[page_create].solut,pScheme_alarm3);
+			GFX_GOL_StaticTextCreate(Alarm_OBJ_STATICTEXT_3,10,207,230,267,GFX_GOL_STATICTEXT_DRAW_STATE,Alarm_Specs[page_create].solut,GFX_ALIGN_LEFT,pScheme_alarm3);
 	}
 	if(Alarm_Specs[page_create].btns & RESTART_BTN)
 	{
 		if(page_create == AIR_ALRM_SCR)
-			BtnCreate(Alarm_OBJ_BUTTON_1,7,277,160,313,5,BTN_DRAW|BTN_DISABLED ,NULL,(XCHAR*)Alarm_OBJ_BUTTON_1_text,botbar);
+			BtnCreate(Alarm_OBJ_BUTTON_1,7,277,160,313,5,BTN_DRAW|BTN_DISABLED ,NULL,(GFX_XCHAR*)Alarm_OBJ_BUTTON_1_text,botbar);
 		else
-			BtnCreate(Alarm_OBJ_BUTTON_1,7,277,160,313,5,BTN_DRAW ,NULL,(XCHAR*)Alarm_OBJ_BUTTON_1_text,botbar);
+			BtnCreate(Alarm_OBJ_BUTTON_1,7,277,160,313,5,BTN_DRAW ,NULL,(GFX_XCHAR*)Alarm_OBJ_BUTTON_1_text,botbar);
 	}
 	if(Alarm_Specs[page_create].btns & MUTE_BTN)	 
-		BtnCreate(Alarm_OBJ_BUTTON_2,175,277,230,313,5,BTN_DRAW,NULL,(XCHAR*)Alarm_OBJ_BUTTON_2_text,botbar);
+		BtnCreate(Alarm_OBJ_BUTTON_2,175,277,230,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Alarm_OBJ_BUTTON_2_text,botbar);
 	if(Alarm_Specs[page_create].btns & EXIT_BTN)	 
-		BtnCreate(Alarm_OBJ_BUTTON_0,5,277,66,313,5,BTN_DRAW,NULL,(XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+		BtnCreate(Alarm_OBJ_BUTTON_0,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
 
 	if(Alarm_Specs[page_create].btns & WAIT_ICON)	 
-		PictCreate(Alarm_OBJ_PICTURE_0, 210,0,239,30, PICT_DRAW, IMAGE_NORMAL, getWaitImg(), topbar);
+		GFX_GOL_PictureControlCreate(Alarm_OBJ_PICTURE_0, 210,0,239,30, PICT_DRAW, IMAGE_NORMAL, getWaitImg(), topbar);
 	if(Alarm_Specs[page_create].btns & BAT_ICON)	 
-		PictCreate(Alarm_OBJ_PICTURE_1, 186,0,209,30, PICT_DRAW, IMAGE_NORMAL, getBatImg(batlevel), topbar);
+		GFX_GOL_PictureControlCreate(Alarm_OBJ_PICTURE_1, 186,0,209,30, PICT_DRAW, IMAGE_NORMAL, getBatImg(batlevel), topbar);
 }
 int bar_level_tmp;
 
@@ -162,58 +162,58 @@ void CreatePrimitivesForAlarm(void){
 	{
 		SetLineType(0);
 		SetLineThickness(0);
-		SetColor(WHITE);
-		while(!Bar(164,154,193,271));
+		GFX_ColorSet(WHITE);
+		while(!GFX_BarDraw(164,154,193,271));
 		 
-		SetColor(GREEN);
+		GFX_ColorSet(GREEN);
 		if(batlevel == 10)
 			bar_level_tmp = 154L;
 		else
 			bar_level_tmp = 271L - ((int)batlevel*(271L-154L))/10L;
 		
-		while(!Bar(164,bar_level_tmp,193,271));
+		while(!GFX_BarDraw(164,bar_level_tmp,193,271));
 	}
 
 }
 
 void UpdateAlarm(void)
 {
-	OBJ_HEADER* pObj;
-	pObj = GOLFindObject(Alarm_OBJ_PICTURE_0);
+	GFX_GOL_OBJ_HEADER* pObj;
+	pObj = GFX_GOL_ObjectFind(Alarm_OBJ_PICTURE_0);
 	if (pObj) {
-		PictSetBitmap(pObj, getWaitImg());
-		SetState((PICTURE*) pObj, DRAW_UPDATE);
+		GFX_GOL_PictureControlImageSet(pObj, getWaitImg());
+		GFX_GOL_ObjectStateSet((PICTURE*) pObj, DRAW_UPDATE);
 	}
-	pObj = GOLFindObject(Alarm_OBJ_PICTURE_1);
+	pObj = GFX_GOL_ObjectFind(Alarm_OBJ_PICTURE_1);
 	if (pObj) {
-		PictSetBitmap(pObj, getBatImg(batlevel));
-		SetState((PICTURE*) pObj, DRAW_UPDATE);
+		GFX_GOL_PictureControlImageSet(pObj, getBatImg(batlevel));
+		GFX_GOL_ObjectStateSet((PICTURE*) pObj, DRAW_UPDATE);
 	}
 	if(page_display == ACFAIL_ALRM_SCR)
 	{
 		SetLineType(0);
 		SetLineThickness(0);
-		SetColor(WHITE);
-		while(!Bar(164,154,193,271));
-		SetColor(GREEN);
-//		SetColor(GREEN);
+		GFX_ColorSet(WHITE);
+		while(!GFX_BarDraw(164,154,193,271));
+		GFX_ColorSet(GREEN);
+//		GFX_ColorSet(GREEN);
 		if(batlevel == 10)
 			bar_level_tmp = 154L;
 		else
 			bar_level_tmp = 271L - ((int)batlevel*(271L-154L))/10L;
-		while(!Bar(164,bar_level_tmp,193,271));
+		while(!GFX_BarDraw(164,bar_level_tmp,193,271));
 	}
 	else	if(page_display == AIR_ALRM_SCR)
 	{
 		if(GetDoorState() == 1)
 		{
-			pObj = GOLFindObject(Alarm_OBJ_BUTTON_1);
+			pObj = GFX_GOL_ObjectFind(Alarm_OBJ_BUTTON_1);
 			if (pObj) 
 			{
 				if(GetState(pObj, BTN_DISABLED))
 				{
 					ClrState(pObj, BTN_DISABLED);
-					SetState((BUTTON*) pObj, BTN_DRAW);
+					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
 				}
 			}
 		}
@@ -222,7 +222,7 @@ void UpdateAlarm(void)
 
 
 /*********************************************************************
- * Function:        WORD msgAlarm(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+ * Function:        WORD msgAlarm(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
  *
  * PreCondition:    None
  *
@@ -237,7 +237,7 @@ void UpdateAlarm(void)
  *
  * Note:            
  ********************************************************************/
-WORD msgAlarm(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+WORD msgAlarm(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
 	if(pObj == NULL)
 	{
@@ -303,10 +303,10 @@ WORD msgAlarm(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		return 1;	
 	}
 	
-	switch (GetObjID(pObj)) {
+	switch (GFX_GOL_ObjectIDGet(pObj)) {
 		case Alarm_OBJ_BUTTON_0:
 		case Alarm_OBJ_BUTTON_1:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 //				clearBit( alarm_st, Alarm_Specs[page_display].statbit_forclear);
 				alarm_st = 0;				
 				if(page_display == AIR_ALRM_SCR)
@@ -321,7 +321,7 @@ WORD msgAlarm(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			}	  
 			return 1;
 		case Alarm_OBJ_BUTTON_2:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				mute = 120;
 			}	
 			return 1;
@@ -380,9 +380,9 @@ void CriticalError(unsigned char *str)
 void CreateErr(char* string)
 {
 	// Blue Screen Error
-	SetColor(119);
-	ClearDevice();
-	SetColor(-1);
+	GFX_ColorSet(119);
+	GFX_ScreenClear();
+	GFX_ColorSet(-1);
 // Flash Error Message
 	if(string == NULL)
 		{OutTextXY(0, 0, "Runtime Error.");}

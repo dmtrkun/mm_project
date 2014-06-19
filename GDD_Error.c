@@ -37,14 +37,14 @@ void CreateError(void)
 	GOL_SCHEME*	pScheme;
 	XCHAR str[50] = "";
 
-	GOLFree();
-	SetColor(BLUE_LIGHT);
-	ClearDevice();
+	GFX_GOL_ObjectListFree();
+	GFX_ColorSet(BLUE_LIGHT);
+	GFX_ScreenClear();
 
 
 
 
-	pScheme = GOLCreateScheme();
+	pScheme = CreateScheme();
 	memcpy(pScheme, defscheme, sizeof(GOL_SCHEME));
 	pScheme->Color0 = RED;
 	pScheme->Color1 = RED;
@@ -80,8 +80,8 @@ void CreateError(void)
 void CreatePrimitivesForError(void){
 //		SetLineType(0);
 //		SetLineThickness(0);
-//		SetColor(BLUE_DARK);
-//		while(!Bar(0,279,239,319));
+//		GFX_ColorSet(BLUE_DARK);
+//		while(!GFX_BarDraw(0,279,239,319));
 }
 
 void UpdateError(void)
@@ -116,9 +116,9 @@ WORD msgError(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		return 1;	
 	}
 	
-	switch (GetObjID(pObj)) {
+	switch (GFX_GOL_ObjectIDGet(pObj)) {
 		case Error_OBJ_BUTTON_7:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 //				GDDSetScreen(CREATE_SCREEN_OPTIONS,0,NULL);
 				GDDPrevScreen();
 
@@ -126,7 +126,7 @@ WORD msgError(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			return 1;
 		case Error_OBJ_BUTTON_8:
 		case Error_OBJ_BUTTON_9:
-//			if (objMsg == BTN_MSG_RELEASED) {
+//			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 //				GDDDemoNextScreen();
 //			}	
 			return 1;

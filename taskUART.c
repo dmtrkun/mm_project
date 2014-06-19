@@ -42,7 +42,7 @@ an example of an efficient driver. */
 
 /* The queues used to communicate between tasks and ISR's. */
 static xQueueHandle xRxedChars; 
-static xQueueHandle xCharsForTx; 
+static xQueueHandle GFX_XCHARsForTx; 
 
 static portBASE_TYPE xTxHasEnded;
 /*-----------------------------------------------------------*/
@@ -61,7 +61,7 @@ char cChar;
 	
 	/* Create the queues used by the com test task. */
 	xRxedChars = xQueueCreate( uxQueueLength, ( unsigned portBASE_TYPE ) sizeof( signed char ) );
-	xCharsForTx = xQueueCreate( uxQueueLength, ( unsigned portBASE_TYPE ) sizeof( signed char ) );
+	GFX_XCHARsForTx = xQueueCreate( uxQueueLength, ( unsigned portBASE_TYPE ) sizeof( signed char ) );
 
 	/* Setup the UART. */
 	U2MODEbits.BRGH		= serLOW_SPEED;
@@ -132,7 +132,7 @@ signed portBASE_TYPE xSerialPutChar( xComPortHandle pxPort, signed char cOutChar
 	( void ) pxPort;
 
 	/* Return false if after the block time there is no room on the Tx queue. */
-	if( xQueueSend( xCharsForTx, &cOutChar, xBlockTime ) != pdPASS )
+	if( xQueueSend( GFX_XCHARsForTx, &cOutChar, xBlockTime ) != pdPASS )
 	{
 		return pdFAIL;
 	}
@@ -187,7 +187,7 @@ portBASE_TYPE xHigherPriorityTaskWoken = pdFALSE;
 	IFS1bits.U2TXIF = serCLEAR_FLAG;
 	while( !( U2STAbits.UTXBF ) )
 	{
-		if( xQueueReceiveFromISR( xCharsForTx, &cChar, &xHigherPriorityTaskWoken ) == pdTRUE )
+		if( xQueueReceiveFromISR( GFX_XCHARsForTx, &cChar, &xHigherPriorityTaskWoken ) == pdTRUE )
 		{
 			/* Send the next character queued for Tx. */
 			U2TXREG = cChar;

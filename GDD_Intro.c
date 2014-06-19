@@ -8,23 +8,23 @@
 #include "include.h"
 
 // Strings
-const XCHAR Intro_OBJ_STATICTEXT_3_1text[] = "PLEASE WAIT";
+const GFX_XCHAR Intro_OBJ_STATICTEXT_3_1text[] = "PLEASE WAIT";
 
-const __prog__ XCHAR __attribute__((space(prog))) VERSION_txt[] = VERSION_TXT;//   "Ver 1.8 rel. ";
-const __prog__ XCHAR __attribute__((space(prog))) REL_txt[] = " rel. ";
-const __prog__ XCHAR __attribute__((space(prog))) DATE_txt[] = __DATE__;
-//const __prog__ XCHAR __attribute__((space(prog))) XCHAR TIME_txt[] = __TIME__;
+const __prog__ GFX_XCHAR __attribute__((space(prog))) VERSION_txt[] = VERSION_TXT;//   "Ver 1.8 rel. ";
+const __prog__ GFX_XCHAR __attribute__((space(prog))) REL_txt[] = " rel. ";
+const __prog__ GFX_XCHAR __attribute__((space(prog))) DATE_txt[] = __DATE__;
+//const __prog__ GFX_XCHAR __attribute__((space(prog))) GFX_XCHAR TIME_txt[] = __TIME__;
 
-//const XCHAR Intro_OBJ_STATICTEXT_3_2text[] = "SEND THE PUMP\r\n  TO TECHNICIAN\r\n  FOR CALIBRATION";
-const XCHAR Intro_OBJ_STATICTEXT_3_3text[] = "ATTENTION !!";
+//const GFX_XCHAR Intro_OBJ_STATICTEXT_3_2text[] = "SEND THE PUMP\r\n  TO TECHNICIAN\r\n  FOR CALIBRATION";
+const GFX_XCHAR Intro_OBJ_STATICTEXT_3_3text[] = "ATTENTION !!";
 
-const __prog__ XCHAR __attribute__((space(prog))) Intro_OBJ_STATICTEXT_3_2text[] = {
+const __prog__ GFX_XCHAR __attribute__((space(prog))) Intro_OBJ_STATICTEXT_3_2text[] = {
 	"SEND THE PUMP\r\n  TO TECHNICIAN\r\n  FOR CALIBRATION"
 	};
 
 
-//const XCHAR Intro_OBJ_STATICTEXT_4_2text[] = "VOLUMETRIC PUMP";
-//const XCHAR Intro_OBJ_STATICTEXT_5_2text[] = "VL667";
+//const GFX_XCHAR Intro_OBJ_STATICTEXT_4_2text[] = "VOLUMETRIC PUMP";
+//const GFX_XCHAR Intro_OBJ_STATICTEXT_5_2text[] = "VL667";
 
 #define Intro_OBJ_STATICTEXT_3_1	 50
 #define Intro_OBJ_STATICTEXT_3_2   51
@@ -49,19 +49,19 @@ void CreateIntro(void)
 	Beep(1000);
 //	if(timer_ready)
 //			GDDSetScreen(CREATE_SCREEN_CLEAR,0,NULL);
-	GOLFree();
+	GFX_GOL_ObjectListFree();
 	if(page_create == 0)
 	{
-		SetColor(GREEN);
-		ClearDevice();
+		GFX_ColorSet(GREEN);
+		GFX_ScreenClear();
 		xTimerStart( xTimers[ 0 ], 0 );
-		memcpy(basicscheme, botbar, sizeof(GOL_SCHEME));
+		memcpy(basicscheme, botbar, sizeof(GFX_GOL_OBJ_SCHEME));
 		basicscheme->CommonBkColor = BLUE_DARK;
 	
-		StCreate(Intro_OBJ_STATICTEXT_3_1,0,0,239,30,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)Intro_OBJ_STATICTEXT_3_1text,topbar);
+		GFX_GOL_StaticTextCreate(Intro_OBJ_STATICTEXT_3_1,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Intro_OBJ_STATICTEXT_3_1text,GFX_ALIGN_CENTER,topbar);
 
-		PictCreate(Intro_OBJ_PICTURE_0, 10,60,10+Intro_WIDTH,60+Intro_HEIGHT, PICT_DRAW, IMAGE_NORMAL, (GFX_IMAGE_HEADER *)&Intro, green_sch);
-		PictCreate(Intro_OBJ_PICTURE_1, 210,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_IMAGE_HEADER *)&Wait1, topbar);
+		GFX_GOL_PictureControlCreate(Intro_OBJ_PICTURE_0, 10,60,10+Intro_WIDTH,60+Intro_HEIGHT, PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Intro, green_sch);
+		GFX_GOL_PictureControlCreate(Intro_OBJ_PICTURE_1, 210,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Wait1, topbar);
 
                 
                 _init_prog_address(p, VERSION_txt);
@@ -70,36 +70,37 @@ void CreateIntro(void)
 		_strncpy_p2d16(str_buf1 + strlen(VERSION_txt),p,strlen(REL_txt));
                 _init_prog_address(p, DATE_txt);
 		_strncpy_p2d16(str_buf1 + strlen(VERSION_txt) + strlen(REL_txt),p,strlen(DATE_txt));
-		StCreate(Intro_OBJ_STATICTEXT_5_3,37,289,210,309,ST_DRAW|ST_RIGHT_ALIGN,(XCHAR*)str_buf1,basicscheme);
+		GFX_GOL_StaticTextCreate(Intro_OBJ_STATICTEXT_5_3,37,289,210,309,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str_buf1,GFX_ALIGN_RIGHT,basicscheme);
 	}	
 	else
 	{
 //		keypad_ready = 1;
-		SetColor(BLUE_LIGHT);
-		ClearDevice();
+		GFX_ColorSet(BLUE_LIGHT);
+		GFX_ScreenClear();
 		xTimerStart( xTimers[ 0], 0 );
 		
-		StCreate(Intro_OBJ_STATICTEXT_3_1,0,0,239,30,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)Intro_OBJ_STATICTEXT_3_1text,topbar);
+		GFX_GOL_StaticTextCreate(Intro_OBJ_STATICTEXT_3_1,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Intro_OBJ_STATICTEXT_3_1text,GFX_ALIGN_CENTER,topbar);
 		
-		PictCreate(Intro_OBJ_PICTURE_1, 210,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_IMAGE_HEADER *)&Wait1, topbar);
+		GFX_GOL_PictureControlCreate(Intro_OBJ_PICTURE_1, 210,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Wait1, topbar);
 	
 		_init_prog_address(p, Intro_OBJ_STATICTEXT_3_2text);
 		_strncpy_p2d16(str_buf1,p,128);
-		StCreate(Intro_OBJ_STATICTEXT_5_3,9,45,229,269,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)str_buf1,defscheme);
+		GFX_GOL_StaticTextCreate(Intro_OBJ_STATICTEXT_5_3,9,45,229,269,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str_buf1,GFX_ALIGN_CENTER,defscheme);
 	
 	}
 
 }
 
 void CreatePrimitivesForIntro(void){
-		SetLineType(0);
-		SetLineThickness(0);
-		SetColor(BLUE_DARK);
-		while(!Bar(0,279,239,319));
+//		SetLineType(0);
+//		SetLineThickness(0);
+		GFX_LineStyleSet(GFX_LINE_STYLE_THIN_SOLID);
+		GFX_ColorSet(BLUE_DARK);
+		while(!GFX_BarDraw(0,279,239,319));
 }
 
 /*********************************************************************
- * Function:        WORD msgMain(WORD objMsg, OBJ_HEADER* pObj)
+ * Function:        WORD msgMain(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
  *
  * PreCondition:    None
  *
@@ -115,7 +116,7 @@ void CreatePrimitivesForIntro(void){
  * Note:            
  ********************************************************************/
 
-WORD msgIntro(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+WORD msgIntro(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
 	
 	if(pObj == NULL)
@@ -168,9 +169,9 @@ WORD msgIntro(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		return 1;	
 	}
 	
-	switch (GetObjID(pObj)) {
+	switch (GFX_GOL_ObjectIDGet(pObj)) {
 		case 33:
-//			if (objMsg == BTN_MSG_RELEASED) {
+//			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 //			}	
 			return 1;
 		default:
@@ -182,17 +183,18 @@ WORD msgIntro(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 
 void UpdateIntro(void)
 {
-	OBJ_HEADER* pObj;
-	pObj = GOLFindObject(Intro_OBJ_PICTURE_1);
+	GFX_GOL_OBJ_HEADER* pObj;
+	pObj = GFX_GOL_ObjectFind(Intro_OBJ_PICTURE_1);
 	if (pObj) {
-		PictSetBitmap(pObj, getWaitImg());
-		SetState((PICTURE*) pObj, DRAW_UPDATE);
+		GFX_GOL_PictureControlImageSet(pObj, getWaitImg());
+                GFX_GOL_ObjectStateSet((PICTURE*) pObj, DRAW_UPDATE);
+
 	}
 
-//	pObj = GOLFindObject(Intro_OBJ_PICTURE_0);
+//	pObj = GFX_GOL_ObjectFind(Intro_OBJ_PICTURE_0);
 //	if (pObj) {
-//		PictSetBitmap(pObj, (GFX_IMAGE_HEADER *)&Intro);
-//		SetState((PICTURE*) pObj, DRAW_UPDATE);
+//		GFX_GOL_PictureControlImageSet(pObj, (GFX_RESOURCE_HDR *)&Intro);
+//		GFX_GOL_ObjectStateSet((PICTURE*) pObj, DRAW_UPDATE);
 //	}
 }
 

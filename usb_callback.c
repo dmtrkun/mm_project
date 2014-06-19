@@ -1,19 +1,9 @@
 /********************************************************************
- FileName:		usb_callback.c
- Dependencies:	See INCLUDES section
- Processor:		PIC18, PIC24, and PIC32 USB Microcontrollers
- Hardware:		This demo is natively intended to be used on Microchip USB demo
- 				boards supported by the MCHPFSUSB stack.  See release notes for
- 				support matrix.  This demo can be modified for use on other hardware
- 				platforms.
- Complier:  	Microchip C18 (for PIC18), C30 (for PIC24), C32 (for PIC32)
- Company:		Microchip Technology, Inc.
-
  Software License Agreement:
 
  The software supplied herewith by Microchip Technology Incorporated
- (the “Company”) for its PIC® Microcontroller is intended and
- supplied to you, the Company’s customer, for use solely and
+ (the "Company") for its PIC(R) Microcontroller is intended and
+ supplied to you, the Company's customer, for use solely and
  exclusively on Microchip PIC Microcontroller products. The
  software is owned by the Company and/or its supplier, and is
  protected under applicable copyright laws. All rights are reserved.
@@ -22,22 +12,18 @@
  civil liability for the breach of the terms and conditions of this
  license.
 
- THIS SOFTWARE IS PROVIDED IN AN “AS IS” CONDITION. NO WARRANTIES,
+ THIS SOFTWARE IS PROVIDED IN AN "AS IS" CONDITION. NO WARRANTIES,
  WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED
  TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
  PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. THE COMPANY SHALL NOT,
  IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
  CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
-
-********************************************************************
-********************************************************************/
+ *******************************************************************/
 
 /** INCLUDES *******************************************************/
-#include "include.h"
-#include "USB/usb.h"
-#include "USB/usb_function_generic.h"
+#include "usb/usb.h"
+#include "usb/usb_device_generic.h"
 
-#include "HardwareProfile.h"
 
 unsigned char OUTPacket[64];	//User application buffer for receiving and holding OUT packets sent from the host
 unsigned char INPacket[64];		//User application buffer for sending IN packets to the host
@@ -86,17 +72,17 @@ void USBCBSuspend(void)
 	//ConfigureIOPinsForLowPower();
 	//SaveStateOfAllInterruptEnableBits();
 	//DisableAllInterruptEnableBits();
-	//EnableOnlyTheInterruptsWhichWillBeUsedToWakeTheMicro();	//should enable at least USBActivityIF as a wake source
+	//EnableOnlyTheInterruptsWhichWillBeUsedToWakeTheMicro();       //should enable at least USBActivityIF as a wake source
 	//Sleep();
-	//RestoreStateOfAllPreviouslySavedInterruptEnableBits();	//Preferrably, this should be done in the USBCBWakeFromSuspend() function instead.
-	//RestoreIOPinsToNormal();									//Preferrably, this should be done in the USBCBWakeFromSuspend() function instead.
+	//RestoreStateOfAllPreviouslySavedInterruptEnableBits();        //Preferrably, this should be done in the USBCBWakeFromSuspend() function instead.
+	//RestoreIOPinsToNormal();                                      //Preferrably, this should be done in the USBCBWakeFromSuspend() function instead.
 
 	//IMPORTANT NOTE: Do not clear the USBActivityIF (ACTVIF) bit here.  This bit is 
 	//cleared inside the usb_device.c file.  Clearing USBActivityIF here will cause 
 	//things to not work as intended.	
 	
 
-    #if defined(__C30__)
+    #if defined(__C30__) || defined(__XC16__)
     #if 0
         U1EIR = 0xFFFF;
         U1IR = 0xFFFF;
@@ -109,42 +95,6 @@ void USBCBSuspend(void)
     #endif
     #endif
 }
-
-
-/******************************************************************************
- * Function:        void _USB1Interrupt(void)
- *
- * PreCondition:    None
- *
- * Input:           None
- *
- * Output:          None
- *
- * Side Effects:    None
- *
- * Overview:        This function is called when the USB interrupt bit is set
- *					In this example the interrupt is only used when the device
- *					goes to sleep when it receives a USB suspend command
- *
- * Note:            None
- *****************************************************************************/
-#if 0
-void __attribute__ ((interrupt)) _USB1Interrupt(void)
-{
-    #if !defined(self_powered)
-        if(U1OTGIRbits.ACTVIF)
-        {
-            IEC5bits.USB1IE = 0;
-            U1OTGIEbits.ACTVIE = 0;
-            IFS5bits.USB1IF = 0;
-        
-            //USBClearInterruptFlag(USBActivityIFReg,USBActivityIFBitNum);
-            USBClearInterruptFlag(USBIdleIFReg,USBIdleIFBitNum);
-            //USBSuspendControl = 0;
-        }
-    #endif
-}
-#endif
 
 /******************************************************************************
  * Function:        void USBCBWakeFromSuspend(void)
@@ -329,8 +279,8 @@ void USBCBInitEP(void)
 		CDCInitEP();
     else
 	{
-		USBEnableEndpoint(USBGEN_EP_NUM,USB_OUT_ENABLED|USB_IN_ENABLED|USB_HANDSHAKE_ENABLED|USB_DISALLOW_SETUP);
-    	USBGenericOutHandle = USBGenRead(USBGEN_EP_NUM,(BYTE*)&OUTPacket,USBGEN_EP_SIZE);
+ 	  USBEnableEndpoint(USBGEN_EP_NUM,USB_OUT_ENABLED|USB_IN_ENABLED|USB_HANDSHAKE_ENABLED|USB_DISALLOW_SETUP);
+  	  USBGenericOutHandle = USBGenRead(USBGEN_EP_NUM,(uint8_t*)&OUTPacket,USBGEN_EP_SIZE);
 	}
 }
 
@@ -423,7 +373,7 @@ void USBCBInitEP(void)
  *******************************************************************/
 void USBCBSendResume(void)
 {
-    static WORD delay_count;
+    static uint16_t delay_count;
     
     //First verify that the host has armed us to perform remote wakeup.
     //It does this by sending a SET_FEATURE request to enable remote wakeup,
@@ -434,25 +384,25 @@ void USBCBSendResume(void)
     //properties page for the USB device, power management tab, the 
     //"Allow this device to bring the computer out of standby." checkbox 
     //should be checked).
-    if(USBGetRemoteWakeupStatus() == TRUE) 
+    if(USBGetRemoteWakeupStatus() == true)
     {
         //Verify that the USB bus is in fact suspended, before we send
         //remote wakeup signalling.
-        if(USBIsBusSuspended() == TRUE)
+        if(USBIsBusSuspended() == true)
         {
             USBMaskInterrupts();
             
             //Clock switch to settings consistent with normal USB operation.
             USBCBWakeFromSuspend();
             USBSuspendControl = 0; 
-            USBBusIsSuspended = FALSE;  //So we don't execute this code again, 
+            USBBusIsSuspended = false;  //So we don't execute this code again,
                                         //until a new suspend condition is detected.
 
             //Section 7.1.7.7 of the USB 2.0 specifications indicates a USB
             //device must continuously see 5ms+ of idle on the bus, before it sends
             //remote wakeup signalling.  One way to be certain that this parameter
             //gets met, is to add a 2ms+ blocking delay here (2ms plus at 
-            //least 3ms from bus idle to USBIsBusSuspended() == TRUE, yeilds
+            //least 3ms from bus idle to USBIsBusSuspended() == true, yeilds
             //5ms+ total delay since start of idle).
             delay_count = 3600U;        
             do
@@ -476,14 +426,14 @@ void USBCBSendResume(void)
 
 
 /*******************************************************************
- * Function:        BOOL USER_USB_CALLBACK_EVENT_HANDLER(
- *                        USB_EVENT event, void *pdata, WORD size)
+ * Function:        bool USER_USB_CALLBACK_EVENT_HANDLER(
+ *                        int event, void *pdata, uint16_t size)
  *
  * PreCondition:    None
  *
  * Input:           USB_EVENT event - the type of event
  *                  void *pdata - pointer to the event data
- *                  WORD size - size of the event data
+ *                  uint16_t size - size of the event data
  *
  * Output:          None
  *
@@ -496,7 +446,7 @@ void USBCBSendResume(void)
  *
  * Note:            None
  *******************************************************************/
-BOOL USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void *pdata, WORD size)
+bool USER_USB_CALLBACK_EVENT_HANDLER(int event, void *pdata, uint16_t size)
 {
     switch(event)
     {
@@ -537,5 +487,5 @@ BOOL USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void *pdata, WORD size)
         default:
             break;
     }      
-    return TRUE; 
+    return true;
 }

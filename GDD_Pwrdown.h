@@ -12,6 +12,6 @@
 
 PWRDOWNPUB	 void CreatePwrdown(void);
 PWRDOWNPUB	 void CreatePrimitivesForPwrdown(void);
-PWRDOWNPUB	 WORD msgPwrdown(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
+PWRDOWNPUB	 WORD msgPwrdown(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 
 #endif // _PWRDOWN_H

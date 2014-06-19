@@ -10,7 +10,8 @@
 #include <spi.h>
 
 #include "board.h"
-#include "Graphics\Graphics.h"
+#include "framework\gfx\gfx.h"
+//#include "Graphics\Graphics.h"
 
 #include "GenericTypeDefs.h"
 #include "HardwareProfile.h"
@@ -23,7 +24,7 @@
 #include "semphr.h"
 #include "timers.h"
 #include "croutine.h"
-#include "graphics.h"
+//#include "graphics.h"
 #include "val_conv.h"
 
 #include "osapi.h"
@@ -72,8 +73,8 @@
 #include "PCF2123.h"
 #include "Graphics Resources\new.h"
 
-#include "USB\usb.h"
-#include "USB\usb_function_generic.h"
+#include "framework/usb/usb.h"
+#include "framework/usb/usb_device_generic.h"
 
 
 			 

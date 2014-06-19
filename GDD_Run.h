@@ -18,6 +18,6 @@
 
 GDD_RUNPUB void CreateRun(void);
 GDD_RUNPUB void CreatePrimitivesForRun(void);
-GDD_RUNPUB WORD msgRun(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
+GDD_RUNPUB WORD msgRun(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 GDD_RUNPUB void UpdateRun(void);
 #endif /*_GDD_RUN_H_*/

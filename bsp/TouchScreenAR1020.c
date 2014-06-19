@@ -424,7 +424,8 @@ void TouchLoadCalibration(void)
 ********************************************************************/
 void TouchCalHWGetPoints(void)
 {
-    BYTE i;
+#if 0
+	BYTE i;
     BYTE type;
 
     detectPosition = 0;
@@ -509,7 +510,7 @@ void TouchCalHWGetPoints(void)
     while(TouchAR1020SendCommandAndGetResponce(TOUCH_AR1020_CMD_ENABLE_TOUCH, NULL, 0) != TOUCHAR1020_RESP_SUCCESS);          //Enable Touch Messages
     
     detectPosition = 1;
-
+#endif
 }
 /*********************************************************************
 * Function: void TouchGetCalPoints(void)

@@ -48,7 +48,7 @@
 
 #if defined (USE_SST39LF400)
 
-#include "Graphics/gfxepmp.h"
+#include "framework/driver/gfx/drv_gfx_pmp.h"
 
 #define  	CS2_BASE_ADDRESS   		GFX_EPMP_CS2_BASE_ADDRESS  
 #define 	SST39LF400_FLASH_SIZE	0x00400000ul

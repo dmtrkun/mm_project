@@ -4,7 +4,7 @@
     Dependencies:	See INCLUDES section
     Processor:		PIC18,PIC24, PIC32 and dsPIC33E USB Microcontrollers
     Hardware:		The code is natively intended to be used on the following
-    				hardware platforms: PICDEM™ FS USB Demo Board, 
+    				hardware platforms: PICDEMï¿½ FS USB Demo Board, 
     				PIC18F87J50 FS USB Plug-In Module, or
     				Explorer 16 + compatible USB PIM.  The firmware may be
     				modified for use on other USB platforms by editing the
@@ -16,8 +16,8 @@
     Software License Agreement:
     
     The software supplied herewith by Microchip Technology Incorporated
-    (the “Company”) for its PIC® Microcontroller is intended and
-    supplied to you, the Company’s customer, for use solely and
+    (the ï¿½Companyï¿½) for its PICï¿½ Microcontroller is intended and
+    supplied to you, the Companyï¿½s customer, for use solely and
     exclusively on Microchip PIC Microcontroller products. The
     software is owned by the Company and/or its supplier, and is
     protected under applicable copyright laws. All rights are reserved.
@@ -26,66 +26,14 @@
     civil liability for the breach of the terms and conditions of this
     license.
     
-    THIS SOFTWARE IS PROVIDED IN AN “AS IS” CONDITION. NO WARRANTIES,
+    THIS SOFTWARE IS PROVIDED IN AN ï¿½AS ISï¿½ CONDITION. NO WARRANTIES,
     WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED
     TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
     PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. THE COMPANY SHALL NOT,
     IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
     CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
-
-  Summary:
-    This file contains functions, macros, definitions, variables,
-    datatypes, etc. that are required for usage with the MCHPFSUSB device
-    stack. This file should be included in projects that use the device stack. 
-    
-    This file is located in the "\<Install Directory\>\\Microchip\\USB"
-    directory.
-
-  Description:
-    USB Device Stack File
-    
-    This file contains functions, macros, definitions, variables,
-    datatypes, etc. that are required for usage with the MCHPFSUSB device
-    stack. This file should be included in projects that use the device stack.
-    
-    This file is located in the "\<Install Directory\>\\Microchip\\USB"
-    directory.
-    
-    When including this file in a new project, this file can either be
-    referenced from the directory in which it was installed or copied
-    directly into the user application folder. If the first method is
-    chosen to keep the file located in the folder in which it is installed
-    then include paths need to be added so that the library and the
-    application both know where to reference each others files. If the
-    application folder is located in the same folder as the Microchip
-    folder (like the current demo folders), then the following include
-    paths need to be added to the application's project:
-    
-    .
-    ..\\..\\MicrochipInclude
-    
-    If a different directory structure is used, modify the paths as
-    required. An example using absolute paths instead of relative paths
-    would be the following:
-    
-    C:\\Microchip Solutions\\Microchip\\Include
-    
-    C:\\Microchip Solutions\\My Demo Application 
-
-********************************************************************
- File Description:
-
- Change History:
-  Rev    Description
-  ----   -----------
-  2.8    Initial revision.  Contents extracted from the previous usb_device.c 
-         file, so as to make the usb_device.c file less cluttered.
-         Fixed BD() and EP() macro computation error, when running in
-         USB_PING_PONG__EP0_OUT_ONLY mode.
-  2.9    No functional change.  Fixed spelling typo in the name of 
-         "USB_TRANSFER_COMPLETE_HANDLER()"
 ********************************************************************/
-#include "usb_config.h"
+#include "system_config.h"
 
 /* Short Packet States - Used by Control Transfer Read  - CTRL_TRF_TX */
 #define SHORT_PKT_NOT_USED  0
@@ -105,7 +53,7 @@ typedef union
         unsigned char ping_pong_state :1;
         unsigned char transfer_terminated :1;
     } bits;
-    BYTE Val;
+    uint8_t Val;
 } EP_STATUS;
 
 #if (USB_PING_PONG_MODE == USB_PING_PONG__NO_PING_PONG)
@@ -253,7 +201,7 @@ typedef union
     #define BD(ep,dir,pp) (4u*((2u*ep)+dir+(((ep==0)&&(dir==0))?pp:1)))
 
 #elif (USB_PING_PONG_MODE == USB_PING_PONG__FULL_PING_PONG)
-    #if defined (__18CXX) || defined(__C30__)
+#if defined (__18CXX) || defined(__C30__) || defined __XC16__ || defined(__XC8)
         #if (defined (__dsPIC33E__) || defined (__PIC24E__))
             #define USB_NEXT_EP0_OUT_PING_PONG 0x0008
             #define USB_NEXT_EP0_IN_PING_PONG 0x0008
@@ -337,7 +285,7 @@ typedef union
 
     #define EP(ep,dir,pp) (4*ep+2*dir+pp)
 
-    #if defined (__18CXX) || defined(__C30__)
+    #if defined (__18CXX) || defined(__C30__) || defined __XC16__ || (__XC8)
         #if (defined(__dsPIC33E__) || defined (__PIC24E__))
             #define BD(ep,dir,pp) (8*(4*ep+2*dir+pp))
         #else

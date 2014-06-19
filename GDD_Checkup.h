@@ -35,7 +35,7 @@
 //#define CHECKUP_DATE				16
 
 #if 0
-const XCHAR* Checkup_OBJ_STATICTEXT_0_text[] = {
+const GFX_XCHAR* Checkup_OBJ_STATICTEXT_0_text[] = {
 "PASSWORD",
 "RATE MAX",
 "VTBI MAX",
@@ -67,11 +67,11 @@ const XCHAR* Checkup_OBJ_STATICTEXT_0_text[] = {
 
 typedef struct 
 {
-	const XCHAR* title;
+	const GFX_XCHAR* title;
 	void* pset_var;
 	unsigned char type_var;
 	unsigned char unit;
-	const XCHAR** opt_list;
+	const GFX_XCHAR** opt_list;
 	unsigned char num_opt;
 }CHECKUP_PARA_SPECS_t;
 
@@ -94,5 +94,5 @@ extern	 CHECKUP_PARA_SPECS_t Checkup_Para_Specs[];
 
 GDD_CHECKUPPUB void CreateCheckup(void);
 GDD_CHECKUPPUB void CreatePrimitivesForCheckup(void);
-GDD_CHECKUPPUB WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
+GDD_CHECKUPPUB WORD msgCheckup(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 #endif

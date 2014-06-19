@@ -50,22 +50,26 @@ void CheckExternalFlashHex()
     CRC_CHECK externalCRC, expectedCRC;   
     WORD textHeight;
     void *pFont;
-    XCHAR *pStr = NULL;
+    GFX_XCHAR *pStr = NULL;
     BOOL  setProgram = FALSE;
 	unsigned char IO_reg;
 
-    XCHAR   msgStr1[] = "      Program External Data";
-    XCHAR   msgStr2[] = "External data invalid.";
-    XCHAR   msgStr3[] = "Please send data using";
-    XCHAR   msgStr4[] = "\"External Memory Programmer\".";
-    XCHAR   msgStr5[] = "Connect USB cabel and";
-    XCHAR   msgStr6[] = "Press \"STOP\".";
-    XCHAR   msgStr8[] = "Flash Err.";
+    GFX_XCHAR   msgStr1[] = "      Program External Data";
+    GFX_XCHAR   msgStr2[] = "External data invalid.";
+    GFX_XCHAR   msgStr3[] = "Please send data using";
+    GFX_XCHAR   msgStr4[] = "\"External Memory Programmer\".";
+    GFX_XCHAR   msgStr5[] = "Connect USB cabel and";
+    GFX_XCHAR   msgStr6[] = "Press \"STOP\".";
+    GFX_XCHAR   msgStr8[] = "Flash Err.";
 	
-	GOLInit();
-    pFont = (void*) &gentium_8_200_0_0_0_0;
-    SetFont(pFont);
-    textHeight = GetTextHeight(pFont);
+//    GOLInit();
+    DRV_GFX_Initialize();
+    GFX_Initialize();
+
+    pFont = (void*) &Gentium8;
+    GFX_FontSet(pFont);
+//    SetFont(pFont);
+    textHeight = GFX_TextStringHeightGet(pFont);
 
 	if(!DA210DEVBOARD_SST39LF400CheckID())
 	{
@@ -105,15 +109,15 @@ void CheckExternalFlashHex()
 		MCP23S08Write(IODIR, 0xC7 ); // Directions !!!IN!!! In Out Out Out In In In  -  set WDI output HiImpedance Input mode
 
 				 
-		SetColor(BLACK);
-        ClearDevice();
-        SetColor(WHITE);
-        OutTextXY(10,10                 , pStr);
-        OutTextXY(10,10 + (textHeight*2), msgStr3);
-        OutTextXY(10,10 + (textHeight*3), msgStr4);
-        OutTextXY(10,10 + (textHeight*4), msgStr5);
-        OutTextXY(10,10 + (textHeight*5), msgStr6);
-//        OutTextXY(10,10 + (textHeight*6), msgStr7);
+		GFX_ColorSet(BLACK);
+		GFX_ScreenClear();
+		GFX_ColorSet(WHITE);
+		GFX_TextStringDraw(10,10                 , pStr);
+		GFX_TextStringDraw(10,10 + (textHeight*2), msgStr3);
+		GFX_TextStringDraw(10,10 + (textHeight*3), msgStr4);
+		GFX_TextStringDraw(10,10 + (textHeight*4), msgStr5);
+		GFX_TextStringDraw(10,10 + (textHeight*5), msgStr6);
+//        GFX_TextStringDraw(10,10 + (textHeight*6), msgStr7);
 		
 		do
 		{

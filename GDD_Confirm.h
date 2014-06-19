@@ -15,6 +15,6 @@
 
 GDD_CONFIRMPUB void CreateConfirm(void);
 GDD_CONFIRMPUB void CreatePrimitivesForConfirm(void);
-GDD_CONFIRMPUB WORD msgConfirm(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
+GDD_CONFIRMPUB WORD msgConfirm(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 
 #endif  /*_GDD_CONFIRM_H_*/

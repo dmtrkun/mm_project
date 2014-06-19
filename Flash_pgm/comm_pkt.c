@@ -1,68 +1,61 @@
+/********************************************************************
+ Software License Agreement:
+
+ The software supplied herewith by Microchip Technology Incorporated
+ (the "Company") for its PIC(R) Microcontroller is intended and
+ supplied to you, the Company's customer, for use solely and
+ exclusively on Microchip PIC Microcontroller products. The
+ software is owned by the Company and/or its supplier, and is
+ protected under applicable copyright laws. All rights are reserved.
+ Any use in violation of the foregoing restrictions may subject the
+ user to criminal sanctions under applicable laws, as well as to
+ civil liability for the breach of the terms and conditions of this
+ license.
+
+ THIS SOFTWARE IS PROVIDED IN AN "AS IS" CONDITION. NO WARRANTIES,
+ WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED
+ TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. THE COMPANY SHALL NOT,
+ IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
+ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+ *******************************************************************/
+
 /*****************************************************************************
- * FileName:        comm_pkt.c
- * Dependencies:    See Include Section
- * Processor:       PIC24F, PIC24H, dsPIC, PIC32
- * Compiler:       	MPLAB C30, MPLAB C32
- * Linker:          MPLAB LINK30, MPLAB LINK32
- * Company:         Microchip Technology Incorporated
- *
- * Software License Agreement
- *
- * Copyright © 2010 Microchip Technology Inc.  All rights reserved.
- * Microchip licenses to you the right to use, modify, copy and distribute
- * Software only when embedded on a Microchip microcontroller or digital
- * signal controller, which is integrated into your product or third party
- * product (pursuant to the sublicense terms in the accompanying license
- * agreement).  
- *
- * You should refer to the license agreement accompanying this Software
- * for additional information regarding your rights and obligations.
- *
- * SOFTWARE AND DOCUMENTATION ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY
- * KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY WARRANTY
- * OF MERCHANTABILITY, TITLE, NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR
- * PURPOSE. IN NO EVENT SHALL MICROCHIP OR ITS LICENSORS BE LIABLE OR
- * OBLIGATED UNDER CONTRACT, NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION,
- * BREACH OF WARRANTY, OR OTHER LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT
- * DAMAGES OR EXPENSES INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL,
- * INDIRECT, PUNITIVE OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA,
- * COST OF PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY
- * CLAIMS BY THIRD PARTIES (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF),
- * OR OTHER SIMILAR COSTS.
- *****************************************************************************/
-/*****************************************************************************
- * Section: Description
- *
- * This module decodes communication packets like the ones sent from the PC 
- * utility, external_memory_programmer.  However, it is not limited to only
- * one PC utility or device.  Any device may choose to use this style of
- * communication medium.  More details of the communicaiton protocol can
- * be found in the extern memory programmer help file documentation.  This
- * module is abstracted from the communication medium used and can support
- * multiple communicaiton mediums being serviced at one time.
- *
- * This module is used by serval different Graphics demos and is part of the 
- * common directory under the Graphics demo.
+ Section: Description
+
+ This module decodes communication packets like the ones sent from the PC 
+ utility, external_memory_programmer.  However, it is not limited to only
+ one PC utility or device.  Any device may choose to use this style of
+ communication medium.  More details of the communicaiton protocol can
+ be found in the extern memory programmer help file documentation.  This
+ module is abstracted from the communication medium used and can support
+ multiple communicaiton mediums being serviced at one time.
+
+ This module is used by serval different Graphics demos and is part of the 
+ common directory under the Graphics demo.
  *****************************************************************************/
 
 /*****************************************************************************
  * Section: Includes
  *****************************************************************************/
-#include "GenericTypeDefs.h"
+#include <stdint.h>
+#include <stdbool.h>
 #include "comm_pkt.h"
 #include "comm_pkt_callback.h"
-#include "HardwareProfile.h"
+#include "system.h"
 
 /*****************************************************************************
  * Section: Variables
  *****************************************************************************/
-BYTE rxPacket[COMM_PKT_RX_MAX_SIZE + sizeof(COMM_PKT_HDR) + 64] __attribute__((aligned(4)));
-WORD rxPacketIdx;
+uint8_t rxPacket[COMM_PKT_RX_MAX_SIZE + sizeof(COMM_PKT_HDR) + 64] __attribute__((aligned(4)));
+uint16_t rxPacketIdx;
 
 /*****************************************************************************
  * Section: Function Prototypes
  *****************************************************************************/
-BYTE COMM_PKT_GenerateCheckSum(BYTE *payload, WORD payloadLength);
+uint8_t COMM_PKT_GenerateCheckSum(
+                                uint8_t *payload,
+                                uint16_t payloadLength);
 
 /*****************************************************************************
  * void COMM_PKT_Init(void)
@@ -82,55 +75,73 @@ void COMM_PKT_Update(COMM_PKT_MEDIA media)
     }
 }
 /*****************************************************************************
- * BOOL COMM_PKT_RxPacketAvailable(void)
+ * bool COMM_PKT_RxPacketAvailable(void)
  *****************************************************************************/
-BOOL COMM_PKT_RxPacketAvailable(void)
+bool COMM_PKT_RxPacketAvailable(void)
 {
     COMM_PKT_HDR *hdr;
 
     if(rxPacketIdx < sizeof(COMM_PKT_HDR))
-        return FALSE;
+        return false;
 
     hdr = (COMM_PKT_HDR *)rxPacket;
 
     if(rxPacketIdx < (sizeof(COMM_PKT_HDR) + hdr->length))
-        return FALSE;
+        return false;
 
     if(rxPacketIdx > (sizeof(COMM_PKT_HDR) + hdr->length))
-        return FALSE;
+        return false;
 
-    return TRUE;
+    return true;
 }
 /*****************************************************************************
- * BYTE *COMM_PKT_GetRxPacket(void)
+ * uint8_t *COMM_PKT_GetRxPacket(void)
  *****************************************************************************/
-BYTE *COMM_PKT_GetRxPacket(void)
+uint8_t *COMM_PKT_GetRxPacket(void)
 {
     rxPacketIdx = 0;
 
     return rxPacket;
 }
 /*****************************************************************************
- * BOOL COMM_PKT_IsPacketValid(BYTE *packet)
+ * bool COMM_PKT_IsPacketValid(
+                                uint8_t *packet)
+
  *****************************************************************************/
-BOOL COMM_PKT_IsPacketValid(BYTE *packet)
+bool COMM_PKT_IsPacketValid(
+                                uint8_t *packet)
 {
     COMM_PKT_HDR *hdr;
 
     hdr = (COMM_PKT_HDR *)packet;
 
     if(hdr->length > (COMM_PKT_RX_MAX_SIZE))
-        return FALSE;
+        return false;
 
-    if(hdr->check_sum != COMM_PKT_GenerateCheckSum(packet + sizeof(COMM_PKT_HDR), hdr->length))
-        return FALSE;
+    if(hdr->check_sum != COMM_PKT_GenerateCheckSum(
+                                    packet +
+                                    sizeof(COMM_PKT_HDR),
+                                    hdr->length))
+    {
+        Nop();
+        Nop();
+        return false;
+    }
 
-    return TRUE;
+    return true;
 }
 /*****************************************************************************
- * void COMM_PKT_SendCommand(COMM_PKT_MEDIA media, BYTE cmd, BYTE *payload, WORD payloadSize)
+ * void COMM_PKT_SendCommand(
+                                COMM_PKT_MEDIA media,
+                                uint8_t cmd,
+                                uint8_t *payload,
+                                uint16_t payloadSize)
+
  *****************************************************************************/
-void COMM_PKT_SendCommand(COMM_PKT_MEDIA media, BYTE cmd, BYTE *payload, WORD payloadSize)
+void COMM_PKT_SendCommand(COMM_PKT_MEDIA media,
+                                uint8_t cmd,
+                                uint8_t *payload,
+                                uint16_t payloadSize)
 {
     COMM_PKT_HDR hdr;
 
@@ -140,13 +151,24 @@ void COMM_PKT_SendCommand(COMM_PKT_MEDIA media, BYTE cmd, BYTE *payload, WORD pa
     hdr.length = payloadSize;
     hdr.check_sum = COMM_PKT_GenerateCheckSum(payload, payloadSize);
 
-    COMM_PKT_SendData(media, (BYTE *)&hdr, sizeof(hdr));
+    COMM_PKT_SendData(media, (uint8_t *)&hdr, sizeof(hdr));
     COMM_PKT_SendData(media, payload, payloadSize);
 }
 /*****************************************************************************
- * void COMM_PKT_SendReply(COMM_PKT_MEDIA media, BYTE cmd, BYTE ack, BYTE *payload, WORD payloadSize)
+ * void COMM_PKT_SendReply(
+                                COMM_PKT_MEDIA media,
+                                uint8_t cmd,
+                                uint8_t ack,
+                                uint8_t *payload,
+                                uint16_t payloadSize)
+
  *****************************************************************************/
-void COMM_PKT_SendReply(COMM_PKT_MEDIA media, BYTE cmd, BYTE ack, BYTE *payload, WORD payloadSize)
+void COMM_PKT_SendReply(
+                                COMM_PKT_MEDIA media,
+                                uint8_t cmd,
+                                uint8_t ack,
+                                uint8_t *payload,
+                                uint16_t payloadSize)
 {
     COMM_PKT_HDR hdr;
 
@@ -156,16 +178,21 @@ void COMM_PKT_SendReply(COMM_PKT_MEDIA media, BYTE cmd, BYTE ack, BYTE *payload,
     hdr.length = payloadSize;
     hdr.check_sum = COMM_PKT_GenerateCheckSum(payload, payloadSize);
 
-    COMM_PKT_SendData(media, (BYTE *)&hdr, sizeof(hdr));
+    COMM_PKT_SendData(media, (uint8_t *)&hdr, sizeof(hdr));
     COMM_PKT_SendData(media, payload, payloadSize);
 }
 /*****************************************************************************
- * BYTE COMM_PKT_GenerateCheckSum(BYTE *payload, WORD payloadLength)
+ * uint8_t COMM_PKT_GenerateCheckSum(
+                                uint8_t *payload,
+                                uint16_t payloadLength)
+
  *****************************************************************************/
-BYTE COMM_PKT_GenerateCheckSum(BYTE *payload, WORD payloadLength)
+uint8_t COMM_PKT_GenerateCheckSum(
+                                uint8_t *payload,
+                                uint16_t payloadLength)
 {
-    WORD i;
-    BYTE check_sum = 0xFF;
+    uint16_t i;
+    uint8_t check_sum = 0xFF;
 
     for(i = 0; i < payloadLength; i++)
     {

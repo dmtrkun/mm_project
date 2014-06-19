@@ -18,7 +18,7 @@
 #include "queue.h"
 #include "semphr.h"
 #include "croutine.h"
-#include "graphics.h"
+//#include "graphics.h"
 
 ///////////////////////////////////////////////////////////////////
 // objects to be passed to the graphics display routines are
@@ -31,7 +31,7 @@ typedef struct{
 		BYTE		bVal[8];
 		WORD		wVal[4];
 		DWORD		dVal[2];
-		GOL_MSG 	golMsg;
+		GFX_GOL_MESSAGE 	golMsg;
 	} data;
 } GRAPHICS_MSG;
 

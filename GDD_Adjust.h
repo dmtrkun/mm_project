@@ -35,17 +35,17 @@
 
 GDD_ADJUSTPUB void CreateAdjust(void);
 GDD_ADJUSTPUB void CreatePrimitivesForAdjust(void);
-GDD_ADJUSTPUB WORD msgAdjust(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
+GDD_ADJUSTPUB WORD msgAdjust(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 GDD_ADJUSTPUB float* adjust_val_ptr;
 
 #if 0
 typedef struct 
 {
-	const XCHAR* title;
+	const GFX_XCHAR* title;
 	void* pset_var;
 	unsigned char type_var;
 	unsigned char unit;
-	const XCHAR** opt_list;
+	const GFX_XCHAR** opt_list;
 	unsigned char num_opt;
 }ADJUST_PARA_SPECS_t;
 #endif

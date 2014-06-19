@@ -114,7 +114,7 @@ WORD DA210DEVBOARD_SST39LF400ReadWord(DWORD address)
 
 }    
 
-
+#if 0
 // dummy function
 WORD ExternalMemoryCallback(GFX_EXTDATA *memory, LONG offset, WORD nCount, void *buffer)
 {
@@ -123,6 +123,6 @@ WORD ExternalMemoryCallback(GFX_EXTDATA *memory, LONG offset, WORD nCount, void 
 }
 
 
-
+#endif
 
 

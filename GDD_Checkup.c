@@ -8,36 +8,36 @@
 #include "include.h"
 #include <stdio.h>
 
-//const XCHAR Checkup_OBJ_STATICTEXT_1_text[] = "Working Time:";
-//const XCHAR Checkup_OBJ_STATICTEXT_2_text[] = "Press \"Clear\" \r\nand wait for RESET";
-const __prog__ XCHAR __attribute__((space(prog))) Checkup_OBJ_STATICTEXT_1_text[] = "Working Time:";
-const __prog__ XCHAR __attribute__((space(prog))) Checkup_OBJ_STATICTEXT_2_text[] = "Press \"Clear\" \r\nand wait for RESET";
-const __prog__ XCHAR __attribute__((space(prog))) Checkup_OBJ_STATICTEXT_3_text[] = "AIR\r\nIN SYSTEM";
-const __prog__ XCHAR __attribute__((space(prog))) Checkup_OBJ_STATICTEXT_4_text[] = "NO\r\nAIR";
-//const __prog__ XCHAR __attribute__((space(prog))) Checkup_OBJ_STATICTEXT_5_text[] = "LINEAR";
+//const GFX_XCHAR Checkup_OBJ_STATICTEXT_1_text[] = "Working Time:";
+//const GFX_XCHAR Checkup_OBJ_STATICTEXT_2_text[] = "Press \"Clear\" \r\nand wait for RESET";
+const __prog__ GFX_XCHAR __attribute__((space(prog))) Checkup_OBJ_STATICTEXT_1_text[] = "Working Time:";
+const __prog__ GFX_XCHAR __attribute__((space(prog))) Checkup_OBJ_STATICTEXT_2_text[] = "Press \"Clear\" \r\nand wait for RESET";
+const __prog__ GFX_XCHAR __attribute__((space(prog))) Checkup_OBJ_STATICTEXT_3_text[] = "AIR\r\nIN SYSTEM";
+const __prog__ GFX_XCHAR __attribute__((space(prog))) Checkup_OBJ_STATICTEXT_4_text[] = "NO\r\nAIR";
+//const __prog__ GFX_XCHAR __attribute__((space(prog))) Checkup_OBJ_STATICTEXT_5_text[] = "LINEAR";
 
 
-const XCHAR Checkup_OBJ_BUTTON_0_text[] = "RUN";
-const XCHAR Checkup_OBJ_BUTTON_1_text[] = "STOP";
-const XCHAR Checkup_OBJ_BUTTON_2_text[] = "BEEP";
-const XCHAR Checkup_OBJ_BUTTON_3_text[] = "CLEAR";
-//const XCHAR Checkup_OBJ_BUTTON_4_text[] = "DOOR";
-//const XCHAR Checkup_OBJ_BUTTON_5_text[] = "AIR";
-//const XCHAR Checkup_OBJ_BUTTON_6_text[] = "LINEAR";
+const GFX_XCHAR Checkup_OBJ_BUTTON_0_text[] = "RUN";
+const GFX_XCHAR Checkup_OBJ_BUTTON_1_text[] = "STOP";
+const GFX_XCHAR Checkup_OBJ_BUTTON_2_text[] = "BEEP";
+const GFX_XCHAR Checkup_OBJ_BUTTON_3_text[] = "CLEAR";
+//const GFX_XCHAR Checkup_OBJ_BUTTON_4_text[] = "DOOR";
+//const GFX_XCHAR Checkup_OBJ_BUTTON_5_text[] = "AIR";
+//const GFX_XCHAR Checkup_OBJ_BUTTON_6_text[] = "LINEAR";
 
 
 
-//const XCHAR Checkup_OBJ_BUTTON_7_text[] = "7";
-//const XCHAR Checkup_OBJ_BUTTON_8_text[] = "8";
-//const XCHAR Checkup_OBJ_BUTTON_9_text[] = "9";
-//const XCHAR Checkup_OBJ_BUTTON_10_text[] = ".";
-//const XCHAR Checkup_OBJ_BUTTON_11_text[] = "NO LIMIT";
+//const GFX_XCHAR Checkup_OBJ_BUTTON_7_text[] = "7";
+//const GFX_XCHAR Checkup_OBJ_BUTTON_8_text[] = "8";
+//const GFX_XCHAR Checkup_OBJ_BUTTON_9_text[] = "9";
+//const GFX_XCHAR Checkup_OBJ_BUTTON_10_text[] = ".";
+//const GFX_XCHAR Checkup_OBJ_BUTTON_11_text[] = "NO LIMIT";
 
-//const XCHAR Checkup_OBJ_BUTTON_12_text[] = "CLEAR";
-//const XCHAR Checkup_OBJ_BUTTON_13_text[] = "EXIT";
-//const XCHAR Checkup_OBJ_BUTTON_14_text[] = "OK";
+//const GFX_XCHAR Checkup_OBJ_BUTTON_12_text[] = "CLEAR";
+//const GFX_XCHAR Checkup_OBJ_BUTTON_13_text[] = "EXIT";
+//const GFX_XCHAR Checkup_OBJ_BUTTON_14_text[] = "OK";
 
-//const XCHAR Checkup_OBJ_EDITBOX_0_text[] = "289.6";
+//const GFX_XCHAR Checkup_OBJ_EDITBOX_0_text[] = "289.6";
 
 #define Checkup_OBJ_BUTTON_0   0
 #define Checkup_OBJ_BUTTON_1   1
@@ -78,12 +78,12 @@ void CreateCheckup(void)
 	_prog_addressT p;
 	unsigned char i;
 	state = 0;
-	GOLFree();
-	SetColor(BLUE_LIGHT);
-	ClearDevice();
+	GFX_GOL_ObjectListFree();
+	GFX_ColorSet(BLUE_LIGHT);
+	GFX_ScreenClear();
         beep_test_flg = 0;
 
-	memcpy(basicscheme, defscheme, sizeof(GOL_SCHEME));
+	memcpy(basicscheme, defscheme, sizeof(GFX_GOL_OBJ_SCHEME));
 	basicscheme->Color1 = GRAY_RUN;
 	basicscheme->Color0 = YELLOW_RUN;
 	basicscheme->TextColor0 = BLACK;
@@ -126,24 +126,24 @@ void CreateCheckup(void)
 		case CHECKUP_LASTCALIBR:
 			memcpy(&rtc_time,localtime(&calib_time),sizeof(rtc_time));
 			strftime(val_str1, 100, "%d.%m.%y", &rtc_time);
-			EbCreate(Checkup_OBJ_EDITBOX_0,55,45,185,84,EB_DRAW/*|EB_FOCUSED|EB_DRAW_CARET*/,val_str1/*8(XCHAR*)Checkup_OBJ_EDITBOX_0_text*/,16,defscheme);
+			EbCreate(Checkup_OBJ_EDITBOX_0,55,45,185,84,EB_DRAW/*|EB_FOCUSED|EB_DRAW_CARET*/,val_str1/*8(GFX_XCHAR*)Checkup_OBJ_EDITBOX_0_text*/,16,defscheme);
 			_init_prog_address(p, Checkup_OBJ_STATICTEXT_1_text);
 			_strncpy_p2d16(str_buf1,p,128);
-			StCreate(Checkup_OBJ_STATICTEXT_1,50,120,190,150,ST_DRAW,(XCHAR*)str_buf1,defscheme);
+			GFX_GOL_StaticTextCreate(Checkup_OBJ_STATICTEXT_1,50,120,190,150,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str_buf1,GFX_ALIGN_LEFT,defscheme);
 			sprintf(val_str2,"%d hours",work_time/60);
-			EbCreate(Checkup_OBJ_EDITBOX_1,55,160,185,200,EB_DRAW/*|EB_FOCUSED|EB_DRAW_CARET*/,val_str2/*8(XCHAR*)Checkup_OBJ_EDITBOX_0_text*/,16,defscheme);
+			EbCreate(Checkup_OBJ_EDITBOX_1,55,160,185,200,EB_DRAW/*|EB_FOCUSED|EB_DRAW_CARET*/,val_str2/*8(GFX_XCHAR*)Checkup_OBJ_EDITBOX_0_text*/,16,defscheme);
 			break;
 		case CHECKUP_UPPRESS:
 			xTimerStart( xTimers[ 1 ], 0 );
 			sprintf(val_str1,"%d mmHg",press1_mmHg);
-			EbCreate(Checkup_OBJ_EDITBOX_0,42,54,135,80, EB_DRAW,(XCHAR*)val_str1, 50 ,basicscheme);
-			PictCreate(Checkup_OBJ_PICTURE_1,162,64,195,263,PICT_DRAW, IMAGE_NORMAL, (GFX_IMAGE_HEADER *)&Pressbar_img,basicscheme);
+			EbCreate(Checkup_OBJ_EDITBOX_0,42,54,135,80, EB_DRAW,(GFX_XCHAR*)val_str1, 50 ,basicscheme);
+			GFX_GOL_PictureControlCreate(Checkup_OBJ_PICTURE_1,162,64,195,263,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pressbar_img,basicscheme);
 			break;
 		case CHECKUP_DOWNPRESS:
 			xTimerStart( xTimers[ 1 ], 0 );
 			sprintf(val_str2,"%d mmHg",press2_mmHg);
-			EbCreate(Checkup_OBJ_EDITBOX_1,42,240,135,266, EB_DRAW,(XCHAR*)val_str2, 50 ,basicscheme);
-			PictCreate(Checkup_OBJ_PICTURE_1,162,64,195,263,PICT_DRAW, IMAGE_NORMAL, (GFX_IMAGE_HEADER *)&Pressbar_img,basicscheme);
+			EbCreate(Checkup_OBJ_EDITBOX_1,42,240,135,266, EB_DRAW,(GFX_XCHAR*)val_str2, 50 ,basicscheme);
+			GFX_GOL_PictureControlCreate(Checkup_OBJ_PICTURE_1,162,64,195,263,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pressbar_img,basicscheme);
 			break;
 			
 		case CHECKUP_ACBATTERY:
@@ -164,7 +164,7 @@ void CreateCheckup(void)
 			else
 				batlvl =(batt_raw - BAT_MIN)/((BAT_FULL - BAT_MIN)/100.0);			 
 			PbCreate(Checkup_OBJ_PROGRESSBAR_0, 10, 186, 229, 224, PB_DRAW, batlvl,100,NULL,defscheme);
-			EbCreate(Checkup_OBJ_EDITBOX_0,35,65,205,104,EB_DRAW/*|EB_FOCUSED|EB_DRAW_CARET*/,val_str1/*8(XCHAR*)Checkup_OBJ_EDITBOX_0_text*/,16,defscheme);
+			EbCreate(Checkup_OBJ_EDITBOX_0,35,65,205,104,EB_DRAW/*|EB_FOCUSED|EB_DRAW_CARET*/,val_str1/*8(GFX_XCHAR*)Checkup_OBJ_EDITBOX_0_text*/,16,defscheme);
 			break;
 		case CHECKUP_SENSORS:
 			xTimerStart( xTimers[ 1 ], 0 );
@@ -184,8 +184,8 @@ void CreateCheckup(void)
                             strcat(gStr2," ON");
                         else
                             strcat(gStr2," OFF");
-			StCreate(Checkup_OBJ_STATICTEXT_1,80,80,165,120,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)gStr1,defscheme);
-			StCreate(Checkup_OBJ_STATICTEXT_1,80,180,165,220,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)gStr3,defscheme);
+			GFX_GOL_StaticTextCreate(Checkup_OBJ_STATICTEXT_1,80,80,165,120,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,(GFX_XCHAR*)gStr1,defscheme);
+			GFX_GOL_StaticTextCreate(Checkup_OBJ_STATICTEXT_1,80,180,165,220,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,(GFX_XCHAR*)gStr3,defscheme);
 #endif
                 	basicscheme->Color1 = GRAY_LIGHT;
                 	basicscheme->TextColor0 = BLACK;
@@ -196,13 +196,13 @@ void CreateCheckup(void)
                                 _init_prog_address(p, Checkup_OBJ_STATICTEXT_3_text);
                                 basicscheme->CommonBkColor = RED;
                                 _strncpy_p2d16(gStr1,p,128);
-                        	StCreate(Checkup_OBJ_STATICTEXT_1,60,120,185,180,ST_DRAW|ST_CENTER_ALIGN|ST_FRAME,(XCHAR*)gStr1,basicscheme);
+                        	GFX_GOL_StaticTextCreate(Checkup_OBJ_STATICTEXT_1,60,120,185,180,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)gStr1,GFX_ALIGN_CENTER,basicscheme);
                         }
                         else{
                                 _init_prog_address(p, Checkup_OBJ_STATICTEXT_4_text);
                                 basicscheme->CommonBkColor = GREEN;
                                 _strncpy_p2d16(gStr1,p,128);
-        			StCreate(Checkup_OBJ_STATICTEXT_1,60,120,185,180,ST_DRAW|ST_CENTER_ALIGN|ST_FRAME,(XCHAR*)gStr1,basicscheme);
+        			GFX_GOL_StaticTextCreate(Checkup_OBJ_STATICTEXT_1,60,120,185,180,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)gStr1,GFX_ALIGN_CENTER,basicscheme);
                         }
 
 //                            strcat(gStr1,"\r\nIN SYSTEM");
@@ -212,19 +212,19 @@ void CreateCheckup(void)
 			break;
 		case CHECKUP_OUTPUTS:			 
                         test_mode = 1;
-                        BtnCreate(Checkup_OBJ_BUTTON_0,80,80,160,120,5,BTN_DRAW,NULL,(XCHAR*)Checkup_OBJ_BUTTON_0_text,defscheme);
-			BtnCreate(Checkup_OBJ_BUTTON_1,80,130,160,170,5,BTN_DRAW,NULL,(XCHAR*)Checkup_OBJ_BUTTON_1_text,defscheme);
-			BtnCreate(Checkup_OBJ_BUTTON_2,80,180,160,220,5,BTN_DRAW|BTN_TOGGLE,NULL,(XCHAR*)Checkup_OBJ_BUTTON_2_text,defscheme);
+                        BtnCreate(Checkup_OBJ_BUTTON_0,80,80,160,120,5,BTN_DRAW,NULL,(GFX_XCHAR*)Checkup_OBJ_BUTTON_0_text,defscheme);
+			BtnCreate(Checkup_OBJ_BUTTON_1,80,130,160,170,5,BTN_DRAW,NULL,(GFX_XCHAR*)Checkup_OBJ_BUTTON_1_text,defscheme);
+			BtnCreate(Checkup_OBJ_BUTTON_2,80,180,160,220,5,BTN_DRAW|BTN_TOGGLE,NULL,(GFX_XCHAR*)Checkup_OBJ_BUTTON_2_text,defscheme);
 			break;
 		case CHECKUP_CLEARERR:			 
-			BtnCreate(Checkup_OBJ_BUTTON_3,80,130,160,170,5,BTN_DRAW,NULL,(XCHAR*)Checkup_OBJ_BUTTON_3_text,defscheme);
+			BtnCreate(Checkup_OBJ_BUTTON_3,80,130,160,170,5,BTN_DRAW,NULL,(GFX_XCHAR*)Checkup_OBJ_BUTTON_3_text,defscheme);
 			break;
 			
 		case CHECKUP_WATCHDOG:			 
 			_init_prog_address(p, Checkup_OBJ_STATICTEXT_2_text);
 			_strncpy_p2d16(str_buf1,p,128);
-			StCreate(Checkup_OBJ_STATICTEXT_1,20,90,220,150,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)str_buf1,defscheme);
-			BtnCreate(Checkup_OBJ_BUTTON_3,80,170,160,210,5,BTN_DRAW,NULL,(XCHAR*)Checkup_OBJ_BUTTON_3_text,defscheme);
+			GFX_GOL_StaticTextCreate(Checkup_OBJ_STATICTEXT_1,20,90,220,150,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str_buf1,GFX_ALIGN_CENTER,defscheme);
+			BtnCreate(Checkup_OBJ_BUTTON_3,80,170,160,210,5,BTN_DRAW,NULL,(GFX_XCHAR*)Checkup_OBJ_BUTTON_3_text,defscheme);
 			break;
 			
 
@@ -253,18 +253,18 @@ void CreateCheckup(void)
 		default:
 	
 			ValToStr(Checkup_Para_Specs[page_display].unit, adj_vali, adj_val, padj_val, val_str1);
-			pCheckup_OBJ_EDITBOX_0 = EbCreate(Checkup_OBJ_EDITBOX_0,55,45,185,84,EB_DRAW/*|EB_FOCUSED|EB_DRAW_CARET*/,val_str1/*8(XCHAR*)Checkup_OBJ_EDITBOX_0_text*/,16,defscheme);
+			pCheckup_OBJ_EDITBOX_0 = EbCreate(Checkup_OBJ_EDITBOX_0,55,45,185,84,EB_DRAW/*|EB_FOCUSED|EB_DRAW_CARET*/,val_str1/*8(GFX_XCHAR*)Checkup_OBJ_EDITBOX_0_text*/,16,defscheme);
 		break;
 	}
 	
 						
-	BtnCreate(OBJ_BUTTON_EXIT,5,277,66,313,5,BTN_DRAW,NULL,(XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
-	BtnCreate(OBJ_BUTTON_LARROW,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(XCHAR*)Options_OBJ_BUTTON_8_text*/NULL,botbar);
-	BtnCreate(OBJ_BUTTON_RARROW,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(XCHAR*)Options_OBJ_BUTTON_9_text*/NULL,botbar);
+	BtnCreate(OBJ_BUTTON_EXIT,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+	BtnCreate(OBJ_BUTTON_LARROW,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_8_text*/NULL,botbar);
+	BtnCreate(OBJ_BUTTON_RARROW,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_9_text*/NULL,botbar);
 
-//	StCreate(Checkup_OBJ_STATICTEXT_0,1,0,239,30,ST_DRAW,(XCHAR*)Checkup_OBJ_STATICTEXT_0_text[page_create],topbar);
-	StCreate(Checkup_OBJ_STATICTEXT_0,1,0,239,30,ST_DRAW,(XCHAR*)Checkup_Para_Specs[page_create].title,topbar);
-	PictCreate(Checkup_OBJ_PICTURE_0, 209,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_IMAGE_HEADER *)&setting, topbar);
+//	GFX_GOL_StaticTextCreate(Checkup_OBJ_STATICTEXT_0,1,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Checkup_OBJ_STATICTEXT_0_text[page_create],topbar);
+	GFX_GOL_StaticTextCreate(Checkup_OBJ_STATICTEXT_0,1,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Checkup_Para_Specs[page_create].title,GFX_ALIGN_LEFT,topbar);
+	GFX_GOL_PictureControlCreate(Checkup_OBJ_PICTURE_0, 209,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&setting, topbar);
 
 }
 void CreatePrimitivesForCheckup(void){
@@ -272,15 +272,15 @@ void CreatePrimitivesForCheckup(void){
 	{
 		SetLineType(0);
 		SetLineThickness(0);
-		SetColor(GRAY_RUN);
-		while(!Bar(40,46,200,270));
+		GFX_ColorSet(GRAY_RUN);
+		while(!GFX_BarDraw(40,46,200,270));
 	}
 }
 
 
 
 /*********************************************************************
- * Function:        WORD msgMain(WORD objMsg, OBJ_HEADER* pObj)
+ * Function:        WORD msgMain(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
  *
  * PreCondition:    None
  *
@@ -296,11 +296,11 @@ void CreatePrimitivesForCheckup(void){
  * Note:            
  ********************************************************************/
 
-WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+WORD msgCheckup(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
-//	OBJ_HEADER* pSetPoint;
+//	GFX_GOL_OBJ_HEADER* pSetPoint;
 //	SHORT dialVal;
-//	OBJ_HEADER* pOtherObj;
+//	GFX_GOL_OBJ_HEADER* pOtherObj;
 //	float adj_val_tmp;
 	unsigned int adj_vali_tmp;
 	if(pObj == NULL)
@@ -336,19 +336,19 @@ WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 	}	
 #endif	
 	
-	switch (GetObjID(pObj)) {
+	switch (GFX_GOL_ObjectIDGet(pObj)) {
 		
 		case Checkup_OBJ_RADIOBUTTON_0:
 		case Checkup_OBJ_RADIOBUTTON_1:
 		case Checkup_OBJ_RADIOBUTTON_2:
 		case Checkup_OBJ_RADIOBUTTON_3:
 			if (objMsg == RB_MSG_CHECKED) {
-			   adj_vali_tmp	= GetObjID(pObj);//RbGetCheck(pObj);                        
+			   adj_vali_tmp	= GFX_GOL_ObjectIDGet(pObj);//RbGetCheck(pObj);                        
 			   adj_vali = adj_vali_tmp - Checkup_OBJ_RADIOBUTTON_0;
 			}	  
 			return 1;
 		case Checkup_OBJ_BUTTON_0:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
                             steps = 0;
                             if(stmotor_stat()== STMTR_STOP)
                             {
@@ -361,7 +361,7 @@ WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			return 1;
 
         	case Checkup_OBJ_BUTTON_1:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
         			//Stop infusion
 				cMsg.cmd = MSG_CONTROL_STOP_INFUS;
 				xQueueSend(hCONTROLQueue, &cMsg, 0);
@@ -370,7 +370,7 @@ WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
         	case Checkup_OBJ_BUTTON_2:
 			if (objMsg == BTN_MSG_PRESSED)
                                 beep_test_flg = 1;
-                        else if(objMsg == BTN_MSG_RELEASED)
+                        else if(objMsg == GFX_GOL_BUTTON_ACTION_RELEASED)
                                 beep_test_flg = 0;
 			return 1;
 #if 0
@@ -382,23 +382,23 @@ WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		case Checkup_OBJ_BUTTON_7:
 		case Checkup_OBJ_BUTTON_8:
 		case Checkup_OBJ_BUTTON_9:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 			  	if(state == 3)
 			  		return 1;
 			  	if(state == 2)
 			  	{
-			  		adj_val_tmp = adj_val + (float)GetObjID(pObj)*0.1;
+			  		adj_val_tmp = adj_val + (float)GFX_GOL_ObjectIDGet(pObj)*0.1;
 			  		state = 3;
 			  	}
 			  	else if(state == 1)
 				{
-			  		adj_val_tmp = adj_val*10.0 + (float)GetObjID(pObj);
-					adj_vali_tmp = adj_vali*10 + GetObjID(pObj);
+			  		adj_val_tmp = adj_val*10.0 + (float)GFX_GOL_ObjectIDGet(pObj);
+					adj_vali_tmp = adj_vali*10 + GFX_GOL_ObjectIDGet(pObj);
 			  	}
 				else
 			  	{
-			  		adj_vali_tmp = GetObjID(pObj);
-					adj_val_tmp = (float)GetObjID(pObj);
+			  		adj_vali_tmp = GFX_GOL_ObjectIDGet(pObj);
+					adj_val_tmp = (float)GFX_GOL_ObjectIDGet(pObj);
 					state = 1;
 			  	}
 				
@@ -444,7 +444,7 @@ WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			}	
 			return 1;
 		case Checkup_OBJ_BUTTON_10:
-			if (objMsg == BTN_MSG_RELEASED) {   //				EbAddChar(pCheckup_OBJ_EDITBOX_0,'.');
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {   //				EbAddChar(pCheckup_OBJ_EDITBOX_0,'.');
 				if(adj_val < 100.0)
 				{
 					state = 2;
@@ -454,7 +454,7 @@ WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 //					SetState(pCheckup_OBJ_EDITBOX_0, EB_DRAW);
 				}
 
-//				adj_val + (float)GetObjID(pObj);
+//				adj_val + (float)GFX_GOL_ObjectIDGet(pObj);
 //				if(adj_val < 100.0)
 //				{
 //					SetState(pCheckup_OBJ_EDITBOX_0, EB_DRAW);
@@ -470,7 +470,7 @@ WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			{
 				BtnSetBitmap(pObj, (char *)&NoLimit);
 				SetState((BUTTON*) pObj, BTN_DRAW);
-				if (objMsg == BTN_MSG_RELEASED)
+				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED)
 				{
 	//				GDDSetScreen(CREATE_SCREEN_TEST,0,NULL);
 				}
@@ -478,7 +478,7 @@ WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			return 1;
 #endif		
 		case Checkup_OBJ_BUTTON_3:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				if(page_display == CHECKUP_WATCHDOG)
 				{
 					wdi_ena = 1;
@@ -497,7 +497,7 @@ WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			return 1;
 		
 		case Checkup_OBJ_BUTTON_5:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 //				adj_val = 0.0;
 //				sprintf(adj_val_str,"%.1f %s",(double)adj_val,unit[page_display]);
 				adj_val = 0.0;
@@ -523,7 +523,7 @@ WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
                                 test_mode = 0;
                                 BtnSetBitmap((BUTTON*)pObj, &Larrow);
 				SetState((BUTTON*) pObj, BTN_DRAW);
-				if (objMsg == BTN_MSG_RELEASED) 
+				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 				{
 					if(page_display > 0)
 						page_display--;
@@ -546,7 +546,7 @@ WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
                                 test_mode = 0;
 				BtnSetBitmap((BUTTON*)pObj, &Rarrow);
 				SetState((BUTTON*) pObj, BTN_DRAW);
-				if (objMsg == BTN_MSG_RELEASED) 
+				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 				{
 					if(page_display < 7)
 						page_display++;
@@ -557,7 +557,7 @@ WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			}	
 			return 1;
 		case OBJ_BUTTON_EXIT:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
                                 test_mode = 0;
                                 if(stmotor_stat()== STMTR_RUN)
                                 {
@@ -569,7 +569,7 @@ WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			}	
 			return 1;
 		case Checkup_OBJ_BUTTON_14:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 #if 0				
 				switch(page_display)
 				{
@@ -607,7 +607,7 @@ WORD msgCheckup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 } 
 void UpdateCheckup(void)
 {
-	OBJ_HEADER* pObj;
+	GFX_GOL_OBJ_HEADER* pObj;
        	_prog_addressT p;
 
 //	time_t time_val;
@@ -622,11 +622,11 @@ void UpdateCheckup(void)
 		}
 		SetLineType(0);
 		SetLineThickness(0);
-		SetColor(GRAY_RUN);
-		while(!Bar(168,66,188,260));
+		GFX_ColorSet(GRAY_RUN);
+		while(!GFX_BarDraw(168,66,188,260));
 		
-		SetColor(YELLOW_RUN);
-		while(!Bar(168, ((260 - press2hight(press1_mmHg)) < 66 ? 66 : (260 - press2hight(press1_mmHg))),188,260));
+		GFX_ColorSet(YELLOW_RUN);
+		while(!GFX_BarDraw(168, ((260 - press2hight(press1_mmHg)) < 66 ? 66 : (260 - press2hight(press1_mmHg))),188,260));
 	}
 	else if(page_display == CHECKUP_DOWNPRESS)
 	{
@@ -638,11 +638,11 @@ void UpdateCheckup(void)
 		}
 		SetLineType(0);
 		SetLineThickness(0);
-		SetColor(GRAY_RUN);
-		while(!Bar(168,66,188,260));
+		GFX_ColorSet(GRAY_RUN);
+		while(!GFX_BarDraw(168,66,188,260));
 		
-		SetColor(YELLOW_RUN);
-		while(!Bar(168, ((260 - press2hight(press2_mmHg)) < 66 ? 66 : (260 - press2hight(press2_mmHg))),188,260));
+		GFX_ColorSet(YELLOW_RUN);
+		while(!GFX_BarDraw(168, ((260 - press2hight(press2_mmHg)) < 66 ? 66 : (260 - press2hight(press2_mmHg))),188,260));
 	}
 	else if(page_display == CHECKUP_ACBATTERY)
 	{
@@ -670,7 +670,7 @@ void UpdateCheckup(void)
 			EbSetText((EDITBOX*)pObj,val_str1);   
 			SetState((EDITBOX*) pObj, EB_DRAW);
 		}
-//		EbCreate(Checkup_OBJ_EDITBOX_0,35,45,205,84,EB_DRAW/*|EB_FOCUSED|EB_DRAW_CARET*/,val_str1/*8(XCHAR*)Checkup_OBJ_EDITBOX_0_text*/,16,defscheme);
+//		EbCreate(Checkup_OBJ_EDITBOX_0,35,45,205,84,EB_DRAW/*|EB_FOCUSED|EB_DRAW_CARET*/,val_str1/*8(GFX_XCHAR*)Checkup_OBJ_EDITBOX_0_text*/,16,defscheme);
 	}
 	else if(page_display == CHECKUP_SENSORS)
 	{
@@ -682,13 +682,13 @@ void UpdateCheckup(void)
                                 _init_prog_address(p, Checkup_OBJ_STATICTEXT_3_text);
                                 basicscheme->CommonBkColor = RED;
                                 _strncpy_p2d16(gStr1,p,128);
-//                        	StCreate(Checkup_OBJ_STATICTEXT_1,60,120,185,180,ST_DRAW|ST_CENTER_ALIGN|ST_FRAME,(XCHAR*)gStr1,basicscheme);
+//                        	GFX_GOL_StaticTextCreate(Checkup_OBJ_STATICTEXT_1,60,120,185,180,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)gStr1,basicscheme);
                         }
                         else{
                                 _init_prog_address(p, Checkup_OBJ_STATICTEXT_4_text);
                                 basicscheme->CommonBkColor = GREEN;
                                 _strncpy_p2d16(gStr1,p,128);
-//        			StCreate(Checkup_OBJ_STATICTEXT_1,60,120,185,180,ST_DRAW|ST_CENTER_ALIGN|ST_FRAME,(XCHAR*)gStr1,basicscheme);
+//        			GFX_GOL_StaticTextCreate(Checkup_OBJ_STATICTEXT_1,60,120,185,180,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)gStr1,basicscheme);
                         }
 
 			StSetText((STATICTEXT*) pObj, gStr1);
@@ -700,7 +700,7 @@ void UpdateCheckup(void)
 			EbSetText((EDITBOX*)pObj,val_str1);
 			SetState((EDITBOX*) pObj, EB_DRAW);
 		}
-//		EbCreate(Checkup_OBJ_EDITBOX_0,35,45,205,84,EB_DRAW/*|EB_FOCUSED|EB_DRAW_CARET*/,val_str1/*8(XCHAR*)Checkup_OBJ_EDITBOX_0_text*/,16,defscheme);
+//		EbCreate(Checkup_OBJ_EDITBOX_0,35,45,205,84,EB_DRAW/*|EB_FOCUSED|EB_DRAW_CARET*/,val_str1/*8(GFX_XCHAR*)Checkup_OBJ_EDITBOX_0_text*/,16,defscheme);
 	}
 
 
@@ -742,7 +742,7 @@ void UpdateCheckup(void)
 		EbSetText((EDITBOX*)pObj,test_str); 
  		SetState((EDITBOX*) pObj, EB_DRAW);
 //		StSetText(pObj,test_str); 
-// 		SetState((STATICTEXT*) pObj, ST_DRAW);
+// 		SetState((STATICTEXT*) pObj, GFX_GOL_STATICTEXT_DRAW_STATE);
 // 		SetState((STATICTEXT*) pObj, ST_UPDATE);
 	
 	}

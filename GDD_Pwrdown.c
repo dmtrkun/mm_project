@@ -4,12 +4,12 @@
 #include "include.h"
 
 // Strings
-const XCHAR Pwrdown_OBJ_STATICTEXT_0_text[] = "POWER DOWN?";
-const XCHAR Pwrdown_OBJ_STATICTEXT_1_text[] = "error description";
-static XCHAR str[30];
+const GFX_XCHAR Pwrdown_OBJ_STATICTEXT_0_text[] = "POWER DOWN?";
+const GFX_XCHAR Pwrdown_OBJ_STATICTEXT_1_text[] = "error description";
+static GFX_XCHAR str[30];
 
 
-//const XCHAR Pwrdown_OBJ_BUTTON_7_text[] = "EXIT";
+//const GFX_XCHAR Pwrdown_OBJ_BUTTON_7_text[] = "EXIT";
 
 #define Pwrdown_OBJ_STATICTEXT_0		  0
 #define Pwrdown_OBJ_STATICTEXT_1		  1
@@ -26,11 +26,11 @@ static XCHAR str[30];
 
 static unsigned char pwrdown_cnt;
 
-static GOL_SCHEME*	pScheme;
+static GFX_GOL_OBJ_SCHEME*	pScheme;
 void PwrdownShemes(void)
 {
-	pScheme = GOLCreateScheme();
-	memcpy(pScheme, defscheme, sizeof(GOL_SCHEME));
+	pScheme = CreateScheme();
+	memcpy(pScheme, defscheme, sizeof(GFX_GOL_OBJ_SCHEME));
 	pScheme->Color0 = RED;
 	pScheme->TextColor0 = BLACK;
 	pScheme->Color1 = RED;
@@ -49,24 +49,24 @@ void CreatePwrdown(void)
 			while(1);
 	}
 
-	GOLFree();
-	SetColor(BLUE_LIGHT);
-	ClearDevice();
+	GFX_GOL_ObjectListFree();
+	GFX_ColorSet(BLUE_LIGHT);
+	GFX_ScreenClear();
 
 
 	sprintf(str,"HOLD BUTTON\r\n3 SECONDS");
-	StCreate(Pwrdown_OBJ_STATICTEXT_1,38,55,192,145,ST_DRAW|ST_CENTER_ALIGN,str,pScheme);
+	GFX_GOL_StaticTextCreate(Pwrdown_OBJ_STATICTEXT_1,38,55,192,145,GFX_GOL_STATICTEXT_DRAW_STATE,str,GFX_ALIGN_CENTER,pScheme);
 
 //	DmCreate(Pwrdown_OBJ_DIGITALMETER_0, 150, 48, 236, 86, DM_DRAW | DM_FRAME | DM_CENTER_ALIGN, 0, 4, 0, botbar);
 //	DmCreate(Pwrdown_OBJ_DIGITALMETER_1, 150, 94, 236, 132, DM_DRAW | DM_FRAME | DM_CENTER_ALIGN, 0, 4, 0, botbar);
 //	DmCreate(Pwrdown_OBJ_DIGITALMETER_2, 150, 140, 236, 178, DM_DRAW | DM_FRAME | DM_CENTER_ALIGN, 0, 4, 0, botbar);
 //	DmCreate(Pwrdown_OBJ_DIGITALMETER_3, 150, 186, 236, 224, DM_DRAW | DM_FRAME | DM_CENTER_ALIGN, 0, 4, 0, botbar);
 	 
-//	BtnCreate(Pwrdown_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(XCHAR*)Pwrdown_OBJ_BUTTON_7_text,botbar);
-//	BtnCreate(Pwrdown_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,&Larrow,(XCHAR*)Test_OBJ_BUTTON_8_Pwrdown,botbar);
-//	BtnCreate(Pwrdown_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,&Rarrow,(XCHAR*)Test_OBJ_BUTTON_9_Pwrdown,botbar);
+//	BtnCreate(Pwrdown_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Pwrdown_OBJ_BUTTON_7_text,botbar);
+//	BtnCreate(Pwrdown_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,&Larrow,(GFX_XCHAR*)Test_OBJ_BUTTON_8_Pwrdown,botbar);
+//	BtnCreate(Pwrdown_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,&Rarrow,(GFX_XCHAR*)Test_OBJ_BUTTON_9_Pwrdown,botbar);
 
-	StCreate(Pwrdown_OBJ_STATICTEXT_0,1,0,238,30,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)Pwrdown_OBJ_STATICTEXT_0_text,topbar);
+	GFX_GOL_StaticTextCreate(Pwrdown_OBJ_STATICTEXT_0,1,0,238,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Pwrdown_OBJ_STATICTEXT_0_text,GFX_ALIGN_CENTER,topbar);
 
 }
 
@@ -75,13 +75,13 @@ display_graf(unsigned char height)
 	unsigned char i;
 		SetLineType(0);
 		SetLineThickness(0);
-		SetColor(BLUE_LIGHT);
-		while(!Bar(20,299-9*15,219,309));
-		SetColor(GREEN);
+		GFX_ColorSet(BLUE_LIGHT);
+		while(!GFX_BarDraw(20,299-9*15,219,309));
+		GFX_ColorSet(GREEN);
 		for(i = 0;i<height;i++ )
 		{
-//			while(!Bar(20,279,219,319));
-			while(!Bar(20,299-i*15,219,309-i*15));
+//			while(!GFX_BarDraw(20,279,219,319));
+			while(!GFX_BarDraw(20,299-i*15,219,309-i*15));
 		}
 	
 }
@@ -92,13 +92,13 @@ void CreatePrimitivesForPwrdown(void){
 
 void UpdatePwrdown(void)
 {
-//	OBJ_HEADER* pObj;
+//	GFX_GOL_OBJ_HEADER* pObj;
 
 }
 
 
 /*********************************************************************
- * Function:        WORD msgPwrdown(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+ * Function:        WORD msgPwrdown(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
  *
  * PreCondition:    None
  *
@@ -114,7 +114,7 @@ void UpdatePwrdown(void)
  * Note:            
  ********************************************************************/
 
-WORD msgPwrdown(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+WORD msgPwrdown(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
 	if(pObj == NULL)
 	{
@@ -147,9 +147,9 @@ WORD msgPwrdown(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		return 1;	
 	}
 	
-	switch (GetObjID(pObj)) {
+	switch (GFX_GOL_ObjectIDGet(pObj)) {
 		case Pwrdown_OBJ_BUTTON_7:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 //				GDDSetScreen(CREATE_SCREEN_OPTIONS,0,NULL);
 				if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
    	     			xTimerStop( xTimers[ 1 ], 0 );
@@ -159,7 +159,7 @@ WORD msgPwrdown(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			return 1;
 		case Pwrdown_OBJ_BUTTON_8:
 		case Pwrdown_OBJ_BUTTON_9:
-//			if (objMsg == BTN_MSG_RELEASED) {
+//			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 //				GDDDemoNextScreen();
 //			}	
 			return 1;

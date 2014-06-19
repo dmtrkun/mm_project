@@ -275,15 +275,15 @@ WORD GOLCanBeFocused(OBJ_HEADER *object)
 * Note: none
 *
 ********************************************************************/
-GOL_SCHEME *GOLCreateScheme(void)
+GFX_GOL_OBJ_SCHEME *GOLCreateScheme(void)
 {
-    GOL_SCHEME  *pTemp;
+	GFX_GOL_OBJ_SCHEME  *pTemp;
 
-    pTemp = (GOL_SCHEME *)GFX_malloc(sizeof(GOL_SCHEME));
+    pTemp = (GFX_GOL_OBJ_SCHEME *)GFX_malloc(sizeof(GFX_GOL_OBJ_SCHEME));
 
     if(pTemp != NULL)
     {
-        memcpy(pTemp, &GFX_SCHEMEDEFAULT, sizeof(GOL_SCHEME));
+        memcpy(pTemp, &GFX_SCHEMEDEFAULT, sizeof(GFX_GOL_OBJ_SCHEME));
     }
 
     return (pTemp);

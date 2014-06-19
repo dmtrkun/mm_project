@@ -15,10 +15,10 @@
 
 #ifdef GDD_SETDRUG_PUB
 #else
-extern GFX_IMAGE_HEADER const* drug_images[];
+extern GFX_RESOURCE_HDR const* drug_images[];
 #endif
 
 GDD_SETDRUGPUB void CreateSetdrug(void);
 GDD_SETDRUGPUB void CreatePrimitivesForSetdrug(void);
-GDD_SETDRUGPUB WORD msgSetdrug(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
+GDD_SETDRUGPUB WORD msgSetdrug(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 #endif

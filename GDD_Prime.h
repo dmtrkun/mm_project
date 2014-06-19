@@ -18,5 +18,5 @@
 
 GDD_PRIMEPUB void CreatePrime(void);
 GDD_PRIMEPUB void CreatePrimitivesForPrime(void);
-GDD_PRIMEPUB WORD msgPrime(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
+GDD_PRIMEPUB WORD msgPrime(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 #endif

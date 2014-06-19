@@ -8,19 +8,19 @@
 #include "include.h"
 
 // Strings
-const XCHAR Test_OBJ_STATICTEXT_0_text[] = "TEST";
-const XCHAR Test_OBJ_EDITBOX_1_text[] = "TEST";
+const GFX_XCHAR Test_OBJ_STATICTEXT_0_text[] = "TEST";
+const GFX_XCHAR Test_OBJ_EDITBOX_1_text[] = "TEST";
 
-//const XCHAR Test_OBJ_BUTTON_0_text[] = "SET PROGRAM";
-const XCHAR Test_OBJ_BUTTON_1_text[] = "SET PARAMETER";
-const XCHAR Test_OBJ_BUTTON_2_text[] = "CHECKUP";
-const XCHAR Test_OBJ_BUTTON_3_text[] = "SET DATE";
-const XCHAR Test_OBJ_BUTTON_4_text[] = "BUTTON_4";
-const XCHAR Test_OBJ_BUTTON_5_text[] = "BUTTON_5";
-const XCHAR Test_OBJ_BUTTON_6_text[] = "BUTTON_6";
-//const XCHAR Test_OBJ_BUTTON_7_text[] = "EXIT";
-const XCHAR Test_OBJ_BUTTON_8_text[] = "RUN";
-const XCHAR Test_OBJ_BUTTON_9_text[] = "STOP";
+//const GFX_XCHAR Test_OBJ_BUTTON_0_text[] = "SET PROGRAM";
+const GFX_XCHAR Test_OBJ_BUTTON_1_text[] = "SET PARAMETER";
+const GFX_XCHAR Test_OBJ_BUTTON_2_text[] = "CHECKUP";
+const GFX_XCHAR Test_OBJ_BUTTON_3_text[] = "SET DATE";
+const GFX_XCHAR Test_OBJ_BUTTON_4_text[] = "BUTTON_4";
+const GFX_XCHAR Test_OBJ_BUTTON_5_text[] = "BUTTON_5";
+const GFX_XCHAR Test_OBJ_BUTTON_6_text[] = "BUTTON_6";
+//const GFX_XCHAR Test_OBJ_BUTTON_7_text[] = "EXIT";
+const GFX_XCHAR Test_OBJ_BUTTON_8_text[] = "RUN";
+const GFX_XCHAR Test_OBJ_BUTTON_9_text[] = "STOP";
 
 #define Test_OBJ_STATICTEXT_0		  100
 #define Test_OBJ_DIGITALMETER_0   101
@@ -41,41 +41,41 @@ const XCHAR Test_OBJ_BUTTON_9_text[] = "STOP";
 #define Test_OBJ_STATICTEXT_1		  115
 
 static CONTROL_MSG cMsg;
-XCHAR	bat_str[17];
-XCHAR	test_str[100];
-XCHAR	press1_str[30];
-static XCHAR	press2_str[30];
-static XCHAR	calib_str[87];
+GFX_XCHAR	bat_str[17];
+GFX_XCHAR	test_str[100];
+GFX_XCHAR	press1_str[30];
+static GFX_XCHAR	press2_str[30];
+static GFX_XCHAR	calib_str[87];
 
 void CreateTest(void)
 {         
 	
 	strcpy(test_str,Test_OBJ_EDITBOX_1_text);
-	GOLFree();
-	SetColor(BLUE_LIGHT);
-	ClearDevice();
+	GFX_GOL_ObjectListFree();
+	GFX_ColorSet(BLUE_LIGHT);
+	GFX_ScreenClear();
 	xTimerStart( xTimers[ 1 ], 0 );
 
 
 //	DmCreate(Test_OBJ_DIGITALMETER_0, 150, 48, 236, 86, DM_DRAW | DM_FRAME | DM_CENTER_ALIGN, 0, 5, 1, botbar);
-	EbCreate(Test_OBJ_EDITBOX_4,120,106,236,146, EB_DRAW,(XCHAR*)bat_str, 16 ,botbar);
+	EbCreate(Test_OBJ_EDITBOX_4,120,106,236,146, EB_DRAW,(GFX_XCHAR*)bat_str, 16 ,botbar);
 //	DmCreate(Test_OBJ_DIGITALMETER_1, 150, 94, 236, 132, DM_DRAW | DM_FRAME | DM_CENTER_ALIGN, 0, 5, 0, botbar);
 //	DmCreate(Test_OBJ_DIGITALMETER_2, 150, 140, 236, 178, DM_DRAW | DM_FRAME | DM_CENTER_ALIGN, 0, 5, 0, botbar);
-	EbCreate(Test_OBJ_EDITBOX_2,120,150,236,208, EB_DRAW,(XCHAR*)press1_str, 29 ,botbar);
+	EbCreate(Test_OBJ_EDITBOX_2,120,150,236,208, EB_DRAW,(GFX_XCHAR*)press1_str, 29 ,botbar);
 //	DmCreate(Test_OBJ_DIGITALMETER_3, 150, 186, 236, 224, DM_DRAW | DM_FRAME | DM_CENTER_ALIGN, 0, 5, 0, botbar);
-	EbCreate(Test_OBJ_EDITBOX_3,120,212,236,270, EB_DRAW,(XCHAR*)press2_str, 29 ,blackScheme);
+	EbCreate(Test_OBJ_EDITBOX_3,120,212,236,270, EB_DRAW,(GFX_XCHAR*)press2_str, 29 ,blackScheme);
 	 
-	BtnCreate(Test_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
-	BtnCreate(Test_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,NULL,(XCHAR*)Test_OBJ_BUTTON_8_text,botbar);
-	BtnCreate(Test_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,NULL,(XCHAR*)Test_OBJ_BUTTON_9_text,botbar);
+	BtnCreate(Test_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+	BtnCreate(Test_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Test_OBJ_BUTTON_8_text,botbar);
+	BtnCreate(Test_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Test_OBJ_BUTTON_9_text,botbar);
 
-	StCreate(Test_OBJ_STATICTEXT_0,0,0,239,30,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)Test_OBJ_STATICTEXT_0_text,topbar);
-//	StCreate(Test_OBJ_STATICTEXT_1,2,48,150,140,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)test_str,blackScheme);
+	GFX_GOL_StaticTextCreate(Test_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Test_OBJ_STATICTEXT_0_text,GFX_ALIGN_CENTER,topbar);
+//	GFX_GOL_StaticTextCreate(Test_OBJ_STATICTEXT_1,2,48,150,140,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,(GFX_XCHAR*)test_str,blackScheme);
 
-	EbCreate(Test_OBJ_EDITBOX_1,2,48,236,88, EB_DRAW,(XCHAR*)test_str, 50 ,blackScheme);
+	EbCreate(Test_OBJ_EDITBOX_1,2,48,236,88, EB_DRAW,(GFX_XCHAR*)test_str, 50 ,blackScheme);
 //	sprintf(calib_str,"Z1=%d\r\nZ2=%d\r\nS1=%d\r\nS1=%d\r\nC1=%d\r\nC2=%d",zero_press1,zero_press2,set_press1,set_press2,scale_press1,scale_press2);
 	sprintf(calib_str,"max=%d\r\nmin=%d\r\nlast=%d\r\ncurr=%d",rotate_debug_max,rotate_debug_min,rotate_debug_last,rotate_det_cntr);
-	StCreate(Test_OBJ_STATICTEXT_0,2,124,110,268,ST_DRAW,(XCHAR*)calib_str,blackScheme);
+	GFX_GOL_StaticTextCreate(Test_OBJ_STATICTEXT_0,2,124,110,268,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)calib_str,GFX_ALIGN_LEFT,blackScheme);
 
 
 
@@ -83,12 +83,12 @@ void CreateTest(void)
 void CreatePrimitivesForTest(void){
 //		SetLineType(0);
 //		SetLineThickness(0);
-//		SetColor(BLUE_DARK);
-//		while(!Bar(0,279,239,319));
+//		GFX_ColorSet(BLUE_DARK);
+//		while(!GFX_BarDraw(0,279,239,319));
 }
 void UpdateTest(void)
 {
-	OBJ_HEADER* pObj;
+	GFX_GOL_OBJ_HEADER* pObj;
 	time_t time_val;
 
 	 
@@ -126,14 +126,14 @@ void UpdateTest(void)
 		EbSetText((EDITBOX*)pObj,test_str); 
  		SetState((EDITBOX*) pObj, EB_DRAW);
 //		StSetText(pObj,test_str); 
-// 		SetState((STATICTEXT*) pObj, ST_DRAW);
+// 		SetState((STATICTEXT*) pObj, GFX_GOL_STATICTEXT_DRAW_STATE);
 // 		SetState((STATICTEXT*) pObj, ST_UPDATE);
 	}
 	pObj = GOLFindObject(Test_OBJ_STATICTEXT_0);
 	if (pObj) {
 		sprintf(calib_str,"max=%d\r\nmin=%d\r\nlast=%d\r\ncurr=%d",rotate_debug_max,rotate_debug_min,rotate_debug_last,rotate_det_cntr);
 		StSetText((STATICTEXT*)pObj,calib_str);   
- 		SetState((STATICTEXT*) pObj, ST_DRAW);
+ 		SetState((STATICTEXT*) pObj, GFX_GOL_STATICTEXT_DRAW_STATE);
 	}
 
 	
@@ -146,7 +146,7 @@ void UpdateTest(void)
 
 
 /*********************************************************************
- * Function:        WORD msgMain(WORD objMsg, OBJ_HEADER* pObj)
+ * Function:        WORD msgMain(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
  *
  * PreCondition:    None
  *
@@ -162,7 +162,7 @@ void UpdateTest(void)
  * Note:            
  ********************************************************************/
 
-WORD msgTest(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+WORD msgTest(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
 	if(pObj == NULL)
 	{
@@ -235,9 +235,9 @@ WORD msgTest(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		}
 		return 1;	
 	}
-	switch (GetObjID(pObj)) {
+	switch (GFX_GOL_ObjectIDGet(pObj)) {
 		case Test_OBJ_BUTTON_7:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				cMsg.cmd = MSG_CONTROL_STOP_INFUS;
 				xQueueSend(hCONTROLQueue, &cMsg, 0);
 				if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
@@ -246,7 +246,7 @@ WORD msgTest(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			}	
 			return 1;
 		case Test_OBJ_BUTTON_8:
-			if (objMsg == BTN_MSG_RELEASED) 
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 			{
 				if(GetDoorState())
 				{
@@ -266,7 +266,7 @@ WORD msgTest(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			}	
 			return 1;
 		case Test_OBJ_BUTTON_9:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				cMsg.cmd = MSG_CONTROL_STOP_INFUS;
 				xQueueSend(hCONTROLQueue, &cMsg, 0);
 			}	

@@ -131,7 +131,7 @@ void BeepInit(void)
 	IPC0bits.OC1IP = 7;
 
 #if 0
-	beepTimer = xTimerCreate(  (XCHAR*)"BeepTmr",        /* Just a text name, not used by the kernel. */
+	beepTimer = xTimerCreate(  (GFX_XCHAR*)"BeepTmr",        /* Just a text name, not used by the kernel. */
                                        ( 1 ),    /* The timer period in ticks. */
                                        pdTRUE,         /* The timers will auto-reload themselves when they expire. */
                                        ( void * ) 1,   /* Assign each timer a unique id equal to its array index. */

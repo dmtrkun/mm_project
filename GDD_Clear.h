@@ -15,6 +15,6 @@
 
 GDD_CLEARPUB void CreateClear(void);
 GDD_CLEARPUB void CreatePrimitivesForClear(void);
-GDD_CLEARPUB WORD msgClear(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
+GDD_CLEARPUB WORD msgClear(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 
 #endif

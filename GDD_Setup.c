@@ -19,25 +19,25 @@
 //PRIME
 //}ADJUST_STATES;
 
-const XCHAR Setup_OBJ_BUTTON_0_text[] = "0";
-const XCHAR Setup_OBJ_BUTTON_1_text[] = "1";
-const XCHAR Setup_OBJ_BUTTON_2_text[] = "2";
-const XCHAR Setup_OBJ_BUTTON_3_text[] = "3";
-const XCHAR Setup_OBJ_BUTTON_4_text[] = "4";
-const XCHAR Setup_OBJ_BUTTON_5_text[] = "5";
-const XCHAR Setup_OBJ_BUTTON_6_text[] = "6";
-const XCHAR Setup_OBJ_BUTTON_7_text[] = "7";
-const XCHAR Setup_OBJ_BUTTON_8_text[] = "8";
-const XCHAR Setup_OBJ_BUTTON_9_text[] = "9";
-const XCHAR Setup_OBJ_BUTTON_10_text[] = ".";
-const XCHAR Setup_OBJ_BUTTON_11_text[] = "NO LIMIT";
-const XCHAR Setup_OBJ_BUTTON_MINUS_text[] = "-";
+const GFX_XCHAR Setup_OBJ_BUTTON_0_text[] = "0";
+const GFX_XCHAR Setup_OBJ_BUTTON_1_text[] = "1";
+const GFX_XCHAR Setup_OBJ_BUTTON_2_text[] = "2";
+const GFX_XCHAR Setup_OBJ_BUTTON_3_text[] = "3";
+const GFX_XCHAR Setup_OBJ_BUTTON_4_text[] = "4";
+const GFX_XCHAR Setup_OBJ_BUTTON_5_text[] = "5";
+const GFX_XCHAR Setup_OBJ_BUTTON_6_text[] = "6";
+const GFX_XCHAR Setup_OBJ_BUTTON_7_text[] = "7";
+const GFX_XCHAR Setup_OBJ_BUTTON_8_text[] = "8";
+const GFX_XCHAR Setup_OBJ_BUTTON_9_text[] = "9";
+const GFX_XCHAR Setup_OBJ_BUTTON_10_text[] = ".";
+const GFX_XCHAR Setup_OBJ_BUTTON_11_text[] = "NO LIMIT";
+const GFX_XCHAR Setup_OBJ_BUTTON_MINUS_text[] = "-";
 
-const XCHAR Setup_OBJ_BUTTON_12_text[] = "CLEAR";
-//const XCHAR Setup_OBJ_BUTTON_13_text[] = "EXIT";
-const XCHAR Setup_OBJ_BUTTON_14_text[] = "OK";
+const GFX_XCHAR Setup_OBJ_BUTTON_12_text[] = "CLEAR";
+//const GFX_XCHAR Setup_OBJ_BUTTON_13_text[] = "EXIT";
+const GFX_XCHAR Setup_OBJ_BUTTON_14_text[] = "OK";
 
-//const XCHAR Setup_OBJ_EDITBOX_0_text[] = "289.6";
+//const GFX_XCHAR Setup_OBJ_EDITBOX_0_text[] = "289.6";
 
 #define Setup_OBJ_BUTTON_0   0
 #define Setup_OBJ_BUTTON_1   1
@@ -76,7 +76,7 @@ static PARA_SPECS_t * pSpecs;
 #define Setup_OBJ_RADIOBUTTON_2   19
 #define Setup_OBJ_RADIOBUTTON_3   20
 
-//const XCHAR ItemList[] = "Line1n" "Line2n";
+//const GFX_XCHAR ItemList[] = "Line1n" "Line2n";
  
 
 void CreateSetup(void)
@@ -84,9 +84,9 @@ void CreateSetup(void)
 	unsigned char i;
 	state = 0;
 	dig_place = 6;
-	GOLFree();
-	SetColor(BLUE_LIGHT);
-	ClearDevice();
+	GFX_GOL_ObjectListFree();
+	GFX_ColorSet(BLUE_LIGHT);
+	GFX_ScreenClear();
 
 	if(inp_param != NULL)
 		pSpecs = (PARA_SPECS_t *)inp_param;
@@ -151,47 +151,47 @@ void CreateSetup(void)
 		case SETUP_OCC_LOW:
 		case SETUP_AIL_LIMITMAX:
 		default:
-			BtnCreate(Setup_OBJ_BUTTON_1,13,92,75,129,5,BTN_DRAW,NULL,(XCHAR*)Setup_OBJ_BUTTON_1_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_2,89,92,152,129,5,BTN_DRAW,NULL,(XCHAR*)Setup_OBJ_BUTTON_2_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_3,164,92,227,129,5,BTN_DRAW,NULL,(XCHAR*)Setup_OBJ_BUTTON_3_text,defscheme);
+			BtnCreate(Setup_OBJ_BUTTON_1,13,92,75,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_1_text,defscheme);
+			BtnCreate(Setup_OBJ_BUTTON_2,89,92,152,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_2_text,defscheme);
+			BtnCreate(Setup_OBJ_BUTTON_3,164,92,227,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_3_text,defscheme);
 	
-			BtnCreate(Setup_OBJ_BUTTON_4,13,138,75,175,5,BTN_DRAW,NULL,(XCHAR*)Setup_OBJ_BUTTON_4_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_5,89,138,152,175,5,BTN_DRAW,NULL,(XCHAR*)Setup_OBJ_BUTTON_5_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_6,164,138,227,175,5,BTN_DRAW,NULL,(XCHAR*)Setup_OBJ_BUTTON_6_text,defscheme);
+			BtnCreate(Setup_OBJ_BUTTON_4,13,138,75,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_4_text,defscheme);
+			BtnCreate(Setup_OBJ_BUTTON_5,89,138,152,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_5_text,defscheme);
+			BtnCreate(Setup_OBJ_BUTTON_6,164,138,227,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_6_text,defscheme);
 	
-			BtnCreate(Setup_OBJ_BUTTON_7,13,184,75,221,5,BTN_DRAW,NULL,(XCHAR*)Setup_OBJ_BUTTON_7_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_8,89,184,152,221,5,BTN_DRAW,NULL,(XCHAR*)Setup_OBJ_BUTTON_8_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_9,164,184,227,221,5,BTN_DRAW,NULL,(XCHAR*)Setup_OBJ_BUTTON_9_text,defscheme);
+			BtnCreate(Setup_OBJ_BUTTON_7,13,184,75,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_7_text,defscheme);
+			BtnCreate(Setup_OBJ_BUTTON_8,89,184,152,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_8_text,defscheme);
+			BtnCreate(Setup_OBJ_BUTTON_9,164,184,227,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_9_text,defscheme);
 	
-			BtnCreate(Setup_OBJ_BUTTON_10,13,229,75,266,5,BTN_DRAW,NULL,(XCHAR*)Setup_OBJ_BUTTON_10_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_0,89,229,152,266,5,BTN_DRAW,NULL,(XCHAR*)Setup_OBJ_BUTTON_0_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_12,7,277,67,312,5,BTN_DRAW,NULL,(XCHAR*)Setup_OBJ_BUTTON_12_text,botbar);
+			BtnCreate(Setup_OBJ_BUTTON_10,13,229,75,266,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_10_text,defscheme);
+			BtnCreate(Setup_OBJ_BUTTON_0,89,229,152,266,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_0_text,defscheme);
+			BtnCreate(Setup_OBJ_BUTTON_12,7,277,67,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_12_text,botbar);
 			ValToStr(pSpecs->unit, adj_vali, adj_val, padj_val, adj_val_str);  
-			pSetup_OBJ_EDITBOX_0 = EbCreate(Setup_OBJ_EDITBOX_0,55,45,185,84,EB_DRAW/*|EB_FOCUSED|EB_DRAW_CARET*/,adj_val_str/*8(XCHAR*)Setup_OBJ_EDITBOX_0_text*/,16,defscheme);
+			pSetup_OBJ_EDITBOX_0 = EbCreate(Setup_OBJ_EDITBOX_0,55,45,185,84,EB_DRAW/*|EB_FOCUSED|EB_DRAW_CARET*/,adj_val_str/*8(GFX_XCHAR*)Setup_OBJ_EDITBOX_0_text*/,16,defscheme);
 		break;
 	}
 	
 	 
-	BtnCreate(Setup_OBJ_BUTTON_13,90,277,150,312,5,BTN_DRAW,NULL,(XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
-	BtnCreate(Setup_OBJ_BUTTON_14,172,277,232,312,5,BTN_DRAW,NULL,(XCHAR*)Setup_OBJ_BUTTON_14_text,botbar);
+	BtnCreate(Setup_OBJ_BUTTON_13,90,277,150,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+	BtnCreate(Setup_OBJ_BUTTON_14,172,277,232,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_14_text,botbar);
 
-//	StCreate(Setup_OBJ_STATICTEXT_0,1,0,239,30,ST_DRAW,(XCHAR*)Setup_OBJ_STATICTEXT_0_text[page_create],topbar);
-	StCreate(Setup_OBJ_STATICTEXT_0,1,0,239,30,ST_DRAW,(XCHAR*)pSpecs->title,topbar);
-	PictCreate(Setup_OBJ_PICTURE_0, 209,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_IMAGE_HEADER *)&setting, topbar);
+//	GFX_GOL_StaticTextCreate(Setup_OBJ_STATICTEXT_0,1,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Setup_OBJ_STATICTEXT_0_text[page_create],topbar);
+	GFX_GOL_StaticTextCreate(Setup_OBJ_STATICTEXT_0,1,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)pSpecs->title,GFX_ALIGN_LEFT,topbar);
+	GFX_GOL_PictureControlCreate(Setup_OBJ_PICTURE_0, 209,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&setting, topbar);
 	
 
 }
 void CreatePrimitivesForSetup(void){
 //		SetLineType(0);
 //		SetLineThickness(0);
-//		SetColor(11542);
-//		while(!Bar(0,279,239,319));
+//		GFX_ColorSet(11542);
+//		while(!GFX_BarDraw(0,279,239,319));
 }
 
 
 
 /*********************************************************************
- * Function:        WORD msgMain(WORD objMsg, OBJ_HEADER* pObj)
+ * Function:        WORD msgMain(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
  *
  * PreCondition:    None
  *
@@ -207,11 +207,11 @@ void CreatePrimitivesForSetup(void){
  * Note:            
  ********************************************************************/
 
-WORD msgSetup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+WORD msgSetup(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
-//	OBJ_HEADER* pSetPoint;
+//	GFX_GOL_OBJ_HEADER* pSetPoint;
 //	SHORT dialVal;
-//	OBJ_HEADER* pOtherObj;
+//	GFX_GOL_OBJ_HEADER* pOtherObj;
 	float adj_val_tmp;
 	unsigned int adj_vali_tmp;
 	struct tm rtc_tmp;
@@ -231,14 +231,14 @@ WORD msgSetup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		return 1;	
 	}
 
-	switch (GetObjID(pObj)) {
+	switch (GFX_GOL_ObjectIDGet(pObj)) {
 		
 		case Setup_OBJ_RADIOBUTTON_0:
 		case Setup_OBJ_RADIOBUTTON_1:
 		case Setup_OBJ_RADIOBUTTON_2:
 		case Setup_OBJ_RADIOBUTTON_3:
 			if (objMsg == RB_MSG_CHECKED) {
-			   adj_vali_tmp	= GetObjID(pObj);//RbGetCheck(pObj);                        
+			   adj_vali_tmp	= GFX_GOL_ObjectIDGet(pObj);//RbGetCheck(pObj);                        
 			   adj_vali = adj_vali_tmp - Setup_OBJ_RADIOBUTTON_0;
 			}	  
 			return 1;
@@ -252,49 +252,49 @@ WORD msgSetup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		case Setup_OBJ_BUTTON_7:
 		case Setup_OBJ_BUTTON_8:
 		case Setup_OBJ_BUTTON_9:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 	  			if(page_display == SETUP_TIME)
 					{
 			  		if(dig_place == 0)
 							return 1;
 						if(dig_place > 5)
 						{
-							adj_vali_tmp = GetObjID(pObj)*10;
+							adj_vali_tmp = GFX_GOL_ObjectIDGet(pObj)*10;
 							if(adj_vali_tmp > 23)
 								return 1;
 							rtc_time.tm_hour = adj_vali_tmp;
 						}
 			  		else if(dig_place > 4)
 						{
-							adj_vali_tmp = rtc_time.tm_hour + GetObjID(pObj);
+							adj_vali_tmp = rtc_time.tm_hour + GFX_GOL_ObjectIDGet(pObj);
 							if(adj_vali_tmp > 23)
 								return 1;
 							rtc_time.tm_hour = adj_vali_tmp;
 						}
 						else if(dig_place > 3)
 						{
-							adj_vali_tmp = GetObjID(pObj)*10;
+							adj_vali_tmp = GFX_GOL_ObjectIDGet(pObj)*10;
 							if(adj_vali_tmp > 59)
 								return 1;
 							rtc_time.tm_min = adj_vali_tmp;
 						}
 						else if(dig_place > 2)
 						{
-							adj_vali_tmp = rtc_time.tm_min + GetObjID(pObj);
+							adj_vali_tmp = rtc_time.tm_min + GFX_GOL_ObjectIDGet(pObj);
 							if(adj_vali_tmp > 59)
 								return 1;
 							rtc_time.tm_min = adj_vali_tmp;
 						}
 						else if(dig_place > 1)
 						{
-							adj_vali_tmp = GetObjID(pObj)*10;
+							adj_vali_tmp = GFX_GOL_ObjectIDGet(pObj)*10;
 							if(adj_vali_tmp > 59)
 								return 1;
 							rtc_time.tm_sec = adj_vali_tmp;
 						}
 						else
 						{
-							adj_vali_tmp = rtc_time.tm_sec + GetObjID(pObj);
+							adj_vali_tmp = rtc_time.tm_sec + GFX_GOL_ObjectIDGet(pObj);
 							if(adj_vali_tmp > 59)
 								return 1;
 							rtc_time.tm_sec = adj_vali_tmp;
@@ -317,31 +317,31 @@ WORD msgSetup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 							return 1;
 						if(dig_place > 5)
 						{
-							adj_vali_tmp = GetObjID(pObj);
+							adj_vali_tmp = GFX_GOL_ObjectIDGet(pObj);
 							if(adj_vali_tmp == 0)
 								adj_vali_tmp = 1;
 							else
 								adj_vali_tmp *= 10;
-//							adj_vali_tmp = GetObjID(pObj)*10;
+//							adj_vali_tmp = GFX_GOL_ObjectIDGet(pObj)*10;
 							if((adj_vali_tmp > 31)||(adj_vali_tmp < 1))
 								return 1;
 							rtc_time.tm_mday = adj_vali_tmp;
 						}
 			  		else if(dig_place > 4)
 						{
-							adj_vali_tmp = (rtc_time.tm_mday<10?0:rtc_time.tm_mday) + GetObjID(pObj);
+							adj_vali_tmp = (rtc_time.tm_mday<10?0:rtc_time.tm_mday) + GFX_GOL_ObjectIDGet(pObj);
 							if((adj_vali_tmp > 31)||(adj_vali_tmp < 1))
 								return 1;
 							rtc_time.tm_mday = adj_vali_tmp;
 						}
 						else if(dig_place > 3)
 						{
-							adj_vali_tmp = GetObjID(pObj);
+							adj_vali_tmp = GFX_GOL_ObjectIDGet(pObj);
 							if(adj_vali_tmp == 0)
 								adj_vali_tmp = 1;
 							else
 								adj_vali_tmp *= 10;
-//							adj_vali_tmp = 1 + GetObjID(pObj)*10;
+//							adj_vali_tmp = 1 + GFX_GOL_ObjectIDGet(pObj)*10;
 							if(adj_vali_tmp > 12)
 								return 1;
 							rtc_time.tm_mon = adj_vali_tmp-1;
@@ -351,21 +351,21 @@ WORD msgSetup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 							rtc_time.tm_mon++;
 							if(rtc_time.tm_mon<10)
 								rtc_time.tm_mon = 0;
-							adj_vali_tmp = rtc_time.tm_mon + GetObjID(pObj);
+							adj_vali_tmp = rtc_time.tm_mon + GFX_GOL_ObjectIDGet(pObj);
 							if((adj_vali_tmp > 12)||(adj_vali_tmp < 1))
 								return 1;
 							rtc_time.tm_mon = adj_vali_tmp-1;
 						}
 						else if(dig_place > 1)
 						{
-							adj_vali_tmp = GetObjID(pObj)*10 +100;
+							adj_vali_tmp = GFX_GOL_ObjectIDGet(pObj)*10 +100;
 							if(adj_vali_tmp > 199)
 								return 1;
 							rtc_time.tm_year = adj_vali_tmp;
 						}
 						else
 						{
-							adj_vali_tmp = rtc_time.tm_year + GetObjID(pObj);
+							adj_vali_tmp = rtc_time.tm_year + GFX_GOL_ObjectIDGet(pObj);
 							if(adj_vali_tmp > 199)
 								return 1;
 							rtc_time.tm_year = adj_vali_tmp;
@@ -386,18 +386,18 @@ WORD msgSetup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			  		return 1;
 			  	if(state == 2)
 			  	{
-			  		adj_val_tmp = adj_val + (float)GetObjID(pObj)*0.1;
+			  		adj_val_tmp = adj_val + (float)GFX_GOL_ObjectIDGet(pObj)*0.1;
 			  		state = 3;
 			  	}
 			  	else if(state == 1)
 					{
-			  		adj_val_tmp = adj_val*10.0 + (float)GetObjID(pObj);
-						adj_vali_tmp = adj_vali*10 + GetObjID(pObj);
+			  		adj_val_tmp = adj_val*10.0 + (float)GFX_GOL_ObjectIDGet(pObj);
+						adj_vali_tmp = adj_vali*10 + GFX_GOL_ObjectIDGet(pObj);
 			  	}
 					else
 			  	{
-			  		adj_vali_tmp = GetObjID(pObj);
-						adj_val_tmp = (float)GetObjID(pObj);
+			  		adj_vali_tmp = GFX_GOL_ObjectIDGet(pObj);
+						adj_val_tmp = (float)GFX_GOL_ObjectIDGet(pObj);
 						state = 1;
 			  	}
 				
@@ -445,7 +445,7 @@ WORD msgSetup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			}	
 			return 1;
 		case Setup_OBJ_BUTTON_10:          //Dot button
-			if (objMsg == BTN_MSG_RELEASED) {   //				EbAddChar(pSetup_OBJ_EDITBOX_0,'.');
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {   //				EbAddChar(pSetup_OBJ_EDITBOX_0,'.');
 				if(adj_val < 100.0)
 				{
 					state = 2;
@@ -455,7 +455,7 @@ WORD msgSetup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 //					SetState(pSetup_OBJ_EDITBOX_0, EB_DRAW);
 				}
 
-//				adj_val + (float)GetObjID(pObj);
+//				adj_val + (float)GFX_GOL_ObjectIDGet(pObj);
 //				if(adj_val < 100.0)
 //				{
 //					SetState(pSetup_OBJ_EDITBOX_0, EB_DRAW);
@@ -463,7 +463,7 @@ WORD msgSetup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			}	
 			return 1;
 		case Setup_OBJ_BUTTON_MINUS:          //Minus button
-			if (objMsg == BTN_MSG_RELEASED) {   
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {   
 				adj_vali = adj_vali*(-1L);
 				ValToStr(pSpecs->unit,adj_vali, adj_val, padj_val, adj_val_str);
 				EbSetText(pSetup_OBJ_EDITBOX_0,adj_val_str);
@@ -479,14 +479,14 @@ WORD msgSetup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			{
 				BtnSetBitmap(pObj, (char *)&NoLimit);
 				SetState((BUTTON*) pObj, BTN_DRAW);
-				if (objMsg == BTN_MSG_RELEASED)
+				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED)
 				{
 	//				GDDSetScreen(CREATE_SCREEN_TEST,0,NULL);
 				}
 			}	
 			return 1;
 		case Setup_OBJ_BUTTON_12:      //CLEAR button
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 //				adj_val = 0.0;
 //				sprintf(adj_val_str,"%.1f %s",(double)adj_val,unit[page_display]);
 				state = 0;
@@ -500,13 +500,13 @@ WORD msgSetup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			}	
 			return 1;
 		case Setup_OBJ_BUTTON_13:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 //				GDDSetScreen(CREATE_SCREEN_CLEAR,0,NULL);
 				GDDPrevScreen();
 			}	
 			return 1;
 		case Setup_OBJ_BUTTON_14:             //OK button
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				switch(page_display)
 				{
 					case SETUP_RATE_MAX:
@@ -554,7 +554,7 @@ WORD msgSetup(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 } 
 void UpdateSetup(void)
 {
-//	OBJ_HEADER* pObj;
+//	GFX_GOL_OBJ_HEADER* pObj;
 	 
 }
 

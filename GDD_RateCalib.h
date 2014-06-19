@@ -15,5 +15,5 @@
 
 GDD_RCALIBPUB void CreateRCalib(void);
 GDD_RCALIBPUB void CreatePrimitivesForRCalib(void);
-GDD_RCALIBPUB WORD msgRCalib(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
+GDD_RCALIBPUB WORD msgRCalib(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 #endif

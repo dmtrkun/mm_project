@@ -22,5 +22,5 @@
 
 GDD_BOLUSPUB void CreateBolus(void);
 GDD_BOLUSPUB void CreatePrimitivesForBolus(void);
-GDD_BOLUSPUB WORD msgBolus(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
+GDD_BOLUSPUB WORD msgBolus(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 #endif

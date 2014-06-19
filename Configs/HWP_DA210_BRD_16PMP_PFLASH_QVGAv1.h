@@ -54,7 +54,7 @@
 /*********************************************************************
 * PIC Device Specific includes
 *********************************************************************/
-    #include "Compiler.h"
+//    #include "Compiler.h"
 
 /*********************************************************************
 * GetSystemClock() returns system clock frequency.
@@ -144,13 +144,13 @@
 
 #elif defined GFX_USE_DISPLAY_PANEL_TFT_FSK430WQAV4F_420272
 
-#define GFX_GCLK_DIVIDER 43
-#define GFX_DISPLAY_BUFFER_START_ADDRESS 0x00020000ul
-#define GFX_DISPLAY_BUFFER_LENGTH 0x0003fc00ul
-#define GFX_EPMP_CS1_BASE_ADDRESS 0x00020000ul
-#define GFX_EPMP_CS1_MEMORY_SIZE 0x80000ul
-#define GFX_EPMP_CS2_BASE_ADDRESS (0x00020000ul+GFX_EPMP_CS1_MEMORY_SIZE)
-#define GFX_EPMP_CS2_MEMORY_SIZE 0x80000ul
+//#define GFX_GCLK_DIVIDER 43
+//#define GFX_DISPLAY_BUFFER_START_ADDRESS 0x00020000ul
+//#define GFX_DISPLAY_BUFFER_LENGTH 0x0003fc00ul
+//#define GFX_EPMP_CS1_BASE_ADDRESS 0x00020000ul
+//#define GFX_EPMP_CS1_MEMORY_SIZE 0x80000ul
+//#define GFX_EPMP_CS2_BASE_ADDRESS (0x00020000ul+GFX_EPMP_CS1_MEMORY_SIZE)
+//#define GFX_EPMP_CS2_MEMORY_SIZE 0x80000ul
 
 #endif
 
@@ -500,29 +500,29 @@
 
 // Using FS-K430WQA-V4-F Display Panel
 	#if defined (GFX_USE_DISPLAY_PANEL_TFT_FSK430WQAV4F_420272)
-		#define DISP_ORIENTATION		270
-        #define DISP_HOR_RESOLUTION		480
-        #define DISP_VER_RESOLUTION		272
-        #define DISP_DATA_WIDTH			16
-//        #define DISP_INV_LSHIFT
-        #define DISP_HOR_PULSE_WIDTH    1
-        #define DISP_HOR_BACK_PORCH    	40
-        #define DISP_HOR_FRONT_PORCH    5
-        #define DISP_VER_PULSE_WIDTH    1
-        #define DISP_VER_BACK_PORCH     8
-        #define DISP_VER_FRONT_PORCH    8
-    	#define GFX_LCD_TYPE            GFX_LCD_TFT
+//		#define DISP_ORIENTATION		270
+//        #define DISP_HOR_RESOLUTION		480
+//        #define DISP_VER_RESOLUTION		272
+//        #define DISP_DATA_WIDTH			16
+////        #define DISP_INV_LSHIFT
+//        #define DISP_HOR_PULSE_WIDTH    1
+//        #define DISP_HOR_BACK_PORCH    	40
+//        #define DISP_HOR_FRONT_PORCH    5
+//        #define DISP_VER_PULSE_WIDTH    1
+//        #define DISP_VER_BACK_PORCH     8
+//        #define DISP_VER_FRONT_PORCH    8
+//    	#define GFX_LCD_TYPE            GFX_LCD_TFT
 
         #if defined (GFX_USE_DISPLAY_CONTROLLER_MCHP_DA210)
-            #define GFX_DISPLAYENABLE_ENABLE
-            #define GFX_HSYNC_ENABLE
-            #define GFX_VSYNC_ENABLE
-            #define GFX_DISPLAYPOWER_ENABLE
-            #define GFX_CLOCK_POLARITY                  GFX_ACTIVE_HIGH
-            #define GFX_DISPLAYENABLE_POLARITY          GFX_ACTIVE_HIGH
-            #define GFX_HSYNC_POLARITY                  GFX_ACTIVE_LOW
-            #define GFX_VSYNC_POLARITY                  GFX_ACTIVE_LOW
-            #define GFX_DISPLAYPOWER_POLARITY           GFX_ACTIVE_HIGH
+//            #define GFX_DISPLAYENABLE_ENABLE
+//            #define GFX_HSYNC_ENABLE
+//            #define GFX_VSYNC_ENABLE
+//            #define GFX_DISPLAYPOWER_ENABLE
+//            #define GFX_CLOCK_POLARITY                  GFX_ACTIVE_HIGH
+//            #define GFX_DISPLAYENABLE_POLARITY          GFX_ACTIVE_HIGH
+//            #define GFX_HSYNC_POLARITY                  GFX_ACTIVE_LOW
+//            #define GFX_VSYNC_POLARITY                  GFX_ACTIVE_LOW
+//            #define GFX_DISPLAYPOWER_POLARITY           GFX_ACTIVE_HIGH
         #endif //#if defined (GFX_USE_DISPLAY_CONTROLLER_MCHP_DA210)
 	#endif // #if defined (GFX_USE_DISPLAY_PANEL_TFT_FSK430WQAV4F_420272)
 
@@ -862,13 +862,13 @@
     // Depending on the display panel used, the backlight control may be
     // different. This portion sets up the correct backlight level to 
     // turn on or off the backlight.
-    #if defined (GFX_USE_DISPLAY_PANEL_TFT_G240320LTSW_118W_E)
-        #define BACKLIGHT_ENABLE_LEVEL      0
-        #define BACKLIGHT_DISABLE_LEVEL     1
-	#elif defined (GFX_USE_DISPLAY_PANEL_TFT_FSK430WQAV4F_420272)
-		#define BACKLIGHT_ENABLE_LEVEL      0
-		#define BACKLIGHT_DISABLE_LEVEL     1
-    #endif    
+//    #if defined (GFX_USE_DISPLAY_PANEL_TFT_G240320LTSW_118W_E)
+//        #define BACKLIGHT_ENABLE_LEVEL      0
+//        #define BACKLIGHT_DISABLE_LEVEL     1
+//	#elif defined (GFX_USE_DISPLAY_PANEL_TFT_FSK430WQAV4F_420272)
+//		#define BACKLIGHT_ENABLE_LEVEL      0
+//		#define BACKLIGHT_DISABLE_LEVEL     1
+//    #endif
 
     
 #if defined (GFX_PICTAIL_V3) || defined (GFX_PICTAIL_V3E) || defined(GFX_PICTAIL_LCC) 
@@ -1025,14 +1025,14 @@
 #elif defined (PIC24FJ256DA210_DEV_BOARD)
 	
     // Definitions for POWER ON pin
-    #define DisplayPowerConfig()            //TRISAbits.TRISA5 = 0       
-    #define DisplayPowerOn()                //LATAbits.LATA5 = 1           
-    #define DisplayPowerOff()               //LATAbits.LATA5 = 0
+//    #define DisplayPowerConfig()            //TRISAbits.TRISA5 = 0
+//    #define DisplayPowerOn()                //LATAbits.LATA5 = 1
+//    #define DisplayPowerOff()               //LATAbits.LATA5 = 0
 
     // Definitions for backlight control pin
-    #define DisplayBacklightConfig()        
-    #define DisplayBacklightOn()        
-    #define DisplayBacklightOff()          
+//    #define DisplayBacklightConfig()
+//    #define DisplayBacklightOn()
+//    #define DisplayBacklightOff()
     
     // Dummy definitions
     // Definitions for reset pin
@@ -1766,9 +1766,9 @@
         // define the functions to call for the non-volatile memory
         // check out touch screen module for definitions of the following function pointers
         // used: NVM_READ_FUNC, NVM_WRITE_FUNC & NVM_SECTORERASE_FUNC
-		#define NVMSectorErase					((NVM_SECTORERASE_FUNC)&SST25SectorErase)
-    	#define NVMWrite 						((NVM_WRITE_FUNC)&SST25WriteWord)
-    	#define NVMRead 						((NVM_READ_FUNC)&SST25ReadWord)
+//		#define NVMSectorErase					((NVM_SECTORERASE_FUNC)&SST25SectorErase)
+//    	#define NVMWrite 						((NVM_WRITE_FUNC)&SST25WriteWord)
+//    	#define NVMRead 						((NVM_READ_FUNC)&SST25ReadWord)
 
 	/* ----------------------------------------- */
 	#elif defined (USE_SST39LF400)
@@ -2056,47 +2056,6 @@
 
 #endif // #if defined (USE_SST25VF016)
 
-#if 0
-#if defined (USE_M25P80) 
-
-	/*********************************************************************
-	* SPI Flash Memory on MIKRO_BOARD
-	*********************************************************************/
-	// Set up the signals used to communicate to the SPI Flash device 
-
-    // define the SPI channel to be used
-    #if defined (MIKRO_BOARD)
-		#if defined (__PIC24FJ256GB110__)
-		    #define SST25_SPI_CHANNEL 2
-        #endif
-    #endif
-
-    /* Define all the SPI channels that will be used here.
-       These will be used to determine how the SPI Driver (drv_spi)
-       will be compiled.
-    */
-    #if (SST25_SPI_CHANNEL == 1)
-        #define SPI_CHANNEL_1_ENABLE
-    #elif (SST25_SPI_CHANNEL == 2)
-        #define SPI_CHANNEL_2_ENABLE
-    #elif (SST25_SPI_CHANNEL == 3)
-        #define SPI_CHANNEL_3_ENABLE
-    #elif (SST25_SPI_CHANNEL == 4)
-        #define SPI_CHANNEL_4_ENABLE
-    #endif
-	
-    #if defined (MIKRO_BOARD)
-		#if defined (__PIC24FJ256GB110__)
-            #define SST25_CS_TRIS   TRISCbits.TRISC2
-            #define SST25_CS_LAT    LATCbits.LATC2
-            #define SST25_SCK_TRIS  TRISGbits.TRISG6
-            #define SST25_SDO_TRIS  TRISGbits.TRISG8
-            #define SST25_SDI_TRIS  TRISGbits.TRISG7
-        #endif
-    #endif
-
-#endif // #if defined (USE_M25P80)
-#endif
 /*********************************************************************
 * HARDWARE PROFILE FOR THE PARALLEL FLASH MEMORY
 *********************************************************************/
@@ -2161,21 +2120,21 @@
 
 	/* ----------------------------------------- */
 		
-		#define TCON_CS_LAT      LATAbits.LATA6   //_RA0
-		#define TCON_CS_TRIS     TRISAbits.TRISA6 //_TRISA0
-		#define TCON_CS_DIG()
-	    
-		#define TCON_SCL_LAT     LATAbits.LATA6   //_RD8
-		#define TCON_SCL_TRIS    TRISAbits.TRISA6 //_TRISD8
-		#define TCON_SCL_DIG()
-	    
-		#define TCON_SDO_LAT     LATAbits.LATA6   //_RB1
-		#define TCON_SDO_TRIS    TRISAbits.TRISA6 //_TRISB1
-		#define TCON_SDO_DIG()   //_ANSB1 = 0;
-	    
-		#define TCON_DC_LAT      LATAbits.LATA6   //_RB0
-		#define TCON_DC_TRIS     TRISAbits.TRISA6 //_TRISB0
-		#define TCON_DC_DIG()    //_ANSB0 = 0;
+//		#define TCON_CS_LAT      LATAbits.LATA6   //_RA0
+//		#define TCON_CS_TRIS     TRISAbits.TRISA6 //_TRISA0
+//		#define TCON_CS_DIG()
+//
+//		#define TCON_SCL_LAT     LATAbits.LATA6   //_RD8
+//		#define TCON_SCL_TRIS    TRISAbits.TRISA6 //_TRISD8
+//		#define TCON_SCL_DIG()
+//
+//		#define TCON_SDO_LAT     LATAbits.LATA6   //_RB1
+//		#define TCON_SDO_TRIS    TRISAbits.TRISA6 //_TRISB1
+//		#define TCON_SDO_DIG()   //_ANSB1 = 0;
+//
+//		#define TCON_DC_LAT      LATAbits.LATA6   //_RB0
+//		#define TCON_DC_TRIS     TRISAbits.TRISA6 //_TRISB0
+//		#define TCON_DC_DIG()    //_ANSB0 = 0;
 		
 		#endif // #if defined (GFX_USE_DISPLAY_PANEL_TFT_G240320LTSW_118W_E)
 	#endif // #if defined (DA210_DEV_BOARD)...
@@ -2238,27 +2197,27 @@
 * can access the compressed data directly.
 ********************************************************************  */
 
-#if defined (PIC24FJ256DA210_DEV_BOARD)
-	#if defined (GFX_EPMP_CS1_BASE_ADDRESS)
-
-		#define GFX_COMPRESSED_BUFFER_SIZE              (4136)//(13950)
-        #define GFX_DECOMPRESSED_BUFFER_SIZE            (38034)//(19216)
-        #define GFX_IPU_TEMP_DATA_TRANSFER_ARRAY_SIZE   (1024)
-
-	#else
-		#warning "EPMP CS1 Base Address not defined. If you are using IPU make sure that the GFX_COMPRESSED_DATA_RAM_ADDRESS & GFX_DECOMPRESSED_DATA_RAM_ADDRESS are allocated properly in internal memory."                   
-    #endif
-
-#endif //#if defined (PIC24FJ256DA210_DEV_BOARD)
+//#if defined (PIC24FJ256DA210_DEV_BOARD)
+//	#if defined (GFX_EPMP_CS1_BASE_ADDRESS)
+//
+//		#define GFX_COMPRESSED_BUFFER_SIZE              (4136)//(13950)
+//        #define GFX_DECOMPRESSED_BUFFER_SIZE            (38034)//(19216)
+//        #define GFX_IPU_TEMP_DATA_TRANSFER_ARRAY_SIZE   (1024)
+//
+//	#else
+//		#warning "EPMP CS1 Base Address not defined. If you are using IPU make sure that the GFX_COMPRESSED_DATA_RAM_ADDRESS & GFX_DECOMPRESSED_DATA_RAM_ADDRESS are allocated properly in internal memory."
+//    #endif
+//
+//#endif //#if defined (PIC24FJ256DA210_DEV_BOARD)
 
 /*********************************************************************
 * IOS FOR THE SWITCHES (SIDE BUTTONS)
 *********************************************************************/
-typedef enum
-{
-    HW_BUTTON_PRESS = 0,
-    HW_BUTTON_RELEASE = 1
-}HW_BUTTON_STATE;
+//typedef enum
+//{
+//    HW_BUTTON_PRESS = 0,
+//    HW_BUTTON_RELEASE = 1
+//}HW_BUTTON_STATE;
 
 #if defined (PIC24FJ256DA210_DEV_BOARD)
     #if defined(__PIC24FJ256DA210__)
@@ -2300,207 +2259,6 @@ typedef enum
 #define RTCC_DEFAULT_MINUTE     10
 #define RTCC_DEFAULT_SECOND     01
 
-#if 0//DMK
-#if defined (MEB_BOARD)
-
-	#if defined(__PIC32MX__)
-		#include <plib.h>
-		
-		/*********************************************************************
-		* Configuration for the CPLD
-		*********************************************************************/
-		#ifdef USE_16BIT_PMP
-		#define GRAPHICS_HW_CONFIG     CPLD_GFX_CONFIG_16BIT
-		#else
-		#define GRAPHICS_HW_CONFIG     CPLD_GFX_CONFIG_8BIT
-		#endif
-		
-		/*********************************************************************
-		* MMB LEDs
-		*********************************************************************/
-		typedef enum
-		{
-		    LED_2,
-		    LED_3,
-		    LED_4,
-		    LED_5,
-		    LED_10
-		}MMB_LED;
-		
-		extern inline void __attribute__((always_inline)) SetLEDDirection(void)
-		{
-		   PORTSetPinsDigitalOut(IOPORT_D, (BIT_1 | BIT_2 | BIT_3));
-		    PORTSetPinsDigitalOut(IOPORT_C, (BIT_1 | BIT_2));
-		}
-		
-		extern inline void __attribute__((always_inline)) TurnLEDOn(MMB_LED led)
-		{
-		    if(led == LED_2)
-		      PORTSetBits(IOPORT_D, BIT_1);
-		
-		    if(led == LED_3)
-		      PORTSetBits(IOPORT_D, BIT_2);
-		
-		    if(led == LED_4)
-		      PORTSetBits(IOPORT_D, BIT_3);
-		
-		    if(led == LED_5)
-		      PORTSetBits(IOPORT_C, BIT_1);
-		
-		    if(led == LED_10)
-		      PORTSetBits(IOPORT_C, BIT_2);
-		
-		}
-		
-		extern inline void __attribute__((always_inline)) TurnLEDOff(MMB_LED led)
-		{
-		    if(led == LED_2)
-		      PORTClearBits(IOPORT_D, BIT_1);
-		
-		    if(led == LED_3)
-		      PORTClearBits(IOPORT_D, BIT_2);
-		
-		    if(led == LED_4)
-		      PORTClearBits(IOPORT_D, BIT_3);
-		
-		    if(led == LED_5)
-		      PORTClearBits(IOPORT_C, BIT_1);
-		
-		    if(led == LED_10)
-		      PORTClearBits(IOPORT_C, BIT_2);
-		
-		}
-		
-		extern inline void __attribute__((always_inline)) ToggleLED(MMB_LED led)
-		{
-		    if(led == LED_2)
-		      PORTToggleBits(IOPORT_D, BIT_1);
-		
-		    if(led == LED_3)
-		      PORTToggleBits(IOPORT_D, BIT_2);
-		
-		    if(led == LED_4)
-		      PORTToggleBits(IOPORT_D, BIT_3);
-		
-		    if(led == LED_5)
-		      PORTToggleBits(IOPORT_C, BIT_1);
-		
-		    if(led == LED_10)
-		      PORTToggleBits(IOPORT_C, BIT_2);
-		
-		}
-		
-		extern inline void __attribute__((always_inline)) TurnLEDAllOn(void)
-		{
-		      PORTSetBits(IOPORT_D, BIT_1);
-		      PORTSetBits(IOPORT_D, BIT_2);
-		      PORTSetBits(IOPORT_D, BIT_3);
-		      PORTSetBits(IOPORT_C, BIT_1);
-		      PORTSetBits(IOPORT_C, BIT_2);
-		
-		}
-		
-		extern inline void __attribute__((always_inline)) TurnLEDAllOff(void)
-		{
-		      PORTClearBits(IOPORT_D, BIT_1);
-		      PORTClearBits(IOPORT_D, BIT_2);
-		      PORTClearBits(IOPORT_D, BIT_3);
-		      PORTClearBits(IOPORT_C, BIT_1);
-		      PORTClearBits(IOPORT_C, BIT_2);
-		
-		}
-	#endif // #ifdef (__PIC32MX__)
-	
-	#if defined(__dsPIC33E__) || defined (__PIC24E__)
-	
-		/*********************************************************************
-		* Configuration for the CPLD
-		*********************************************************************/
-		#ifdef USE_16BIT_PMP
-		#define GRAPHICS_HW_CONFIG     CPLD_GFX_CONFIG_16BIT
-		#else
-		#define GRAPHICS_HW_CONFIG     CPLD_GFX_CONFIG_8BIT
-		#endif
-		
-		
-		#if defined (USE_XC2C64A)
-			// If using the CPLD.
-			 #define BIT_15                       (1 << 15)
-			 #define BIT_14                       (1 << 14)
-			 #define BIT_13                       (1 << 13)
-			 #define BIT_12                       (1 << 12)
-			 #define BIT_11                       (1 << 11)
-			 #define BIT_10                       (1 << 10)
-			 #define BIT_9                        (1 << 9)
-			 #define BIT_8                        (1 << 8)
-			 #define BIT_7                        (1 << 7)
-			 #define BIT_6                        (1 << 6)
-			 #define BIT_5                        (1 << 5)
-			 #define BIT_4                        (1 << 4)
-			 #define BIT_3                        (1 << 3)
-			 #define BIT_2                        (1 << 2)
-			 #define BIT_1                        (1 << 1)
-			 #define BIT_0                        (1 << 0)
-			 
-			typedef	unsigned char		__uint8_t;
-			#define	uint8_t		__uint8_t
-		
-			 typedef struct
-			{
-				volatile unsigned int	tris;
-				volatile unsigned int	port;					
-				volatile unsigned int	lat;					
-				volatile unsigned int	odc;
-				volatile unsigned int	cnen;
-				volatile unsigned int	cnpu;
-				volatile unsigned int	cnpd;
-				volatile unsigned int	ansel;					
-			}PortRegMap;	// port registers layout
-				
-			#define IOPORT_A (unsigned int*)&TRISA
-			#define IOPORT_B (unsigned int*)&TRISB
-			#define IOPORT_C (unsigned int*)&TRISC
-			#define IOPORT_D (unsigned int*)&TRISD
-			#define IOPORT_E (unsigned int*)&TRISE
-			#define IOPORT_F (unsigned int*)&TRISF 
-			#define IOPORT_G (unsigned int*)&TRISG
-		
-			
-			extern inline void __attribute__((always_inline)) PORTSetBits(unsigned int *regBase, unsigned int bits)
-			{
-				PortRegMap *PortMap = (PortRegMap*)regBase;
-				PortMap->lat |= bits;			
-			}	
-			
-			extern inline void __attribute__((always_inline)) PORTClearBits(unsigned int *regBase, unsigned int bits)
-			{
-				PortRegMap *PortMap = (PortRegMap*)regBase;
-				PortMap->lat &= ~bits;		
-					
-			}	
-			
-			
-			extern inline unsigned int __attribute__((always_inline)) PORTReadBits(unsigned int *regBase, unsigned int bits)
-			{
-				PortRegMap *PortMap = (PortRegMap*)regBase;
-				return(PortMap->lat & bits);
-			}	
-			
-			extern inline void __attribute__((always_inline)) PORTSetPinsDigitalOut(unsigned int *regBase, unsigned int bits)
-			{
-				PortRegMap *PortMap = (PortRegMap*)regBase;
-				PortMap->tris &= ~bits;								
-			}			
-			
-					
-		
-		#endif
-	
-	#endif // #ifdef (__dsPIC33E__) || (__PIC24E__)
-	
-	
-#endif // #ifdef (MEB_BOARD)
-#endif//DMK
 
 #endif // __HARDWARE_PROFILE_H
 

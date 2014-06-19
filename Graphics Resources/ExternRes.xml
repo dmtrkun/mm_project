@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="ISO-8859-1"?><Graphics_Resource_Converter>
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Graphics_Resource_Converter>
 <Configuration>
-<major>3</major>
-<minor>17</minor>
-<compiler>C30</compiler>
+<major>4</major>
+<minor>0</minor>
+<compiler>C30/XC16</compiler>
 <format>EDS_EPMP</format>
 <graphics_module>true</graphics_module>
+<bitmap_padding_type>padding</bitmap_padding_type>
 <graphics_model>16 bpp</graphics_model>
 </Configuration>
 <Bitmaps>

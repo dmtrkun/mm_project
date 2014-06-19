@@ -41,9 +41,9 @@ const XCHAR Calib_OBJ_BUTTON_9_text[] = "AR";
 
 void CreateCalib(void)
 {
-	GOLFree();
-	SetColor(BLUE_LIGHT);
-	ClearDevice();
+	GFX_GOL_ObjectListFree();
+	GFX_ColorSet(BLUE_LIGHT);
+	GFX_ScreenClear();
 	
 	if(page_create == 0)
 	{
@@ -70,8 +70,8 @@ void CreateCalib(void)
 void CreatePrimitivesForCalib(void){
 //		SetLineType(0);
 //		SetLineThickness(0);
-//		SetColor(BLUE_DARK);
-//		while(!Bar(0,279,239,319));
+//		GFX_ColorSet(BLUE_DARK);
+//		while(!GFX_BarDraw(0,279,239,319));
 }
 
 
@@ -102,10 +102,10 @@ WORD msgCalib(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		return 1;	
 	}
 	
-	switch (GetObjID(pObj)) {
+	switch (GFX_GOL_ObjectIDGet(pObj)) {
 		
 		case Calib_OBJ_BUTTON_7:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				GDDPrevScreen();
 			}	
 			return 1;
@@ -118,7 +118,7 @@ WORD msgCalib(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			{
 				BtnSetBitmap((BUTTON*)pObj, &Larrow);
 				SetState((BUTTON*) pObj, BTN_DRAW);
-				if (objMsg == BTN_MSG_RELEASED) 
+				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 					GDDShiftScreen(0); //1st screen
 			}	
 			return 1;
@@ -132,12 +132,12 @@ WORD msgCalib(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			{
 				BtnSetBitmap((BUTTON*)pObj, &Rarrow);
 				SetState((BUTTON*) pObj, BTN_DRAW);
-				if (objMsg == BTN_MSG_RELEASED) 
+				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 					GDDShiftScreen(1); //2nd screen
 			}	
 			return 1;
 		case Calib_OBJ_BUTTON_0:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				GDDSetScreen(CREATE_SCREEN_SETPROG,0,NULL);
 			}	
 			return 1;
@@ -145,12 +145,12 @@ WORD msgCalib(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		case Calib_OBJ_BUTTON_2:
 		case Calib_OBJ_BUTTON_3:
 		case Calib_OBJ_BUTTON_4:
-//			if (objMsg == BTN_MSG_RELEASED) {
+//			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 //				GDDDemoNextScreen();
 //			}	
 			return 1;
 		case Calib_OBJ_BUTTON_5:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 			
 				GDDShiftScreen(0); // Refresh screen
 			}	
@@ -158,7 +158,7 @@ WORD msgCalib(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		
 		
 		case Calib_OBJ_BUTTON_6:
-//			if (objMsg == BTN_MSG_RELEASED) {
+//			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 //				GDDDemoNextScreen();
 //			}	
 			return 1;

@@ -1,3 +1,4 @@
+#if 0
 /*****************************************************************************
  * FileName:        smallfont.c
  * Processor:       PIC24F, PIC24H, dsPIC
@@ -1606,3 +1607,4 @@ const char __Monospaced_plain_10[] __attribute__((aligned(2))) =
 
 };
 
+#endif

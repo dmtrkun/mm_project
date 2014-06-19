@@ -8,7 +8,7 @@
 #include "include.h"
 #include "GenericTypeDefs.h"
 #include "HardwareProfile.h"
-#include "Graphics\Graphics.h"
+#include "framework/gfx/gfx.h"
 #include "taskGraphics.h"
 #include "taskTouchScreen.h"
 
@@ -53,9 +53,9 @@ extern volatile long xcor, ycor;
 extern xSemaphoreHandle FLASHSemaphore;
 //extern xSemaphoreHandle QVGAMutSemaphore;
 
-extern const FONT_FLASH GOLFontDefault;
-extern const FONT_FLASH GOLMediumFont;
-extern const FONT_FLASH GOLSmallFont;
+//extern const FONT_FLASH GOLFontDefault;
+//extern const FONT_FLASH GOLMediumFont;
+//extern const FONT_FLASH GOLSmallFont;
 
 
 // handle to the task
@@ -189,23 +189,24 @@ void TouchStoreCalibration(void)
 ********************************************************************/
 void TouchCalibration(void)
 {
-	static const XCHAR scr1StrLn1[] = {'I','M','P','O','R','T','A','N','T','.',0};
-	static const XCHAR scr1StrLn2[] = {"Now calibration"};
-	static const XCHAR scr1StrLn3[] = {"will be performed. Touch"};
-	static const XCHAR scr1StrLn4[] = {"EXACTLY at the positions"};
-	static const XCHAR scr1StrLn5[] = {"shown by arrows."};
-	static const XCHAR scr1StrLn6[] = {"Touch screen to continue"};
+#if 0
+    static const GFX_XCHAR scr1StrLn1[] = {'I','M','P','O','R','T','A','N','T','.',0};
+	static const GFX_XCHAR scr1StrLn2[] = {"Now calibration"};
+	static const GFX_XCHAR scr1StrLn3[] = {"will be performed. Touch"};
+	static const GFX_XCHAR scr1StrLn4[] = {"EXACTLY at the positions"};
+	static const GFX_XCHAR scr1StrLn5[] = {"shown by arrows."};
+	static const GFX_XCHAR scr1StrLn6[] = {"Touch screen to continue"};
 	
-	static const XCHAR scr2StrLn1[] = {'H','o','l','d',' ','S','3',' ','b','u','t','t','o','n',' ','a','n','d',0};
-	static const XCHAR scr2StrLn2[] = {'p','r','e','s','s',' ','M','C','L','R',' ','r','e','s','e','t','(','S','1',')',0};
-	static const XCHAR scr2StrLn3[] = {'t','o',' ','R','E','P','E','A','T',' ','t','h','e',' ','c','a','l','i','b','r','a','t','i','o','n',0};
-	static const XCHAR scr2StrLn4[] = {'p','r','o','c','e','d','u','r','e','.',0};
+	static const GFX_XCHAR scr2StrLn1[] = {'H','o','l','d',' ','S','3',' ','b','u','t','t','o','n',' ','a','n','d',0};
+	static const GFX_XCHAR scr2StrLn2[] = {'p','r','e','s','s',' ','M','C','L','R',' ','r','e','s','e','t','(','S','1',')',0};
+	static const GFX_XCHAR scr2StrLn3[] = {'t','o',' ','R','E','P','E','A','T',' ','t','h','e',' ','c','a','l','i','b','r','a','t','i','o','n',0};
+	static const GFX_XCHAR scr2StrLn4[] = {'p','r','o','c','e','d','u','r','e','.',0};
 	
 	SHORT counter;
 	SHORT x, y;
 	WORD ax[3], ay[3];
 	SHORT textHeight;
-	XCHAR str[30];
+	GFX_XCHAR str[30];
 
 	     
 	// Initialize display
@@ -222,14 +223,14 @@ void TouchCalibration(void)
 	textHeight = GetTextHeight((void *) &FONTDEFAULT);
 	
     SetColor(BRIGHTRED);
-    OutTextXY(0,0*textHeight, (XCHAR*)scr1StrLn1);
+    OutTextXY(0,0*textHeight, (GFX_XCHAR*)scr1StrLn1);
     SetColor(BLACK);
-    OutTextXY(0,1*textHeight, (XCHAR*)scr1StrLn2);
-    OutTextXY(0,2*textHeight, (XCHAR*)scr1StrLn3);
-    OutTextXY(0,3*textHeight, (XCHAR*)scr1StrLn4);
-    OutTextXY(0,4*textHeight, (XCHAR*)scr1StrLn5);
+    OutTextXY(0,1*textHeight, (GFX_XCHAR*)scr1StrLn2);
+    OutTextXY(0,2*textHeight, (GFX_XCHAR*)scr1StrLn3);
+    OutTextXY(0,3*textHeight, (GFX_XCHAR*)scr1StrLn4);
+    OutTextXY(0,4*textHeight, (GFX_XCHAR*)scr1StrLn5);
     SetColor(BRIGHTRED);
-    OutTextXY(0,6*textHeight, (XCHAR*)scr1StrLn6);
+    OutTextXY(0,6*textHeight, (GFX_XCHAR*)scr1StrLn6);
 	
 	// wait for touch
 	do {
@@ -343,15 +344,15 @@ void TouchCalibration(void)
     ClearDevice();
     SetColor(BLACK);
     
-    OutTextXY(10,1*textHeight,(XCHAR*)scr2StrLn1);
-    OutTextXY(10,2*textHeight,(XCHAR*)scr2StrLn2);
-    OutTextXY(10,3*textHeight,(XCHAR*)scr2StrLn3);
-    OutTextXY(10,4*textHeight,(XCHAR*)scr2StrLn4);
+    OutTextXY(10,1*textHeight,(GFX_XCHAR*)scr2StrLn1);
+    OutTextXY(10,2*textHeight,(GFX_XCHAR*)scr2StrLn2);
+    OutTextXY(10,3*textHeight,(GFX_XCHAR*)scr2StrLn3);
+    OutTextXY(10,4*textHeight,(GFX_XCHAR*)scr2StrLn4);
 	
 	SetFont((void*) &GOLMediumFont);
 	textHeight = GetTextHeight((void*) &GOLMediumFont);
 	SetColor(BRIGHTRED);
-    OutTextXY(10,6*textHeight,(XCHAR*)scr1StrLn6);
+    OutTextXY(10,6*textHeight,(GFX_XCHAR*)scr1StrLn6);
 	sprintf(str,"xMax = %04d; xMin = %04d",_calXMax,_calXMin);
 	OutTextXY(10,7*textHeight,str);
 	sprintf(str,"yMax = %04d;  yMin = %04d",_calYMax,_calYMin);
@@ -366,7 +367,7 @@ void TouchCalibration(void)
 
     SetColor(BLACK);
     ClearDevice();
-
+#endif
 }
 
 #if 0
@@ -389,16 +390,16 @@ void TouchCalibration(void)
 ********************************************************************/
 void TouchGetCalPoints(WORD* ax, WORD* ay)
 {
-	static const XCHAR calStr[] = {'C','A','L','I','B','R','A','T','I','O','N',0};
-	XCHAR calTouchLeft[] = {'3',' ','t','o','u','c','h','e','s',' ','l','e','f','t',0};
+	static const GFX_XCHAR calStr[] = {'C','A','L','I','B','R','A','T','I','O','N',0};
+	GFX_XCHAR calTouchLeft[] = {'3',' ','t','o','u','c','h','e','s',' ','l','e','f','t',0};
 	SHORT counter;
 	SHORT x,y;
 
     SetFont((void*)&GOLFontDefault);
     SetColor(BRIGHTRED);
-    OutTextXY((GetMaxX() - GetTextWidth((XCHAR*) calStr,(void*) &GOLFontDefault)) >> 1,
+    OutTextXY((GetMaxX() - GetTextWidth((GFX_XCHAR*) calStr,(void*) &GOLFontDefault)) >> 1,
               (GetMaxY() - GetTextHeight((void*) &GOLFontDefault)) >> 1,
-              (XCHAR*) calStr);
+              (GFX_XCHAR*) calStr);
 
     for(counter = 0; counter < 3; counter++) {
         SetColor(BRIGHTRED);

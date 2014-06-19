@@ -1,21 +1,9 @@
 /********************************************************************
- FileName:     	usb_descriptors.c
- Dependencies:	See INCLUDES section
- Processor:		PIC18 or PIC24 USB Microcontrollers
- Hardware:		The code is natively intended to be used on the following
- 				hardware platforms: PICDEM™ FS USB Demo Board, 
- 				PIC18F87J50 FS USB Plug-In Module, or
- 				Explorer 16 + PIC24 USB PIM.  The firmware may be
- 				modified for use on other USB platforms by editing the
- 				HardwareProfile.h file.
- Complier:  	Microchip C18 (for PIC18) or C30 (for PIC24)
- Company:		Microchip Technology, Inc.
-
  Software License Agreement:
 
  The software supplied herewith by Microchip Technology Incorporated
- (the “Company”) for its PIC® Microcontroller is intended and
- supplied to you, the Company’s customer, for use solely and
+ (the "Company") for its PIC(R) Microcontroller is intended and
+ supplied to you, the Company's customer, for use solely and
  exclusively on Microchip PIC Microcontroller products. The
  software is owned by the Company and/or its supplier, and is
  protected under applicable copyright laws. All rights are reserved.
@@ -24,14 +12,14 @@
  civil liability for the breach of the terms and conditions of this
  license.
 
- THIS SOFTWARE IS PROVIDED IN AN “AS IS” CONDITION. NO WARRANTIES,
+ THIS SOFTWARE IS PROVIDED IN AN "AS IS" CONDITION. NO WARRANTIES,
  WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED
  TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
  PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. THE COMPANY SHALL NOT,
  IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
  CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
-
-*********************************************************************
+ *******************************************************************/
+/*
 -usb_descriptors.c-
 -------------------------------------------------------------------
 Filling in the descriptor values in the usb_descriptors.c file:
@@ -44,7 +32,7 @@ needs to be the correct length for the data type of the entry.
 
 [Configuration Descriptors]
 The configuration descriptor was changed in v2.x from a structure
-to a BYTE array.  Given that the configuration is now a byte array
+to a uint8_t array.  Given that the configuration is now a byte array
 each byte of multi-byte fields must be listed individually.  This
 means that for fields like the total size of the configuration where
 the field is a 16-bit value "64,0," is the correct entry for a
@@ -60,7 +48,7 @@ _RWU tells the USB host that this device supports Remote Wakeup.
 
 [Endpoint Descriptors]
 Like the configuration descriptor, the endpoint descriptors were 
-changed in v2.x of the stack from a structure to a BYTE array.  As
+changed in v2.x of the stack from a structure to a uint8_t array.  As
 endpoint descriptors also has a field that are multi-byte entities,
 please be sure to specify both bytes of the field.  For example, for
 the endpoint size an endpoint that is 64 bytes needs to have the size
@@ -154,12 +142,12 @@ state according to the definition in the USB specification.
 #define __USB_DESCRIPTORS_C
  
 /** INCLUDES *******************************************************/
-#include "./USB/usb.h"
-#include "./USB/usb_function_cdc.h"
+#include "framework/usb/usb.h"
 
 /** CONSTANTS ******************************************************/
-
-//#define device_dsc  (*device_dsc_ptr[cdc_ena])
+#if defined(__18CXX)
+#pragma romdata
+#endif
 
 
 /* Device Descriptor */
@@ -181,7 +169,7 @@ ROM USB_DEVICE_DESCRIPTOR device_dsc1 =
     0x01                    // Number of possible configurations
 };
 /* Device Descriptor */
-ROM USB_DEVICE_DESCRIPTOR device_dsc0 =
+const USB_DEVICE_DESCRIPTOR device_dsc0=
 {
     0x12,                   // Size of this descriptor in bytes
     USB_DESCRIPTOR_DEVICE,  // DEVICE descriptor type
@@ -207,7 +195,7 @@ ROM USB_DEVICE_DESCRIPTOR *device_dsc_ptr[2]=
 
 
 /* Configuration 1 Descriptor */
-ROM BYTE configDescriptor1_1[]={
+const uint8_t configDescriptor1_1[]={
     /* Configuration Descriptor */
     0x09,//sizeof(USB_CFG_DSC),    // Size of this descriptor in bytes
     USB_DESCRIPTOR_CONFIGURATION,                // CONFIGURATION descriptor type
@@ -290,8 +278,8 @@ ROM BYTE configDescriptor1_1[]={
     0x40,0x00,                  //size
     0x00,                       //Interval
 };
-/* Configuration 1 Descriptor */
-ROM BYTE configDescriptor1_0[]={
+/* Configuration 2 Descriptor */
+const uint8_t configDescriptor1_0[]={
     /* Configuration Descriptor */
     0x09,//sizeof(USB_CFG_DSC),    // Size of this descriptor in bytes
     USB_DESCRIPTOR_CONFIGURATION,                // CONFIGURATION descriptor type
@@ -329,20 +317,28 @@ ROM BYTE configDescriptor1_0[]={
     1                          //Interval
 };
 
+
 //Language code string descriptor
-ROM struct{BYTE bLength;BYTE bDscType;WORD string[1];}sd000_1={
+const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[1];}sd000_1={
 sizeof(sd000_1),USB_DESCRIPTOR_STRING,{0x0409}};
 
 //Manufacturer string descriptor
-//ROM struct{BYTE bLength;BYTE bDscType;WORD string[25];}sd001={
+//const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[25];}sd001={
 //sizeof(sd001),USB_DESCRIPTOR_STRING,
 //{'M','i','c','r','o','c','h','i','p',' ',
 //'T','e','c','h','n','o','l','o','g','y',' ','I','n','c','.'
-//}};
-ROM struct{BYTE bLength;BYTE bDscType;WORD string[6];}sd001_1={
+}};
+
+const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[6];}sd001_1={
 sizeof(sd001_1),USB_DESCRIPTOR_STRING,
-{'M','e','m','a','d','.'}
-};
+{'M','e','m','a','d','.',
+}};
+
+
+
+
+
+
 
 //Product string descriptor
 //ROM struct{BYTE bLength;BYTE bDscType;WORD string[25];}sd002={
@@ -350,7 +346,7 @@ sizeof(sd001_1),USB_DESCRIPTOR_STRING,
 //{'C','D','C',' ','R','S','-','2','3','2',' ',
 //'E','m','u','l','a','t','i','o','n',' ','D','e','m','o'}
 //};
-ROM struct{BYTE bLength;BYTE bDscType;WORD string[5];}sd002_1={
+const struct{uint8_t bLength;uint8_t bDscType;WORD string[5];}sd002_1={
 sizeof(sd002_1),USB_DESCRIPTOR_STRING,
 {'V','L','6','7','7'}
 };
@@ -358,8 +354,12 @@ sizeof(sd002_1),USB_DESCRIPTOR_STRING,
 #if 1
 
 
+
+
+
+
 //Language code string descriptor
-ROM struct{BYTE bLength;BYTE bDscType;WORD string[1];}sd000_0={
+const struct{uint8_t bLength;uint8_t bDscType;WORD string[1];}sd000_0={
 sizeof(sd000_0),USB_DESCRIPTOR_STRING,{0x0409}};
 
 //Manufacturer string descriptor
@@ -368,65 +368,51 @@ sizeof(sd000_0),USB_DESCRIPTOR_STRING,{0x0409}};
 //{'M','i','c','r','o','c','h','i','p',' ',
 //'T','e','c','h','n','o','l','o','g','y',' ','I','n','c','.'
 //}};
-ROM struct{BYTE bLength;BYTE bDscType;WORD string[6];}sd001_0={
+
+const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[6];}sd001_0={
 sizeof(sd001_0),USB_DESCRIPTOR_STRING,
-{'M','e','m','a','d','.'
+{'M','e','m','a','d','.',
 }};
 
+
+
+
 //Product string descriptor
-//ROM struct{BYTE bLength;BYTE bDscType;WORD string[36];}sd002_0={
+//const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[36];}sd002={
 //sizeof(sd002_0),USB_DESCRIPTOR_STRING,
 //{'M','i','c','r','o','c','h','i','p',' ','E','x','t','e','r','n','a','l',' ','M','e','m','o','r','y',' ','P','r','o','g','r','a','m','m','e','r'}};
-ROM struct{BYTE bLength;BYTE bDscType;WORD string[7];}sd002_0={
+const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[7];}sd002={
 sizeof(sd002_0),USB_DESCRIPTOR_STRING,
 {'M','e','m','P','r','o','g'}};
 
 
-ROM struct{BYTE bLength;BYTE bDscType;WORD string[10];}sd003_0={
+const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[10];}sd003_0={
 sizeof(sd003_0),USB_DESCRIPTOR_STRING,
+#ifndef __PIC32MX__ 
 {'P','I','C','2','4','0','0','0','0','1'}
+#else
+{'P','I','C','3','2','0','0','0','0','1'}
+#endif
 };
-
-////Array of configuration descriptors
-//ROM BYTE *ROM USB_CD_Ptr[]=
-//{
-//    (ROM BYTE *ROM)&configDescriptor1_0
-//};
-//Array of string descriptors
-//ROM BYTE *ROM USB_SD_Ptr[]=
-//{
-//    (ROM BYTE *ROM)&sd000_0,
-//    (ROM BYTE *ROM)&sd001_0,
-//    (ROM BYTE *ROM)&sd002_0,
-//    (ROM BYTE *ROM)&sd003_0
-//};
-
-
 
 //Array of configuration descriptors
-ROM BYTE *ROM USB_CD_Ptr[]=
+const uint8_t *const USB_CD_Ptr[]=
 {
-    (ROM BYTE *ROM)&configDescriptor1_0,
-    (ROM BYTE *ROM)&configDescriptor1_1
+    (const uint8_t *const)&configDescriptor1_0,
+    (const uint8_t *const)&configDescriptor1_1
 };
-
 //Array of string descriptors
-ROM BYTE *ROM USB_SD_Ptr[4+3/*USB_NUM_STRING_DESCRIPTORS*/]=
+const uint8_t *const USB_SD_Ptr[]=
 {
-    (ROM BYTE *ROM)&sd000_0,
-    (ROM BYTE *ROM)&sd001_0,
-    (ROM BYTE *ROM)&sd002_0,
-    (ROM BYTE *ROM)&sd003_0,
-    (ROM BYTE *ROM)&sd000_1,
-    (ROM BYTE *ROM)&sd001_1,
-    (ROM BYTE *ROM)&sd002_1
+    (const uint8_t *const)&sd000_0,
+    (const uint8_t *const)&sd001_0,
+    (const uint8_t *const)&sd002_0,
+    (const uint8_t *const)&sd003_0,
+    (const uint8_t *const)&sd000_1,
+    (const uint8_t *const)&sd001_1,
+    (const uint8_t *const)&sd002_1
 };
 
-
-
-#endif
-
-
+/** EOF usb_descriptors.c ***************************************************/
 
 #endif
-/** EOF usb_descriptors.c ****************************************************/

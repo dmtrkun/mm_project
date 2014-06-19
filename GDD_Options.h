@@ -15,5 +15,5 @@
 
 GDD_OPTIONSPUB void CreateOptions(void);
 GDD_OPTIONSPUB void CreatePrimitivesForOptions(void);
-GDD_OPTIONSPUB WORD msgOptions(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
+GDD_OPTIONSPUB WORD msgOptions(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 #endif

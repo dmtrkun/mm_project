@@ -8,7 +8,7 @@
 #include "Graphics Resources\new.h"
 
 // Strings
-//const XCHAR *Bolus_pages[] = {
+//const GFX_XCHAR *Bolus_pages[] = {
 //__psv__ const unsigned int *Bolus_pages[] __attribute__((space(psv))) = {
 //"BOLUS",
 //"BOLUS DELIVERY",
@@ -16,34 +16,34 @@
 //"BOLUS STOPPED",
 //};
 
-__psv__ const XCHAR Bolus_p0[] __attribute__((space(psv))) = {"BOLUS"};
-__psv__ const XCHAR Bolus_p1[] __attribute__((space(psv))) = {"BOLUS DELIVERY"};
-__psv__ const XCHAR Bolus_p2[] __attribute__((space(psv))) = {"BOLUS COMPLET"};
-__psv__ const XCHAR Bolus_p3[] __attribute__((space(psv))) = {"BOLUS STOPPED"};
+__psv__ const GFX_XCHAR Bolus_p0[] __attribute__((space(psv))) = {"BOLUS"};
+__psv__ const GFX_XCHAR Bolus_p1[] __attribute__((space(psv))) = {"BOLUS DELIVERY"};
+__psv__ const GFX_XCHAR Bolus_p2[] __attribute__((space(psv))) = {"BOLUS COMPLET"};
+__psv__ const GFX_XCHAR Bolus_p3[] __attribute__((space(psv))) = {"BOLUS STOPPED"};
 
-__psv__ const XCHAR *Bolus_pages[]= {
+__psv__ const GFX_XCHAR *Bolus_pages[]= {
 Bolus_p0,
 Bolus_p1,
 Bolus_p2,
 Bolus_p3,
 };
   
-__psv__ XCHAR *pFLASH;
+__psv__ GFX_XCHAR *pFLASH;
 
-const __prog__ XCHAR __attribute__((space(prog))) Bolus_OBJ_STATICTEXT_5_text[] =
+const __prog__ GFX_XCHAR __attribute__((space(prog))) Bolus_OBJ_STATICTEXT_5_text[] =
 {
  "ATTENTION!!!\r\nBOLUS STOPPED\r\nDURING INJECTION"
 };
-const __prog__ XCHAR __attribute__((space(prog))) Bolus_OBJ_STATICTEXT_6_text[] =
+const __prog__ GFX_XCHAR __attribute__((space(prog))) Bolus_OBJ_STATICTEXT_6_text[] =
 {
  "THE PUMP WILL\r\nCONTINUE\r\nRUNNING"
 };
-const XCHAR Bolus_OBJ_BUTTON_3_text[] = "START BOLUS";
-const XCHAR Bolus_OBJ_BUTTON_4_text[] = "STOP BOLUS";
-const XCHAR Bolus_OBJ_BUTTON_5_text[] = "CONTINUE INFUSE";
-const XCHAR Bolus_OBJ_BUTTON_6_text[] = "CONTINUE BOLUS";
+const GFX_XCHAR Bolus_OBJ_BUTTON_3_text[] = "START BOLUS";
+const GFX_XCHAR Bolus_OBJ_BUTTON_4_text[] = "STOP BOLUS";
+const GFX_XCHAR Bolus_OBJ_BUTTON_5_text[] = "CONTINUE INFUSE";
+const GFX_XCHAR Bolus_OBJ_BUTTON_6_text[] = "CONTINUE BOLUS";
 
-const __prog__ XCHAR __attribute__((space(prog))) Bolus_OBJ_STATICTEXT_7_text[] = {
+const __prog__ GFX_XCHAR __attribute__((space(prog))) Bolus_OBJ_STATICTEXT_7_text[] = {
 	"BOLUS OFF\r\nCONSULT\r\nA TECHNICIAN"
 	};
 
@@ -79,21 +79,21 @@ static float bolus_infused;
 static char	str1[30];
 static char	str2[30];
 static char	str3[30];
-static GOL_SCHEME* pScheme;	
-static GOL_SCHEME* pScheme1;
+static GFX_GOL_OBJ_SCHEME* pScheme;	
+static GFX_GOL_OBJ_SCHEME* pScheme1;
 static unsigned char beep_cntr;
 	 
 
 void BolusShemes(void)
 {
-	pScheme = GOLCreateScheme();
-	memcpy(pScheme, defscheme, sizeof(GOL_SCHEME));
+	pScheme = CreateScheme();
+	memcpy(pScheme, defscheme, sizeof(GFX_GOL_OBJ_SCHEME));
 	pScheme->Color0 = RED;
 	pScheme->Color1 = RED;
 	pScheme->CommonBkColor = RED;
 
-	pScheme1 = GOLCreateScheme();
-	memcpy(pScheme1, defscheme, sizeof(GOL_SCHEME));
+	pScheme1 = CreateScheme();
+	memcpy(pScheme1, defscheme, sizeof(GFX_GOL_OBJ_SCHEME));
 	pScheme1->CommonBkColor = RED;
 	pScheme1->pFont = (void*)&Arial_Narrow_24;
 }
@@ -103,27 +103,27 @@ void CreateBolus(void)
 	_prog_addressT p;
 	int i;
 	
-	GOLFree();
+	GFX_GOL_ObjectListFree();
 	if (page_create == STOPPED_BOLUS)
 	{
-		SetColor(RED);
+		GFX_ColorSet(RED);
 		pScheme->Color0 = RED;
 		pScheme->Color1 = RED;
 		pScheme->CommonBkColor = RED;
 	}
 	else if(page_create == COMPLETED_BOLUS)
 	{
-		SetColor(YELLOW_RUN);
+		GFX_ColorSet(YELLOW_RUN);
 		pScheme->Color0 = YELLOW_RUN;
 		pScheme->Color1 = YELLOW_RUN;
 		pScheme->CommonBkColor = YELLOW_RUN;
 
 	}
 	else
-		SetColor(BLUE_LIGHT);
-	ClearDevice();
+		GFX_ColorSet(BLUE_LIGHT);
+	GFX_ScreenClear();
 	
-	memcpy(basicscheme, defscheme, sizeof(GOL_SCHEME));
+	memcpy(basicscheme, defscheme, sizeof(GFX_GOL_OBJ_SCHEME));
 	basicscheme->Color1 = BLACK;
 	basicscheme->TextColor0 = BLACK;
 	basicscheme->CommonBkColor = WHITE;
@@ -136,18 +136,18 @@ void CreateBolus(void)
 	for(i=0;i<30;i++)
 		*(str3+i) = *(pFLASH+i);
 
-	StCreate(Bolus_OBJ_STATICTEXT_0,0,0,239,30,ST_DRAW,(XCHAR*)str3,topbar);
-//	StCreate(Bolus_OBJ_STATICTEXT_0,0,0,239,30,ST_DRAW,(XCHAR*)Bolus_pages[page_create],topbar);
+	GFX_GOL_StaticTextCreate(Bolus_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str3,GFX_ALIGN_LEFT,topbar);
+//	GFX_GOL_StaticTextCreate(Bolus_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Bolus_pages[page_create],topbar);
 
 
-//	PictCreate(Bolus_OBJ_PICTURE_0, 209,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_IMAGE_HEADER *)&Wait1, topbar);
-	PictCreate(Bolus_OBJ_PICTURE_1, 186,0,209,30, PICT_DRAW, IMAGE_NORMAL, getBatImg(batlevel), topbar);
+//	GFX_GOL_PictureControlCreate(Bolus_OBJ_PICTURE_0, 209,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Wait1, topbar);
+	GFX_GOL_PictureControlCreate(Bolus_OBJ_PICTURE_1, 186,0,209,30, PICT_DRAW, IMAGE_NORMAL, getBatImg(batlevel), topbar);
 	if(bolus_init.mode == 0)
 	{
 		_init_prog_address(p, Bolus_OBJ_STATICTEXT_7_text);
 		_strncpy_p2d16(str_buf1,p,128);
- 	 	StCreate(Bolus_OBJ_STATICTEXT_7,3,45,236,270,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)str_buf1,defscheme);
-		BtnCreate(Bolus_OBJ_BUTTON_2,5,277,60,313,5,BTN_DRAW,NULL,(XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+ 	 	GFX_GOL_StaticTextCreate(Bolus_OBJ_STATICTEXT_7,3,45,236,270,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str_buf1,GFX_ALIGN_CENTER,defscheme);
+		BtnCreate(Bolus_OBJ_BUTTON_2,5,277,60,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
 		return;			 
 	}
 	beep_cntr = 8;
@@ -161,32 +161,32 @@ void CreateBolus(void)
 				sprintf(str1,"RATE  = %.1f ml/hr",(double)bolus_rate);
 			else
 				sprintf(str1,"RATE  = %.0f ml/hr",(double)bolus_rate);
-			BtnCreate(Bolus_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(XCHAR*)str1,defscheme);
+			BtnCreate(Bolus_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
 	
 			if(bolus_volume < 100.0)
 				sprintf(str2,"VTBI  = %.1f ml",(double)bolus_volume);
 			else
 				sprintf(str2,"VTBI  = %.0f ml",(double)bolus_volume);
-			BtnCreate(Bolus_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(XCHAR*)str2,defscheme);
+			BtnCreate(Bolus_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
 
-			BtnCreate(Bolus_OBJ_BUTTON_2,5,277,60,313,5,BTN_DRAW,NULL,(XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
-			BtnCreate(Bolus_OBJ_BUTTON_3,115,277,235,313,5,BTN_DRAW,NULL,(XCHAR*)Bolus_OBJ_BUTTON_3_text,botbar);
+			BtnCreate(Bolus_OBJ_BUTTON_2,5,277,60,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+			BtnCreate(Bolus_OBJ_BUTTON_3,115,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Bolus_OBJ_BUTTON_3_text,botbar);
 		  break;
 		case DELIVERED_BOLUS:
 	 		if(bolus_rate < 100.0)
 	 			sprintf(str1,"RATE  = %.1f ml/hr",(double)bolus_rate);
 	 		else
 	 			sprintf(str1,"RATE  = %.0f ml/hr",(double)bolus_rate);
-		 	StCreate(Bolus_OBJ_STATICTEXT_1,3,48,236,86,ST_DRAW,(XCHAR*)str1,defscheme);
+		 	GFX_GOL_StaticTextCreate(Bolus_OBJ_STATICTEXT_1,3,48,236,86,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str1,GFX_ALIGN_LEFT,defscheme);
 
 		 	if(bolus_volume < 100.0)
 	 			sprintf(str2,"VTBI  = %.1f ml",(double)bolus_volume);
 	 		else
 	 			sprintf(str2,"VTBI  = %.0f ml",(double)bolus_volume);
-		 	StCreate(Bolus_OBJ_STATICTEXT_2,3,94,236,132,ST_DRAW,(XCHAR*)str2,defscheme);
+		 	GFX_GOL_StaticTextCreate(Bolus_OBJ_STATICTEXT_2,3,94,236,132,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str2,GFX_ALIGN_LEFT,defscheme);
 			
-			BtnCreate(Bolus_OBJ_BUTTON_4,5,277,116,313,5,BTN_DRAW,NULL,(XCHAR*)Bolus_OBJ_BUTTON_4_text,botbar);
-			PictCreate(Bolus_OBJ_PICTURE_0, 210,0,239,30, PICT_DRAW, IMAGE_NORMAL, getWaitImg(), topbar);
+			BtnCreate(Bolus_OBJ_BUTTON_4,5,277,116,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Bolus_OBJ_BUTTON_4_text,botbar);
+			GFX_GOL_PictureControlCreate(Bolus_OBJ_PICTURE_0, 210,0,239,30, PICT_DRAW, IMAGE_NORMAL, getWaitImg(), topbar);
                         PbCreate( Bolus_OBJ_PROGRESSBAR_0, 10, 177, 229, 215, PB_DRAW, 0,(int)(bolus_volume*10.0),"ml",pScheme1);
 			
 			break;
@@ -197,26 +197,26 @@ void CreateBolus(void)
 		 		sprintf(str1,"BOLUS INFUSED\r\n%.1f ml",(double)(bolus_infused + (vol_para.infsd - preinfused)));               
 		 	else
 		 		sprintf(str1,"BOLUS INFUSED\r\n%.0f ml",(double)(bolus_infused + (vol_para.infsd - preinfused)));
-		 	StCreate(Bolus_OBJ_STATICTEXT_3,3,100,236,168,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)str1,pScheme);
+		 	GFX_GOL_StaticTextCreate(Bolus_OBJ_STATICTEXT_3,3,100,236,168,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str1,GFX_ALIGN_CENTER,pScheme);
 			_init_prog_address(p, Bolus_OBJ_STATICTEXT_6_text);
 			_strncpy_p2d16(str_buf2,p,128);
-			StCreate(Bolus_OBJ_STATICTEXT_6_text,10,220,229,313,ST_DRAW|ST_CENTER_ALIGN|ST_FRAME,(XCHAR*)str_buf2,basicscheme);
+			GFX_GOL_StaticTextCreate(Bolus_OBJ_STATICTEXT_6_text,10,220,229,313,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)str_buf2,GFX_ALIGN_CENTER,basicscheme);
 			 
-//			BtnCreate(Bolus_OBJ_BUTTON_5,46,277,196,313,5,BTN_DRAW,NULL,(XCHAR*)Bolus_OBJ_BUTTON_5_text,botbar);
+//			BtnCreate(Bolus_OBJ_BUTTON_5,46,277,196,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Bolus_OBJ_BUTTON_5_text,botbar);
 			
 			break;
 		case STOPPED_BOLUS:
 			xTimerStart( xTimers[ 1 ], 0 );
 			_init_prog_address(p, Bolus_OBJ_STATICTEXT_5_text);
 			_strncpy_p2d16(str_buf1,p,128);
-			StCreate(Bolus_OBJ_STATICTEXT_5,0,55,239,170,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)str_buf1,pScheme);
+			GFX_GOL_StaticTextCreate(Bolus_OBJ_STATICTEXT_5,0,55,239,170,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str_buf1,GFX_ALIGN_CENTER,pScheme);
     	PbCreate( Bolus_OBJ_PROGRESSBAR_0, 10, 177, 229, 215, PB_DRAW, (WORD)(10.0*(vol_para.infsd - preinfused)),(int)(bolus_volume*10.0),"ml",pScheme1);
 			_init_prog_address(p, Bolus_OBJ_STATICTEXT_6_text);
 			_strncpy_p2d16(str_buf2,p,128);
-			StCreate(Bolus_OBJ_STATICTEXT_6_text,10,220,229,313,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)str_buf2,basicscheme);            
+			GFX_GOL_StaticTextCreate(Bolus_OBJ_STATICTEXT_6_text,10,220,229,313,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str_buf2,GFX_ALIGN_CENTER,basicscheme);
 			
-//			BtnCreate(Bolus_OBJ_BUTTON_5,46,277,196,313,5,BTN_DRAW,NULL,(XCHAR*)Bolus_OBJ_BUTTON_5_text,botbar);
-//			BtnCreate(Bolus_OBJ_BUTTON_6,46,234,196,270,5,BTN_DRAW,NULL,(XCHAR*)Bolus_OBJ_BUTTON_6_text,botbar);
+//			BtnCreate(Bolus_OBJ_BUTTON_5,46,277,196,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Bolus_OBJ_BUTTON_5_text,botbar);
+//			BtnCreate(Bolus_OBJ_BUTTON_6,46,234,196,270,5,BTN_DRAW,NULL,(GFX_XCHAR*)Bolus_OBJ_BUTTON_6_text,botbar);
 			break;
 		default:
 			break;	 
@@ -227,14 +227,14 @@ void CreateBolus(void)
 void CreatePrimitivesForBolus(void){
 //		SetLineType(0);
 //		SetLineThickness(0);
-//		SetColor(BLUE_DARK);
-//		while(!Bar(0,279,239,319));
+//		GFX_ColorSet(BLUE_DARK);
+//		while(!GFX_BarDraw(0,279,239,319));
 }
 
 
 
 /*********************************************************************
- * Function:        WORD msgBolus(WORD objMsg, OBJ_HEADER* pObj)
+ * Function:        WORD msgBolus(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
  *
  * PreCondition:    None
  *
@@ -250,7 +250,7 @@ void CreatePrimitivesForBolus(void){
  * Note:            
  ********************************************************************/
 
-WORD msgBolus(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+WORD msgBolus(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
 	
 	if(pObj == NULL)
@@ -309,7 +309,7 @@ WORD msgBolus(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		return 1;	
 	}
 	
-	switch (GetObjID(pObj)) {
+	switch (GFX_GOL_ObjectIDGet(pObj)) {
 		
 		case Bolus_OBJ_BUTTON_0:
 			if (objMsg == BTN_MSG_PRESSED) {
@@ -320,7 +320,7 @@ WORD msgBolus(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			{
 				BtnSetBitmap(pObj, &Param_btn);
 				SetState((BUTTON*) pObj, BTN_DRAW);
-				if (objMsg == BTN_MSG_RELEASED)
+				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED)
 				{
 					/*Adjust bolus rate*/
 					if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
@@ -338,7 +338,7 @@ WORD msgBolus(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			{
 				BtnSetBitmap(pObj, &Param_btn);
 				SetState((BUTTON*) pObj, BTN_DRAW);
-				if (objMsg == BTN_MSG_RELEASED)
+				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED)
 				{
 					/*Adjust bolus volume*/
 					if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
@@ -349,7 +349,7 @@ WORD msgBolus(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			return 1;
 		case Bolus_OBJ_BUTTON_2:
 			/*Back to prev screen*/
-			if (objMsg == BTN_MSG_RELEASED) 
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 			{
 				if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
    	     			xTimerStop( xTimers[ 1 ], 0 );
@@ -359,7 +359,7 @@ WORD msgBolus(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			return 1;
 		case Bolus_OBJ_BUTTON_3:
 			/*Start bolus*/
-			if (objMsg == BTN_MSG_RELEASED) 
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 			{
 //				cMsg.cmd = MSG_CONTROL_STOP_INFUS;
 //				xQueueSend(hCONTROLQueue, &cMsg, 0);
@@ -375,7 +375,7 @@ WORD msgBolus(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			return 1;
 		case Bolus_OBJ_BUTTON_4:
 			/*Stop bolus*/
-			if (objMsg == BTN_MSG_RELEASED) 
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 			{
 				bolus_infused += vol_para.infsd - preinfused;
 				cMsg.cmd = MSG_CONTROL_STOP_INFUS;
@@ -387,7 +387,7 @@ WORD msgBolus(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			return 1;
 		case Bolus_OBJ_BUTTON_5:
 			/*Continue infuse*/
-			if (objMsg == BTN_MSG_RELEASED) 
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 			{
 //				vol_para.occlusion_lmt = occ_old;
 //				vol_para.rate = rate_old;
@@ -407,7 +407,7 @@ WORD msgBolus(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			return 1;
 		case Bolus_OBJ_BUTTON_6:
 			/*Continue bolus*/
-			if (objMsg == BTN_MSG_RELEASED) 
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 			{
 				preinfused = vol_para.infsd;
 				occlusion_limit = 2;//occlus_lmt.high;
@@ -423,16 +423,16 @@ WORD msgBolus(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 #if 0		 
 		case Bolus_OBJ_BUTTON_3:
 			//Goto programms
-			if (objMsg == BTN_MSG_RELEASED) 
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 				GDDSetScreen(CREATE_SCREEN_SETPROG,0,NULL);
 			return 1;
 		case Bolus_OBJ_BUTTON_4:
 			//Goto drugs
-			if (objMsg == BTN_MSG_RELEASED) 
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 				GDDSetScreen(CREATE_SCREEN_SETDRUG,0,NULL);
 			return 1;
 		case Bolus_OBJ_BUTTON_7:
-			if (objMsg == BTN_MSG_RELEASED) 
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 			{
 				//Prime and Goto priming
 				memset((unsigned char)&vol_para,0,sizeof((unsigned char)&vol_para));
@@ -440,7 +440,7 @@ WORD msgBolus(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			}
 			return 1;
 		case Bolus_OBJ_BUTTON_8:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				//Goto options
 				GDDSetScreen(CREATE_SCREEN_OPTIONS,0,NULL);
 			}	
@@ -451,7 +451,7 @@ WORD msgBolus(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			return 1;
 		
 		case Bolus_OBJ_BUTTON_10:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				//Goto Prime setup
 				page_display = 0;
 				GDDShiftScreen(0);
@@ -468,7 +468,7 @@ WORD msgBolus(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 
 void UpdateBolus(void)
 {
-	OBJ_HEADER* pObj;
+	GFX_GOL_OBJ_HEADER* pObj;
 //	static unsigned long lastClock;
 //	unsigned int elapsedTime;
 	

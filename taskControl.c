@@ -4,7 +4,7 @@
 
 #include "include.h"
 
-#include "Graphics/Graphics.h"
+#include "framework/gfx/gfx.h"
 #include "taskGraphics.h"
 #include "FreeRTOS.h"
 #include "task.h"

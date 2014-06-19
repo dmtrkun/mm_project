@@ -16,5 +16,5 @@
 GDD_SETMENUPUB unsigned int pswrd;
 GDD_SETMENUPUB void CreateSetmenu(void);
 GDD_SETMENUPUB void CreatePrimitivesForSetmenu(void);
-GDD_SETMENUPUB WORD msgSetmenu(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
+GDD_SETMENUPUB WORD msgSetmenu(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 #endif

@@ -15,5 +15,5 @@
 
 GDD_CALIBPUB void CreateCalib(void);
 GDD_CALIBPUB void CreatePrimitivesForCalib(void);
-GDD_CALIBPUB WORD msgCalib(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
+GDD_CALIBPUB WORD msgCalib(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 #endif

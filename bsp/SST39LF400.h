@@ -72,7 +72,7 @@
 -I"../../RTOS/Source/include"
 -I"../../../RTOS/Common/include" -I"../../../RTOS/Source/include" -I"../Configs" -I"../Graphics Resources" -I"../Flash_pgm" -I".."
 */
-#include "Compiler.h"
+//#include "Compiler.h"
 #include "GenericTypeDefs.h"
 #include "HardwareProfile.h"
 

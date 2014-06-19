@@ -28,22 +28,22 @@ static unsigned char time_halfsec;
 static CONTROL_MSG cMsg;
 
 // Strings
-__prog__ XCHAR __attribute__((space(prog))) RCalib_OBJ_STATICTEXT_0_text[] = "RATE CALIBRAT.";
+__prog__ GFX_XCHAR __attribute__((space(prog))) RCalib_OBJ_STATICTEXT_0_text[] = "RATE CALIBRAT.";
 
-//const XCHAR RCalib_OBJ_BUTTON_0_text[] = "EXIT";
-const XCHAR RCalib_OBJ_BUTTON_1_text[] = "CONTINUE";
-//const XCHAR RCalib_OBJ_BUTTON_2_text[] = "SAVE";
+//const GFX_XCHAR RCalib_OBJ_BUTTON_0_text[] = "EXIT";
+const GFX_XCHAR RCalib_OBJ_BUTTON_1_text[] = "CONTINUE";
+//const GFX_XCHAR RCalib_OBJ_BUTTON_2_text[] = "SAVE";
 
-const __prog__ XCHAR __attribute__((space(prog))) RCalib_msg_0[] = {
+const __prog__ GFX_XCHAR __attribute__((space(prog))) RCalib_msg_0[] = {
 	"1. LOAD PRIMED IV SET\r\n2. PRESS CONTINUE\r\nAND WAIT UNTIL\r\n\VOLUME WILL BE\r\nDELIVERED."
 	};
-const __prog__ XCHAR __attribute__((space(prog))) RCalib_msg_1[] = {
+const __prog__ GFX_XCHAR __attribute__((space(prog))) RCalib_msg_1[] = {
 	"ENTER THE VOLUME THAT\r\nAPPEARS ON THE SCALE\r\n(in 18.0 to 22.0 ml range)",
 	};
-const __prog__ XCHAR __attribute__((space(prog))) RCalib_msg_2[] = {
+const __prog__ GFX_XCHAR __attribute__((space(prog))) RCalib_msg_2[] = {
 	"END OF\r\nRATE CALIBRATION.\r\nPRESS SAVE TO STORE\r\nCALIBRATION RESULTS.\r\nTHANKS",
 	};
-const __prog__ XCHAR __attribute__((space(prog))) RCalib_msg_3[] = {
+const __prog__ GFX_XCHAR __attribute__((space(prog))) RCalib_msg_3[] = {
 	"ERROR CALIBRATION"
 	};
 
@@ -64,11 +64,11 @@ void CreateRCalib(void)
 {
 	static char	str1[30];
 	_prog_addressT p;
-	GOLFree();
-	SetColor(BLUE_LIGHT);
-	ClearDevice();
+	GFX_GOL_ObjectListFree();
+	GFX_ColorSet(BLUE_LIGHT);
+	GFX_ScreenClear();
 	xTimerStart( xTimers[ 1 ], 0 );
-	memcpy(basicscheme, defscheme, sizeof(GOL_SCHEME));
+	memcpy(basicscheme, defscheme, sizeof(GFX_GOL_OBJ_SCHEME));
 	basicscheme->pFont = (void*)&Arial_Narrow_Bold_18;
 	 
 	calib_page = page_create;
@@ -80,60 +80,60 @@ void CreateRCalib(void)
 		_init_prog_address(p, RCalib_msg_0);
 		_strncpy_p2d16(str_buf1,p,128);
 //		_strncpy_p2d16(str_buf1,(_prog_addressT)RCalib_msg[0],128);
-		StCreate(RCalib_OBJ_STATICTEXT_1,5,40,238,200,ST_DRAW|ST_CENTER_ALIGN,str_buf1,basicscheme);
-		BtnCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
+		GFX_GOL_StaticTextCreate(RCalib_OBJ_STATICTEXT_1,5,40,238,200,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,str_buf1,basicscheme);
+		BtnCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
 		calib_status = PREPARE_RATE_CLBR;  //Stop any calibration process
 	}
 	else if(calib_page == 1)
 	{
 		PbCreate(RCalib_OBJ_PROGRESSBAR_0, 10, 206, 229, 244, PB_DRAW, 0,(int)vol_para.vtbi,"ml",basicscheme);
-//		BtnCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
+//		BtnCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
 	}
 	else if(calib_page == 2)
 	{
 		_init_prog_address(p, RCalib_msg_1);
 		_strncpy_p2d16(str_buf1,p,128);
 //		_strncpy_p2d16(str_buf1,(_prog_addressT)RCalib_msg[1],128);
-		StCreate(RCalib_OBJ_STATICTEXT_1,5,40,238,200,ST_DRAW|ST_CENTER_ALIGN,str_buf1,basicscheme);
+		GFX_GOL_StaticTextCreate(RCalib_OBJ_STATICTEXT_1,5,40,238,200,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,str_buf1,basicscheme);
 		sprintf(str1,"WEIGHT  = %.1f ml",(double)scale_rate_tmp);
-		BtnCreate(RCalib_OBJ_BUTTON_2,3,206,236,244,10,BTN_DRAW|BTN_TEXTLEFT,(void*)&Param_btn,(XCHAR*)str1,basicscheme);
+		BtnCreate(RCalib_OBJ_BUTTON_2,3,206,236,244,10,BTN_DRAW|BTN_TEXTLEFT,(void*)&Param_btn,(GFX_XCHAR*)str1,basicscheme);
 		if(scale_rate_tmp < 18.0 || scale_rate_tmp > 22.0 )
-			BtnCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW|BTN_DISABLED,NULL,(XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
+			BtnCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW|BTN_DISABLED,NULL,(GFX_XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
 		else	
-			BtnCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
+			BtnCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
 	}
 	else
 	{
 		_init_prog_address(p, RCalib_msg_2);
 		_strncpy_p2d16(str_buf1,p,128);
 //		_strncpy_p2d16(str_buf1,RCalib_msg[2],128);
-		StCreate(RCalib_OBJ_STATICTEXT_1,5,40,238,200,ST_DRAW|ST_CENTER_ALIGN,str_buf1,basicscheme);
-		BtnCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(XCHAR*)SAVE_OBJ_BUTTON_text,botbar);
+		GFX_GOL_StaticTextCreate(RCalib_OBJ_STATICTEXT_1,5,40,238,200,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,str_buf1,basicscheme);
+		BtnCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)SAVE_OBJ_BUTTON_text,botbar);
 	}	
 	 
-//	StCreate(RCalib_OBJ_STATICTEXT_1,5,40,238,200,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)RCalib_msg[calib_page],basicscheme);
+//	GFX_GOL_StaticTextCreate(RCalib_OBJ_STATICTEXT_1,5,40,238,200,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,(GFX_XCHAR*)RCalib_msg[calib_page],basicscheme);
  
-	BtnCreate(RCalib_OBJ_BUTTON_0,5,277,66,313,5,BTN_DRAW,NULL,(XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+	BtnCreate(RCalib_OBJ_BUTTON_0,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
 	_init_prog_address(p, RCalib_OBJ_STATICTEXT_0_text);
 	_strncpy_p2d16(gStr1,p,128);
-	StCreate(RCalib_OBJ_STATICTEXT_0,1,0,238,30,ST_DRAW|ST_CENTER_ALIGN,gStr1,topbar);
-//	StCreate(RCalib_OBJ_STATICTEXT_0,1,0,238,30,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)RCalib_OBJ_STATICTEXT_0_text,topbar);
+	GFX_GOL_StaticTextCreate(RCalib_OBJ_STATICTEXT_0,1,0,238,30,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,gStr1,topbar);
+//	GFX_GOL_StaticTextCreate(RCalib_OBJ_STATICTEXT_0,1,0,238,30,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,(GFX_XCHAR*)RCalib_OBJ_STATICTEXT_0_text,topbar);
 	
-	PictCreate(RCalib_OBJ_PICTURE_0, 210,0,239,30, PICT_DRAW|PICT_HIDE , IMAGE_NORMAL, getWaitImg(), topbar);
+	GFX_GOL_PictureControlCreate(RCalib_OBJ_PICTURE_0, 210,0,239,30, PICT_DRAW|PICT_HIDE , IMAGE_NORMAL, getWaitImg(), topbar);
 }
 
 void CreatePrimitivesForRCalib(void){
 //		SetLineType(0);
 //		SetLineThickness(0);
-//		SetColor(BLUE_DARK);
-//		while(!Bar(0,279,239,319));
+//		GFX_ColorSet(BLUE_DARK);
+//		while(!GFX_BarDraw(0,279,239,319));
 }
 
 
 
 
 /*********************************************************************
- * Function:        WORD msgMain(WORD objMsg, OBJ_HEADER* pObj)
+ * Function:        WORD msgMain(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
  *
  * PreCondition:    None
  *
@@ -149,7 +149,7 @@ void CreatePrimitivesForRCalib(void){
  * Note:            
  ********************************************************************/
 
-WORD msgRCalib(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+WORD msgRCalib(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
 	if(pObj == NULL)
 	{
@@ -195,17 +195,17 @@ WORD msgRCalib(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		return 1;	
 	}
 	 
-	switch (GetObjID(pObj)) {
+	switch (GFX_GOL_ObjectIDGet(pObj)) {
 		
 		case RCalib_OBJ_BUTTON_0:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				vol_calibr = vol_calibr_tmp;
    				xTimerStop( xTimers[ 1 ], 0 );
 				GDDPrevScreen();
 			}	
 			return 1;
 		case RCalib_OBJ_BUTTON_1:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				if(calib_page < END_RATE_CLBR)
 				{
 					SetState((BUTTON*) pObj, BTN_DRAW|BTN_DISABLED);
@@ -241,7 +241,7 @@ WORD msgRCalib(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			}	
 			break;
 		case RCalib_OBJ_BUTTON_2:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 		         	xTimerStop( xTimers[ 1 ], 0 );
 //					adjust_val_ptr = &scale_rate_tmp;
 					GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_INFUSED_CLBR,(void*)&Ratecalib_Para_Specs);
@@ -256,7 +256,7 @@ WORD msgRCalib(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 } 
 void UpdateRCalib(void)
 {
-	OBJ_HEADER* pObj;
+	GFX_GOL_OBJ_HEADER* pObj;
 //	static unsigned char i;
 //	static unsigned int calibr_val;
 	static unsigned long lastClock;

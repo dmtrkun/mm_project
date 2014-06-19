@@ -9,20 +9,20 @@
 #include "include.h"
 
 // Strings
-const XCHAR Setprog_OBJ_STATICTEXT_0_text[] = "SET PROGRAMM";
+const GFX_XCHAR Setprog_OBJ_STATICTEXT_0_text[] = "SET PROGRAMM";
 
 #if 0
-const XCHAR Setprog_OBJ_BUTTON_0_text[] = "SET PROGRAM";
-const XCHAR Setprog_OBJ_BUTTON_1_text[] = "SET PARAMETER";
-const XCHAR Setprog_OBJ_BUTTON_2_text[] = "CHECKUP";
-const XCHAR Setprog_OBJ_BUTTON_3_text[] = "SET DATE";
-const XCHAR Setprog_OBJ_BUTTON_4_text[] = "DRUGS PROTOCOL";
-const XCHAR Setprog_OBJ_BUTTON_5_text[] = "FACTORY DEFAULT";
-const XCHAR Setprog_OBJ_BUTTON_6_text[] = "PRESS CALIBRATION";
+const GFX_XCHAR Setprog_OBJ_BUTTON_0_text[] = "SET PROGRAM";
+const GFX_XCHAR Setprog_OBJ_BUTTON_1_text[] = "SET PARAMETER";
+const GFX_XCHAR Setprog_OBJ_BUTTON_2_text[] = "CHECKUP";
+const GFX_XCHAR Setprog_OBJ_BUTTON_3_text[] = "SET DATE";
+const GFX_XCHAR Setprog_OBJ_BUTTON_4_text[] = "DRUGS PROTOCOL";
+const GFX_XCHAR Setprog_OBJ_BUTTON_5_text[] = "FACTORY DEFAULT";
+const GFX_XCHAR Setprog_OBJ_BUTTON_6_text[] = "PRESS CALIBRATION";
 #endif
-//const XCHAR Setprog_OBJ_BUTTON_7_text[] = "EXIT";
-//const XCHAR Setprog_OBJ_BUTTON_8_text[] = "AL";
-//const XCHAR Setprog_OBJ_BUTTON_9_text[] = "AR";
+//const GFX_XCHAR Setprog_OBJ_BUTTON_7_text[] = "EXIT";
+//const GFX_XCHAR Setprog_OBJ_BUTTON_8_text[] = "AL";
+//const GFX_XCHAR Setprog_OBJ_BUTTON_9_text[] = "AR";
 
 #define Setprog_OBJ_BUTTON_0   0
 #define Setprog_OBJ_BUTTON_1   1
@@ -36,7 +36,7 @@ const XCHAR Setprog_OBJ_BUTTON_6_text[] = "PRESS CALIBRATION";
 #define Setprog_OBJ_BUTTON_9   9
 #define Setprog_OBJ_STATICTEXT_0   1
 
-GFX_IMAGE_HEADER const* prog_images[6] = {
+GFX_RESOURCE_HDR const* prog_images[6] = {
 &prog_ContROV,
 &prog_ContVOT,
 &prog_IntROV,
@@ -48,9 +48,9 @@ GFX_IMAGE_HEADER const* prog_images[6] = {
 
 void CreateSetprog(void)
 {
-	GOLFree();
-	SetColor(BLUE_LIGHT);
-	ClearDevice();
+	GFX_GOL_ObjectListFree();
+	GFX_ColorSet(BLUE_LIGHT);
+	GFX_ScreenClear();
 
 	BtnCreate(Setprog_OBJ_BUTTON_0,7,46,116,117,10,BTN_DRAW,(void*)prog_images[0],NULL,defscheme);
 	BtnCreate(Setprog_OBJ_BUTTON_1,125,46,234,117,10,BTN_DRAW,(void*)prog_images[1],NULL,defscheme);
@@ -60,25 +60,25 @@ void CreateSetprog(void)
 	BtnCreate(Setprog_OBJ_BUTTON_5,125,201,234,272,10,BTN_DRAW,(void*)prog_images[5],NULL,defscheme);
 
 	 
-	BtnCreate(Setprog_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
-//	BtnCreate(Setprog_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,NULL,(XCHAR*)Setprog_OBJ_BUTTON_8_text,botbar);
-//	BtnCreate(Setprog_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,NULL,(XCHAR*)Setprog_OBJ_BUTTON_9_text,botbar);
+	BtnCreate(Setprog_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+//	BtnCreate(Setprog_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setprog_OBJ_BUTTON_8_text,botbar);
+//	BtnCreate(Setprog_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setprog_OBJ_BUTTON_9_text,botbar);
 
 
-	StCreate(Setprog_OBJ_STATICTEXT_0,1,0,238,30,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)Setprog_OBJ_STATICTEXT_0_text,topbar);
+	GFX_GOL_StaticTextCreate(Setprog_OBJ_STATICTEXT_0,1,0,238,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Setprog_OBJ_STATICTEXT_0_text,GFX_ALIGN_CENTER,topbar);
 
 }
 void CreatePrimitivesForSetprog(void){
 //		SetLineType(0);
 //		SetLineThickness(0);
-//		SetColor(BLUE_DARK);
-//		while(!Bar(0,279,239,319));
+//		GFX_ColorSet(BLUE_DARK);
+//		while(!GFX_BarDraw(0,279,239,319));
 }
 
 
 
 /*********************************************************************
- * Function:        WORD msgMain(WORD objMsg, OBJ_HEADER* pObj)
+ * Function:        WORD msgMain(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
  *
  * PreCondition:    None
  *
@@ -94,9 +94,9 @@ void CreatePrimitivesForSetprog(void){
  * Note:            
  ********************************************************************/
 
-WORD msgSetprog(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+WORD msgSetprog(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
-//	OBJ_HEADER* pSetPoint;
+//	GFX_GOL_OBJ_HEADER* pSetPoint;
 //	SHORT dialVal;
 	if(pObj == NULL)
 	{
@@ -114,7 +114,7 @@ WORD msgSetprog(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		return 1;	
 	}
 	
-	switch (GetObjID(pObj)) {
+	switch (GFX_GOL_ObjectIDGet(pObj)) {
 		
 		case Setprog_OBJ_BUTTON_0:
 		case Setprog_OBJ_BUTTON_1:
@@ -122,13 +122,13 @@ WORD msgSetprog(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		case Setprog_OBJ_BUTTON_3:
 		case Setprog_OBJ_BUTTON_4:
 		case Setprog_OBJ_BUTTON_5:
-			if (objMsg == BTN_MSG_RELEASED) {
-				prog_num = GetObjID(pObj);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
+				prog_num = GFX_GOL_ObjectIDGet(pObj);
 				GDDPrevScreen();
 			}	
 			return 1;
 		case Setprog_OBJ_BUTTON_7:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 				GDDPrevScreen();
 			}	
 			return 1;

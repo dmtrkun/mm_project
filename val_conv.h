@@ -35,26 +35,26 @@
 
 typedef struct 
 {
-	const XCHAR* title;
+	const GFX_XCHAR* title;
 	void* pset_var;
 	unsigned char type_var;
 	unsigned char unit;
-	const XCHAR** opt_list;
+	const GFX_XCHAR** opt_list;
 	unsigned char num_opt;
 }PARA_SPECS_t;
 
 
 #ifdef VAL_CONV_PUB
-const XCHAR* BolusModelst[] = {
+const GFX_XCHAR* BolusModelst[] = {
 "OFF",
 "ON"
 };
-const XCHAR* HiMedlst[] = {
+const GFX_XCHAR* HiMedlst[] = {
 "High",
 "Medium",
 "Low",
 };
-const XCHAR* BatTypelst[] = {
+const GFX_XCHAR* BatTypelst[] = {
 "6NiCd",
 "6NiMH",
 "LiIon",
@@ -63,9 +63,9 @@ const XCHAR* BatTypelst[] = {
 
 
 #else
-extern	const XCHAR* BatTypelst[];
-extern	const XCHAR* HiMedlst[];
-extern	 const XCHAR* BolusModelst[];
+extern	const GFX_XCHAR* BatTypelst[];
+extern	const GFX_XCHAR* HiMedlst[];
+extern	 const GFX_XCHAR* BolusModelst[];
 #endif
 
 VAL_CONVPUB void ValToStr(unsigned char type,unsigned long prmtr1, float prmtr2, void* ptr, char *val_str);

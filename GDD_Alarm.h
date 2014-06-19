@@ -66,10 +66,10 @@
 
 typedef struct 
 {
-	const XCHAR* title;
-	const XCHAR* name;
-	const XCHAR* descr;
-	const XCHAR* solut;
+	const GFX_XCHAR* title;
+	const GFX_XCHAR* name;
+	const GFX_XCHAR* descr;
+	const GFX_XCHAR* solut;
 	unsigned char btns;
 	unsigned char tout;
 	unsigned char statbit_forclear;
@@ -77,45 +77,45 @@ typedef struct
 }ALARM_SPECS_t;
 
 #ifdef ALARM_PUB
-const XCHAR* Alarm_title[] =
+const GFX_XCHAR* Alarm_title[] =
 {
 "ERROR",
 "INFUSION STOPPED!",
 "WARNING!"
 };
-const XCHAR Alarm_title0[] ={"ERROR"};
-const XCHAR Alarm_title1[] ={"INFUSION STOPPED!"};
-const XCHAR Alarm_title2[] ={"WARNING!"};
+const GFX_XCHAR Alarm_title0[] ={"ERROR"};
+const GFX_XCHAR Alarm_title1[] ={"INFUSION STOPPED!"};
+const GFX_XCHAR Alarm_title2[] ={"WARNING!"};
 
-const XCHAR Alarm_descr0[] ={">The internal battery\r\n  is exhausted"};
-const XCHAR Alarm_descr1[] ={">DOOR WAS OPENED\r\n  DURING AN INFUSION"};
-const XCHAR Alarm_descr2[] ={">SINGLE AIR BUBBLE EXCEEDS\r\n  ALARM LIMIT\r\n>SET NOT FITTED CORRECTLY\r\n  INTO AIR DETECTOR"};
-const XCHAR Alarm_descr3[] ={">ACCUMULATED AIR BUBBLE\r\n  EXCEEDS ALARM LIMIT\r\n>SET NOT FITTED CORRECTLY\r\n  INTO AIR DETECTOR"};
-const XCHAR Alarm_descr4[] ={">A BLOCKAGE HAS OCCURED\r\n  DOWNSTREAM"};
-const XCHAR Alarm_descr5[] ={">A BLOCKAGE HAS OCCURED\r\n  UPSTREAM"};
-const XCHAR Alarm_descr6[] ={">INTERNAL ERROR\r\n  HAS OCCURED"};
-const XCHAR Alarm_descr7[] ={">MAY BE THE SET DISCONNECTED\r\n  FROM THE PATIENT"};
-const XCHAR Alarm_descr8[] ={">NO INFUSION SET FITTED"};
-const XCHAR Alarm_descr9[] ={">LESS THEN 30 MINUTES\r\n  OF BATTERY LIFE\r\n  REMAINING"};
-const XCHAR Alarm_descr10[] ={"BATTERY TIME\r\n  REMAINING"};
-const XCHAR Alarm_descr11[] ={">THE PRESSURE TO PATIENT\r\n  INCREASING"};
-const XCHAR Alarm_descr12[] ={"\r\n\r\n         (KEEP VIEN OPEN)"};
-const XCHAR Alarm_descr13[] ={">CONTENS OF EEPROM\r\n  OR RTC WAS\r\n  REPLACED BY DEFAULT"};
-const XCHAR Alarm_descr14[] ={">PUMP ON HOLD\r\n  MORE THEN 2 MINUTES"};
+const GFX_XCHAR Alarm_descr0[] ={">The internal battery\r\n  is exhausted"};
+const GFX_XCHAR Alarm_descr1[] ={">DOOR WAS OPENED\r\n  DURING AN INFUSION"};
+const GFX_XCHAR Alarm_descr2[] ={">SINGLE AIR BUBBLE EXCEEDS\r\n  ALARM LIMIT\r\n>SET NOT FITTED CORRECTLY\r\n  INTO AIR DETECTOR"};
+const GFX_XCHAR Alarm_descr3[] ={">ACCUMULATED AIR BUBBLE\r\n  EXCEEDS ALARM LIMIT\r\n>SET NOT FITTED CORRECTLY\r\n  INTO AIR DETECTOR"};
+const GFX_XCHAR Alarm_descr4[] ={">A BLOCKAGE HAS OCCURED\r\n  DOWNSTREAM"};
+const GFX_XCHAR Alarm_descr5[] ={">A BLOCKAGE HAS OCCURED\r\n  UPSTREAM"};
+const GFX_XCHAR Alarm_descr6[] ={">INTERNAL ERROR\r\n  HAS OCCURED"};
+const GFX_XCHAR Alarm_descr7[] ={">MAY BE THE SET DISCONNECTED\r\n  FROM THE PATIENT"};
+const GFX_XCHAR Alarm_descr8[] ={">NO INFUSION SET FITTED"};
+const GFX_XCHAR Alarm_descr9[] ={">LESS THEN 30 MINUTES\r\n  OF BATTERY LIFE\r\n  REMAINING"};
+const GFX_XCHAR Alarm_descr10[] ={"BATTERY TIME\r\n  REMAINING"};
+const GFX_XCHAR Alarm_descr11[] ={">THE PRESSURE TO PATIENT\r\n  INCREASING"};
+const GFX_XCHAR Alarm_descr12[] ={"\r\n\r\n         (KEEP VIEN OPEN)"};
+const GFX_XCHAR Alarm_descr13[] ={">CONTENS OF EEPROM\r\n  OR RTC WAS\r\n  REPLACED BY DEFAULT"};
+const GFX_XCHAR Alarm_descr14[] ={">PUMP ON HOLD\r\n  MORE THEN 2 MINUTES"};
 
-const XCHAR Alarm_solut0[] ={">CONNECT THE PUMP\r\n  TO MAINS IMMEDIATELY"};
-const XCHAR Alarm_solut1[] ={">CLOSE DOOR"};
-const XCHAR Alarm_solut2[] ={">CHECK SET FOR AIR\r\n>REMOVE AIR ACCORDING\r\n  TO HOSPITAL POLICE"};
-const XCHAR Alarm_solut3[] ={">CHECK FLUID PATH\r\n  BETWEEN PUMP AND PATIENT"};
-const XCHAR Alarm_solut4[] ={">CHECK SET, CLAMPS\r\n  ABOVE THE PUMP"};
-const XCHAR Alarm_solut5[] ={">REMOVE PUMP FROM USE"};
-const XCHAR Alarm_solut6[] ={">CONNECT THE SET TO\r\n  PATIENT, ACCORDING\r\n  TO HOSPITAL POLICE"};
-const XCHAR Alarm_solut7[] ={">FIT INFUSION SET"};
-const XCHAR Alarm_solut8[] ={">SET RATE"};
-const XCHAR Alarm_solut9[] ={">CONNECT THE PUMP\r\n  TO MAINS\r\n>CHECK POWER CABLE"};
-const XCHAR Alarm_solut10[] ={"\r\n>KVO = "};
-const XCHAR Alarm_solut11[] ={">SEND PUMP TO\r\n  CALIBRATION"};
-const XCHAR Alarm_solut12[] ={">RESTART INFUSION\r\n  OR TURN OFF THE PUMP"};
+const GFX_XCHAR Alarm_solut0[] ={">CONNECT THE PUMP\r\n  TO MAINS IMMEDIATELY"};
+const GFX_XCHAR Alarm_solut1[] ={">CLOSE DOOR"};
+const GFX_XCHAR Alarm_solut2[] ={">CHECK SET FOR AIR\r\n>REMOVE AIR ACCORDING\r\n  TO HOSPITAL POLICE"};
+const GFX_XCHAR Alarm_solut3[] ={">CHECK FLUID PATH\r\n  BETWEEN PUMP AND PATIENT"};
+const GFX_XCHAR Alarm_solut4[] ={">CHECK SET, CLAMPS\r\n  ABOVE THE PUMP"};
+const GFX_XCHAR Alarm_solut5[] ={">REMOVE PUMP FROM USE"};
+const GFX_XCHAR Alarm_solut6[] ={">CONNECT THE SET TO\r\n  PATIENT, ACCORDING\r\n  TO HOSPITAL POLICE"};
+const GFX_XCHAR Alarm_solut7[] ={">FIT INFUSION SET"};
+const GFX_XCHAR Alarm_solut8[] ={">SET RATE"};
+const GFX_XCHAR Alarm_solut9[] ={">CONNECT THE PUMP\r\n  TO MAINS\r\n>CHECK POWER CABLE"};
+const GFX_XCHAR Alarm_solut10[] ={"\r\n>KVO = "};
+const GFX_XCHAR Alarm_solut11[] ={">SEND PUMP TO\r\n  CALIBRATION"};
+const GFX_XCHAR Alarm_solut12[] ={">RESTART INFUSION\r\n  OR TURN OFF THE PUMP"};
 
 ALARM_SPECS_t Alarm_Specs[] = 
 {
@@ -151,6 +151,6 @@ void ClearError(void);
 
 ALARMPUB	 void CreateAlarm(void);
 ALARMPUB	 void CreatePrimitivesForAlarm(void);
-ALARMPUB	 WORD msgAlarm(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg);
+ALARMPUB	 WORD msgAlarm(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 
 #endif // _ALARM_H

@@ -18,9 +18,9 @@
 
 ///////////////////////////////////////////////////////////////////
 // Flash images used by the application
-extern const FONT_FLASH GOLFontDefault;
-extern const FONT_FLASH GOLMediumFont;
-extern const FONT_FLASH GOLSmallFont;
+//extern const FONT_FLASH GOLFontDefault;
+//extern const FONT_FLASH GOLMediumFont;
+//extern const FONT_FLASH GOLSmallFont;
 
 extern BYTE update;
 extern BYTE updateGPL;
@@ -65,7 +65,7 @@ xTaskHandle hGRAPHICSTask;
 ///////////////////////////////////////////////////////////////////
 // local functions within this module
 WORD ScreenUpdate(void);
-
+WORD GOLMsgCallback(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 static CONTROL_MSG cMsg;
 
 ///////////////////////////////////////////////////////////////////
@@ -106,11 +106,12 @@ xQueueHandle hQVGAQueue;
 void taskGraphics(void* pvParameter)
 {
 	static GRAPHICS_MSG msg;
-	GOL_MSG* pMsg;
-	OBJ_HEADER* pObj;
+	GFX_GOL_MESSAGE* pMsg;
+	GFX_GOL_OBJ_HEADER* pObj;
 //	vTaskSetApplicationTaskTag( NULL, ( void * ) 'g' );	
 	
-	
+    GFX_GOL_DrawCallbackSet(GOLDrawCallback);
+    GFX_GOL_MessageCallbackSet(GOLMsgCallback);
 	
 	GDDSetScreen(CREATE_SCREEN_INTRO,0,NULL);
 	// notify task started
@@ -135,7 +136,7 @@ void taskGraphics(void* pvParameter)
 		// gain access to the QVGA display and PMP
 		xSemaphoreTake(QVGAMutSemaphore, portMAX_DELAY);
 		// when drawing is complete GOLDraw will return TRUE
-		while (GOLDraw() != TRUE);
+		while (GFX_GOL_ObjectListDraw() != TRUE);
 		xSemaphoreGive(QVGAMutSemaphore);
 		
 		
@@ -151,7 +152,7 @@ void taskGraphics(void* pvParameter)
 					
 					break;
 				case MSG_ERROR:
-					GDDSetScreen(CREATE_SCREEN_ALARM,msg.data.wVal[0],NULL);
+//DMK					GDDSetScreen(CREATE_SCREEN_ALARM,msg.data.wVal[0],NULL);
 					break;
 				case MSG_UPDATE_DISPLAY:
 					// force a redraw of the screen, this allows for
@@ -182,24 +183,24 @@ void taskGraphics(void* pvParameter)
 						UpdateIntro();
 						xSemaphoreGive(QVGAMutSemaphore);
 					}
-					else if(screenState == DISPLAY_SCREEN_BOLUS)
-					{
-						xSemaphoreTake(QVGAMutSemaphore, portMAX_DELAY);
-						UpdateBolus();
-						xSemaphoreGive(QVGAMutSemaphore);
-					}
-					else if(screenState == DISPLAY_SCREEN_RUN)
-					{
-						xSemaphoreTake(QVGAMutSemaphore, portMAX_DELAY);
-						UpdateRun();
-						xSemaphoreGive(QVGAMutSemaphore);
-					}
-					else if(screenState == DISPLAY_SCREEN_ALARM)
-					{
-						xSemaphoreTake(QVGAMutSemaphore, portMAX_DELAY);
-						UpdateAlarm();
-						xSemaphoreGive(QVGAMutSemaphore);
-					}
+//TBD					else if(screenState == DISPLAY_SCREEN_BOLUS)
+//					{
+//						xSemaphoreTake(QVGAMutSemaphore, portMAX_DELAY);
+//						UpdateBolus();
+//						xSemaphoreGive(QVGAMutSemaphore);
+//					}
+//					else if(screenState == DISPLAY_SCREEN_RUN)
+//					{
+//						xSemaphoreTake(QVGAMutSemaphore, portMAX_DELAY);
+//						UpdateRun();
+//						xSemaphoreGive(QVGAMutSemaphore);
+//					}
+//					else if(screenState == DISPLAY_SCREEN_ALARM)
+//					{
+//						xSemaphoreTake(QVGAMutSemaphore, portMAX_DELAY);
+//						UpdateAlarm();
+//						xSemaphoreGive(QVGAMutSemaphore);
+//					}
 
 					break;
 				case MSG_UPDATE_OFF:
@@ -209,45 +210,45 @@ void taskGraphics(void* pvParameter)
 #if 0				 
 				case MSG_UPDATE_TEMPERATURE:
 					// update the real temperature display
-					pObj = GOLFindObject(ID_BUTTON_TEMPERATURE);
+					pObj = GFX_GOL_ObjectFind(ID_BUTTON_TEMPERATURE);
 					if (pObj) {
 						sprintf(qvgaBuff1, "%d.%01dC", msg.data.wVal[0] / 10,
 							msg.data.wVal[0] % 10);
-						SetState((BUTTON*) pObj, DRAW_UPDATE);
+						GFX_GOL_ObjectStateSet((BUTTON*) pObj, DRAW_UPDATE);
 					}
 					break;
 				case MSG_UPDATE_ELECTRIC_TOTAL:
 					// update electricity total cost
-					pObj = GOLFindObject(ID_ELECTRIC_TOTAL_COST);
+					pObj = GFX_GOL_ObjectFind(ID_ELECTRIC_TOTAL_COST);
 					if (pObj) {
 						sprintf(qvgaBuff2, "$%d.%02d",
 							msg.data.wVal[1], msg.data.wVal[0]);
-						SetState((BUTTON*) pObj, DRAW_UPDATE);
+						GFX_GOL_ObjectStateSet((BUTTON*) pObj, DRAW_UPDATE);
 					}
 					break;
 				case MSG_UPDATE_ELECTRIC_UNITS:
 					// update electricity total units used
-					pObj = GOLFindObject(ID_ELECTRIC_SCREEN_TOTAL);
+					pObj = GFX_GOL_ObjectFind(ID_ELECTRIC_SCREEN_TOTAL);
 					if (pObj) {
 						sprintf(qvgaBuff1, "%ld", msg.data.dVal[0]);
-						SetState((BUTTON*) pObj, DRAW_UPDATE);							
+						GFX_GOL_ObjectStateSet((BUTTON*) pObj, DRAW_UPDATE);							
 					}
 					break;
 				case MSG_UPDATE_GAS_TOTAL:
 					// update gas total cost
-					pObj = GOLFindObject(ID_GAS_TOTAL_COST);
+					pObj = GFX_GOL_ObjectFind(ID_GAS_TOTAL_COST);
 					if (pObj) {
 						sprintf(qvgaBuff3, "$%d.%02d",
 							msg.data.wVal[1], msg.data.wVal[0]);
-						SetState((BUTTON*) pObj, DRAW_UPDATE);
+						GFX_GOL_ObjectStateSet((BUTTON*) pObj, DRAW_UPDATE);
 					}
 					break;
 				case MSG_UPDATE_GAS_UNITS:
 					// update gas total units used
-					pObj = GOLFindObject(ID_GAS_SCREEN_TOTAL);
+					pObj = GFX_GOL_ObjectFind(ID_GAS_SCREEN_TOTAL);
 					if (pObj) {
 						sprintf(qvgaBuff1, "%ld", msg.data.dVal[0]);
-						SetState((BUTTON*) pObj, DRAW_UPDATE);							
+						GFX_GOL_ObjectStateSet((BUTTON*) pObj, DRAW_UPDATE);							
 					}
 					break;
 #endif				
@@ -275,8 +276,8 @@ void taskGraphics(void* pvParameter)
 
 
 /*********************************************************************
- * Function:        WORD GOLMsgCallback(WORD objMsg, OBJ_HEADER* pObj, 
- *										GOL_MSG* pMsg);
+ * Function:        WORD GOLMsgCallback(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, 
+ *										GFX_GOL_MESSAGE* pMsg);
  *
  * PreCondition:    None
  *
@@ -293,7 +294,7 @@ void taskGraphics(void* pvParameter)
  *
  * Note:            
  ********************************************************************/
-WORD msg_redalarm(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+WORD msg_redalarm(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
 	if(pObj == NULL)
 	{
@@ -304,7 +305,7 @@ WORD msg_redalarm(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 				{
 					if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
 						xTimerStop( xTimers[ 1 ], 0 );
-					GDDSetScreen(CREATE_SCREEN_ALARM,HOLD_ALRM_SCR,NULL);
+//TBD					GDDSetScreen(CREATE_SCREEN_ALARM,HOLD_ALRM_SCR,NULL);
 				}	
 				break;
 			case INP_DOOR_ID:			
@@ -319,7 +320,7 @@ WORD msg_redalarm(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 	   	     				xTimerStop( xTimers[ 1 ], 0 );
 						if( xTimerIsTimerActive( xTimers[ 0 ] ) != pdFALSE ) 
 	   	     				xTimerStop( xTimers[ 0 ], 0 );
-						GDDSetScreen(CREATE_SCREEN_ALARM,DOOR_ALRM_SCR,NULL);
+//TBD						GDDSetScreen(CREATE_SCREEN_ALARM,DOOR_ALRM_SCR,NULL);
 					}
 				}	
 				//Stop infusion and alarm				
@@ -327,12 +328,12 @@ WORD msg_redalarm(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			case INP_AIR_ID:			 
 				if(pMsg->param2 == INP_SET)
 				{
-					if(screenState == DISPLAY_SCREEN_PRIME)
-					{
-						air_alarm = FALSE;
-						clearBit( alarm_st, AIR_ALRM);
-			        	break;
-					}
+//TBD					if(screenState == DISPLAY_SCREEN_PRIME)
+//					{
+//						air_alarm = FALSE;
+//						clearBit( alarm_st, AIR_ALRM);
+//			        	break;
+//					}
 					//Stop infusion				 
 					cMsg.cmd = MSG_CONTROL_STOP_INFUS;
 					xQueueSend(hCONTROLQueue, &cMsg, 0);
@@ -418,9 +419,10 @@ WORD msg_redalarm(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 	return 0;	
 }
 
-WORD msg_yellowalarm(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+WORD msg_yellowalarm(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
-	if(pObj == NULL)
+#if 0
+    if(pObj == NULL)
 	{
 		switch(pMsg->param1)
 		{
@@ -464,12 +466,13 @@ WORD msg_yellowalarm(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 		
 		return 1;	
 	}
-	return 0;	
+#endif
+    return 0;
 }
 
 
 
-WORD GOLMsgCallback(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
+WORD GOLMsgCallback(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
 	
 	if(pObj != NULL)
@@ -496,17 +499,18 @@ WORD GOLMsgCallback(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 				Beep(20);
 			clear_hold_tmr();
 			if(pMsg->param1 == INP_ONOFF_ID || pMsg->param1 == INP_NOBAT_ID){
-				GDDSetScreen(CREATE_SCREEN_PWRDOWN,pMsg->param1,NULL);
+//TBD				GDDSetScreen(CREATE_SCREEN_PWRDOWN,pMsg->param1,NULL);
 				return 1;
 			}
 		}
 	
 	}
-	if(screenState != DISPLAY_SCREEN_CHECKUP)
-	{
-		if(msg_redalarm(objMsg, pObj, pMsg) == 1)
-			return 1;
-	}
+//TBD	if(screenState != DISPLAY_SCREEN_CHECKUP)
+//	{
+//		if(msg_redalarm(objMsg, pObj, pMsg) == 1)
+//			return 1;
+//	}
+
 //	if(screenState != DISPLAY_SCREEN_ALARM)
 //	{
 //		if(msg_yellowalarm(objMsg, pObj, pMsg) == 1)
@@ -520,40 +524,38 @@ WORD GOLMsgCallback(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg)
 			return msgIntro(objMsg, pObj, pMsg);
 		case DISPLAY_SCREEN_CLEAR:
 			return msgClear(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_CONFIRM:
-			return msgConfirm(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_RUN:
-			return msgRun(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_SETPROG:
-			return msgSetprog(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_SETDRUG:
-			return msgSetdrug(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_ADJUST:
-			return msgAdjust(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_PRIME:
-			return msgPrime(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_OPTIONS:
-			return msgOptions(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_TEST:
-			return msgTest(objMsg, pObj, pMsg);
-//		case DISPLAY_SCREEN_ERROR:
-//			return msgError(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_ALARM:
-			return msgAlarm(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_PWRDOWN:
-			return msgPwrdown(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_CALIB:
-			return msgCalib(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_RATECALIB:
-			return msgRCalib(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_BOLUS:
-			return msgBolus(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_SETMENU:
-			return msgSetmenu(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_SETUP:
-			return msgSetup(objMsg, pObj, pMsg);
-		case DISPLAY_SCREEN_CHECKUP:
-			return msgCheckup(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_CONFIRM:
+//			return msgConfirm(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_RUN:
+//			return msgRun(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_SETPROG:
+//			return msgSetprog(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_SETDRUG:
+//			return msgSetdrug(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_ADJUST:
+//			return msgAdjust(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_PRIME:
+//			return msgPrime(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_OPTIONS:
+//			return msgOptions(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_TEST:
+//			return msgTest(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_ALARM:
+//			return msgAlarm(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_PWRDOWN:
+//			return msgPwrdown(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_CALIB:
+//			return msgCalib(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_RATECALIB:
+//			return msgRCalib(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_BOLUS:
+//			return msgBolus(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_SETMENU:
+//			return msgSetmenu(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_SETUP:
+//			return msgSetup(objMsg, pObj, pMsg);
+//		case DISPLAY_SCREEN_CHECKUP:
+//			return msgCheckup(objMsg, pObj, pMsg);
 		default:
 			break;
 	}
@@ -570,40 +572,40 @@ WORD ScreenUpdate(void)
 		case DISPLAY_SCREEN_INTRO:
 //			UpdateIntro();
 			return 1;
-		case DISPLAY_SCREEN_CHECKUP:
-			UpdateCheckup();
-			return 1;
-		case DISPLAY_SCREEN_TEST:
-			UpdateTest();
-			return 1;
-		case DISPLAY_SCREEN_ADJUST:
-			UpdateAdjust();
-			return 1;
-		case DISPLAY_SCREEN_RUN:
-			UpdateRun();
-			return 1;
-		case DISPLAY_SCREEN_CALIB:
-//			UpdateCalib();
-			return 1;
-		case DISPLAY_SCREEN_OPTIONS:
-			UpdateOptions();
-			return 1;
-		case DISPLAY_SCREEN_PRIME:
-			UpdatePrime();
-			return 1;
-		case DISPLAY_SCREEN_ALARM:
-			UpdateAlarm();
-			return 1;
+//		case DISPLAY_SCREEN_CHECKUP:
+//			UpdateCheckup();
+//			return 1;
+//		case DISPLAY_SCREEN_TEST:
+//			UpdateTest();
+//			return 1;
+//		case DISPLAY_SCREEN_ADJUST:
+//			UpdateAdjust();
+//			return 1;
+//		case DISPLAY_SCREEN_RUN:
+//			UpdateRun();
+//			return 1;
+//		case DISPLAY_SCREEN_CALIB:
+//			return 1;
+//		case DISPLAY_SCREEN_OPTIONS:
+//			UpdateOptions();
+//			return 1;
+//		case DISPLAY_SCREEN_PRIME:
+//			UpdatePrime();
+//			return 1;
+//TBD		case DISPLAY_SCREEN_ALARM:
+//			UpdateAlarm();
+//			return 1;
 		case DISPLAY_SCREEN_CLEAR:
 			UpdateClear();
 			return 1;
-		case DISPLAY_SCREEN_CONFIRM:
-			UpdateConfirm();
-			return 1;
-		case CREATE_SCREEN_NEXT: 
-			return 1;
-		case DISPLAY_SCREEN_NEXT:
-			return 1;
+
+//TBD		case DISPLAY_SCREEN_CONFIRM:
+//			UpdateConfirm();
+//			return 1;
+//		case CREATE_SCREEN_NEXT:
+//			return 1;
+//		case DISPLAY_SCREEN_NEXT:
+//			return 1;
 		default:	
 			return 1;
 	}
@@ -659,9 +661,9 @@ SCREEN_MSG scr_msg;
  *
  * Note:            
  ********************************************************************/
-static const XCHAR ipStr[] = {'I','P',':',0};
-static const XCHAR netmaskStr[] = {'M','A','S','K',':',0};
-static const XCHAR gwStr[] = {'G','W',':',0};
+static const GFX_XCHAR ipStr[] = {'I','P',':',0};
+static const GFX_XCHAR netmaskStr[] = {'M','A','S','K',':',0};
+static const GFX_XCHAR gwStr[] = {'G','W',':',0};
 void CreateRTOSScreen(void)
 {
 	short textHeight;
@@ -690,7 +692,7 @@ void CreateRTOSScreen(void)
 	Line(0, 148, GetMaxX(), 148);
 }
 /*********************************************************************
- * Function:        WORD msgMain(WORD objMsg, OBJ_HEADER* pObj)
+ * Function:        WORD msgMain(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
  *
  * PreCondition:    None
  *
@@ -705,18 +707,18 @@ void CreateRTOSScreen(void)
  *
  * Note:            
  ********************************************************************/
-WORD msgMain(WORD objMsg, OBJ_HEADER* pObj)
+WORD msgMain(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
 {
-	OBJ_HEADER* pSetPoint;
+	GFX_GOL_OBJ_HEADER* pSetPoint;
 	SHORT dialVal;
 	
-	switch (GetObjID(pObj)) {
+	switch (GFX_GOL_ObjectIDGet(pObj)) {
 		case ID_SETPOINT_DIAL:
 			dialVal = RdiaGetVal((ROUNDDIAL*) pObj);
 			
 			// update the setpoint display text box
 			xSemaphoreTake(QVGAMutSemaphore, portMAX_DELAY);
-			pSetPoint = GOLFindObject(ID_SETPOINT_TEMPERATURE);
+			pSetPoint = GFX_GOL_ObjectFind(ID_SETPOINT_TEMPERATURE);
 			sprintf(qvgaBuff4, "%d.%01dC", dialVal / 10, dialVal % 10);
 			StDraw((STATICTEXT*) pSetPoint);
 			xSemaphoreGive(QVGAMutSemaphore);
@@ -740,7 +742,7 @@ WORD msgMain(WORD objMsg, OBJ_HEADER* pObj)
 }
 
 /*********************************************************************
- * Function:        WORD msgGas(WORD objMsg, OBJ_HEADER* pObj)
+ * Function:        WORD msgGas(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
  *
  * PreCondition:    None
  *
@@ -755,19 +757,19 @@ WORD msgMain(WORD objMsg, OBJ_HEADER* pObj)
  *
  * Note:            
  ********************************************************************/
-WORD msgGas(WORD objMsg, OBJ_HEADER* pObj)
+WORD msgGas(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
 {
-	OBJ_HEADER* pOtherBtn;
+	GFX_GOL_OBJ_HEADER* pOtherBtn;
 	
-	switch(GetObjID(pObj)) {
+	switch(GFX_GOL_ObjectIDGet(pObj)) {
 		case ID_BUTTON_GAS_ON:
 			if (objMsg == BTN_MSG_PRESSED) {
 				if (!GetState(pObj, BTN_PRESSED)) {
 					xSemaphoreTake(QVGAMutSemaphore, portMAX_DELAY);
-					pOtherBtn = GOLFindObject(ID_BUTTON_GAS_OFF);
+					pOtherBtn = GFX_GOL_ObjectFind(ID_BUTTON_GAS_OFF);
 					ClrState(pOtherBtn, BTN_PRESSED);
-					SetState(pOtherBtn, BTN_DRAW);
-					SetState(pObj, BTN_PRESSED | BTN_DRAW);
+					GFX_GOL_ObjectStateSet(pOtherBtn, BTN_DRAW);
+					GFX_GOL_ObjectStateSet(pObj, BTN_PRESSED | BTN_DRAW);
 					xSemaphoreGive(QVGAMutSemaphore);
 					// update the meter
 					xSemaphoreTake(CONTROLSemaphore, portMAX_DELAY);
@@ -780,10 +782,10 @@ WORD msgGas(WORD objMsg, OBJ_HEADER* pObj)
 			if (objMsg == BTN_MSG_PRESSED) {
 				if (!GetState(pObj, BTN_PRESSED)) {
 					xSemaphoreTake(QVGAMutSemaphore, portMAX_DELAY);
-					pOtherBtn = GOLFindObject(ID_BUTTON_GAS_ON);
+					pOtherBtn = GFX_GOL_ObjectFind(ID_BUTTON_GAS_ON);
 					ClrState(pOtherBtn, BTN_PRESSED);
-					SetState(pOtherBtn, BTN_DRAW);
-					SetState(pObj, BTN_PRESSED | BTN_DRAW);
+					GFX_GOL_ObjectStateSet(pOtherBtn, BTN_DRAW);
+					GFX_GOL_ObjectStateSet(pObj, BTN_PRESSED | BTN_DRAW);
 					xSemaphoreGive(QVGAMutSemaphore);
 					// update the meter
 					xSemaphoreTake(CONTROLSemaphore, portMAX_DELAY);
@@ -798,7 +800,7 @@ WORD msgGas(WORD objMsg, OBJ_HEADER* pObj)
 }
 
 /*********************************************************************
- * Function:        WORD msgElectric(WORD objMsg, OBJ_HEADER* pObj)
+ * Function:        WORD msgElectric(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
  *
  * PreCondition:    None
  *
@@ -813,19 +815,19 @@ WORD msgGas(WORD objMsg, OBJ_HEADER* pObj)
  *
  * Note:            
  ********************************************************************/
-WORD msgElectric(WORD objMsg, OBJ_HEADER* pObj)
+WORD msgElectric(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
 {
-	OBJ_HEADER* pOtherBtn;
+	GFX_GOL_OBJ_HEADER* pOtherBtn;
 	
-	switch(GetObjID(pObj)) {
+	switch(GFX_GOL_ObjectIDGet(pObj)) {
 		case ID_BUTTON_ELECTRIC_ON:
 			if (objMsg == BTN_MSG_PRESSED) {
 				if (!GetState(pObj, BTN_PRESSED)) {
 					xSemaphoreTake(QVGAMutSemaphore, portMAX_DELAY);
-					pOtherBtn = GOLFindObject(ID_BUTTON_ELECTRIC_OFF);
+					pOtherBtn = GFX_GOL_ObjectFind(ID_BUTTON_ELECTRIC_OFF);
 					ClrState(pOtherBtn, BTN_PRESSED);
-					SetState(pOtherBtn, BTN_DRAW);
-					SetState(pObj, BTN_PRESSED | BTN_DRAW);
+					GFX_GOL_ObjectStateSet(pOtherBtn, BTN_DRAW);
+					GFX_GOL_ObjectStateSet(pObj, BTN_PRESSED | BTN_DRAW);
 					xSemaphoreGive(QVGAMutSemaphore);
 					// update the meter
 					xSemaphoreTake(CONTROLSemaphore, portMAX_DELAY);
@@ -838,10 +840,10 @@ WORD msgElectric(WORD objMsg, OBJ_HEADER* pObj)
 			if (objMsg == BTN_MSG_PRESSED) {
 				if (!GetState(pObj, BTN_PRESSED)) {
 					xSemaphoreTake(QVGAMutSemaphore, portMAX_DELAY);
-					pOtherBtn = GOLFindObject(ID_BUTTON_ELECTRIC_ON);
+					pOtherBtn = GFX_GOL_ObjectFind(ID_BUTTON_ELECTRIC_ON);
 					ClrState(pOtherBtn, BTN_PRESSED);
-					SetState(pOtherBtn, BTN_DRAW);
-					SetState(pObj, BTN_PRESSED | BTN_DRAW);
+					GFX_GOL_ObjectStateSet(pOtherBtn, BTN_DRAW);
+					GFX_GOL_ObjectStateSet(pObj, BTN_PRESSED | BTN_DRAW);
 					xSemaphoreGive(QVGAMutSemaphore);
 					// update the meter
 					xSemaphoreTake(CONTROLSemaphore, portMAX_DELAY);
@@ -856,7 +858,7 @@ WORD msgElectric(WORD objMsg, OBJ_HEADER* pObj)
 }
 
 /*********************************************************************
- * Function:        WORD msgRTOS(WORD objMsg, OBJ_HEADER* pObj)
+ * Function:        WORD msgRTOS(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
  *
  * PreCondition:    None
  *
@@ -871,11 +873,11 @@ WORD msgElectric(WORD objMsg, OBJ_HEADER* pObj)
  *
  * Note:            
  ********************************************************************/
-WORD msgRTOS(WORD objMsg, OBJ_HEADER* pObj)
+WORD msgRTOS(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj)
 {
-	switch(GetObjID(pObj)) {
+	switch(GFX_GOL_ObjectIDGet(pObj)) {
 		case ID_WINDOW4:
-			if (objMsg == BTN_MSG_RELEASED) {
+			if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) {
 			}
 			return 1;
 		default:
@@ -898,12 +900,12 @@ WORD msgRTOS(WORD objMsg, OBJ_HEADER* pObj)
  *
  * Note:            
  ********************************************************************/
-static const XCHAR uartStr[] = {'U','A','R','T',':',0};
-static const XCHAR meterStr[] = {'M','E','T','E','R',':',0};
-static const XCHAR miwiStr[] = {'M','I','W','I',':',0};
-static const XCHAR touchStr[] = {'T','O','U','C','H',':',0};
-static const XCHAR graphicsStr[] = {'G','R','A','P','H',':',0};
-static const XCHAR tcpipStr[] = {'T','C','P','I','P',':',0};
+static const GFX_XCHAR uartStr[] = {'U','A','R','T',':',0};
+static const GFX_XCHAR meterStr[] = {'M','E','T','E','R',':',0};
+static const GFX_XCHAR miwiStr[] = {'M','I','W','I',':',0};
+static const GFX_XCHAR touchStr[] = {'T','O','U','C','H',':',0};
+static const GFX_XCHAR graphicsStr[] = {'G','R','A','P','H',':',0};
+static const GFX_XCHAR tcpipStr[] = {'T','C','P','I','P',':',0};
 void UpdateRTOSScreen(void)
 {
 	unsigned portBASE_TYPE hw;
@@ -916,32 +918,32 @@ void UpdateRTOSScreen(void)
 	
 	// just erase the area of the bars and summary text
 	SetColor(BLACK);
-	Bar(60, 48, GetMaxX(), (6 * textHeight) + 48);
+	GFX_BarDraw(60, 48, GetMaxX(), (6 * textHeight) + 48);
 	
 	// for each task display its stack usage as a bar graph and summary text
 	ypos = 48;	
 //	hw = (STACK_SIZE_UART - uxTaskGetStackHighWaterMark(hUARTTask)) * sizeof(portSTACK_TYPE);
-//	DrawRTOSStack((XCHAR*) uartStr, ypos, hw, STACK_SIZE_UART * sizeof(portSTACK_TYPE));
+//	DrawRTOSStack((GFX_XCHAR*) uartStr, ypos, hw, STACK_SIZE_UART * sizeof(portSTACK_TYPE));
 	
 //	ypos += textHeight;
 	hw = (STACK_SIZE_CALC - uxTaskGetStackHighWaterMark(hCALCTask)) * sizeof(portSTACK_TYPE);
-	DrawRTOSStack((XCHAR*) meterStr, ypos, hw, STACK_SIZE_CALC * sizeof(portSTACK_TYPE));
+	DrawRTOSStack((GFX_XCHAR*) meterStr, ypos, hw, STACK_SIZE_CALC * sizeof(portSTACK_TYPE));
 				
 //	ypos += textHeight;
 //	hw = (STACK_SIZE_MIWI - uxTaskGetStackHighWaterMark(hMIWITask)) * sizeof(portSTACK_TYPE);
-//	DrawRTOSStack((XCHAR*) miwiStr, ypos, hw, STACK_SIZE_MIWI * sizeof(portSTACK_TYPE));
+//	DrawRTOSStack((GFX_XCHAR*) miwiStr, ypos, hw, STACK_SIZE_MIWI * sizeof(portSTACK_TYPE));
 
 	ypos += textHeight;
 	hw = (STACK_SIZE_TOUCHSCREEN - uxTaskGetStackHighWaterMark(hTOUCHTask)) * sizeof(portSTACK_TYPE);
-	DrawRTOSStack((XCHAR*) touchStr, ypos, hw, STACK_SIZE_TOUCHSCREEN * sizeof(portSTACK_TYPE));
+	DrawRTOSStack((GFX_XCHAR*) touchStr, ypos, hw, STACK_SIZE_TOUCHSCREEN * sizeof(portSTACK_TYPE));
 
 	ypos += textHeight;
 	hw = (STACK_SIZE_GRAPHICS - uxTaskGetStackHighWaterMark(hGRAPHICSTask)) * sizeof(portSTACK_TYPE);
-	DrawRTOSStack((XCHAR*) graphicsStr, ypos, hw, STACK_SIZE_GRAPHICS * sizeof(portSTACK_TYPE));
+	DrawRTOSStack((GFX_XCHAR*) graphicsStr, ypos, hw, STACK_SIZE_GRAPHICS * sizeof(portSTACK_TYPE));
 
 //	ypos += textHeight;
 //	hw = (STACK_SIZE_TCPIP - uxTaskGetStackHighWaterMark(hTCPIPTask)) * sizeof(portSTACK_TYPE);
-//	DrawRTOSStack((XCHAR*) tcpipStr, ypos, hw, STACK_SIZE_TCPIP * sizeof(portSTACK_TYPE));	
+//	DrawRTOSStack((GFX_XCHAR*) tcpipStr, ypos, hw, STACK_SIZE_TCPIP * sizeof(portSTACK_TYPE));	
 }
 
 /*********************************************************************
@@ -980,8 +982,8 @@ void UpdateUsageGraph(void)
 	if (usage_xpos == 0xFFFF) {
 		// redraw the graph
 		SetColor(BLACK);	
-//		Bar(80, 200, 239, GetMaxY());
-		Bar(120, 280, 180, GetMaxY());
+//		GFX_BarDraw(80, 200, 239, GetMaxY());
+		GFX_BarDraw(120, 280, 180, GetMaxY());
 		SetColor(WHITE);
 		Line(132, 280, 132, GetMaxY() - 2);
 		Line(130, GetMaxY() - 4, 170, GetMaxY() - 4);
