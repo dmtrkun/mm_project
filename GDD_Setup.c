@@ -136,7 +136,7 @@ void CreateSetup(void)
 		
 		case SETUP_UPPER_LIMIT:
 		case SETUP_PARA_LIMIT:
-			BtnCreate(Setup_OBJ_BUTTON_MINUS,164,229,227,266,5,BTN_DRAW,NULL,Setup_OBJ_BUTTON_MINUS_text,defscheme);
+			GFX_GOL_ButtonCreate(Setup_OBJ_BUTTON_MINUS,164,229,227,266,5,BTN_DRAW,NULL,Setup_OBJ_BUTTON_MINUS_text,defscheme);
 		case SETUP_TIME:
 		case SETUP_DATE:
 		case SETUP_PASSWORD:
@@ -151,33 +151,33 @@ void CreateSetup(void)
 		case SETUP_OCC_LOW:
 		case SETUP_AIL_LIMITMAX:
 		default:
-			BtnCreate(Setup_OBJ_BUTTON_1,13,92,75,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_1_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_2,89,92,152,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_2_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_3,164,92,227,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_3_text,defscheme);
+			GFX_GOL_ButtonCreate(Setup_OBJ_BUTTON_1,13,92,75,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_1_text,defscheme);
+			GFX_GOL_ButtonCreate(Setup_OBJ_BUTTON_2,89,92,152,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_2_text,defscheme);
+			GFX_GOL_ButtonCreate(Setup_OBJ_BUTTON_3,164,92,227,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_3_text,defscheme);
 	
-			BtnCreate(Setup_OBJ_BUTTON_4,13,138,75,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_4_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_5,89,138,152,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_5_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_6,164,138,227,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_6_text,defscheme);
+			GFX_GOL_ButtonCreate(Setup_OBJ_BUTTON_4,13,138,75,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_4_text,defscheme);
+			GFX_GOL_ButtonCreate(Setup_OBJ_BUTTON_5,89,138,152,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_5_text,defscheme);
+			GFX_GOL_ButtonCreate(Setup_OBJ_BUTTON_6,164,138,227,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_6_text,defscheme);
 	
-			BtnCreate(Setup_OBJ_BUTTON_7,13,184,75,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_7_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_8,89,184,152,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_8_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_9,164,184,227,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_9_text,defscheme);
+			GFX_GOL_ButtonCreate(Setup_OBJ_BUTTON_7,13,184,75,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_7_text,defscheme);
+			GFX_GOL_ButtonCreate(Setup_OBJ_BUTTON_8,89,184,152,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_8_text,defscheme);
+			GFX_GOL_ButtonCreate(Setup_OBJ_BUTTON_9,164,184,227,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_9_text,defscheme);
 	
-			BtnCreate(Setup_OBJ_BUTTON_10,13,229,75,266,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_10_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_0,89,229,152,266,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_0_text,defscheme);
-			BtnCreate(Setup_OBJ_BUTTON_12,7,277,67,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_12_text,botbar);
+			GFX_GOL_ButtonCreate(Setup_OBJ_BUTTON_10,13,229,75,266,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_10_text,defscheme);
+			GFX_GOL_ButtonCreate(Setup_OBJ_BUTTON_0,89,229,152,266,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_0_text,defscheme);
+			GFX_GOL_ButtonCreate(Setup_OBJ_BUTTON_12,7,277,67,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_12_text,botbar);
 			ValToStr(pSpecs->unit, adj_vali, adj_val, padj_val, adj_val_str);  
 			pSetup_OBJ_EDITBOX_0 = EbCreate(Setup_OBJ_EDITBOX_0,55,45,185,84,EB_DRAW/*|EB_FOCUSED|EB_DRAW_CARET*/,adj_val_str/*8(GFX_XCHAR*)Setup_OBJ_EDITBOX_0_text*/,16,defscheme);
 		break;
 	}
 	
 	 
-	BtnCreate(Setup_OBJ_BUTTON_13,90,277,150,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
-	BtnCreate(Setup_OBJ_BUTTON_14,172,277,232,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_14_text,botbar);
+	GFX_GOL_ButtonCreate(Setup_OBJ_BUTTON_13,90,277,150,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+	GFX_GOL_ButtonCreate(Setup_OBJ_BUTTON_14,172,277,232,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setup_OBJ_BUTTON_14_text,botbar);
 
 //	GFX_GOL_StaticTextCreate(Setup_OBJ_STATICTEXT_0,1,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Setup_OBJ_STATICTEXT_0_text[page_create],topbar);
 	GFX_GOL_StaticTextCreate(Setup_OBJ_STATICTEXT_0,1,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)pSpecs->title,GFX_ALIGN_LEFT,topbar);
-	GFX_GOL_PictureControlCreate(Setup_OBJ_PICTURE_0, 209,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&setting, topbar);
+	GFX_GOL_PictureControlCreate(Setup_OBJ_PICTURE_0, 209,0,239,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&setting, topbar);
 	
 
 }

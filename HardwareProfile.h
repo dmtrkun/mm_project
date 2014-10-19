@@ -5,7 +5,7 @@
 #define __HARDWARE_PROFILE_H
 
 // we must include this since we build dependent upon the graphics controller
-#include "GraphicsConfig.h"
+//#include "GraphicsConfig.h"
 				  
 
 #define PIC24FJ256DA210_DEV_BOARD

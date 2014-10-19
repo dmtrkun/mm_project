@@ -142,7 +142,7 @@ void Spi_init(void)
 	RPOR1bits.RP2R = 8; //RP2    SCK1OUT
 	__builtin_write_OSCCONL(OSCCON | 0x40);	
 	
-	TRISA &= 0xFFF8; //Sat as output	   
+	TRISA &= 0xFFF8; //Set as output
 //	PORTA &= 0xFFF8; //Set to 0
 	LATA &= 0xFFF8; //Set to 0
 	ANSB &= 0xFFFC;

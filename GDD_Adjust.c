@@ -67,27 +67,27 @@ void CreateAdjust(void)
 	GFX_ColorSet(BLUE_LIGHT);
 	GFX_ScreenClear();
 
-	BtnCreate(Adjust_OBJ_BUTTON_1,13,92,75,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_1_text,defscheme);
-	BtnCreate(Adjust_OBJ_BUTTON_2,89,92,152,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_2_text,defscheme);
-	BtnCreate(Adjust_OBJ_BUTTON_3,164,92,227,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_3_text,defscheme);
+	GFX_GOL_ButtonCreate(Adjust_OBJ_BUTTON_1,13,92,75,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_1_text,defscheme);
+	GFX_GOL_ButtonCreate(Adjust_OBJ_BUTTON_2,89,92,152,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_2_text,defscheme);
+	GFX_GOL_ButtonCreate(Adjust_OBJ_BUTTON_3,164,92,227,129,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_3_text,defscheme);
 	
-	BtnCreate(Adjust_OBJ_BUTTON_4,13,138,75,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_4_text,defscheme);
-	BtnCreate(Adjust_OBJ_BUTTON_5,89,138,152,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_5_text,defscheme);
-	BtnCreate(Adjust_OBJ_BUTTON_6,164,138,227,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_6_text,defscheme);
+	GFX_GOL_ButtonCreate(Adjust_OBJ_BUTTON_4,13,138,75,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_4_text,defscheme);
+	GFX_GOL_ButtonCreate(Adjust_OBJ_BUTTON_5,89,138,152,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_5_text,defscheme);
+	GFX_GOL_ButtonCreate(Adjust_OBJ_BUTTON_6,164,138,227,175,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_6_text,defscheme);
 	
-	BtnCreate(Adjust_OBJ_BUTTON_7,13,184,75,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_7_text,defscheme);
-	BtnCreate(Adjust_OBJ_BUTTON_8,89,184,152,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_8_text,defscheme);
-	BtnCreate(Adjust_OBJ_BUTTON_9,164,184,227,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_9_text,defscheme);
+	GFX_GOL_ButtonCreate(Adjust_OBJ_BUTTON_7,13,184,75,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_7_text,defscheme);
+	GFX_GOL_ButtonCreate(Adjust_OBJ_BUTTON_8,89,184,152,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_8_text,defscheme);
+	GFX_GOL_ButtonCreate(Adjust_OBJ_BUTTON_9,164,184,227,221,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_9_text,defscheme);
 	
-	BtnCreate(Adjust_OBJ_BUTTON_10,13,229,75,266,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_10_text,defscheme);
-	BtnCreate(Adjust_OBJ_BUTTON_0,89,229,152,266,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_0_text,defscheme);
+	GFX_GOL_ButtonCreate(Adjust_OBJ_BUTTON_10,13,229,75,266,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_10_text,defscheme);
+	GFX_GOL_ButtonCreate(Adjust_OBJ_BUTTON_0,89,229,152,266,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_0_text,defscheme);
 	if(page_create == 1)
-		BtnCreate(Adjust_OBJ_BUTTON_11,164,229,227,266,5,BTN_DRAW,(void *)&NoLimit,NULL,defscheme);
+		GFX_GOL_ButtonCreate(Adjust_OBJ_BUTTON_11,164,229,227,266,5,BTN_DRAW,(void *)&NoLimit,NULL,defscheme);
 	 
 
-	BtnCreate(Adjust_OBJ_BUTTON_12,7,277,67,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_12_text,botbar);
-	BtnCreate(Adjust_OBJ_BUTTON_13,90,277,150,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
-	BtnCreate(Adjust_OBJ_BUTTON_14,172,277,232,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_14_text,botbar);
+	GFX_GOL_ButtonCreate(Adjust_OBJ_BUTTON_12,7,277,67,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_12_text,botbar);
+	GFX_GOL_ButtonCreate(Adjust_OBJ_BUTTON_13,90,277,150,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+	GFX_GOL_ButtonCreate(Adjust_OBJ_BUTTON_14,172,277,232,312,5,BTN_DRAW,NULL,(GFX_XCHAR*)Adjust_OBJ_BUTTON_14_text,botbar);
 
 	if(inp_param != NULL)
 		pSpecs = (PARA_SPECS_t *)inp_param;

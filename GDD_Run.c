@@ -142,13 +142,13 @@ void CreateRun(void)
 				CreateRun_prog5();
 				break;
 		}
-	 	GFX_GOL_PictureControlCreate(Run_OBJ_PICTURE_0,6,193,115,264,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)prog_images[prog_num],runScheme);
-	 	GFX_GOL_PictureControlCreate(Run_OBJ_PICTURE_1,131,203,235,263,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)drug_images[vol_para.drug_type],runScheme);
+	 	GFX_GOL_PictureControlCreate(Run_OBJ_PICTURE_0,6,193,115,264,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)prog_images[prog_num],runScheme);
+	 	GFX_GOL_PictureControlCreate(Run_OBJ_PICTURE_1,131,203,235,263,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)drug_images[vol_para.drug_type],runScheme);
 	 
 	}
 	else if(page_create == 1)
 	{                           
-	 	GFX_GOL_PictureControlCreate(Run_OBJ_PICTURE_1,15,35,223,155,PICT_DRAW, IMAGE_X2, (GFX_RESOURCE_HDR *)drug_images[vol_para.drug_type],runScheme);
+	 	GFX_GOL_PictureControlCreate(Run_OBJ_PICTURE_1,15,35,223,155,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_X2, (GFX_RESOURCE_HDR *)drug_images[vol_para.drug_type],runScheme);
 	 	if(vol_para.rate < 100.0)
 	 		sprintf(str1,"%.1f",(double)vol_para.rate);
 	 	else
@@ -168,17 +168,17 @@ void CreateRun(void)
 		EbCreate(Run_OBJ_EDITBOX_1,42,240,135,266, EB_DRAW,(GFX_XCHAR*)str2, 50 ,runGrayScheme);
 		
 		GFX_GOL_PictureControlCreate(Run_OBJ_PICTURE_3,148,260 - press2hight(occlus_lmt[occlusion_limit]) - 6,
-							160,260 - press2hight(occlus_lmt[occlusion_limit])+6 ,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pointer_img,runGrayScheme);
-		GFX_GOL_PictureControlCreate(Run_OBJ_PICTURE_4,162,64,195,263,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pressbar_img,runGrayScheme);
+							160,260 - press2hight(occlus_lmt[occlusion_limit])+6 ,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pointer_img,runGrayScheme);
+		GFX_GOL_PictureControlCreate(Run_OBJ_PICTURE_4,162,64,195,263,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pressbar_img,runGrayScheme);
 	}
 	
-	BtnCreate(Run_OBJ_BUTTON_10,5,277,70,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Run_OBJ_BUTTON_10_text,botbar);
-	BtnCreate(Run_OBJ_BUTTON_9,110,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Run_OBJ_BUTTON_9_text,botbar);
+	GFX_GOL_ButtonCreate(Run_OBJ_BUTTON_10,5,277,70,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Run_OBJ_BUTTON_10_text,botbar);
+	GFX_GOL_ButtonCreate(Run_OBJ_BUTTON_9,110,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Run_OBJ_BUTTON_9_text,botbar);
 	GFX_GOL_StaticTextCreate(Run_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Run_OBJ_STATICTEXT_0_text,GFX_ALIGN_LEFT,topbar);
-	GFX_GOL_PictureControlCreate(Run_OBJ_PICTURE_2, 210,0,239,30, PICT_DRAW, IMAGE_NORMAL, getWaitImg(), topbar);
-	GFX_GOL_PictureControlCreate(Run_OBJ_PICTURE_5, 186,0,209,30, PICT_DRAW, IMAGE_NORMAL, getBatImg(batlevel), topbar);
+	GFX_GOL_PictureControlCreate(Run_OBJ_PICTURE_2, 210,0,239,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, getWaitImg(), topbar);
+	GFX_GOL_PictureControlCreate(Run_OBJ_PICTURE_5, 186,0,209,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, getBatImg(batlevel), topbar);
 //	if(testBit(kvo_stat, KVO_STAT)/* kvo_stat*/ != 0)
-	GFX_GOL_PictureControlCreate(Run_OBJ_PICTURE_6, 145,0,185,30, PICT_DRAW|PICT_HIDE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&KVO, topbar);
+	GFX_GOL_PictureControlCreate(Run_OBJ_PICTURE_6, 145,0,185,30, GFX_GOL_PICTURECONTROL_DRAW_STATE|PICT_HIDE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&KVO, topbar);
 
 
 }

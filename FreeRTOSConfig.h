@@ -54,7 +54,8 @@
 #ifndef FREERTOS_CONFIG_H
 #define FREERTOS_CONFIG_H
 
-#include <p24FJ256DA210.h>
+#include <xc.h>
+//#include <p24FJ256DA210.h>
 //#include "include.h"
 
 /*-----------------------------------------------------------

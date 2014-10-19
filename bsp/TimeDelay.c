@@ -41,7 +41,8 @@ PAT	2010.03.07	ADDED include "Compiler.h"
 #if defined(__PIC32MX__)
 	#include <plib.h>
 #endif
-#include "Compiler.h"
+//#include "Compiler.h"
+#include <xc.h>
 #include "HardwareProfile.h"
 #include "TimeDelay.h" 
 

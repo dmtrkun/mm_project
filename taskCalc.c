@@ -51,15 +51,15 @@ void taskCalc(void* pvParameter)
 //		if(!testBit( runhold_stat, RUNNING))
 		if(stmotor_stat()== STMTR_STOP || test_mode == 1)
 		{
-#if 1		
-			if((alarm_st&RED_ALARM_MASK) == 0 && motor_alarm == TRUE)
-			{
-				if(hipriority_rslt < INP_MOTOR_ID)
-				{
-					hipriority_rslt = INP_MOTOR_ID;
-					setBit( alarm_st, MOTOR_ALRM);
-				}
-			}
+#if 1
+//TBD			if((alarm_st&RED_ALARM_MASK) == 0 && motor_alarm == TRUE)
+//			{
+//				if(hipriority_rslt < INP_MOTOR_ID)
+//				{
+//					hipriority_rslt = INP_MOTOR_ID;
+//					setBit( alarm_st, MOTOR_ALRM);
+//				}
+//			}
 #endif
 			
 			if(hipriority_rslt > 0)
@@ -82,15 +82,14 @@ void taskCalc(void* pvParameter)
 		{
 			hipriority_rslt = rslt;
 		}	
-		if((alarm_st&RED_ALARM_MASK) == 0 && air_alarm == TRUE)
-//		if(!testBit( alarm_st, AIR_ALRM) && air_alarm == TRUE)
-		{
-			if(hipriority_rslt < INP_AIR_ID)
-			{
-				hipriority_rslt = INP_AIR_ID;
-				setBit( alarm_st, AIR_ALRM);
-			}	
-		}
+//TBD		if((alarm_st&RED_ALARM_MASK) == 0 && air_alarm == TRUE)
+//		{
+//			if(hipriority_rslt < INP_AIR_ID)
+//			{
+//				hipriority_rslt = INP_AIR_ID;
+//				setBit( alarm_st, AIR_ALRM);
+//			}
+//		}
 #if 0		
 		if((alarm_st&RED_ALARM_MASK) == 0 && motor_alarm == TRUE)
 //		if(!testBit( alarm_st, MOTOR_ALRM) && motor_alarm == TRUE)
@@ -164,15 +163,15 @@ void taskCalc(void* pvParameter)
 						if((hipriority_rslt < INP_KVO_ID) &&((clock_ms() - last_clock_end_alarm)> 2*1000))
 						{
 							hipriority_rslt = INP_KVO_ID;
-							setBit( alarm_st, KVO_ALRM);
+//TBD							setBit( alarm_st, KVO_ALRM);
 							last_clock = clock_ms();
 						}				
 					}
 					else
 						last_clock_end_alarm = clock_ms();
 				}
-				if(testBit( alarm_st, KVO_ALRM))
-					last_clock = clock_ms();
+//TBD				if(testBit( alarm_st, KVO_ALRM))
+//					last_clock = clock_ms();
 			}
 		
 		}
@@ -239,13 +238,11 @@ unsigned char alrm_type = 0;
  	{
 #ifndef NOSET_DIS		 
 			stmotor_cmd(STMTR_DIR_NOCHNG,STMTR_STOP);
-			if((alarm_st&RED_ALARM_MASK) == 0)
-//			if(!testBit( alarm_st, NOSET_ALRM))
-			{
-				setBit( alarm_st, NOSET_ALRM);
-				alrm_type = INP_NOSET_ID; // 
-// 				return alrm_type;
-			}
+//TBD			if((alarm_st&RED_ALARM_MASK) == 0)
+//			{
+//				setBit( alarm_st, NOSET_ALRM);
+//				alrm_type = INP_NOSET_ID; //
+//			}
 			return alrm_type;
 #endif /*NOSET_DIS*/	
 	}
@@ -254,23 +251,19 @@ unsigned char alrm_type = 0;
 	if(press2_mmHg >= occlus_lmt[occlusion_limit])
 	{
 #ifndef DOWNOCCL_DIS		 
-			if((alarm_st&RED_ALARM_MASK) == 0)
-//			if(!testBit( alarm_st, DOWNOCC_ALRM))
-			{
-				stmotor_cmd(STMTR_DIR_NOCHNG,STMTR_STOP);
-				setBit( alarm_st, DOWNOCC_ALRM);
-				alrm_type = INP_DOWNOCC_ID; // WE_DOWNOCC
-				if(!testBit( runhold_stat, BACK_RUNNING))
-//				if(runhold_stat == 0)
-				{
-					setBit( runhold_stat, BACK_RUNNING);
-//	 				runhold_stat = 1;
-					new_calc_rate(600.0);
-					steps_cntr = 60;
-					stmotor_cmd(STMTR_DIR_RIGHT,STMTR_RUN);
-				}
-//				return alrm_type;
-			}
+//			if((alarm_st&RED_ALARM_MASK) == 0)
+//			{
+//				stmotor_cmd(STMTR_DIR_NOCHNG,STMTR_STOP);
+//				setBit( alarm_st, DOWNOCC_ALRM);
+//				alrm_type = INP_DOWNOCC_ID; // WE_DOWNOCC
+//				if(!testBit( runhold_stat, BACK_RUNNING))
+//				{
+//					setBit( runhold_stat, BACK_RUNNING);
+//					new_calc_rate(600.0);
+//					steps_cntr = 60;
+//					stmotor_cmd(STMTR_DIR_RIGHT,STMTR_RUN);
+//				}
+//			}
 			return alrm_type;
 #endif /*DOWNOCCL_DIS*/	
 	}	
@@ -284,13 +277,11 @@ unsigned char alrm_type = 0;
  	{
 #ifndef UPOCCL_DIS		 
 			stmotor_cmd(STMTR_DIR_NOCHNG,STMTR_STOP);
-			if((alarm_st&RED_ALARM_MASK) == 0)
-//			if(!testBit( alarm_st, UPOCC_ALRM))
-			{
-				setBit( alarm_st, UPOCC_ALRM);
-				alrm_type = INP_UPOCC_ID; // WE_UPOCC
-//				return alrm_type;
-			}
+//TBD			if((alarm_st&RED_ALARM_MASK) == 0)
+//			{
+//				setBit( alarm_st, UPOCC_ALRM);
+//				alrm_type = INP_UPOCC_ID; // WE_UPOCC
+//			}
 			return alrm_type;
 #endif /*UPOCCL_DIS*/	
 	}	
@@ -298,13 +289,11 @@ unsigned char alrm_type = 0;
 	{
 #ifndef PARAOCCL_DIS		 
 	 		stmotor_cmd(STMTR_DIR_NOCHNG,STMTR_STOP);
-			if((alarm_st&RED_ALARM_MASK) == 0)
-//			if(!testBit( alarm_st, PARAOCC_ALRM))
-			{
-				setBit( alarm_st, PARAOCC_ALRM);
-				alrm_type = INP_PARAOCC_ID; // WE_PARAOCC
-//				return alrm_type;
-			}
+//TBD			if((alarm_st&RED_ALARM_MASK) == 0)
+//			{
+//				setBit( alarm_st, PARAOCC_ALRM);
+//				alrm_type = INP_PARAOCC_ID; // WE_PARAOCC
+//			}
 			return alrm_type;
 #endif /*PARAOCCL_DIS*/	
 	}	
@@ -345,12 +334,12 @@ unsigned char check_batt(void)
 	}
 	else if (batt_raw< BAT_EMPTY) /*empty battery*/
 	{
-		if((alarm_st&RED_ALARM_MASK) == 0)
-		{
-	 		stmotor_cmd(STMTR_DIR_NOCHNG,STMTR_STOP);
-			setBit( alarm_st, BATEMPTY_ALRM);
-			alrm_type = INP_BATEMPTY_ID;
-		}
+//		if((alarm_st&RED_ALARM_MASK) == 0)
+//		{
+//	 		stmotor_cmd(STMTR_DIR_NOCHNG,STMTR_STOP);
+//TBD			setBit( alarm_st, BATEMPTY_ALRM);
+//			alrm_type = INP_BATEMPTY_ID;
+//		}
 	}
 	else if(batt_raw< BAT_LOW) /*Low battery*/
 	{
@@ -361,17 +350,17 @@ unsigned char check_batt(void)
 			{
 				if((clock_ms() - last_clock_end_alarm)> 2*1000)
 				{
-					setBit( alarm_st, BATLOW_ALRM);
+//TBD					setBit( alarm_st, BATLOW_ALRM);
 					alrm_type = INP_BATLOW_ID;
 				}
 			}
 			else
 				last_clock_end_alarm = clock_ms();
 		}
- 		if(testBit( alarm_st, BATLOW_ALRM))
- 		{
-			lastClock = clock_ms();
-		}
+//TBD 		if(testBit( alarm_st, BATLOW_ALRM))
+// 		{
+//			lastClock = clock_ms();
+//		}
 	}
 	else  /*No AC*/
 	{
@@ -381,17 +370,17 @@ unsigned char check_batt(void)
 			{
 				if((clock_ms() - last_clock_end_alarm)> 2*1000)
 				{
-					setBit( alarm_st, NOAC_ALRM);
+//TBD					setBit( alarm_st, NOAC_ALRM);
 					alrm_type = INP_NOAC_ID;
 				}
 			}
 			else
 				last_clock_end_alarm = clock_ms();
 		}
- 		if(testBit( alarm_st, NOAC_ALRM))
- 		{
-			lastClock = clock_ms();
-		}
+//TBD 		if(testBit( alarm_st, NOAC_ALRM))
+// 		{
+//			lastClock = clock_ms();
+//		}
 	}
 
 	return alrm_type;
@@ -406,7 +395,7 @@ unsigned char check_hold_tmr(void)
 //			if(!testBit( alarm_st, HOLD_ALRM))
 			if(alarm_st == 0)
 			{
-				setBit( alarm_st, HOLD_ALRM);
+//TBD				setBit( alarm_st, HOLD_ALRM);
 				alrm_type = INP_ONHOLD_ID;
 			}
 			else 

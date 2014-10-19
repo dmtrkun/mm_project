@@ -62,9 +62,9 @@ void CreatePwrdown(void)
 //	DmCreate(Pwrdown_OBJ_DIGITALMETER_2, 150, 140, 236, 178, DM_DRAW | DM_FRAME | DM_CENTER_ALIGN, 0, 4, 0, botbar);
 //	DmCreate(Pwrdown_OBJ_DIGITALMETER_3, 150, 186, 236, 224, DM_DRAW | DM_FRAME | DM_CENTER_ALIGN, 0, 4, 0, botbar);
 	 
-//	BtnCreate(Pwrdown_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Pwrdown_OBJ_BUTTON_7_text,botbar);
-//	BtnCreate(Pwrdown_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,&Larrow,(GFX_XCHAR*)Test_OBJ_BUTTON_8_Pwrdown,botbar);
-//	BtnCreate(Pwrdown_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,&Rarrow,(GFX_XCHAR*)Test_OBJ_BUTTON_9_Pwrdown,botbar);
+//	GFX_GOL_ButtonCreate(Pwrdown_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Pwrdown_OBJ_BUTTON_7_text,botbar);
+//	GFX_GOL_ButtonCreate(Pwrdown_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,&Larrow,(GFX_XCHAR*)Test_OBJ_BUTTON_8_Pwrdown,botbar);
+//	GFX_GOL_ButtonCreate(Pwrdown_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,&Rarrow,(GFX_XCHAR*)Test_OBJ_BUTTON_9_Pwrdown,botbar);
 
 	GFX_GOL_StaticTextCreate(Pwrdown_OBJ_STATICTEXT_0,1,0,238,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Pwrdown_OBJ_STATICTEXT_0_text,GFX_ALIGN_CENTER,topbar);
 

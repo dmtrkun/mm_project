@@ -140,14 +140,14 @@ void CreateBolus(void)
 //	GFX_GOL_StaticTextCreate(Bolus_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Bolus_pages[page_create],topbar);
 
 
-//	GFX_GOL_PictureControlCreate(Bolus_OBJ_PICTURE_0, 209,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Wait1, topbar);
-	GFX_GOL_PictureControlCreate(Bolus_OBJ_PICTURE_1, 186,0,209,30, PICT_DRAW, IMAGE_NORMAL, getBatImg(batlevel), topbar);
+//	GFX_GOL_PictureControlCreate(Bolus_OBJ_PICTURE_0, 209,0,239,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Wait1, topbar);
+	GFX_GOL_PictureControlCreate(Bolus_OBJ_PICTURE_1, 186,0,209,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, getBatImg(batlevel), topbar);
 	if(bolus_init.mode == 0)
 	{
 		_init_prog_address(p, Bolus_OBJ_STATICTEXT_7_text);
 		_strncpy_p2d16(str_buf1,p,128);
  	 	GFX_GOL_StaticTextCreate(Bolus_OBJ_STATICTEXT_7,3,45,236,270,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str_buf1,GFX_ALIGN_CENTER,defscheme);
-		BtnCreate(Bolus_OBJ_BUTTON_2,5,277,60,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+		GFX_GOL_ButtonCreate(Bolus_OBJ_BUTTON_2,5,277,60,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
 		return;			 
 	}
 	beep_cntr = 8;
@@ -161,16 +161,16 @@ void CreateBolus(void)
 				sprintf(str1,"RATE  = %.1f ml/hr",(double)bolus_rate);
 			else
 				sprintf(str1,"RATE  = %.0f ml/hr",(double)bolus_rate);
-			BtnCreate(Bolus_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
+			GFX_GOL_ButtonCreate(Bolus_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
 	
 			if(bolus_volume < 100.0)
 				sprintf(str2,"VTBI  = %.1f ml",(double)bolus_volume);
 			else
 				sprintf(str2,"VTBI  = %.0f ml",(double)bolus_volume);
-			BtnCreate(Bolus_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
+			GFX_GOL_ButtonCreate(Bolus_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
 
-			BtnCreate(Bolus_OBJ_BUTTON_2,5,277,60,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
-			BtnCreate(Bolus_OBJ_BUTTON_3,115,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Bolus_OBJ_BUTTON_3_text,botbar);
+			GFX_GOL_ButtonCreate(Bolus_OBJ_BUTTON_2,5,277,60,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+			GFX_GOL_ButtonCreate(Bolus_OBJ_BUTTON_3,115,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Bolus_OBJ_BUTTON_3_text,botbar);
 		  break;
 		case DELIVERED_BOLUS:
 	 		if(bolus_rate < 100.0)
@@ -185,8 +185,8 @@ void CreateBolus(void)
 	 			sprintf(str2,"VTBI  = %.0f ml",(double)bolus_volume);
 		 	GFX_GOL_StaticTextCreate(Bolus_OBJ_STATICTEXT_2,3,94,236,132,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str2,GFX_ALIGN_LEFT,defscheme);
 			
-			BtnCreate(Bolus_OBJ_BUTTON_4,5,277,116,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Bolus_OBJ_BUTTON_4_text,botbar);
-			GFX_GOL_PictureControlCreate(Bolus_OBJ_PICTURE_0, 210,0,239,30, PICT_DRAW, IMAGE_NORMAL, getWaitImg(), topbar);
+			GFX_GOL_ButtonCreate(Bolus_OBJ_BUTTON_4,5,277,116,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Bolus_OBJ_BUTTON_4_text,botbar);
+			GFX_GOL_PictureControlCreate(Bolus_OBJ_PICTURE_0, 210,0,239,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, getWaitImg(), topbar);
                         PbCreate( Bolus_OBJ_PROGRESSBAR_0, 10, 177, 229, 215, PB_DRAW, 0,(int)(bolus_volume*10.0),"ml",pScheme1);
 			
 			break;
@@ -202,7 +202,7 @@ void CreateBolus(void)
 			_strncpy_p2d16(str_buf2,p,128);
 			GFX_GOL_StaticTextCreate(Bolus_OBJ_STATICTEXT_6_text,10,220,229,313,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)str_buf2,GFX_ALIGN_CENTER,basicscheme);
 			 
-//			BtnCreate(Bolus_OBJ_BUTTON_5,46,277,196,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Bolus_OBJ_BUTTON_5_text,botbar);
+//			GFX_GOL_ButtonCreate(Bolus_OBJ_BUTTON_5,46,277,196,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Bolus_OBJ_BUTTON_5_text,botbar);
 			
 			break;
 		case STOPPED_BOLUS:
@@ -215,8 +215,8 @@ void CreateBolus(void)
 			_strncpy_p2d16(str_buf2,p,128);
 			GFX_GOL_StaticTextCreate(Bolus_OBJ_STATICTEXT_6_text,10,220,229,313,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str_buf2,GFX_ALIGN_CENTER,basicscheme);
 			
-//			BtnCreate(Bolus_OBJ_BUTTON_5,46,277,196,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Bolus_OBJ_BUTTON_5_text,botbar);
-//			BtnCreate(Bolus_OBJ_BUTTON_6,46,234,196,270,5,BTN_DRAW,NULL,(GFX_XCHAR*)Bolus_OBJ_BUTTON_6_text,botbar);
+//			GFX_GOL_ButtonCreate(Bolus_OBJ_BUTTON_5,46,277,196,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Bolus_OBJ_BUTTON_5_text,botbar);
+//			GFX_GOL_ButtonCreate(Bolus_OBJ_BUTTON_6,46,234,196,270,5,BTN_DRAW,NULL,(GFX_XCHAR*)Bolus_OBJ_BUTTON_6_text,botbar);
 			break;
 		default:
 			break;	 

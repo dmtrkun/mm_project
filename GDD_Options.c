@@ -77,11 +77,11 @@ void CreateOptions(void)
 	   
 	if(page_create == 0)
 	{
-		BtnCreate(Options_OBJ_BUTTON_12,18,139,60,181,10,BTN_DRAW,(void *)&Speaker0,NULL,defscheme);
-		BtnCreate(Options_OBJ_BUTTON_13,89,139,131,181,10,BTN_DRAW,(void *)&Speaker1,NULL,defscheme);
-		BtnCreate(Options_OBJ_BUTTON_14,160,139,202,181,10,BTN_DRAW,(void *)&Speaker2,NULL,defscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_12,18,139,60,181,10,BTN_DRAW,(void *)&Speaker0,NULL,defscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_13,89,139,131,181,10,BTN_DRAW,(void *)&Speaker1,NULL,defscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_14,160,139,202,181,10,BTN_DRAW,(void *)&Speaker2,NULL,defscheme);
 	
-		BtnCreate(Options_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_9_text*/NULL,botbar);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_9_text*/NULL,botbar);
 		GFX_GOL_StaticTextCreate(Options_OBJ_STATICTEXT_1,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Options_OBJ_STATICTEXT_1_text,GFX_ALIGN_CENTER,topbar);
 	
 	}
@@ -98,13 +98,13 @@ void CreateOptions(void)
 		basicscheme->EmbossLtColor = GRAY_RUN;
 		basicscheme->CommonBkColor = GRAY_RUN;
 		
-		GFX_GOL_PictureControlCreate(Options_OBJ_PICTURE_1,162,64,195,263,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pressbar_img,basicscheme);
+		GFX_GOL_PictureControlCreate(Options_OBJ_PICTURE_1,162,64,195,263,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pressbar_img,basicscheme);
 	
 		
 //		40,46,200,270
-		BtnCreate(Options_OBJ_BUTTON_15,50,60,100,95,5,BTN_DRAW,/*(void *)&Larrow*/NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_15_text,basicscheme);
-		BtnCreate(Options_OBJ_BUTTON_16,50,145,100,180,5,BTN_DRAW,/*(void *)&Larrow*/NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_16_text,basicscheme);
-		BtnCreate(Options_OBJ_BUTTON_17,50,230,100,265,5,BTN_DRAW,/*(void *)&Larrow*/NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_17_text,basicscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_15,50,60,100,95,5,BTN_DRAW,/*(void *)&Larrow*/NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_15_text,basicscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_16,50,145,100,180,5,BTN_DRAW,/*(void *)&Larrow*/NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_16_text,basicscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_17,50,230,100,265,5,BTN_DRAW,/*(void *)&Larrow*/NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_17_text,basicscheme);
 		
 //		sprintf(run_str1,"%d",occlus_lmt[0]);
 //		EbCreate(Run_OBJ_EDITBOX_0,42,96,135,122, EB_DRAW,(GFX_XCHAR*)run_str1, 50 ,runGrayScheme);
@@ -114,12 +114,12 @@ void CreateOptions(void)
 //		EbCreate(Run_OBJ_EDITBOX_1,42,240,135,266, EB_DRAW,(GFX_XCHAR*)run_str2, 50 ,runGrayScheme);
 		
 
-		GFX_GOL_PictureControlCreate(Options_OBJ_PICTURE_2,148,100,160,112 ,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pointer_img,basicscheme);
-		GFX_GOL_PictureControlCreate(Options_OBJ_PICTURE_3,148,164,160,176 ,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pointer_img,basicscheme);
-		GFX_GOL_PictureControlCreate(Options_OBJ_PICTURE_4,148,228,160,240 ,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pointer_img,basicscheme);
+		GFX_GOL_PictureControlCreate(Options_OBJ_PICTURE_2,148,100,160,112 ,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pointer_img,basicscheme);
+		GFX_GOL_PictureControlCreate(Options_OBJ_PICTURE_3,148,164,160,176 ,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pointer_img,basicscheme);
+		GFX_GOL_PictureControlCreate(Options_OBJ_PICTURE_4,148,228,160,240 ,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pointer_img,basicscheme);
 		   
-		BtnCreate(Options_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_8_text*/NULL,botbar);
-		BtnCreate(Options_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_9_text*/NULL,botbar);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_8_text*/NULL,botbar);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_9_text*/NULL,botbar);
 		GFX_GOL_StaticTextCreate(Options_OBJ_STATICTEXT_2,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Options_OBJ_STATICTEXT_2_text,GFX_ALIGN_CENTER,topbar);
 
 	 
@@ -127,24 +127,24 @@ void CreateOptions(void)
 	else if(page_create == 2)
 	{
 		
-		BtnCreate(Options_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_0_text,defscheme);
-		BtnCreate(Options_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_1_text,defscheme);
-		BtnCreate(Options_OBJ_BUTTON_2,3,140,236,178,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_2_text,defscheme);
-		BtnCreate(Options_OBJ_BUTTON_3,3,186,236,224,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_3_text,defscheme);
-		BtnCreate(Options_OBJ_BUTTON_4,3,232,236,270,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_4_text,defscheme);
-		BtnCreate(Options_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_8_text*/NULL,botbar);
-		BtnCreate(Options_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_9_text*/NULL,botbar);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_0_text,defscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_1_text,defscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_2,3,140,236,178,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_2_text,defscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_3,3,186,236,224,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_3_text,defscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_4,3,232,236,270,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_4_text,defscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_8_text*/NULL,botbar);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_9_text*/NULL,botbar);
 		GFX_GOL_StaticTextCreate(Options_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Options_OBJ_STATICTEXT_0_text,GFX_ALIGN_CENTER,topbar);
 	
 	}
 	else if(page_create == 3)
 	{
-		BtnCreate(Options_OBJ_BUTTON_5,3,48,236,86,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_5_text,defscheme);
-		BtnCreate(Options_OBJ_BUTTON_6,3,94,236,132,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_6_text,defscheme);
-		BtnCreate(Options_OBJ_BUTTON_10,3,140,236,178,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_10_text,defscheme);
-		BtnCreate(Options_OBJ_BUTTON_11,3,186,236,224,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_11_text,defscheme);
-		BtnCreate(Options_OBJ_BUTTON_18,3,232,236,270,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_18_text,defscheme);
-		BtnCreate(Options_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_8_text*/NULL,botbar);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_5,3,48,236,86,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_5_text,defscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_6,3,94,236,132,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_6_text,defscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_10,3,140,236,178,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_10_text,defscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_11,3,186,236,224,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_11_text,defscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_18,3,232,236,270,10,BTN_DRAW,NULL,(GFX_XCHAR*)Options_OBJ_BUTTON_18_text,defscheme);
+		GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_8_text*/NULL,botbar);
 		GFX_GOL_StaticTextCreate(Options_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Options_OBJ_STATICTEXT_0_text,GFX_ALIGN_CENTER,topbar);
 	}
     else
@@ -154,9 +154,9 @@ void CreateOptions(void)
 	
 	}
 
-	BtnCreate(Options_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+	GFX_GOL_ButtonCreate(Options_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
 
-	GFX_GOL_PictureControlCreate(Options_OBJ_PICTURE_0, 209,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&setting, topbar);
+	GFX_GOL_PictureControlCreate(Options_OBJ_PICTURE_0, 209,0,239,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&setting, topbar);
 
 }
 void CreatePrimitivesForOptions(void){

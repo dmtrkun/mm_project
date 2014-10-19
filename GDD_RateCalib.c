@@ -81,13 +81,13 @@ void CreateRCalib(void)
 		_strncpy_p2d16(str_buf1,p,128);
 //		_strncpy_p2d16(str_buf1,(_prog_addressT)RCalib_msg[0],128);
 		GFX_GOL_StaticTextCreate(RCalib_OBJ_STATICTEXT_1,5,40,238,200,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,str_buf1,basicscheme);
-		BtnCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
+		GFX_GOL_ButtonCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
 		calib_status = PREPARE_RATE_CLBR;  //Stop any calibration process
 	}
 	else if(calib_page == 1)
 	{
 		PbCreate(RCalib_OBJ_PROGRESSBAR_0, 10, 206, 229, 244, PB_DRAW, 0,(int)vol_para.vtbi,"ml",basicscheme);
-//		BtnCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
+//		GFX_GOL_ButtonCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
 	}
 	else if(calib_page == 2)
 	{
@@ -96,11 +96,11 @@ void CreateRCalib(void)
 //		_strncpy_p2d16(str_buf1,(_prog_addressT)RCalib_msg[1],128);
 		GFX_GOL_StaticTextCreate(RCalib_OBJ_STATICTEXT_1,5,40,238,200,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,str_buf1,basicscheme);
 		sprintf(str1,"WEIGHT  = %.1f ml",(double)scale_rate_tmp);
-		BtnCreate(RCalib_OBJ_BUTTON_2,3,206,236,244,10,BTN_DRAW|BTN_TEXTLEFT,(void*)&Param_btn,(GFX_XCHAR*)str1,basicscheme);
+		GFX_GOL_ButtonCreate(RCalib_OBJ_BUTTON_2,3,206,236,244,10,BTN_DRAW|BTN_TEXTLEFT,(void*)&Param_btn,(GFX_XCHAR*)str1,basicscheme);
 		if(scale_rate_tmp < 18.0 || scale_rate_tmp > 22.0 )
-			BtnCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW|BTN_DISABLED,NULL,(GFX_XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
+			GFX_GOL_ButtonCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW|BTN_DISABLED,NULL,(GFX_XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
 		else	
-			BtnCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
+			GFX_GOL_ButtonCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)RCalib_OBJ_BUTTON_1_text,botbar);
 	}
 	else
 	{
@@ -108,18 +108,18 @@ void CreateRCalib(void)
 		_strncpy_p2d16(str_buf1,p,128);
 //		_strncpy_p2d16(str_buf1,RCalib_msg[2],128);
 		GFX_GOL_StaticTextCreate(RCalib_OBJ_STATICTEXT_1,5,40,238,200,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,str_buf1,basicscheme);
-		BtnCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)SAVE_OBJ_BUTTON_text,botbar);
+		GFX_GOL_ButtonCreate(RCalib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)SAVE_OBJ_BUTTON_text,botbar);
 	}	
 	 
 //	GFX_GOL_StaticTextCreate(RCalib_OBJ_STATICTEXT_1,5,40,238,200,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,(GFX_XCHAR*)RCalib_msg[calib_page],basicscheme);
  
-	BtnCreate(RCalib_OBJ_BUTTON_0,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+	GFX_GOL_ButtonCreate(RCalib_OBJ_BUTTON_0,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
 	_init_prog_address(p, RCalib_OBJ_STATICTEXT_0_text);
 	_strncpy_p2d16(gStr1,p,128);
 	GFX_GOL_StaticTextCreate(RCalib_OBJ_STATICTEXT_0,1,0,238,30,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,gStr1,topbar);
 //	GFX_GOL_StaticTextCreate(RCalib_OBJ_STATICTEXT_0,1,0,238,30,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,(GFX_XCHAR*)RCalib_OBJ_STATICTEXT_0_text,topbar);
 	
-	GFX_GOL_PictureControlCreate(RCalib_OBJ_PICTURE_0, 210,0,239,30, PICT_DRAW|PICT_HIDE , IMAGE_NORMAL, getWaitImg(), topbar);
+	GFX_GOL_PictureControlCreate(RCalib_OBJ_PICTURE_0, 210,0,239,30, GFX_GOL_PICTURECONTROL_DRAW_STATE|PICT_HIDE , IMAGE_NORMAL, getWaitImg(), topbar);
 }
 
 void CreatePrimitivesForRCalib(void){

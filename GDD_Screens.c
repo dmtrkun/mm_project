@@ -117,6 +117,8 @@ void GDDDemoGOLMsgCallback(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAG
 * Note: none
 *
 ********************************************************************/
+extern const GFX_GOL_OBJ_SCHEME GOLSchemeDefault;
+
 GFX_GOL_OBJ_SCHEME *CreateScheme(void)
 {
 	GFX_GOL_OBJ_SCHEME  *pTemp;
@@ -125,7 +127,7 @@ GFX_GOL_OBJ_SCHEME *CreateScheme(void)
 
     if(pTemp != NULL)
     {
-        memcpy(pTemp, &SCHEMEDEFAULT, sizeof(GFX_GOL_OBJ_SCHEME));
+        memcpy(pTemp, &GOLSchemeDefault, sizeof(GFX_GOL_OBJ_SCHEME));
     }
 
     return (pTemp);
@@ -243,15 +245,15 @@ void CreateSchemes(void)
 #if 0	
 	// create the display schemes
 	btnSchemeSmall = GOLCreateScheme();
-	btnSchemeSmall->EmbossDkColor = RGB565CONVERT(0x1E, 0x00, 0xE5);
-	btnSchemeSmall->EmbossLtColor = RGB565CONVERT(0xA9, 0xDB, 0xEF);
-	btnSchemeSmall->TextColor0 = RGB565CONVERT(0x1E, 0x00, 0xE5);
-	btnSchemeSmall->TextColor1 = RGB565CONVERT(0x1E, 0x00, 0xE5);
-	btnSchemeSmall->TextColorDisabled = RGB565CONVERT(0xFF, 0xFF, 0xFF);
-	btnSchemeSmall->Color0 = RGB565CONVERT(0x1E, 0x00, 0xE5);
-	btnSchemeSmall->Color1 = RGB565CONVERT(0x1E, 0x00, 0xE5);
-	btnSchemeSmall->ColorDisabled = RGB565CONVERT(0x1E, 0x00, 0xE5);
-	btnSchemeSmall->CommonBkColor = RGB565CONVERT(0x1E, 0x00, 0xE5);
+	btnSchemeSmall->EmbossDkColor = GFX_RGBConvert(0x1E, 0x00, 0xE5);
+	btnSchemeSmall->EmbossLtColor = GFX_RGBConvert(0xA9, 0xDB, 0xEF);
+	btnSchemeSmall->TextColor0 = GFX_RGBConvert(0x1E, 0x00, 0xE5);
+	btnSchemeSmall->TextColor1 = GFX_RGBConvert(0x1E, 0x00, 0xE5);
+	btnSchemeSmall->TextColorDisabled = GFX_RGBConvert(0xFF, 0xFF, 0xFF);
+	btnSchemeSmall->Color0 = GFX_RGBConvert(0x1E, 0x00, 0xE5);
+	btnSchemeSmall->Color1 = GFX_RGBConvert(0x1E, 0x00, 0xE5);
+	btnSchemeSmall->ColorDisabled = GFX_RGBConvert(0x1E, 0x00, 0xE5);
+	btnSchemeSmall->CommonBkColor = GFX_RGBConvert(0x1E, 0x00, 0xE5);
 	btnSchemeSmall->pFont = (void*) &GOLSmallFont;
 	
 	btnSchemeMedium = GOLCreateScheme();
@@ -264,33 +266,33 @@ void CreateSchemes(void)
 	blueScheme->TextColorDisabled = BLACK;
 	
 	greenScheme = GOLCreateScheme();
-	greenScheme->Color0 = RGB565CONVERT(0x23, 0x9E, 0x0A);
+	greenScheme->Color0 = GFX_RGBConvert(0x23, 0x9E, 0x0A);
 	greenScheme->Color1 = BRIGHTGREEN;
-	greenScheme->ColorDisabled = RGB565CONVERT(0x23, 0x9E, 0x0A);
+	greenScheme->ColorDisabled = GFX_RGBConvert(0x23, 0x9E, 0x0A);
 	greenScheme->EmbossDkColor = DARKGREEN;
 	greenScheme->EmbossLtColor = PALEGREEN;
-	greenScheme->TextColor0 = RGB565CONVERT(0xFF, 0xFF, 0xFF);
+	greenScheme->TextColor0 = GFX_RGBConvert(0xFF, 0xFF, 0xFF);
 	greenScheme->TextColor1 = BLACK;
-	greenScheme->TextColorDisabled = RGB565CONVERT(0xDF, 0xAC, 0x83);
+	greenScheme->TextColorDisabled = GFX_RGBConvert(0xDF, 0xAC, 0x83);
 
 	redScheme = GOLCreateScheme();
-	redScheme->Color0 = RGB565CONVERT(0xCC, 0x00, 0x00);
+	redScheme->Color0 = GFX_RGBConvert(0xCC, 0x00, 0x00);
 	redScheme->Color1 = BRIGHTRED;
 	redScheme->EmbossDkColor = RED4;
 	redScheme->EmbossLtColor = FIREBRICK1;
-	redScheme->TextColor0 = RGB565CONVERT(0xC8, 0xD5, 0x85);
+	redScheme->TextColor0 = GFX_RGBConvert(0xC8, 0xD5, 0x85);
 	redScheme->TextColor1 = BLACK;
 
 	whiteScheme = GOLCreateScheme();
-	whiteScheme->EmbossDkColor = RGB565CONVERT(0x40, 0x40, 0x40);
-	whiteScheme->EmbossLtColor = RGB565CONVERT(0xE0, 0xE0, 0xE0);
-	whiteScheme->TextColor0 = RGB565CONVERT(0x00, 0x00, 0x00);
-	whiteScheme->TextColor1 = RGB565CONVERT(0x00, 0x00, 0x00);
-	whiteScheme->TextColorDisabled = RGB565CONVERT(0x00, 0x00, 0x00);
-	whiteScheme->Color0 = RGB565CONVERT(0xA0, 0xA0, 0xA0);
-	whiteScheme->Color1 = RGB565CONVERT(0xA0, 0xA0, 0xA0);
-	whiteScheme->ColorDisabled = RGB565CONVERT(0xFF, 0xFF, 0xFF);
-	whiteScheme->CommonBkColor = RGB565CONVERT(0xFF, 0xFF, 0xFF);
+	whiteScheme->EmbossDkColor = GFX_RGBConvert(0x40, 0x40, 0x40);
+	whiteScheme->EmbossLtColor = GFX_RGBConvert(0xE0, 0xE0, 0xE0);
+	whiteScheme->TextColor0 = GFX_RGBConvert(0x00, 0x00, 0x00);
+	whiteScheme->TextColor1 = GFX_RGBConvert(0x00, 0x00, 0x00);
+	whiteScheme->TextColorDisabled = GFX_RGBConvert(0x00, 0x00, 0x00);
+	whiteScheme->Color0 = GFX_RGBConvert(0xA0, 0xA0, 0xA0);
+	whiteScheme->Color1 = GFX_RGBConvert(0xA0, 0xA0, 0xA0);
+	whiteScheme->ColorDisabled = GFX_RGBConvert(0xFF, 0xFF, 0xFF);
+	whiteScheme->CommonBkColor = GFX_RGBConvert(0xFF, 0xFF, 0xFF);
 	whiteScheme->pFont = (void*) &GOLFontDefault;
 	   
 #endif
@@ -298,16 +300,16 @@ void CreateSchemes(void)
 	memcpy(blackScheme, botbar, sizeof(GFX_GOL_OBJ_SCHEME));
 	blackScheme->Color0 = BLACK;
 	blackScheme->CommonBkColor = BLACK;
-	blackScheme->TextColor0 = RGB565CONVERT(0xFF, 0xFF, 0xFF);
+	blackScheme->TextColor0 = GFX_RGBConvert(0xFF, 0xFF, 0xFF);
 	blackScheme->TextColor1 = BLACK;
 //	blackScheme->pFont = (void*) &GOLMediumFont;
 
-	ConfirmShemes();
-	AlarmShemes();
-	BolusShemes();
-	PrimeShemes();
-	RunShemes();
-	PwrdownShemes();
+//	ConfirmShemes();
+//	AlarmShemes();
+//	BolusShemes();
+//	PrimeShemes();
+//	RunShemes();
+//	PwrdownShemes();
 	
 	xTaskResumeAll();
 }

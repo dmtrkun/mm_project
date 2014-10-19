@@ -35,7 +35,7 @@ alarm_st = 0;
 	Spi_init();
 	if(get_time_rtc(&rtc_time)== FALSE)
 	{
-		SetError(RTC_ERR, HARWARE_ALRM_SCR);
+//TBD		SetError(RTC_ERR, HARWARE_ALRM_SCR);
 		reset_rtc();
 		while(clear_os_rtc() == FALSE);
 		init_time_rtc(&rtc_time);
@@ -53,8 +53,7 @@ alarm_st = 0;
 	}
 	else if(mktime(&rtc_time)==-1)
 	{
-		SetError(RTC_ERR, HARWARE_ALRM_SCR);
-//		reset_rtc();
+//		SetError(RTC_ERR, HARWARE_ALRM_SCR);
 		init_time_rtc(&rtc_time);
 		set_time_rtc(&rtc_time)/*set_date()*/;
 	}
@@ -83,13 +82,13 @@ alarm_st = 0;
 	SST25ReadArray(PARAM_E2PIMG_BASE, &E2pImage, sizeof(E2pImage_t));
 	if(crc16((unsigned char*)&E2pImage, sizeof(E2pImage_t)) != 0)
 	{
-		SetError(EEPROM_ERR, HARWARE_ALRM_SCR);
+//TBD		SetError(EEPROM_ERR, HARWARE_ALRM_SCR);
 		set_defaults();
 	}
 	SST25ReadArray(CLBR_E2PIMG_BASE, &Clbr_E2pImage, sizeof(Clbr_E2pImage_t));
 	if(crc16((unsigned char*)&Clbr_E2pImage, sizeof(Clbr_E2pImage_t)) != 0)
 	{
-		SetError(EEPROM_ERR, HARWARE_ALRM_SCR);
+//TBD		SetError(EEPROM_ERR, HARWARE_ALRM_SCR);
 		set_fact_defaults();
 	}
         if(GetError() != 0)

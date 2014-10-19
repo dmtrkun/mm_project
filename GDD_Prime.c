@@ -81,11 +81,11 @@ static char	str1[30];
 			sprintf(str1,"PRIME VOL  = %.1f ml",(double)vol_para.vtbi);
 		else
 			sprintf(str1,"PRIME VOL  = %.0f ml",(double)vol_para.vtbi);
-	//	pPrime_OBJ_BUTTON_0 = BtnCreate(Prime_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW,NULL,(GFX_XCHAR*)Prime_OBJ_BUTTON_0_text,defscheme);
-		BtnCreate(Prime_OBJ_BUTTON_0,3,206,236,244,10,BTN_DRAW|BTN_TEXTLEFT,(void*)&Param_btn,(GFX_XCHAR*)str1,pScheme1);
+	//	pPrime_OBJ_BUTTON_0 = GFX_GOL_ButtonCreate(Prime_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW,NULL,(GFX_XCHAR*)Prime_OBJ_BUTTON_0_text,defscheme);
+		GFX_GOL_ButtonCreate(Prime_OBJ_BUTTON_0,3,206,236,244,10,BTN_DRAW|BTN_TEXTLEFT,(void*)&Param_btn,(GFX_XCHAR*)str1,pScheme1);
 		
-		BtnCreate(Prime_OBJ_BUTTON_1,5,277,118,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Prime_OBJ_BUTTON_1_text,botbar);
-		BtnCreate(Prime_OBJ_BUTTON_2,152,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Prime_OBJ_BUTTON_2_text,botbar);
+		GFX_GOL_ButtonCreate(Prime_OBJ_BUTTON_1,5,277,118,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Prime_OBJ_BUTTON_1_text,botbar);
+		GFX_GOL_ButtonCreate(Prime_OBJ_BUTTON_2,152,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Prime_OBJ_BUTTON_2_text,botbar);
 		GFX_GOL_StaticTextCreate(Prime_OBJ_STATICTEXT_0,0,0,239,39,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Prime_OBJ_STATICTEXT_0_text,GFX_ALIGN_CENTER,topbar);
 		
 		GFX_GOL_StaticTextCreate(Prime_OBJ_STATICTEXT_2,0,50,239,83,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Prime_OBJ_STATICTEXT_2_text,GFX_ALIGN_CENTER,pScheme);
@@ -105,9 +105,9 @@ static char	str1[30];
 			sprintf(str1,"%.0f ml",(double)vol_para.vtbi);
  //		sprintf(str1 + strlen(str1),", %.0f ml/h",(double)vol_para.rate);
 		GFX_GOL_StaticTextCreate(Prime_OBJ_STATICTEXT_5,40,140,200,180,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str1,GFX_ALIGN_CENTER,pScheme1);
-		BtnCreate(Prime_OBJ_BUTTON_3,70,277,185,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Prime_OBJ_BUTTON_3_text,botbar);
+		GFX_GOL_ButtonCreate(Prime_OBJ_BUTTON_3,70,277,185,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Prime_OBJ_BUTTON_3_text,botbar);
 		GFX_GOL_StaticTextCreate(Prime_OBJ_STATICTEXT_0,0,0,239,39,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Prime_OBJ_STATICTEXT_1_text,GFX_ALIGN_CENTER,topbar);
-		GFX_GOL_PictureControlCreate(Prime_OBJ_PICTURE_0, 210,0,239,30, PICT_DRAW, IMAGE_NORMAL, getWaitImg(), topbar);
+		GFX_GOL_PictureControlCreate(Prime_OBJ_PICTURE_0, 210,0,239,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, getWaitImg(), topbar);
 	  PbCreate( Prime_OBJ_PROGRESSBAR_0, 10, 206, 229, 244, PB_DRAW, 0,(int)vol_para.vtbi,"ml",pScheme1);
 		GFX_GOL_StaticTextCreate(Prime_OBJ_STATICTEXT_4,0,85,239,136,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Prime_OBJ_STATICTEXT_4_text,GFX_ALIGN_CENTER,pScheme1);
 	}

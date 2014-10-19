@@ -104,23 +104,23 @@ void CreateCalib(void)
 		zero_press2_tmp = 0xFFF;
 		calib_status = PREPARE_ZERO_CLBR;  //Stop any calibration process
   }
-	BtnCreate(Calib_OBJ_BUTTON_0,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+	GFX_GOL_ButtonCreate(Calib_OBJ_BUTTON_0,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
 	if (calib_page != ERROR_CLBR_PG)
 	{
 		if (calib_page == END_CLBR_PG)
-			BtnCreate(Calib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)SAVE_OBJ_BUTTON_text,botbar);
+			GFX_GOL_ButtonCreate(Calib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)SAVE_OBJ_BUTTON_text,botbar);
 		else	 
-			BtnCreate(Calib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Calib_OBJ_BUTTON_1_text,botbar);
+			GFX_GOL_ButtonCreate(Calib_OBJ_BUTTON_1,132,277,232,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Calib_OBJ_BUTTON_1_text,botbar);
 	}
 	
 	_init_prog_address(p, Calib_OBJ_STATICTEXT_0_text);
 	_strncpy_p2d16(gStr1,p,128);
 	GFX_GOL_StaticTextCreate(Calib_OBJ_STATICTEXT_0,1,0,238,30,GFX_GOL_STATICTEXT_DRAW_STATE,gStr1,GFX_ALIGN_CENTER,topbar);
 //	GFX_GOL_StaticTextCreate(Calib_OBJ_STATICTEXT_0,1,0,238,30,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,(GFX_XCHAR*)Calib_OBJ_STATICTEXT_0_text,topbar);
-	GFX_GOL_PictureControlCreate(Calib_OBJ_PICTURE_1,202,64,235,263,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pressbar_img,basicscheme);
+	GFX_GOL_PictureControlCreate(Calib_OBJ_PICTURE_1,202,64,235,263,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pressbar_img,basicscheme);
 	
 
-	GFX_GOL_PictureControlCreate(Calib_OBJ_PICTURE_0, 210,0,239,30, PICT_DRAW|PICT_HIDE , IMAGE_NORMAL, getWaitImg(), topbar);
+	GFX_GOL_PictureControlCreate(Calib_OBJ_PICTURE_0, 210,0,239,30, GFX_GOL_PICTURECONTROL_DRAW_STATE|PICT_HIDE , IMAGE_NORMAL, getWaitImg(), topbar);
 	
 	sprintf(calib_str,"Z1=%d   Z2=%d\r\nS1=%d   S1=%d\r\nC1=%d   C2=%d",zero_press1_tmp,zero_press2_tmp,set_press1_tmp,set_press2_tmp,scale_press1_tmp,scale_press2_tmp);
 	GFX_GOL_StaticTextCreate(Calib_OBJ_STATICTEXT_2,5,174,170,268,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)calib_str,GFX_ALIGN_LEFT,blackScheme);

@@ -60,16 +60,19 @@ void CreateIntro(void)
 	
 		GFX_GOL_StaticTextCreate(Intro_OBJ_STATICTEXT_3_1,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Intro_OBJ_STATICTEXT_3_1text,GFX_ALIGN_CENTER,topbar);
 
-		GFX_GOL_PictureControlCreate(Intro_OBJ_PICTURE_0, 10,60,10+Intro_WIDTH,60+Intro_HEIGHT, PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Intro, green_sch);
-		GFX_GOL_PictureControlCreate(Intro_OBJ_PICTURE_1, 210,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Wait1, topbar);
+		GFX_GOL_PictureControlCreate(Intro_OBJ_PICTURE_0, 10,60,10+Intro_WIDTH,60+Intro_HEIGHT, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Intro, green_sch);
+		GFX_GOL_PictureControlCreate(Intro_OBJ_PICTURE_1, 210,0,239,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Wait1, topbar);
 
                 
                 _init_prog_address(p, VERSION_txt);
-		_strncpy_p2d16(str_buf1,p,strlen(VERSION_txt));
+//		_strncpy_p2d16(str_buf1,p,strlen(VERSION_txt));
+		_strncpy_p2d16(str_buf1,p,5);
                 _init_prog_address(p, REL_txt);
-		_strncpy_p2d16(str_buf1 + strlen(VERSION_txt),p,strlen(REL_txt));
+//		_strncpy_p2d16((char*)(str_buf1 + strlen(VERSION_txt)),p,strlen(REL_txt));
+		_strncpy_p2d16((char*)(str_buf1 + 5),p,5);
                 _init_prog_address(p, DATE_txt);
-		_strncpy_p2d16(str_buf1 + strlen(VERSION_txt) + strlen(REL_txt),p,strlen(DATE_txt));
+//		_strncpy_p2d16((char*)(str_buf1 + strlen(VERSION_txt) + strlen(REL_txt)),p,strlen(DATE_txt));
+		_strncpy_p2d16((char*)(str_buf1 + 5 + 6),p,5);
 		GFX_GOL_StaticTextCreate(Intro_OBJ_STATICTEXT_5_3,37,289,210,309,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str_buf1,GFX_ALIGN_RIGHT,basicscheme);
 	}	
 	else
@@ -81,7 +84,7 @@ void CreateIntro(void)
 		
 		GFX_GOL_StaticTextCreate(Intro_OBJ_STATICTEXT_3_1,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Intro_OBJ_STATICTEXT_3_1text,GFX_ALIGN_CENTER,topbar);
 		
-		GFX_GOL_PictureControlCreate(Intro_OBJ_PICTURE_1, 210,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Wait1, topbar);
+		GFX_GOL_PictureControlCreate(Intro_OBJ_PICTURE_1, 210,0,239,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Wait1, topbar);
 	
 		_init_prog_address(p, Intro_OBJ_STATICTEXT_3_2text);
 		_strncpy_p2d16(str_buf1,p,128);
@@ -186,8 +189,8 @@ void UpdateIntro(void)
 	GFX_GOL_OBJ_HEADER* pObj;
 	pObj = GFX_GOL_ObjectFind(Intro_OBJ_PICTURE_1);
 	if (pObj) {
-		GFX_GOL_PictureControlImageSet(pObj, getWaitImg());
-                GFX_GOL_ObjectStateSet((PICTURE*) pObj, DRAW_UPDATE);
+//TBD		GFX_GOL_PictureControlImageSet(pObj, (GFX_GOL_PICTURECONTROL*)getWaitImg());
+                GFX_GOL_ObjectStateSet(pObj, GFX_GOL_PICTURECONTROL_DRAW_STATE);
 
 	}
 

@@ -3,10 +3,10 @@
 #define TASKUSB_PUB
 #include "include.h"
 
-#include "USB\usb.h"
-#include "USB\usb_function_cdc.h"
+#include "framework/usb/usb.h"
+#include "framework/usb/usb_device_cdc.h"
 #include "usb_config.h"
-#include "USB\usb_device.h"
+#include "framework/usb/usb_device.h"
 
 extern unsigned char OUTPacket[];	//User application buffer for receiving and holding OUT packets sent from the host
 extern unsigned char INPacket[];		//User application buffer for sending IN packets to the host

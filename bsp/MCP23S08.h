@@ -11,8 +11,9 @@
 
 
 
-#include "Compiler.h"
-#include "GenericTypeDefs.h"
+//#include "Compiler.h"
+#include <xc.h>
+#include <GenericTypeDefs.h>
 #include "HardwareProfile.h"
 
 /**************************************************************/

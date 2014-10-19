@@ -24,6 +24,8 @@
 #include "usb/usb.h"
 #include "usb/usb_device_generic.h"
 
+extern unsigned char cdc_ena;
+
 
 unsigned char OUTPacket[64];	//User application buffer for receiving and holding OUT packets sent from the host
 unsigned char INPacket[64];		//User application buffer for sending IN packets to the host

@@ -57,16 +57,17 @@ xTaskHandle hGRAPHICSTask;
 
 ///////////////////////////////////////////////////////////////////
 // Colors
-#define RED4					RGB565CONVERT(139,   0,   0)
-#define FIREBRICK1		RGB565CONVERT(255,  48,  48)
-#define DARKGREEN			RGB565CONVERT(  0, 100,   0)
-#define PALEGREEN			RGB565CONVERT(152, 251, 152)
+#define RED4					GFX_RGBConvert(139,   0,   0)
+#define FIREBRICK1		GFX_RGBConvert(255,  48,  48)
+#define DARKGREEN			GFX_RGBConvert(  0, 100,   0)
+#define PALEGREEN			GFX_RGBConvert(152, 251, 152)
 
 ///////////////////////////////////////////////////////////////////
 // local functions within this module
 WORD ScreenUpdate(void);
 WORD GOLMsgCallback(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg);
 static CONTROL_MSG cMsg;
+WORD GOLDrawCallback(void);
 
 ///////////////////////////////////////////////////////////////////
 // The graphics display uses several strings to display data
@@ -257,7 +258,7 @@ void taskGraphics(void* pvParameter)
 					pMsg = &msg.data.golMsg;
 					pressx = pMsg->param1;
 					pressy = pMsg->param2;
-					GOLMsg(pMsg);
+					GFX_GOL_ObjectMessage(pMsg);
 					break;
 				case MSG_INPUT_EVENT:
 					// process events from the calc task
@@ -296,7 +297,8 @@ void taskGraphics(void* pvParameter)
  ********************************************************************/
 WORD msg_redalarm(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
-	if(pObj == NULL)
+#if 0
+        if(pObj == NULL)
 	{
 		switch(pMsg->param1)
 		{
@@ -339,7 +341,7 @@ WORD msg_redalarm(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 					xQueueSend(hCONTROLQueue, &cMsg, 0);
 					if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
 						xTimerStop( xTimers[ 1 ], 0 );
-					GDDSetScreen(CREATE_SCREEN_ALARM,AIR_ALRM_SCR,NULL);
+//TBD					GDDSetScreen(CREATE_SCREEN_ALARM,AIR_ALRM_SCR,NULL);
 				}	
 				//Stop infusion and alarm				
 				break;
@@ -416,7 +418,8 @@ WORD msg_redalarm(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 		
 		return 1;	
 	}
-	return 0;	
+#endif
+        return 0;
 }
 
 WORD msg_yellowalarm(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
@@ -478,13 +481,13 @@ WORD GOLMsgCallback(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg
 	if(pObj != NULL)
 	{
 		// beep if button is pressed
-		if(objMsg == BTN_MSG_PRESSED)
+		if(objMsg == GFX_GOL_BUTTON_ACTION_PRESSED)
 		{
 			Beep(20);
 			clear_hold_tmr();
 		}
 		// beep if radio button is checked
-		if(objMsg == RB_MSG_CHECKED)
+		if(objMsg == GFX_GOL_RADIOBUTTON_ACTION_CHECKED)
 		{
 			Beep(20);
 			clear_hold_tmr();
@@ -918,7 +921,7 @@ void UpdateRTOSScreen(void)
 	
 	// just erase the area of the bars and summary text
 	SetColor(BLACK);
-	GFX_BarDraw(60, 48, GetMaxX(), (6 * textHeight) + 48);
+	GFX_BarDraw(60, 48, GFX_MaxXGet(), (6 * textHeight) + 48);
 	
 	// for each task display its stack usage as a bar graph and summary text
 	ypos = 48;	

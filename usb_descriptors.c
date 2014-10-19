@@ -143,6 +143,7 @@ state according to the definition in the USB specification.
  
 /** INCLUDES *******************************************************/
 #include "framework/usb/usb.h"
+#include "framework/usb/usb_device_cdc.h"
 
 /** CONSTANTS ******************************************************/
 #if defined(__18CXX)
@@ -151,7 +152,7 @@ state according to the definition in the USB specification.
 
 
 /* Device Descriptor */
-ROM USB_DEVICE_DESCRIPTOR device_dsc1 =
+const USB_DEVICE_DESCRIPTOR device_dsc1 =
 {
     0x12,                   // Size of this descriptor in bytes
     USB_DESCRIPTOR_DEVICE,  // DEVICE descriptor type
@@ -187,7 +188,7 @@ const USB_DEVICE_DESCRIPTOR device_dsc0=
     0x01                    // Number of possible configurations
 };
 
-ROM USB_DEVICE_DESCRIPTOR *device_dsc_ptr[2]= 
+const USB_DEVICE_DESCRIPTOR *device_dsc_ptr[2]=
 {
 	&device_dsc0,
 	&device_dsc1,
@@ -327,7 +328,7 @@ sizeof(sd000_1),USB_DESCRIPTOR_STRING,{0x0409}};
 //sizeof(sd001),USB_DESCRIPTOR_STRING,
 //{'M','i','c','r','o','c','h','i','p',' ',
 //'T','e','c','h','n','o','l','o','g','y',' ','I','n','c','.'
-}};
+//}};
 
 const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[6];}sd001_1={
 sizeof(sd001_1),USB_DESCRIPTOR_STRING,
@@ -346,7 +347,7 @@ sizeof(sd001_1),USB_DESCRIPTOR_STRING,
 //{'C','D','C',' ','R','S','-','2','3','2',' ',
 //'E','m','u','l','a','t','i','o','n',' ','D','e','m','o'}
 //};
-const struct{uint8_t bLength;uint8_t bDscType;WORD string[5];}sd002_1={
+const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[5];}sd002_1={
 sizeof(sd002_1),USB_DESCRIPTOR_STRING,
 {'V','L','6','7','7'}
 };
@@ -359,7 +360,7 @@ sizeof(sd002_1),USB_DESCRIPTOR_STRING,
 
 
 //Language code string descriptor
-const struct{uint8_t bLength;uint8_t bDscType;WORD string[1];}sd000_0={
+const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[1];}sd000_0={
 sizeof(sd000_0),USB_DESCRIPTOR_STRING,{0x0409}};
 
 //Manufacturer string descriptor
@@ -381,7 +382,7 @@ sizeof(sd001_0),USB_DESCRIPTOR_STRING,
 //const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[36];}sd002={
 //sizeof(sd002_0),USB_DESCRIPTOR_STRING,
 //{'M','i','c','r','o','c','h','i','p',' ','E','x','t','e','r','n','a','l',' ','M','e','m','o','r','y',' ','P','r','o','g','r','a','m','m','e','r'}};
-const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[7];}sd002={
+const struct{uint8_t bLength;uint8_t bDscType;uint16_t string[7];}sd002_0={
 sizeof(sd002_0),USB_DESCRIPTOR_STRING,
 {'M','e','m','P','r','o','g'}};
 
@@ -415,4 +416,5 @@ const uint8_t *const USB_SD_Ptr[]=
 
 /** EOF usb_descriptors.c ***************************************************/
 
+#endif
 #endif

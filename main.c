@@ -8,6 +8,7 @@
 
 /* Demo application includes. */
 #include "partest.h"
+#include "bsp/SST39LF400.h"
 
 //#include "usb.h"
 //#include "usb_function_generic.h"
@@ -15,7 +16,7 @@
 _CONFIG1( WDTPS_PS32768 & FWPSA_PR128 & ALTVREF_ALTVREDIS & WINDIS_OFF & FWDTEN_OFF & ICS_PGx2 & GWRP_OFF & GCP_OFF & JTAGEN_OFF)
 _CONFIG2( POSCMOD_HS & IOL1WAY_OFF & OSCIOFNC_OFF & FCKSM_CSDCMD & FNOSC_PRIPLL & PLL96MHZ_ON & PLLDIV_DIV2 & IESO_OFF)
 _CONFIG3( WPFP_WPFP255 & SOSCSEL_EC & WUTSEL_LEG & ALTPMP_ALTPMPEN & WPDIS_WPDIS & WPCFG_WPCFGDIS & WPEND_WPENDMEM)
-
+// ALTPMP_ALTPMPEN
 //portCHAR pcTraceBuf__[1000] __attribute__((aligned(2)));
 //portCHAR* pcTraceBuf = pcTraceBuf__;
 
@@ -63,8 +64,37 @@ void CheckExternalFlashHex()
     GFX_XCHAR   msgStr8[] = "Flash Err.";
 	
 //    GOLInit();
-    DRV_GFX_Initialize();
-    GFX_Initialize();
+
+
+//    DRV_GFX_Initialize();
+//    GFX_Initialize();
+
+    DRV_GFX_EPMPInitialize();
+    PMCON2bits.MSTSEL = 0;		// set CPU as Master
+
+    SST39LF400ChipErase();
+
+    WORD    pD;
+    DWORD   addr;
+    WORD    wr_pD = 0x55aa;
+    DWORD   wr_addr = -1;
+    DWORD   wr_err_cntr = 0;
+    DWORD   rd_err_cntr = 0;
+
+
+
+
+        while(1)
+        {
+//            addr = (0x40000>>1);
+            addr = 0x01c000;
+            pD = lRead16(addr);
+            addr = 0x0000;
+            pD = lRead16(addr);
+        }
+
+
+
 
     pFont = (void*) &Gentium8;
     GFX_FontSet(pFont);
@@ -78,6 +108,8 @@ void CheckExternalFlashHex()
         }
 	else
             pStr = msgStr1;
+
+//    while(!DA210DEVBOARD_SST39LF400CheckID());
 	
 	// check if the CRC matches the data stored in the external flash memory
     expectedCRC.mchpCRCData = GRC_CRC32_EXTERNAL_MARKER;
@@ -96,10 +128,12 @@ void CheckExternalFlashHex()
             setProgram = TRUE;
         }
     }
-    
+     setProgram = TRUE;
+
     if (setProgram == TRUE)
     {
-		Spi_init();
+
+                Spi_init();
 		MCP23S08Write(GPPU, 0x40 ); 
 		_delay_spi(100);
 		MCP23S08Write(GPIO, 0x08 ); //Set Back light ON, power ON(logic zero)
@@ -112,13 +146,32 @@ void CheckExternalFlashHex()
 		GFX_ColorSet(BLACK);
 		GFX_ScreenClear();
 		GFX_ColorSet(WHITE);
-		GFX_TextStringDraw(10,10                 , pStr);
-		GFX_TextStringDraw(10,10 + (textHeight*2), msgStr3);
-		GFX_TextStringDraw(10,10 + (textHeight*3), msgStr4);
-		GFX_TextStringDraw(10,10 + (textHeight*4), msgStr5);
-		GFX_TextStringDraw(10,10 + (textHeight*5), msgStr6);
+		GFX_TextStringDraw(10,10                 , pStr,strlen(pStr));
+		GFX_TextStringDraw(10,10 + (textHeight*2), msgStr3,strlen(msgStr3));
+		GFX_TextStringDraw(10,10 + (textHeight*3), msgStr4,strlen(msgStr4));
+		GFX_TextStringDraw(10,10 + (textHeight*4), msgStr5,strlen(msgStr5));
+		GFX_TextStringDraw(10,10 + (textHeight*5), msgStr6,strlen(msgStr6));
 //        GFX_TextStringDraw(10,10 + (textHeight*6), msgStr7);
-		
+		GFX_TextStringDraw(10,10 + (textHeight*6), msgStr6,strlen(msgStr6));
+		GFX_TextStringDraw(10,10 + (textHeight*7), msgStr6,strlen(msgStr6));
+		GFX_TextStringDraw(10,10 + (textHeight*8), msgStr6,strlen(msgStr6));
+		GFX_TextStringDraw(10,10 + (textHeight*9), msgStr6,strlen(msgStr6));
+		GFX_TextStringDraw(10,10 + (textHeight*10), msgStr6,strlen(msgStr6));
+		GFX_TextStringDraw(10,10 + (textHeight*11), msgStr6,strlen(msgStr6));
+		GFX_TextStringDraw(10,10 + (textHeight*12), msgStr6,strlen(msgStr6));
+		GFX_TextStringDraw(10,10 + (textHeight*13), msgStr6,strlen(msgStr6));
+		GFX_TextStringDraw(10,10 + (textHeight*14), msgStr6,strlen(msgStr6));
+		GFX_TextStringDraw(10,10 + (textHeight*15), msgStr6,strlen(msgStr6));
+		GFX_TextStringDraw(10,10 + (textHeight*16), msgStr6,strlen(msgStr6));
+		GFX_TextStringDraw(10,10 + (textHeight*17), msgStr6,strlen(msgStr6));
+		GFX_TextStringDraw(10,10 + (textHeight*18), msgStr6,strlen(msgStr6));
+		GFX_TextStringDraw(10,10 + (textHeight*19), msgStr6,strlen(msgStr6));
+		GFX_TextStringDraw(10,10 + (textHeight*20), "Test String Test String Test String Tesst String",48);
+		GFX_TextStringDraw(10,10 + (textHeight*21), "Test String Test String Test String Tesst String",48);
+
+
+
+
 		do
 		{
 			IO_reg = MCP23S08Read(GPIO ); //Read
@@ -127,8 +180,8 @@ void CheckExternalFlashHex()
 				
 		PMCON2bits.MSTSEL = 0;		// set CPU as Master
         // Call the external flash programming routine
-        ProgramFlash();
-
+//        ProgramFlash();
+        SYSTEM_ProgramExternalMemory();
 #if defined (USE_COMM_PKT_MEDIA_USB)
 
         // check if USB has sent reply to host then do a detach

@@ -46,7 +46,7 @@
  ********************************************************************/
 #include "SST39LF400.h"
 
-#if defined (USE_SST39LF400)
+#if 1 //defined (USE_SST39LF400)
 
 #include "framework/driver/gfx/drv_gfx_pmp.h"
 
@@ -77,7 +77,8 @@ WORD lRead16(DWORD address);
 void SST39LF400Init()
 {
     
-    DriverInterfaceInit();
+ //   DriverInterfaceInit();
+    DRV_GFX_EPMPInitialize();
 
 }
 
@@ -101,7 +102,6 @@ BYTE SST39LF400WriteWord(WORD data, DWORD address)
     lWrite16(0x000002aaa,0x0055);
     lWrite16(0x000005555,0x00a0);
     lWrite16(address,data);
-    
     SST39LF400WaitProgram();
 
     if((temp = SST39LF400ReadWord(address)) == data)
@@ -145,8 +145,25 @@ WORD temp;
 BYTE SST39LF400WriteArray(DWORD address, BYTE *pData, WORD nCount)
 {
     WORD    counter;
+    WORD    data;
     WORD    *pD;
     DWORD   addr;
+
+
+//    if (address <= 0x000033E0)
+//    {
+//
+//        addr = 0x000033E0 >> 1;
+//    // verify
+//        for(counter = 0; counter < (nCount>>1); counter++)
+//        {
+//            data = SST39LF400ReadWord(addr++);
+//            if(data !=0xffff)
+//                return (0);
+//        }
+//    }
+//    if (address == 0x000136f0)
+//        return (1);
 
     // Note that shifting of the address and count is performed
     // here since the incoming data is addressed on a byte location 
@@ -168,7 +185,9 @@ BYTE SST39LF400WriteArray(DWORD address, BYTE *pData, WORD nCount)
     // verify
     for(counter = 0; counter < (nCount>>1); counter++)
     {
-        if(*pD++ !=SST39LF400ReadWord(addr++))
+//        if(*pD++ !=SST39LF400ReadWord(addr++))
+        data = SST39LF400ReadWord(addr++);
+        if(*pD++ !=data)
             return (0);
     }
 
@@ -294,40 +313,40 @@ void SST39LF400SectorErase(DWORD address)
 ************************************************************************/
 WORD SST39LF400CheckID()
 {
-	WORD testArray[2] = {0,0};
+    WORD testArray[2] = {0,0};
 	
-   	lWrite16(0x000005555,0x00aa);
+    lWrite16(0x000005555,0x00aa);
     lWrite16(0x000002aaa,0x0055);
     lWrite16(0x000005555,0x0090);
-	testArray[0] = lRead16 (0x000000000);
+    testArray[0] = lRead16 (0x000000000);
     testArray[1] = lRead16 (0x000000001);
 
     // exit the query mode 
     lWrite16(0x000005555,0x00F0);
     
-   	if ((testArray[0] == 0x00BF) && (testArray[1] == 0x2780))
-   		return 1;
-	else
-		return 0;   		
+    if ((testArray[0] == 0x00BF) && (testArray[1] == 0x2780))
+        return 1;
+    else
+        return 0;
 }
 
 
 /************************************************************************
-************************************************************************/
+
+ ************************************************************************/
 void lWrite16(DWORD address, WORD data)
 {
-
+#if 1
 	volatile __eds__ WORD *pWord;
-
 	pWord = (__eds__ WORD *)(&EPMPCS2Start + address);
 
-	// do this sequence since the flash device is slow 
+        // do this sequence since the flash device is slow
 	// See EPMP FRM (DS39730) Section on Read/Write Operation
 	while(PMCON2bits.BUSY);
 		*pWord = data;
 		
 // Example code to do the writes manually
-/*
+#else
 WORD pointer;
 WORD temp;
 		address <<= 1;
@@ -340,15 +359,17 @@ WORD temp;
 		*((WORD*)pointer) = data;
 		while(PMCON2bits.BUSY);
         DSWPAG = temp;
-*/
+#endif
 }
 
 /************************************************************************
 ************************************************************************/
 WORD lRead16(DWORD address)
 {
-	volatile  __eds__ WORD *pWord;
+#if 1
+    volatile  __eds__ WORD *pWord;
 	WORD temp;
+
 
 	pWord = (__eds__ WORD *)(&EPMPCS2Start + address);
 	temp = *pWord;
@@ -357,9 +378,8 @@ WORD lRead16(DWORD address)
 	// See EPMP FRM (DS39730) Section on Read/Write Operation
 	while(PMCON2bits.BUSY);
 	return PMDIN1;
-
+#else
 // Example code to do the writes manually
-/*
 WORD pointer;
 volatile WORD data;
 WORD temp;
@@ -375,7 +395,7 @@ WORD temp;
 		data = PMDIN1;
 		DSRPAG = temp;
 		return data;
-*/
+#endif
 }
 
 #endif //USE_SST39LF400

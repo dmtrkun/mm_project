@@ -45,24 +45,24 @@ GFX_RESOURCE_HDR const* prog_images[6] = {
 &prog_PCA
 };
 
-
+#if 0 //todo
 void CreateSetprog(void)
 {
 	GFX_GOL_ObjectListFree();
 	GFX_ColorSet(BLUE_LIGHT);
 	GFX_ScreenClear();
 
-	BtnCreate(Setprog_OBJ_BUTTON_0,7,46,116,117,10,BTN_DRAW,(void*)prog_images[0],NULL,defscheme);
-	BtnCreate(Setprog_OBJ_BUTTON_1,125,46,234,117,10,BTN_DRAW,(void*)prog_images[1],NULL,defscheme);
-	BtnCreate(Setprog_OBJ_BUTTON_2,7,124,116,195,10,BTN_DRAW,(void*)prog_images[2],NULL,defscheme);
-	BtnCreate(Setprog_OBJ_BUTTON_3,125,124,234,195,10,BTN_DRAW,(void*)prog_images[3],NULL,defscheme);
-	BtnCreate(Setprog_OBJ_BUTTON_4,7,201,116,272,10,BTN_DRAW,(void*)prog_images[4],NULL,defscheme);
-	BtnCreate(Setprog_OBJ_BUTTON_5,125,201,234,272,10,BTN_DRAW,(void*)prog_images[5],NULL,defscheme);
+	GFX_GOL_ButtonCreate(Setprog_OBJ_BUTTON_0,7,46,116,117,10,BTN_DRAW,(void*)prog_images[0],NULL,defscheme);
+	GFX_GOL_ButtonCreate(Setprog_OBJ_BUTTON_1,125,46,234,117,10,BTN_DRAW,(void*)prog_images[1],NULL,defscheme);
+	GFX_GOL_ButtonCreate(Setprog_OBJ_BUTTON_2,7,124,116,195,10,BTN_DRAW,(void*)prog_images[2],NULL,defscheme);
+	GFX_GOL_ButtonCreate(Setprog_OBJ_BUTTON_3,125,124,234,195,10,BTN_DRAW,(void*)prog_images[3],NULL,defscheme);
+	GFX_GOL_ButtonCreate(Setprog_OBJ_BUTTON_4,7,201,116,272,10,BTN_DRAW,(void*)prog_images[4],NULL,defscheme);
+	GFX_GOL_ButtonCreate(Setprog_OBJ_BUTTON_5,125,201,234,272,10,BTN_DRAW,(void*)prog_images[5],NULL,defscheme);
 
 	 
-	BtnCreate(Setprog_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
-//	BtnCreate(Setprog_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setprog_OBJ_BUTTON_8_text,botbar);
-//	BtnCreate(Setprog_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setprog_OBJ_BUTTON_9_text,botbar);
+	GFX_GOL_ButtonCreate(Setprog_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+//	GFX_GOL_ButtonCreate(Setprog_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setprog_OBJ_BUTTON_8_text,botbar);
+//	GFX_GOL_ButtonCreate(Setprog_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Setprog_OBJ_BUTTON_9_text,botbar);
 
 
 	GFX_GOL_StaticTextCreate(Setprog_OBJ_STATICTEXT_0,1,0,238,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Setprog_OBJ_STATICTEXT_0_text,GFX_ALIGN_CENTER,topbar);
@@ -139,3 +139,4 @@ WORD msgSetprog(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 
 	return 1;	
 } 
+#endif //todo

@@ -282,9 +282,9 @@ void TouchCheckForCalibration(void)
 * Note: none
 *
 ********************************************************************/
+#if 0
 void TouchCalibration_(void)
 {
-#if 0
 	static const XCHAR  scr1StrLn1[] = {'I','M','P','O','R','T','A','N','T','.',0};
     static const XCHAR  scr1StrLn2[] = {'P','e','r','f','o','r','m','i','n','g',' ','t','o','u','c','h',0};
     static const XCHAR  scr1StrLn3[] = {'s','c','r','e','e','n',' ','c','a','l','i','b','r','a','t','i','o','n','.',0};
@@ -382,9 +382,9 @@ void TouchCalibration_(void)
 
     SetColor(BLACK);
     ClearDevice();
-#endif
 
 }
+#endif
 
 
 #endif // #if defined (USE_TOUCHSCREEN_RESISTIVE)

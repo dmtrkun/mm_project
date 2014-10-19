@@ -11,6 +11,7 @@
 #include "lcd.h"
 //#include "main.h"
 #include "Configs/HWP_DA210_BRD_16PMP_PFLASH_QVGAv1.h"
+#include "bsp/SST39LF400.h"
 
 /*
  * The LCD is written to by more than one task so is controlled by this

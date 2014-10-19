@@ -69,9 +69,9 @@ void CreateError(void)
 //	DmCreate(Error_OBJ_DIGITALMETER_2, 150, 140, 236, 178, DM_DRAW | DM_FRAME | DM_CENTER_ALIGN, 0, 4, 0, botbar);
 //	DmCreate(Error_OBJ_DIGITALMETER_3, 150, 186, 236, 224, DM_DRAW | DM_FRAME | DM_CENTER_ALIGN, 0, 4, 0, botbar);
 	 
-	BtnCreate(Error_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
-//	BtnCreate(Error_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,&Larrow,(XCHAR*)Test_OBJ_BUTTON_8_Error,botbar);
-//	BtnCreate(Error_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,&Rarrow,(XCHAR*)Test_OBJ_BUTTON_9_Error,botbar);
+	GFX_GOL_ButtonCreate(Error_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+//	GFX_GOL_ButtonCreate(Error_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,&Larrow,(XCHAR*)Test_OBJ_BUTTON_8_Error,botbar);
+//	GFX_GOL_ButtonCreate(Error_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,&Rarrow,(XCHAR*)Test_OBJ_BUTTON_9_Error,botbar);
 
 	StCreate(Error_OBJ_STATICTEXT_0,1,0,238,30,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)Error_OBJ_STATICTEXT_0_text,topbar);
 

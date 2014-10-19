@@ -7,7 +7,7 @@
 /* Standard includes. */
 #include <stdio.h>
 #include "partest.h"
-#include "SST39LF400.h"    
+#include "bsp/SST39LF400.h"
 
 
 /* Demo task priorities. */

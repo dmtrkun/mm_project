@@ -94,18 +94,18 @@ void CreateClear(void)
 
 	if(page_create < (page_nums/2))
 	{
-		BtnCreate(Clear_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Clear_OBJ_BUTTON_7_text,botbar);
-		BtnCreate(Clear_OBJ_BUTTON_9,174,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Clear_OBJ_BUTTON_9_text,botbar);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_7,5,277,66,313,5,GFX_GOL_BUTTON_DRAW_STATE,NULL,NULL,(GFX_XCHAR*)Clear_OBJ_BUTTON_7_text,GFX_ALIGN_CENTER,botbar);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_9,174,277,235,313,5,GFX_GOL_BUTTON_DRAW_STATE,NULL,NULL,(GFX_XCHAR*)Clear_OBJ_BUTTON_9_text,GFX_ALIGN_CENTER,botbar);
 		GFX_GOL_StaticTextCreate(Clear_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Clear_OBJ_STATICTEXT_0_text,GFX_ALIGN_LEFT,topbar);
 	}
 	else
 	{
-		BtnCreate(Clear_OBJ_BUTTON_10,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
-		BtnCreate(Clear_OBJ_BUTTON_11,174,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Clear_OBJ_BUTTON_11_text,botbar);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_10,5,277,66,313,5,GFX_GOL_BUTTON_DRAW_STATE,NULL,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,GFX_ALIGN_CENTER,botbar);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_11,174,277,235,313,5,GFX_GOL_BUTTON_DRAW_STATE,NULL,NULL,(GFX_XCHAR*)Clear_OBJ_BUTTON_11_text,GFX_ALIGN_CENTER,botbar);
 		GFX_GOL_StaticTextCreate(Clear_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Clear_OBJ_STATICTEXT_1_text,GFX_ALIGN_LEFT,topbar);
 	}
-	BtnCreate(Clear_OBJ_BUTTON_8,74,277,166,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Clear_OBJ_BUTTON_8_text,botbar);
-	GFX_GOL_PictureControlCreate(Clear_OBJ_PICTURE_0,215,0,239,30, PICT_DRAW, IMAGE_NORMAL, getBatImg(batlevel), topbar);
+	GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_8,74,277,166,313,5,GFX_GOL_BUTTON_DRAW_STATE,NULL,NULL,(GFX_XCHAR*)Clear_OBJ_BUTTON_8_text,GFX_ALIGN_CENTER,botbar);
+	GFX_GOL_PictureControlCreate(Clear_OBJ_PICTURE_0,215,0,239,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, getBatImg(batlevel), topbar);
 
 }
 void CreatePrimitivesForClear(void){
@@ -121,8 +121,8 @@ void UpdateClear(void)
 	
 	pObj = GFX_GOL_ObjectFind(Clear_OBJ_PICTURE_0);
 	if (pObj) {
-		GFX_GOL_PictureControlImageSet(pObj, getBatImg(batlevel));
-		GFX_GOL_ObjectStateSet((PICTURE*) pObj, DRAW_UPDATE);
+//TBD		GFX_GOL_PictureControlImageSet(pObj, ((GFX_GOL_PICTURECONTROL*)getBatImg(batlevel)).pImage);
+		GFX_GOL_ObjectStateSet(pObj, GFX_GOL_PICTURECONTROL_DRAW_STATE);
 	}
 }
 
@@ -211,7 +211,7 @@ int objID;
 				//Goto options
 				if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
    	     			xTimerStop( xTimers[ 1 ], 0 );
-				pswrd = 0;
+//				pswrd = 0;
 //TBD				GDDSetScreen(CREATE_SCREEN_OPTIONS,0,NULL);
 			}	
 			return 1;
@@ -222,19 +222,21 @@ int objID;
 	return 1;	
 } 
 
+
+
 WORD msgClear_prog1(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, int objID)
 {
 	 
 	switch (objID) {
 		case Clear_OBJ_BUTTON_0:
-			if (objMsg == BTN_MSG_PRESSED) {
-					BtnSetBitmap(pObj, (char*)&Param_btn_press);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_PRESSED) {
+//DMK				BtnSetBitmap(pObj, (char*)&Param_btn_press);
+//				GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 			}
 			else 
 			{
-				BtnSetBitmap(pObj, (char *)&Param_btn);
-				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+//DMK				BtnSetBitmap(pObj, (char *)&Param_btn);
+//				GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED)
 				{
 					page_display = 1;
@@ -245,38 +247,38 @@ WORD msgClear_prog1(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, int objID)
 			}	
 			return 1;
 		case Clear_OBJ_BUTTON_1:
-			if (objMsg == BTN_MSG_PRESSED) {
-					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_PRESSED) {
+//					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
+//					GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 			}
 			else 
 			{
-				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
-				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+//				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
+//				GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 				{
 					page_display = 1;
 					if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
 	   	     			xTimerStop( xTimers[ 1 ], 0 );
-					GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_VTBI,NULL);
+//TBD					GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_VTBI,NULL);
 				}
 			}	
 			return 1;
 		case Clear_OBJ_BUTTON_2:
-			if (objMsg == BTN_MSG_PRESSED) {
-					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_PRESSED) {
+//					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
+//					GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 			}
 			else 
 			{
-				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
-				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+//				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
+//				GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 				{
 					page_display = 1;
 					if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
 	   	     			xTimerStop( xTimers[ 1 ], 0 );
-					GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_INFUSED,NULL);
+//TBD					GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_INFUSED,NULL);
 				}
 			}	
 			return 1;
@@ -354,14 +356,14 @@ WORD msgClear_prog2(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, int objID)
 	 
 	switch (objID) {
 		case Clear_OBJ_BUTTON_0:
-			if (objMsg == BTN_MSG_PRESSED) {
-					BtnSetBitmap(pObj, (char*)&Param_btn_press);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_PRESSED) {
+//					BtnSetBitmap(pObj, (char*)&Param_btn_press);
+//					GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 			}
 			else 
 			{
-				BtnSetBitmap(pObj, (char *)&Param_btn);
-				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+//				BtnSetBitmap(pObj, (char *)&Param_btn);
+//				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
 				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED)
 				{
 					page_display = 1;
@@ -372,38 +374,38 @@ WORD msgClear_prog2(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, int objID)
 			}	
 			return 1;
 		case Clear_OBJ_BUTTON_1:
-			if (objMsg == BTN_MSG_PRESSED) {
-					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_PRESSED) {
+//					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
+//					GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 			}
 			else 
 			{
-				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
-				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+//				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
+//				GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 				{
 					page_display = 1;
 					if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
 	   	     			xTimerStop( xTimers[ 1 ], 0 );
-					GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_INFTIME,NULL);
+//					GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_INFTIME,NULL);
 				}
 			}	
 			return 1;
 		case Clear_OBJ_BUTTON_2:
-			if (objMsg == BTN_MSG_PRESSED) {
-					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_PRESSED) {
+//					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
+//					GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 			}
 			else 
 			{
-				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
-				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+//				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
+//				GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 				{
 					page_display = 1;
 					if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
 	   	     			xTimerStop( xTimers[ 1 ], 0 );
-					GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_INFUSED,NULL);
+//					GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_INFUSED,NULL);
 				}
 			}	
 			return 1;
@@ -459,26 +461,26 @@ WORD msgClear_prog3(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, int objID)
 	 
 	switch (objID) {
 		case Clear_OBJ_BUTTON_0:
-			if (objMsg == BTN_MSG_PRESSED) {
-					BtnSetBitmap(pObj, (char*)&Param_btn_press);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_PRESSED) {
+//					BtnSetBitmap(pObj, (char*)&Param_btn_press);
+//					GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 			}
 			else 
 			{
-				BtnSetBitmap(pObj, (char *)&Param_btn);
-				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+//				BtnSetBitmap(pObj, (char *)&Param_btn);
+//				GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED)
 				{
 					if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
 	   	     			xTimerStop( xTimers[ 1 ], 0 );
 					if((page_display == 0)||(page_display == 2))
 					{
-						GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_BAGVOL,NULL);
+//						GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_BAGVOL,NULL);
 						page_display = 2;
 					}
 					else
 					{
-						GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_INTERVALTIME,NULL);
+//						GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_INTERVALTIME,NULL);
 						page_display = 3;
 					}
 				
@@ -487,45 +489,45 @@ WORD msgClear_prog3(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, int objID)
 			return 1;
 		
 		case Clear_OBJ_BUTTON_1:
-			if (objMsg == BTN_MSG_PRESSED) {
-					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_PRESSED) {
+//					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
+//					GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 			}
 			else 
 			{
-				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
-				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+//				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
+//				GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 				{
 					if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
 	   	     			xTimerStop( xTimers[ 1 ], 0 );
 					if((page_display == 0)||(page_display == 2))
 					{
-						GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_DOSEVOL,NULL);
+//						GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_DOSEVOL,NULL);
 						page_display = 2;
 					}
 					else
 					{
-						GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_KVORATE,NULL);
+//						GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_KVORATE,NULL);
 						page_display = 3;
 					}
 				}
 			}	
 			return 1;
 		case Clear_OBJ_BUTTON_2:
-			if (objMsg == BTN_MSG_PRESSED) {
-					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_PRESSED) {
+//					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
+//					GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 			}
 			else 
 			{
-				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
-				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+//				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
+//				GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 				{
 					if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
 	   	     			xTimerStop( xTimers[ 1 ], 0 );
-					GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_DOSERATE,NULL);
+//					GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_DOSERATE,NULL);
 					page_display = 2;
 				}
 			}	
@@ -539,7 +541,7 @@ WORD msgClear_prog3(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, int objID)
 				vol_para.vtbi = 600.0;
 				if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
    	     			xTimerStop( xTimers[ 1 ], 0 );
-				GDDSetScreen(CREATE_SCREEN_PRIME,0,NULL);
+//				GDDSetScreen(CREATE_SCREEN_PRIME,0,NULL);
 			}
 			return 1;
 		case Clear_OBJ_BUTTON_9: //NO
@@ -578,14 +580,14 @@ WORD msgClear_prog4(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, int objID)
 	 
 	switch (objID) {
 		case Clear_OBJ_BUTTON_0:
-			if (objMsg == BTN_MSG_PRESSED) {
-					BtnSetBitmap(pObj, (char*)&Param_btn_press);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_PRESSED) {
+//					BtnSetBitmap(pObj, (char*)&Param_btn_press);
+//					GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 			}
 			else 
 			{
-				BtnSetBitmap(pObj, (char *)&Param_btn);
-				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+//				BtnSetBitmap(pObj, (char *)&Param_btn);
+//				GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED)
 				{
 					if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
@@ -597,7 +599,7 @@ WORD msgClear_prog4(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, int objID)
 					}
 					else
 					{
-						GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_INTERVALTIME,NULL);
+//						GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_INTERVALTIME,NULL);
 						page_display = 3;
 					}
 				
@@ -606,45 +608,45 @@ WORD msgClear_prog4(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, int objID)
 			return 1;
 		
 		case Clear_OBJ_BUTTON_1:
-			if (objMsg == BTN_MSG_PRESSED) {
-					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_PRESSED) {
+//					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
+//					GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 			}
 			else 
 			{
-				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
-				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+//				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
+//				GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 				{
 					if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
 	   	     			xTimerStop( xTimers[ 1 ], 0 );
 					if((page_display == 0)||(page_display == 2))
 					{
-						GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_DOSEVOL,NULL);
+//						GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_DOSEVOL,NULL);
 						page_display = 2;
 					}
 					else
 					{
-						GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_KVORATE,NULL);
+//						GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_KVORATE,NULL);
 						page_display = 3;
 					}
 				}
 			}	
 			return 1;
 		case Clear_OBJ_BUTTON_2:
-			if (objMsg == BTN_MSG_PRESSED) {
-					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_PRESSED) {
+//					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
+//					GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 			}
 			else 
 			{
-				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
-				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+//				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
+//				GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 				{
 					if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
 	   	     			xTimerStop( xTimers[ 1 ], 0 );
-					GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_DOSETIME,NULL);
+//					GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_DOSETIME,NULL);
 					page_display = 2;
 				}
 			}	
@@ -658,7 +660,7 @@ WORD msgClear_prog4(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, int objID)
 				vol_para.vtbi = 600.0;
 				if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
    	     			xTimerStop( xTimers[ 1 ], 0 );
-				GDDSetScreen(CREATE_SCREEN_PRIME,0,NULL);
+//				GDDSetScreen(CREATE_SCREEN_PRIME,0,NULL);
 			}
 			return 1;
 		case Clear_OBJ_BUTTON_9: //NO
@@ -700,14 +702,14 @@ unsigned char i;
 		 
 	switch (objID) {
 		case Clear_OBJ_BUTTON_0:
-			if (objMsg == BTN_MSG_PRESSED) {
-					BtnSetBitmap(pObj, (char*)&Param_btn_press);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_PRESSED) {
+//					BtnSetBitmap(pObj, (char*)&Param_btn_press);
+//					GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 			}
 			else 
 			{
-				BtnSetBitmap(pObj, (char *)&Param_btn);
-				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+//				BtnSetBitmap(pObj, (char *)&Param_btn);
+//				GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED)
 				{
 					page_display = 1;
@@ -722,14 +724,14 @@ unsigned char i;
 			}	
 			return 1;
 		case Clear_OBJ_BUTTON_1:
-			if (objMsg == BTN_MSG_PRESSED) {
-					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_PRESSED) {
+//					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
+//					GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 			}
 			else 
 			{
-				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
-				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+//				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
+//				GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 				{
 					page_display = 1;
@@ -741,21 +743,21 @@ unsigned char i;
 			}	
 			return 1;
 		case Clear_OBJ_BUTTON_2:
-			if (objMsg == BTN_MSG_PRESSED) {
-					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+			if (objMsg == GFX_GOL_BUTTON_ACTION_PRESSED) {
+//					BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn_press);
+//					GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 			}
 			else 
 			{
-				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
-				GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+//				BtnSetBitmap((BUTTON*)pObj, (char *)&Param_btn);
+//				GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 				if (objMsg == GFX_GOL_BUTTON_ACTION_RELEASED) 
 				{
 					page_display = 1;
 					if( xTimerIsTimerActive( xTimers[ 1 ] ) != pdFALSE ) 
 	   	     			xTimerStop( xTimers[ 1 ], 0 );
 					Vol_Para_Specs.pset_var =  (void*)&vol_para.prog_steps[vol_para.prog_stepsnum-1].vol;
-					GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_VTBI,(void*)&Vol_Para_Specs);
+//					GDDSetScreen(CREATE_SCREEN_ADJUST,ADJUST_VTBI,(void*)&Vol_Para_Specs);
 				}
 			}	
 			return 1;
@@ -811,7 +813,7 @@ void CreateClear_prog1(void)
 		sprintf(str1,"RATE  = %.1fml/hr",(double)vol_para.rate);
 	else
 		sprintf(str1,"RATE  = %.0fml/hr",(double)vol_para.rate);
-	BtnCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
+	GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str1,GFX_ALIGN_LEFT,defscheme);
 	
 	
 	if(no_limit == 1)
@@ -820,11 +822,11 @@ void CreateClear_prog1(void)
 		sprintf(str2,"VTBI  = %.1fml",(double)vol_para.vtbi);
 	else
 		sprintf(str2,"VTBI  = %.0fml",(double)vol_para.vtbi);
-	BtnCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
+	GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str2,GFX_ALIGN_LEFT,defscheme);
 	
 	
-	BtnCreate(Clear_OBJ_BUTTON_3,6,193,115,264,10,BTN_DRAW,(void *)prog_images[prog_num],NULL,defscheme);
-	BtnCreate(Clear_OBJ_BUTTON_4,131,203,235,263,1,BTN_DRAW, (void *)drug_images[vol_para.drug_type],NULL,defscheme);
+	GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_3,6,193,115,264,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)prog_images[prog_num],(void *)prog_images[prog_num],NULL,GFX_ALIGN_CENTER,defscheme);
+	GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_4,131,203,235,263,1,GFX_GOL_BUTTON_DRAW_STATE, (void *)drug_images[vol_para.drug_type],(void *)drug_images[vol_para.drug_type],NULL,GFX_ALIGN_CENTER,defscheme);
 
 	 
 	if((page_create == 0) && (vol_para.infsd > 0.01))
@@ -833,7 +835,8 @@ void CreateClear_prog1(void)
 			sprintf(str3,"INFUSED = %.1fml",(double)vol_para.infsd);
 		else
 			sprintf(str3,"INFUSED = %.0fml",(double)vol_para.infsd);
-		BtnCreate(Clear_OBJ_BUTTON_2,3,140,236,178,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str3,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_2,3,140,236,178,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn_press,(void *)&Param_btn,(GFX_XCHAR*)str3,GFX_ALIGN_LEFT,defscheme);
+
 	}
 	else
 	{
@@ -850,15 +853,15 @@ void CreateClear_prog2(void)
 		ValToStr(TYPE_VOLUME,0, vol_para.vtbi,NULL, str1 + strlen(str1));
 	}
 	
-	BtnCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
+	GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str1,GFX_ALIGN_LEFT,defscheme);
 	
 	sprintf(str2,"TIME  = ");
 	ValToStr(TYPE_TIMEINTERVAL,estim_infusetime, 0,NULL, str2 + strlen(str2));
 	sprintf(str2 + strlen(str2)," Hr:Min");
-	BtnCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
+	GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str2,GFX_ALIGN_LEFT,defscheme);
 	
-	BtnCreate(Clear_OBJ_BUTTON_3,6,193,115,264,10,BTN_DRAW,(void *)prog_images[prog_num],NULL,defscheme);
-	BtnCreate(Clear_OBJ_BUTTON_4,131,203,235,263,1,BTN_DRAW, (void *)drug_images[vol_para.drug_type],NULL,defscheme);
+	GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_3,6,193,115,264,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)prog_images[prog_num],(void *)prog_images[prog_num],NULL,GFX_ALIGN_CENTER,defscheme);
+	GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_4,131,203,235,263,1,GFX_GOL_BUTTON_DRAW_STATE, (void *)drug_images[vol_para.drug_type], (void *)drug_images[vol_para.drug_type],NULL,GFX_ALIGN_CENTER,defscheme);
 	 
 	if((page_create == 0) && (vol_para.infsd > 0.01))
 	{
@@ -866,7 +869,7 @@ void CreateClear_prog2(void)
 			sprintf(str3,"INFUSED = %.1fml",(double)vol_para.infsd);
 		else
 			sprintf(str3,"INFUSED = %.0fml",(double)vol_para.infsd);
-		BtnCreate(Clear_OBJ_BUTTON_2,3,140,236,178,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str3,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_2,3,140,236,178,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str3,GFX_ALIGN_LEFT,defscheme);
 	}
 	else
 	{
@@ -880,29 +883,29 @@ void CreateClear_prog3(void)
 	{
 		sprintf(str1,"BAG VOL = ");
 		ValToStr(TYPE_VOLUME,0, vol_para.bag_vol,NULL, str1 + strlen(str1));
-		BtnCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str1,GFX_ALIGN_LEFT,defscheme);
 	
 		sprintf(str2,"DOSE VOL = ");
 		ValToStr(TYPE_VOLUME, 0, vol_para.dose_vol, NULL, str2 + strlen(str2));
-		BtnCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str2,GFX_ALIGN_LEFT,defscheme);
 		
 		sprintf(str3,"D/RATE = ");
 		ValToStr(TYPE_RATE,0, vol_para.dose_rate,NULL, str3 + strlen(str3));
-		BtnCreate(Clear_OBJ_BUTTON_2,3,140,236,178,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str3,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_2,3,140,236,178,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str3,GFX_ALIGN_LEFT,defscheme);
 		
-		BtnCreate(Clear_OBJ_BUTTON_3,6,193,115,264,10,BTN_DRAW,(void *)prog_images[prog_num],NULL,defscheme);
-		BtnCreate(Clear_OBJ_BUTTON_4,131,203,235,263,1,BTN_DRAW, (void *)drug_images[vol_para.drug_type],NULL,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_3,6,193,115,264,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)prog_images[prog_num],(void *)prog_images[prog_num],NULL,GFX_ALIGN_CENTER,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_4,131,203,235,263,1,GFX_GOL_BUTTON_DRAW_STATE, (void *)drug_images[vol_para.drug_type], (void *)drug_images[vol_para.drug_type],NULL,GFX_ALIGN_CENTER,defscheme);
 	}
 	else
 	{
 		sprintf(str1,"T.INTERVAL = ");
 		ValToStr(TYPE_TIMEINTERVAL,vol_para.dose_interval, 0,NULL, str1 + strlen(str1));
 //		sprintf(str1 + strlen(str1)," Hr:Min");
-		BtnCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str1,GFX_ALIGN_LEFT,defscheme);
 	
 		sprintf(str2,"KVO = ");
 		ValToStr(TYPE_RATE,0, vol_para.kvo_rate,NULL, str2 + strlen(str2));
-		BtnCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str2,GFX_ALIGN_LEFT,defscheme);
 	}
 }
 void CreateClear_prog4(void)
@@ -912,29 +915,29 @@ void CreateClear_prog4(void)
 	{
 		sprintf(str1,"BAG VOL = ");
 		ValToStr(TYPE_VOLUME,0, vol_para.bag_vol,NULL, str1 + strlen(str1));
-		BtnCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str1,GFX_ALIGN_LEFT,defscheme);
 	
 		sprintf(str2,"DOSE VOL = ");
 		ValToStr(TYPE_VOLUME, 0, vol_para.dose_vol, NULL, str2 + strlen(str2));
-		BtnCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str2,GFX_ALIGN_LEFT,defscheme);
 		
 		sprintf(str3,"DOSE TIME = ");
 		ValToStr(TYPE_TIMEINTERVAL,vol_para.dose_time, 0,NULL, str3 + strlen(str3));
-		BtnCreate(Clear_OBJ_BUTTON_2,3,140,236,178,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str3,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_2,3,140,236,178,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str3,GFX_ALIGN_LEFT,defscheme);
 		
-		BtnCreate(Clear_OBJ_BUTTON_3,6,193,115,264,10,BTN_DRAW,(void *)prog_images[prog_num],NULL,defscheme);
-		BtnCreate(Clear_OBJ_BUTTON_4,131,203,235,263,1,BTN_DRAW, (void *)drug_images[vol_para.drug_type],NULL,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_3,6,193,115,264,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)prog_images[prog_num],(void *)prog_images[prog_num],NULL,GFX_ALIGN_CENTER,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_4,131,203,235,263,1,GFX_GOL_BUTTON_DRAW_STATE, (void *)drug_images[vol_para.drug_type], (void *)drug_images[vol_para.drug_type],NULL,GFX_ALIGN_CENTER,defscheme);
 	}
 	else
 	{
 		sprintf(str1,"T.INTERVAL = ");
 		ValToStr(TYPE_TIMEINTERVAL,vol_para.dose_interval, 0,NULL, str1 + strlen(str1));
 //		sprintf(str1 + strlen(str1)," Hr:Min");
-		BtnCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str1,GFX_ALIGN_LEFT,defscheme);
 	
 		sprintf(str2,"KVO = ");
 		ValToStr(TYPE_RATE,0, vol_para.kvo_rate,NULL, str2 + strlen(str2));
-		BtnCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str2,GFX_ALIGN_LEFT,defscheme);
 	}
 }
 #if 0
@@ -945,30 +948,30 @@ void CreateClear_prog4(void)
 	{
 		sprintf(str1,"BAG VOL = ");
 		ValToStr(TYPE_VOLUME,0, vol_para.bag_vol,NULL, str1 + strlen(str1));
-		BtnCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
 	
 		sprintf(str2,"DOSE VOL = ");
 		ValToStr(TYPE_VOLUME, 0, vol_para.dose_vol, NULL, str2 + strlen(str2));
-		BtnCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
 		
 		sprintf(str3,"DOSE TIME = ");
 		ValToStr(TYPE_TIMEINTERVAL,vol_para.dose_time, 0,NULL, str3 + strlen(str3));
 		sprintf(str3 + strlen(str3)," Hr:Min");
-		BtnCreate(Clear_OBJ_BUTTON_2,3,140,236,178,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str3,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_2,3,140,236,178,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str3,defscheme);
 		
-		BtnCreate(Clear_OBJ_BUTTON_3,6,193,115,264,10,BTN_DRAW,(void *)prog_images[prog_num],NULL,defscheme);
-		BtnCreate(Clear_OBJ_BUTTON_4,131,203,235,263,1,BTN_DRAW, (void *)drug_images[vol_para.drug_type],NULL,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_3,6,193,115,264,10,BTN_DRAW,(void *)prog_images[prog_num],NULL,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_4,131,203,235,263,1,BTN_DRAW, (void *)drug_images[vol_para.drug_type],NULL,defscheme);
 	}
 	else
 	{
 		sprintf(str1,"INTERVAL TIME = ");
 		ValToStr(TYPE_TIMEINTERVAL,vol_para.dose_interval, 0,NULL, str2 + strlen(str2));
 		sprintf(str2 + strlen(str2)," Hr:Min");
-		BtnCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
 	
 		sprintf(str2,"KVO RATE = ");
 		ValToStr(TYPE_RATE,0, vol_para.kvo_rate,NULL, str2 + strlen(str2));
-		BtnCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
+		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
 	}
 }
 #endif
@@ -977,22 +980,22 @@ void CreateClear_prog5(void)
 {
 	
 	sprintf(str1,"STEP  = %d",vol_para.prog_stepsnum);
-	BtnCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
+	GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str1,GFX_ALIGN_LEFT,defscheme);
 	
 	if(vol_para.rate < 100.0)
 		sprintf(str2,"RATE  = %.1fml/hr",(double)vol_para.prog_steps[vol_para.prog_stepsnum-1].rate);
 	else
 		sprintf(str2,"RATE  = %.0fml/hr",(double)vol_para.prog_steps[vol_para.prog_stepsnum-1].rate);
-	BtnCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
+	GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str2,GFX_ALIGN_LEFT,defscheme);
 	
-	BtnCreate(Clear_OBJ_BUTTON_3,6,193,115,264,10,BTN_DRAW,(void *)prog_images[prog_num],NULL,defscheme);
-	BtnCreate(Clear_OBJ_BUTTON_4,131,203,235,263,1,BTN_DRAW, (void *)drug_images[vol_para.drug_type],NULL,defscheme);
+	GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_3,6,193,115,264,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)prog_images[prog_num],(void *)prog_images[prog_num],NULL,GFX_ALIGN_CENTER,defscheme);
+	GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_4,131,203,235,263,1,GFX_GOL_BUTTON_DRAW_STATE, (void *)drug_images[vol_para.drug_type], (void *)drug_images[vol_para.drug_type],NULL,GFX_ALIGN_CENTER,defscheme);
 	 
 	if(vol_para.infsd < 100.0)
 		sprintf(str3,"VOLUME = %.1fml",(double)vol_para.prog_steps[vol_para.prog_stepsnum-1].vol);
 	else
 		sprintf(str3,"VOLUME = %.0fml",(double)vol_para.prog_steps[vol_para.prog_stepsnum-1].vol);
-	BtnCreate(Clear_OBJ_BUTTON_2,3,140,236,178,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str3,defscheme);
+	GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_2,3,140,236,178,10,GFX_GOL_BUTTON_DRAW_STATE,(void *)&Param_btn,(void *)&Param_btn,(GFX_XCHAR*)str3,GFX_ALIGN_LEFT,defscheme);
 }
 
 

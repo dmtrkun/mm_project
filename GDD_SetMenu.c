@@ -80,45 +80,45 @@ void CreateSetmenu(void)
 
 	if(Setmenu_pg == 0)
 	{
-		BtnCreate(Setmenu_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_0_text,defscheme);
-		BtnCreate(Setmenu_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_1_text,defscheme);
-		BtnCreate(Setmenu_OBJ_BUTTON_2,3,140,236,178,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_2_text,defscheme);
-		BtnCreate(Setmenu_OBJ_BUTTON_3,3,186,236,224,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_3_text,defscheme);
-		BtnCreate(Setmenu_OBJ_BUTTON_4,3,232,236,270,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_4_text,defscheme);
-		BtnCreate(Setmenu_OBJ_BUTTON_19,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(GFX_XCHAR*)Setmenu_OBJ_BUTTON_19_text*/NULL,botbar);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_0_text,defscheme);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_1_text,defscheme);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_2,3,140,236,178,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_2_text,defscheme);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_3,3,186,236,224,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_3_text,defscheme);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_4,3,232,236,270,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_4_text,defscheme);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_19,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(GFX_XCHAR*)Setmenu_OBJ_BUTTON_19_text*/NULL,botbar);
 	
 	}
 	else if(Setmenu_pg == 1)
 	{
-		BtnCreate(Setmenu_OBJ_BUTTON_5,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_5_text,defscheme);
-		BtnCreate(Setmenu_OBJ_BUTTON_6,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_6_text,defscheme);
-		BtnCreate(Setmenu_OBJ_BUTTON_7,3,140,236,178,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_7_text,defscheme);
-		BtnCreate(Setmenu_OBJ_BUTTON_8,3,186,236,224,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_8_text,defscheme);
-		BtnCreate(Setmenu_OBJ_BUTTON_9,3,232,236,270,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_9_text,defscheme);
-		BtnCreate(Setmenu_OBJ_BUTTON_18,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(GFX_XCHAR*)Setmenu_OBJ_BUTTON_18_text*/NULL,botbar);
-		BtnCreate(Setmenu_OBJ_BUTTON_19,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(GFX_XCHAR*)Setmenu_OBJ_BUTTON_19_text*/NULL,botbar);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_5,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_5_text,defscheme);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_6,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_6_text,defscheme);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_7,3,140,236,178,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_7_text,defscheme);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_8,3,186,236,224,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_8_text,defscheme);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_9,3,232,236,270,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_9_text,defscheme);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_18,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(GFX_XCHAR*)Setmenu_OBJ_BUTTON_18_text*/NULL,botbar);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_19,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(GFX_XCHAR*)Setmenu_OBJ_BUTTON_19_text*/NULL,botbar);
 	}
 	else if(Setmenu_pg == 2)
 	{
-		BtnCreate(Setmenu_OBJ_BUTTON_10,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_10_text,defscheme);
-		BtnCreate(Setmenu_OBJ_BUTTON_11,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_11_text,defscheme);
-		BtnCreate(Setmenu_OBJ_BUTTON_12,3,140,236,178,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_12_text,defscheme);
-		BtnCreate(Setmenu_OBJ_BUTTON_13,3,186,236,224,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_13_text,defscheme);
-//		BtnCreate(Setmenu_OBJ_BUTTON_14,3,232,236,270,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_14_text,defscheme);
-		BtnCreate(Setmenu_OBJ_BUTTON_18,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(GFX_XCHAR*)Setmenu_OBJ_BUTTON_18_text*/NULL,botbar);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_10,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_10_text,defscheme);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_11,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_11_text,defscheme);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_12,3,140,236,178,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_12_text,defscheme);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_13,3,186,236,224,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_13_text,defscheme);
+//		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_14,3,232,236,270,10,BTN_DRAW|BTN_TEXTLEFT,NULL,(GFX_XCHAR*)Setmenu_OBJ_BUTTON_14_text,defscheme);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_18,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(GFX_XCHAR*)Setmenu_OBJ_BUTTON_18_text*/NULL,botbar);
 	}
 	else if(Setmenu_pg == 3)
 	{
 		GFX_GOL_StaticTextCreate(Setmenu_OBJ_STATICTEXT_1,10,60,228,160,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Setmenu_OBJ_STATICTEXT_1_text,GFX_ALIGN_CENTER,defscheme);
-		BtnCreate(Setmenu_OBJ_BUTTON_16,92,277,152,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)SAVE_OBJ_BUTTON_text,botbar);
+		GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_16,92,277,152,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)SAVE_OBJ_BUTTON_text,botbar);
 	}
 //	else
 //	{
 //		GFX_GOL_StaticTextCreate(Setmenu_OBJ_STATICTEXT_2,10,60,228,160,GFX_GOL_STATICTEXT_DRAW_STATE|ST_CENTER_ALIGN,(GFX_XCHAR*)Setmenu_OBJ_STATICTEXT_2_text,defscheme);
 //	}
-	BtnCreate(Setmenu_OBJ_BUTTON_17,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+	GFX_GOL_ButtonCreate(Setmenu_OBJ_BUTTON_17,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
 	GFX_GOL_StaticTextCreate(Setmenu_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Setmenu_OBJ_STATICTEXT_0_text,GFX_ALIGN_CENTER,topbar);
-	GFX_GOL_PictureControlCreate(Setmenu_OBJ_PICTURE_0, 209,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&setting, topbar);
+	GFX_GOL_PictureControlCreate(Setmenu_OBJ_PICTURE_0, 209,0,239,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&setting, topbar);
 
 }
 void CreatePrimitivesForSetmenu(void){

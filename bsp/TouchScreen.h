@@ -8,7 +8,7 @@
  *
  * Software License Agreement
  *
- * Copyright © 2011 Microchip Technology Inc.  All rights reserved.
+ * Copyright ï¿½ 2011 Microchip Technology Inc.  All rights reserved.
  * Microchip licenses to you the right to use, modify, copy and distribute
  * Software only when embedded on a Microchip microcontroller or digital
  * signal controller, which is integrated into your product or third party
@@ -18,7 +18,7 @@
  * You should refer to the license agreement accompanying this Software
  * for additional information regarding your rights and obligations.
  *
- * SOFTWARE AND DOCUMENTATION ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY
+ * SOFTWARE AND DOCUMENTATION ARE PROVIDED ï¿½AS ISï¿½ WITHOUT WARRANTY OF ANY
  * KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY WARRANTY
  * OF MERCHANTABILITY, TITLE, NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR
  * PURPOSE. IN NO EVENT SHALL MICROCHIP OR ITS LICENSORS BE LIABLE OR
@@ -56,8 +56,8 @@
 #ifndef _TOUCHSCREEN_H
 #define _TOUCHSCREEN_H
 
-#include "Graphics/GOL.h"
-#include "GenericTypeDefs.h"
+#include "framework/gfx/gfx_gol.h"
+#include <GenericTypeDefs.h>
 
 
 typedef WORD (*NVM_READ_FUNC)(DWORD);           // typedef for read function pointer
@@ -194,7 +194,7 @@ SHORT TouchGetRawY(void);
 * Note: none
 *
 ********************************************************************/
-void TouchGetMsg(GOL_MSG *pMsg);
+void TouchGetMsg(GFX_GOL_MESSAGE *pMsg);
 
 /*********************************************************************
 * Function: void TouchCalibration()

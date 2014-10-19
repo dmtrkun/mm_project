@@ -14,6 +14,9 @@
 
 //#include "include.h"
 
+
+#define IMAGE_NORMAL	1		//Unused in gfx set dummy value 1
+
 ///////////////////////////////////////////////////////////////////
 // display color schemes
 GDD_SCREENSPUB	GFX_GOL_OBJ_SCHEME* basicscheme;
@@ -156,37 +159,37 @@ const GFX_XCHAR* unit[] = {
 	" ul",
 };
 
-GFX_GOL_OBJ_SCHEME SCHEMEDEFAULT =
-{
-	    RGBConvert(0x2B, 0x55, 0x87),       // Emboss dark color used for 3d effect.
-	    RGBConvert(0xD4, 0xE4, 0xF7),       // Emboss light color used for 3d effect.
-	    RGBConvert(0x07, 0x1E, 0x48),       // Character color 0 used for objects that supports text.
-	    RGBConvert(0xFF, 0xFF, 0xFF),       // Character color 1 used for objects that supports text.
-	    RGBConvert(245, 245, 220),          // Character color used when object is in a disabled state.
-	    RGBConvert(0xA9, 0xDB, 0xEF),       // Color 0 usually assigned to an Object state.
-	    RGBConvert(0x26, 0xC7, 0xF2),       // Color 1 usually assigned to an Object state.
-	    RGBConvert(0xB6, 0xD2, 0xFB),       // Color used when an Object is in a disabled state.
-
-	    &Gentium8,               			// Font selected for the scheme.
-
-	    GFX_FILL_STYLE_COLOR,               // must be set to a gradient type when using gradient
-
-	    RGBConvert(0xD4, 0xED, 0xF7),       // Background color used to hide Objects.
-
-	    0,               					// Horizontal starting position of the background.
-	    0,                					// Vertical starting position of the background.
-	    GFX_BACKGROUND_COLOR,               // Specifies the type of background to use.
-	    NULL,            					// Pointer to the background image used. Set this
-
-	#ifndef GFX_CONFIG_ALPHABLEND_DISABLE
-	    0,                 					// Alpha value used for alpha blending
-	#endif
-	#ifndef GFX_CONFIG_GRADIENT_DISABLE
-	    RGBConvert(0xA9, 0xDB, 0xEF),       // start color of the gradient fill
-	    RGBConvert(0x26, 0xC7, 0xF2),       // end color of the gradient fill
-    #endif
-	    0,                 					// Emboss size of the panel for 3-D effect. Set to zero
-};
+//GFX_GOL_OBJ_SCHEME SCHEMEDEFAULT =
+//{
+//	    RGBConvert(0x2B, 0x55, 0x87),       // Emboss dark color used for 3d effect.
+//	    RGBConvert(0xD4, 0xE4, 0xF7),       // Emboss light color used for 3d effect.
+//	    RGBConvert(0x07, 0x1E, 0x48),       // Character color 0 used for objects that supports text.
+//	    RGBConvert(0xFF, 0xFF, 0xFF),       // Character color 1 used for objects that supports text.
+//	    RGBConvert(245, 245, 220),          // Character color used when object is in a disabled state.
+//	    RGBConvert(0xA9, 0xDB, 0xEF),       // Color 0 usually assigned to an Object state.
+//	    RGBConvert(0x26, 0xC7, 0xF2),       // Color 1 usually assigned to an Object state.
+//	    RGBConvert(0xB6, 0xD2, 0xFB),       // Color used when an Object is in a disabled state.
+//
+//	    &Gentium8,               			// Font selected for the scheme.
+//
+//	    GFX_FILL_STYLE_COLOR,               // must be set to a gradient type when using gradient
+//
+//	    RGBConvert(0xD4, 0xED, 0xF7),       // Background color used to hide Objects.
+//
+//	    0,               					// Horizontal starting position of the background.
+//	    0,                					// Vertical starting position of the background.
+//	    GFX_BACKGROUND_COLOR,               // Specifies the type of background to use.
+//	    NULL,            					// Pointer to the background image used. Set this
+//
+//	#ifndef GFX_CONFIG_ALPHABLEND_DISABLE
+//	    0,                 					// Alpha value used for alpha blending
+//	#endif
+//	#ifndef GFX_CONFIG_GRADIENT_DISABLE
+//	    RGBConvert(0xA9, 0xDB, 0xEF),       // start color of the gradient fill
+//	    RGBConvert(0x26, 0xC7, 0xF2),       // end color of the gradient fill
+//    #endif
+//	    0,                 					// Emboss size of the panel for 3-D effect. Set to zero
+//};
 
 
 
@@ -195,7 +198,7 @@ extern const GFX_XCHAR EXIT_OBJ_BUTTON_text[];
 extern const GFX_XCHAR SAVE_OBJ_BUTTON_text[];
 
 extern SCREEN_CONTROL_BLOCK Screen_CB_array[];
-extern GFX_GOL_OBJ_SCHEME SCHEMEDEFAULT;
+//extern GFX_GOL_OBJ_SCHEME SCHEMEDEFAULT;
 
 #define NULL_UNIT	0
 #define mlhr_UNIT	1
@@ -217,36 +220,36 @@ extern const GFX_XCHAR* unit[];
 #ifdef	WHITE
 #undef	WHITE 
 #endif
-#define WHITE				RGB565CONVERT(255,255,255)
+#define WHITE				GFX_RGBConvert(255,255,255)
 
 #ifdef	BLACK
 #undef	BLACK 
 #endif
-#define BLACK				RGB565CONVERT(0,0,0)
+#define BLACK				GFX_RGBConvert(0,0,0)
 
-#define BLUE_LIGHT	RGB565CONVERT(190,229,249)
-#define BLUE_DARK		RGB565CONVERT(30,140,200)
+#define BLUE_LIGHT	GFX_RGBConvert(190,229,249)
+#define BLUE_DARK		GFX_RGBConvert(30,140,200)
 
 #ifdef	GREEN
 #undef	GREEN 
 #endif
-#define GREEN				RGB565CONVERT(0,255,0)
+#define GREEN				GFX_RGBConvert(0,255,0)
 
 #ifdef	RED
 #undef	RED 
 #endif
-#define RED				RGB565CONVERT(200,10,10)
-#define RED_DARK			RGB565CONVERT(24,255,24)
+#define RED				GFX_RGBConvert(200,10,10)
+#define RED_DARK			GFX_RGBConvert(24,255,24)
 
-#define GRAY				RGB565CONVERT(128,128,128)
-#define GRAY_LIGHT	RGB565CONVERT(138,138,138)
+#define GRAY				GFX_RGBConvert(128,128,128)
+#define GRAY_LIGHT	GFX_RGBConvert(138,138,138)
 
-#define GRAY_RUN				RGB565CONVERT(60,60,60)
-#define YELLOW_RUN				RGB565CONVERT(240,160,20)
+#define GRAY_RUN				GFX_RGBConvert(60,60,60)
+#define YELLOW_RUN				GFX_RGBConvert(240,160,20)
 
 #ifdef	YELLOW
 #undef	YELLOW 
 #endif
-#define YELLOW				RGB565CONVERT(255,255,0)
+#define YELLOW				GFX_RGBConvert(255,255,0)
 
 #endif

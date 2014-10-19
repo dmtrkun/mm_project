@@ -34,7 +34,7 @@ static CONTROL_MSG cMsg;
 static unsigned char hrdwr_err;
 static unsigned long batt_live_time;
 
-
+#if 0
 void AlarmShemes(void)
 {
 	pScheme_alarm1 = CreateScheme();
@@ -98,7 +98,7 @@ void CreateAlarm(void)
 //			GFX_GOL_StaticTextCreate(Alarm_OBJ_STATICTEXT_2,10,150,140,200,GFX_GOL_STATICTEXT_DRAW_STATE,str_buf1,pScheme_alarm2);
 			GFX_GOL_StaticTextCreate(Alarm_OBJ_STATICTEXT_2,10,150,140,200,GFX_GOL_STATICTEXT_DRAW_STATE,Alarm_Specs[page_create].descr,GFX_ALIGN_LEFT,pScheme_alarm2);
 		}
-		GFX_GOL_PictureControlCreate(Alarm_OBJ_PICTURE_2,162,150,195,273,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&BBat_img,pScheme_alarm2);
+		GFX_GOL_PictureControlCreate(Alarm_OBJ_PICTURE_2,162,150,195,273,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&BBat_img,pScheme_alarm2);
 		/*Build battery time meter */
 		
 		batt_live_time = /*6h max*/(6L*3600L *(unsigned long)batlevel)/10L;
@@ -140,19 +140,19 @@ void CreateAlarm(void)
 	if(Alarm_Specs[page_create].btns & RESTART_BTN)
 	{
 		if(page_create == AIR_ALRM_SCR)
-			BtnCreate(Alarm_OBJ_BUTTON_1,7,277,160,313,5,BTN_DRAW|BTN_DISABLED ,NULL,(GFX_XCHAR*)Alarm_OBJ_BUTTON_1_text,botbar);
+			GFX_GOL_ButtonCreate(Alarm_OBJ_BUTTON_1,7,277,160,313,5,GFX_GOL_BUTTON_DRAW_STATE|GFX_GOL_BUTTON_DISABLED_STATE ,NULL,NULL,(GFX_XCHAR*)Alarm_OBJ_BUTTON_1_text,botbar);
 		else
-			BtnCreate(Alarm_OBJ_BUTTON_1,7,277,160,313,5,BTN_DRAW ,NULL,(GFX_XCHAR*)Alarm_OBJ_BUTTON_1_text,botbar);
+			GFX_GOL_ButtonCreate(Alarm_OBJ_BUTTON_1,7,277,160,313,5,GFX_GOL_BUTTON_DRAW_STATE ,NULL,NULL,(GFX_XCHAR*)Alarm_OBJ_BUTTON_1_text,botbar);
 	}
 	if(Alarm_Specs[page_create].btns & MUTE_BTN)	 
-		BtnCreate(Alarm_OBJ_BUTTON_2,175,277,230,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Alarm_OBJ_BUTTON_2_text,botbar);
+		GFX_GOL_ButtonCreate(Alarm_OBJ_BUTTON_2,175,277,230,313,5,GFX_GOL_BUTTON_DRAW_STATE,NULL,NULL,(GFX_XCHAR*)Alarm_OBJ_BUTTON_2_text,botbar);
 	if(Alarm_Specs[page_create].btns & EXIT_BTN)	 
-		BtnCreate(Alarm_OBJ_BUTTON_0,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+		GFX_GOL_ButtonCreate(Alarm_OBJ_BUTTON_0,5,277,66,313,5,GFX_GOL_BUTTON_DRAW_STATE,NULL,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
 
 	if(Alarm_Specs[page_create].btns & WAIT_ICON)	 
-		GFX_GOL_PictureControlCreate(Alarm_OBJ_PICTURE_0, 210,0,239,30, PICT_DRAW, IMAGE_NORMAL, getWaitImg(), topbar);
+		GFX_GOL_PictureControlCreate(Alarm_OBJ_PICTURE_0, 210,0,239,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, getWaitImg(), topbar);
 	if(Alarm_Specs[page_create].btns & BAT_ICON)	 
-		GFX_GOL_PictureControlCreate(Alarm_OBJ_PICTURE_1, 186,0,209,30, PICT_DRAW, IMAGE_NORMAL, getBatImg(batlevel), topbar);
+		GFX_GOL_PictureControlCreate(Alarm_OBJ_PICTURE_1, 186,0,209,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, getBatImg(batlevel), topbar);
 }
 int bar_level_tmp;
 
@@ -182,12 +182,12 @@ void UpdateAlarm(void)
 	pObj = GFX_GOL_ObjectFind(Alarm_OBJ_PICTURE_0);
 	if (pObj) {
 		GFX_GOL_PictureControlImageSet(pObj, getWaitImg());
-		GFX_GOL_ObjectStateSet((PICTURE*) pObj, DRAW_UPDATE);
+		GFX_GOL_ObjectStateSet(pObj, GFX_GOL_PICTURECONTROL_DRAW_STATE);
 	}
 	pObj = GFX_GOL_ObjectFind(Alarm_OBJ_PICTURE_1);
 	if (pObj) {
 		GFX_GOL_PictureControlImageSet(pObj, getBatImg(batlevel));
-		GFX_GOL_ObjectStateSet((PICTURE*) pObj, DRAW_UPDATE);
+		GFX_GOL_ObjectStateSet(pObj, GFX_GOL_PICTURECONTROL_DRAW_STATE);
 	}
 	if(page_display == ACFAIL_ALRM_SCR)
 	{
@@ -213,7 +213,7 @@ void UpdateAlarm(void)
 				if(GetState(pObj, BTN_DISABLED))
 				{
 					ClrState(pObj, BTN_DISABLED);
-					GFX_GOL_ObjectStateSet((BUTTON*) pObj, BTN_DRAW);
+					GFX_GOL_ObjectStateSet(pObj, GFX_GOL_BUTTON_DRAW_STATE);
 				}
 			}
 		}
@@ -239,7 +239,8 @@ void UpdateAlarm(void)
  ********************************************************************/
 WORD msgAlarm(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 {
-	if(pObj == NULL)
+#if 0
+    if(pObj == NULL)
 	{
 		switch(pMsg->param1)
 		{
@@ -329,15 +330,16 @@ WORD msgAlarm(WORD objMsg, GFX_GOL_OBJ_HEADER* pObj, GFX_GOL_MESSAGE* pMsg)
 		default:
 			break;
 	}	
-
+#endif
 	return 1;	
 } 
+#endif
 
 void SetError(unsigned char err, unsigned char type)
 {
 	static GRAPHICS_MSG msg;	 
-	if(type == HARWARE_ALRM_SCR)
-		hrdwr_err |= 1 << err; /*Save err in eeprom*/ 
+//TBD	if(type == HARWARE_ALRM_SCR)
+//		hrdwr_err |= 1 << err; /*Save err in eeprom*/
 	
 	// any messages that we send will always be of this type
 	msg.cmd = MSG_ERROR;
@@ -353,7 +355,6 @@ void ClearError(void)
 {
 	hrdwr_err = 0;
 }
-
 void CriticalError(unsigned char *str)
 {
 //	lcd_clear();
@@ -385,8 +386,8 @@ void CreateErr(char* string)
 	GFX_ColorSet(-1);
 // Flash Error Message
 	if(string == NULL)
-		{OutTextXY(0, 0, "Runtime Error.");}
-	else{OutTextXY(0,0, string);}
+		{GFX_TextStringDraw(0, 0, "Runtime Error.",strlen("Runtime Error."));}
+        else{GFX_TextStringDraw(0,0, string,strlen(string));}
 }
 #endif
 

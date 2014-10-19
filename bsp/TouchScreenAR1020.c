@@ -74,8 +74,8 @@ BYTE                ARData[5];
 // 10% from the corners.
 #define CALIBRATIONINSET   25       // range 0 <= CALIBRATIONINSET <= 40 
 
-#define CAL_X_INSET    (((GetMaxX()+1)*(CALIBRATIONINSET>>1))/100)
-#define CAL_Y_INSET    (((GetMaxY()+1)*(CALIBRATIONINSET>>1))/100)
+#define CAL_X_INSET    (((GFX_MaxXGet()+1)*(CALIBRATIONINSET>>1))/100)
+#define CAL_Y_INSET    (((GFX_MaxYGet()+1)*(CALIBRATIONINSET>>1))/100)
 
 #define TOUCH_DIAMETER	10
 #define SAMPLE_POINTS   4
@@ -219,7 +219,7 @@ void TouchDetectPosition(void) //Routine for touch messages including cap and re
 				xc <<= 7;
 				xc |= (long) touchReport.lowX;
 #endif
-				xc *= GetMaxX();
+				xc *= GFX_MaxXGet();
 				xc >>= 11;
 				xc++;
 				xc >>= 1;
@@ -233,18 +233,18 @@ void TouchDetectPosition(void) //Routine for touch messages including cap and re
 				yc <<= 7;
 				yc |= (long) touchReport.lowY;
 #endif
-				yc *= GetMaxY();
+				yc *= GFX_MaxYGet();
 				yc >>= 11;
 				yc++;
 				yc >>= 1;
 
 #ifdef TOUCHSCREEN_RESISTIVE_FLIP_X
-				xcor = GetMaxX() - xc;
+				xcor = GFX_MaxXGet() - xc;
 #else
                                 xcor = xc;
 #endif
 #ifdef TOUCHSCREEN_RESISTIVE_FLIP_Y
-				ycor = GetMaxY() - yc;
+				ycor = GFX_MaxYGet() - yc;
 #else
 				ycor = yc;
 #endif
@@ -524,9 +524,9 @@ void TouchCalHWGetPoints(void)
 void TouchGetCalPoints(WORD xpos, WORD ypos, WORD radius)
 {
     // draw the new filled circle (new calibration point)
-    SetColor(BRIGHTRED);
-    while(!(Circle(xpos, ypos, radius)));
-    while(!(FillCircle(xpos, ypos, radius-3)));
+	GFX_ColorSet(BRIGHTRED);
+    while(!(GFX_CircleDraw(xpos, ypos, radius)));
+    while(!(GFX_CircleFillDraw(xpos, ypos, radius-3)));
 
     // show points left message
 
@@ -542,9 +542,9 @@ void TouchGetCalPoints(WORD xpos, WORD ypos, WORD radius)
     // start the touch delay 
     DelayMs(CALIBRATION_DELAY<<1);
 
-    SetColor(WHITE);
-    while(!(Circle(xpos, ypos, radius)));
-    while(!(FillCircle(xpos, ypos, radius-3)));
+    GFX_ColorSet(WHITE);
+    while(!(GFX_CircleDraw(xpos, ypos, radius)));
+    while(!(GFX_CircleFillDraw(xpos, ypos, radius-3)));
 }
 
 static void SendByte(BYTE data)

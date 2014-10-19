@@ -26,7 +26,9 @@
 
 #ifndef USBCFG_H
 #define USBCFG_H
-extern unsigned char cdc_ena;
+//#include "main.h"
+#define CDC_ENA cdc_ena
+//extern unsigned char cdc_ena;
 
 /** DEFINITIONS ****************************************************/
 #define USB_EP0_BUFF_SIZE	8   // Valid Options: 8, 16, 32, or 64 bytes.
@@ -123,7 +125,7 @@ extern unsigned char cdc_ena;
 
 #define USB_SUPPORT_DEVICE
 
-#define USB_NUM_STRING_DESCRIPTORS (3 + (!cdc_ena))
+#define USB_NUM_STRING_DESCRIPTORS (3 + (!CDC_ENA))
 //#define USB_SD_Ptr ((ROM BYTE *ROM)(USB_SD_Ptr_p + (ROM BYTE *ROM)cdc_ena))
 
 //for memprog

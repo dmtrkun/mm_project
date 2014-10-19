@@ -58,6 +58,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <usb/usb_device.h>
 #include <usb/src/usb_device_local.h>
 
+extern unsigned char cdc_ena;
+
 #if defined(USB_USE_MSD)
     #include "usb/usb_device_msd.h"
 #endif
@@ -193,7 +195,8 @@ volatile uint8_t CtrlTrfData[USB_EP0_BUFF_SIZE] CTRL_TRF_DATA_ADDR_TAG;
 //Depricated in v2.2 - will be removed in a future revision
 #if !defined(USB_USER_DEVICE_DESCRIPTOR)
     //Device descriptor
-    extern const USB_DEVICE_DESCRIPTOR device_dsc;
+    extern const USB_DEVICE_DESCRIPTOR device_dsc0;
+    extern const USB_DEVICE_DESCRIPTOR device_dsc1;
 #else
     USB_USER_DEVICE_DESCRIPTOR_INCLUDE;
 #endif
@@ -2044,12 +2047,18 @@ static void USBStdGetDscHandler(void)
         {
             case USB_DESCRIPTOR_DEVICE:
                 #if !defined(USB_USER_DEVICE_DESCRIPTOR)
-                    inPipes[0].pSrc.bRom = (const uint8_t*)&device_dsc;
+                    if(cdc_ena)
+	                    inPipes[0].pSrc.bRom = (const uint8_t*)&device_dsc1;
+					else
+	                    inPipes[0].pSrc.bRom = (const uint8_t*)&device_dsc0;
                 #else
                     inPipes[0].pSrc.bRom = (const uint8_t*)USB_USER_DEVICE_DESCRIPTOR;
                 #endif
-                inPipes[0].wCount.Val = sizeof(device_dsc);
-                break;
+                    if(cdc_ena)
+    	                inPipes[0].wCount.Val = sizeof(device_dsc1);
+    				else
+    	                inPipes[0].wCount.Val = sizeof(device_dsc0);
+                    break;
             case USB_DESCRIPTOR_CONFIGURATION:
                 //First perform error case check, to make sure the host is requesting a 
                 //legal descriptor index.  If the request index is illegal, don't do 

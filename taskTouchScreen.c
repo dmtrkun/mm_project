@@ -6,7 +6,7 @@
 #define TASKTOUCHSCREEN_PUB
 
 #include "include.h"
-#include "GenericTypeDefs.h"
+#include <GenericTypeDefs.h>
 #include "HardwareProfile.h"
 #include "framework/gfx/gfx.h"
 #include "taskGraphics.h"

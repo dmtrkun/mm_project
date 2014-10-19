@@ -85,12 +85,12 @@ void CreateConfirm(void)
 	
 	if(page_create == 0)
 	{
-		GFX_GOL_PictureControlCreate(Confirm_OBJ_PICTURE_0,6,193,115,264,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)prog_images[prog_num],defscheme);
-	 	GFX_GOL_PictureControlCreate(Confirm_OBJ_PICTURE_1,131,203,235,263,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)drug_images[vol_para.drug_type],defscheme);
+		GFX_GOL_PictureControlCreate(Confirm_OBJ_PICTURE_0,6,193,115,264,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)prog_images[prog_num],defscheme);
+	 	GFX_GOL_PictureControlCreate(Confirm_OBJ_PICTURE_1,131,203,235,263,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)drug_images[vol_para.drug_type],defscheme);
 	}
 	
-	BtnCreate(Confirm_OBJ_BUTTON_10,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
-	GFX_GOL_PictureControlCreate(Confirm_OBJ_PICTURE_3,215,0,239,30, PICT_DRAW, IMAGE_NORMAL, getBatImg(batlevel), topbar);
+	GFX_GOL_ButtonCreate(Confirm_OBJ_BUTTON_10,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+	GFX_GOL_PictureControlCreate(Confirm_OBJ_PICTURE_3,215,0,239,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, getBatImg(batlevel), topbar);
 
 }
 void CreatePrimitivesForConfirm(void){
@@ -211,12 +211,12 @@ void CreateConfirm_prog1(void)
 		ValToStr(TYPE_VOLUME,0, vol_para.infsd,NULL, str3 + strlen(str3));
 	 	GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_4,3,140,236,178,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)str3,GFX_ALIGN_LEFT,confirmScheme);
 	 	
- 		BtnCreate(Confirm_OBJ_BUTTON_9,124,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_9_text,botbar);
+ 		GFX_GOL_ButtonCreate(Confirm_OBJ_BUTTON_9,124,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_9_text,botbar);
  		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Confirm_OBJ_STATICTEXT_0_text,GFX_ALIGN_LEFT,topbar);
 	}
 	else
 	{
-	 	GFX_GOL_PictureControlCreate(Confirm_OBJ_PICTURE_2,55,40,183,168,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&clock_img,defscheme);
+	 	GFX_GOL_PictureControlCreate(Confirm_OBJ_PICTURE_2,55,40,183,168,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&clock_img,defscheme);
 		run_prepare();
 		calc_rem_infusetime();
 		   
@@ -225,7 +225,7 @@ void CreateConfirm_prog1(void)
 		else	
 			strftime(str1, 100, "%Hhr/ %Mmin/ %Ssec", localtime(&remain_infusetime));
 		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_5,3,200,236,245,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)str1,GFX_ALIGN_CENTER,confirmScheme);
-		BtnCreate(Confirm_OBJ_BUTTON_11,95,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_11_text,botbar);
+		GFX_GOL_ButtonCreate(Confirm_OBJ_BUTTON_11,95,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_11_text,botbar);
 		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Confirm_OBJ_STATICTEXT_1_text,GFX_ALIGN_LEFT,topbar);
 	}
 }
@@ -248,7 +248,7 @@ void CreateConfirm_prog2(void)
 		ValToStr(TYPE_VOLUME,0, vol_para.infsd,NULL, str3 + strlen(str3));
 	 	GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_4,3,140,236,178,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)str3,GFX_ALIGN_LEFT,confirmScheme);
 	 	
- 		BtnCreate(Confirm_OBJ_BUTTON_9,124,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_9_text,botbar);
+ 		GFX_GOL_ButtonCreate(Confirm_OBJ_BUTTON_9,124,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_9_text,botbar);
  		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Confirm_OBJ_STATICTEXT_0_text,GFX_ALIGN_LEFT,topbar);
 	}
 	else
@@ -259,7 +259,7 @@ void CreateConfirm_prog2(void)
 		sprintf(str1,"RATE  = ");
 		ValToStr(TYPE_RATE,0, vol_para.rate,NULL, str1 + strlen(str1));
 		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_5,3,200,236,245,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)str1,GFX_ALIGN_CENTER,confirmScheme);
-		BtnCreate(Confirm_OBJ_BUTTON_11,95,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_11_text,botbar);
+		GFX_GOL_ButtonCreate(Confirm_OBJ_BUTTON_11,95,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_11_text,botbar);
 		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Confirm_OBJ_STATICTEXT_2_text,GFX_ALIGN_LEFT,topbar);
 	}
 }
@@ -283,7 +283,7 @@ void CreateConfirm_prog3(void)
 		ValToStr(TYPE_RATE,0, vol_para.dose_rate,NULL, str3 + strlen(str3));
 	 	GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_4,3,140,236,178,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)str3,GFX_ALIGN_LEFT,confirmScheme);
 	 	
- 		BtnCreate(Confirm_OBJ_BUTTON_9,124,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_9_text,botbar);
+ 		GFX_GOL_ButtonCreate(Confirm_OBJ_BUTTON_9,124,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_9_text,botbar);
  		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Confirm_OBJ_STATICTEXT_0_text,GFX_ALIGN_LEFT,topbar);
 	}
 	else
@@ -295,14 +295,14 @@ void CreateConfirm_prog3(void)
 		ValToStr(TYPE_TIMEINTERVAL,vol_para.dose_interval, 0,NULL, str1 + strlen(str1));
 //		sprintf(str1 + strlen(str1)," Hr:Min");
 	 	GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_2,3,48,236,86,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)str1,GFX_ALIGN_LEFT,confirmScheme);
-//		BtnCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
+//		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
 	
 		sprintf(str2,"KVO = ");
 		ValToStr(TYPE_RATE,0, vol_para.kvo_rate,NULL, str2 + strlen(str2));
 		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_3,3,94,236,132,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)str2,GFX_ALIGN_LEFT,confirmScheme);
-//		BtnCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
+//		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
 	
-		BtnCreate(Confirm_OBJ_BUTTON_11,95,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_11_text,botbar);
+		GFX_GOL_ButtonCreate(Confirm_OBJ_BUTTON_11,95,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_11_text,botbar);
 		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Confirm_OBJ_STATICTEXT_2_text,GFX_ALIGN_LEFT,topbar);
 	}
 }
@@ -324,7 +324,7 @@ void CreateConfirm_prog4(void)
 		ValToStr(TYPE_TIMEINTERVAL,vol_para.dose_time, 0,NULL, str3 + strlen(str3));
 	 	GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_4,3,140,236,178,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)str3,GFX_ALIGN_LEFT,confirmScheme);
 		  	 
- 		BtnCreate(Confirm_OBJ_BUTTON_9,124,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_9_text,botbar);
+ 		GFX_GOL_ButtonCreate(Confirm_OBJ_BUTTON_9,124,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_9_text,botbar);
  		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Confirm_OBJ_STATICTEXT_0_text,GFX_ALIGN_LEFT,topbar);
 	}
 	else
@@ -336,14 +336,14 @@ void CreateConfirm_prog4(void)
 		ValToStr(TYPE_TIMEINTERVAL,vol_para.dose_interval, 0,NULL, str1 + strlen(str1));
 //		sprintf(str1 + strlen(str1)," Hr:Min");
 	 	GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_2,3,48,236,86,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)str1,GFX_ALIGN_LEFT,confirmScheme);
-//		BtnCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
+//		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str1,defscheme);
 	
 		sprintf(str2,"KVO = ");
 		ValToStr(TYPE_RATE,0, vol_para.kvo_rate,NULL, str2 + strlen(str2));
 		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_3,3,94,236,132,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)str2,GFX_ALIGN_LEFT,confirmScheme);
-//		BtnCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
+//		GFX_GOL_ButtonCreate(Clear_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW|BTN_TEXTLEFT,(void *)&Param_btn,(GFX_XCHAR*)str2,defscheme);
 	
-		BtnCreate(Confirm_OBJ_BUTTON_11,95,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_11_text,botbar);
+		GFX_GOL_ButtonCreate(Confirm_OBJ_BUTTON_11,95,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_11_text,botbar);
 		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Confirm_OBJ_STATICTEXT_2_text,GFX_ALIGN_LEFT,topbar);
 	}
 }
@@ -373,12 +373,12 @@ unsigned long tot_time;
 		ValToStr(TYPE_VOLUME,0, vol_para.infsd,NULL, str3 + strlen(str3));
 		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_4,3,140,236,178,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)str3,GFX_ALIGN_LEFT,confirmScheme);
 	 	
- 		BtnCreate(Confirm_OBJ_BUTTON_9,124,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_9_text,botbar);
+ 		GFX_GOL_ButtonCreate(Confirm_OBJ_BUTTON_9,124,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_9_text,botbar);
  		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Confirm_OBJ_STATICTEXT_0_text,GFX_ALIGN_LEFT,topbar);
 	}
 	else
 	{
-	 	GFX_GOL_PictureControlCreate(Confirm_OBJ_PICTURE_2,55,40,183,168,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&clock_img,defscheme);
+	 	GFX_GOL_PictureControlCreate(Confirm_OBJ_PICTURE_2,55,40,183,168,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&clock_img,defscheme);
 		run_prepare();
 		calc_rem_infusetime();
 
@@ -388,7 +388,7 @@ unsigned long tot_time;
 		else	
 			strftime(str1, 100, "%Hhr/ %Mmin/ %Ssec", localtime(&remain_infusetime));
 		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_5,3,200,236,245,GFX_GOL_STATICTEXT_DRAW_STATE|GFX_GOL_STATICTEXT_FRAME_STATE,(GFX_XCHAR*)str1,GFX_ALIGN_CENTER,confirmScheme);
-		BtnCreate(Confirm_OBJ_BUTTON_11,95,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_11_text,botbar);
+		GFX_GOL_ButtonCreate(Confirm_OBJ_BUTTON_11,95,277,235,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)Confirm_OBJ_BUTTON_11_text,botbar);
 		GFX_GOL_StaticTextCreate(Confirm_OBJ_STATICTEXT_0,0,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Confirm_OBJ_STATICTEXT_1_text,GFX_ALIGN_LEFT,topbar);
 	}
 }

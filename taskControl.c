@@ -267,14 +267,14 @@ void taskControl(void* pvParameter)
 #endif				
 			case MSG_CONTROL_START_INFUS:
 				/*Calculate rate and run*/
-				if (screenState != DISPLAY_SCREEN_BOLUS)
-				{
-					if(vol_para.rate>200.0)
-						occlusion_limit = 2;
-					else
-						occlusion_limit = vol_para.occlusion_lmt;
-					new_calc_rate(vol_para.rate);
-				}
+//TBD				if (screenState != DISPLAY_SCREEN_BOLUS)
+//				{
+//					if(vol_para.rate>200.0)
+//						occlusion_limit = 2;
+//					else
+//						occlusion_limit = vol_para.occlusion_lmt;
+//					new_calc_rate(vol_para.rate);
+//				}
 				//	beep(500,1);
 				Beep(500);
 				steps_cntr = 0;

@@ -10,8 +10,9 @@
 #endif
 
 
-#include "Compiler.h"
-#include "GenericTypeDefs.h"
+//#include "Compiler.h"
+#include <xc.h>
+#include <GenericTypeDefs.h>
 #include "HardwareProfile.h"
 
 MCP4822PUB void MCP4822Write(unsigned char dac, unsigned int val , unsigned char gain);

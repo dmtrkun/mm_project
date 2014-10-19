@@ -137,13 +137,13 @@ void CreateCheckup(void)
 			xTimerStart( xTimers[ 1 ], 0 );
 			sprintf(val_str1,"%d mmHg",press1_mmHg);
 			EbCreate(Checkup_OBJ_EDITBOX_0,42,54,135,80, EB_DRAW,(GFX_XCHAR*)val_str1, 50 ,basicscheme);
-			GFX_GOL_PictureControlCreate(Checkup_OBJ_PICTURE_1,162,64,195,263,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pressbar_img,basicscheme);
+			GFX_GOL_PictureControlCreate(Checkup_OBJ_PICTURE_1,162,64,195,263,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pressbar_img,basicscheme);
 			break;
 		case CHECKUP_DOWNPRESS:
 			xTimerStart( xTimers[ 1 ], 0 );
 			sprintf(val_str2,"%d mmHg",press2_mmHg);
 			EbCreate(Checkup_OBJ_EDITBOX_1,42,240,135,266, EB_DRAW,(GFX_XCHAR*)val_str2, 50 ,basicscheme);
-			GFX_GOL_PictureControlCreate(Checkup_OBJ_PICTURE_1,162,64,195,263,PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pressbar_img,basicscheme);
+			GFX_GOL_PictureControlCreate(Checkup_OBJ_PICTURE_1,162,64,195,263,GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&Pressbar_img,basicscheme);
 			break;
 			
 		case CHECKUP_ACBATTERY:
@@ -212,19 +212,19 @@ void CreateCheckup(void)
 			break;
 		case CHECKUP_OUTPUTS:			 
                         test_mode = 1;
-                        BtnCreate(Checkup_OBJ_BUTTON_0,80,80,160,120,5,BTN_DRAW,NULL,(GFX_XCHAR*)Checkup_OBJ_BUTTON_0_text,defscheme);
-			BtnCreate(Checkup_OBJ_BUTTON_1,80,130,160,170,5,BTN_DRAW,NULL,(GFX_XCHAR*)Checkup_OBJ_BUTTON_1_text,defscheme);
-			BtnCreate(Checkup_OBJ_BUTTON_2,80,180,160,220,5,BTN_DRAW|BTN_TOGGLE,NULL,(GFX_XCHAR*)Checkup_OBJ_BUTTON_2_text,defscheme);
+                        GFX_GOL_ButtonCreate(Checkup_OBJ_BUTTON_0,80,80,160,120,5,BTN_DRAW,NULL,(GFX_XCHAR*)Checkup_OBJ_BUTTON_0_text,defscheme);
+			GFX_GOL_ButtonCreate(Checkup_OBJ_BUTTON_1,80,130,160,170,5,BTN_DRAW,NULL,(GFX_XCHAR*)Checkup_OBJ_BUTTON_1_text,defscheme);
+			GFX_GOL_ButtonCreate(Checkup_OBJ_BUTTON_2,80,180,160,220,5,BTN_DRAW|BTN_TOGGLE,NULL,(GFX_XCHAR*)Checkup_OBJ_BUTTON_2_text,defscheme);
 			break;
 		case CHECKUP_CLEARERR:			 
-			BtnCreate(Checkup_OBJ_BUTTON_3,80,130,160,170,5,BTN_DRAW,NULL,(GFX_XCHAR*)Checkup_OBJ_BUTTON_3_text,defscheme);
+			GFX_GOL_ButtonCreate(Checkup_OBJ_BUTTON_3,80,130,160,170,5,BTN_DRAW,NULL,(GFX_XCHAR*)Checkup_OBJ_BUTTON_3_text,defscheme);
 			break;
 			
 		case CHECKUP_WATCHDOG:			 
 			_init_prog_address(p, Checkup_OBJ_STATICTEXT_2_text);
 			_strncpy_p2d16(str_buf1,p,128);
 			GFX_GOL_StaticTextCreate(Checkup_OBJ_STATICTEXT_1,20,90,220,150,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)str_buf1,GFX_ALIGN_CENTER,defscheme);
-			BtnCreate(Checkup_OBJ_BUTTON_3,80,170,160,210,5,BTN_DRAW,NULL,(GFX_XCHAR*)Checkup_OBJ_BUTTON_3_text,defscheme);
+			GFX_GOL_ButtonCreate(Checkup_OBJ_BUTTON_3,80,170,160,210,5,BTN_DRAW,NULL,(GFX_XCHAR*)Checkup_OBJ_BUTTON_3_text,defscheme);
 			break;
 			
 
@@ -258,13 +258,13 @@ void CreateCheckup(void)
 	}
 	
 						
-	BtnCreate(OBJ_BUTTON_EXIT,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
-	BtnCreate(OBJ_BUTTON_LARROW,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_8_text*/NULL,botbar);
-	BtnCreate(OBJ_BUTTON_RARROW,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_9_text*/NULL,botbar);
+	GFX_GOL_ButtonCreate(OBJ_BUTTON_EXIT,5,277,66,313,5,BTN_DRAW,NULL,(GFX_XCHAR*)EXIT_OBJ_BUTTON_text,botbar);
+	GFX_GOL_ButtonCreate(OBJ_BUTTON_LARROW,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_8_text*/NULL,botbar);
+	GFX_GOL_ButtonCreate(OBJ_BUTTON_RARROW,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(GFX_XCHAR*)Options_OBJ_BUTTON_9_text*/NULL,botbar);
 
 //	GFX_GOL_StaticTextCreate(Checkup_OBJ_STATICTEXT_0,1,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Checkup_OBJ_STATICTEXT_0_text[page_create],topbar);
 	GFX_GOL_StaticTextCreate(Checkup_OBJ_STATICTEXT_0,1,0,239,30,GFX_GOL_STATICTEXT_DRAW_STATE,(GFX_XCHAR*)Checkup_Para_Specs[page_create].title,GFX_ALIGN_LEFT,topbar);
-	GFX_GOL_PictureControlCreate(Checkup_OBJ_PICTURE_0, 209,0,239,30, PICT_DRAW, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&setting, topbar);
+	GFX_GOL_PictureControlCreate(Checkup_OBJ_PICTURE_0, 209,0,239,30, GFX_GOL_PICTURECONTROL_DRAW_STATE, IMAGE_NORMAL, (GFX_RESOURCE_HDR *)&setting, topbar);
 
 }
 void CreatePrimitivesForCheckup(void){

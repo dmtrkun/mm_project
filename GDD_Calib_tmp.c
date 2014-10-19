@@ -47,22 +47,22 @@ void CreateCalib(void)
 	
 	if(page_create == 0)
 	{
-		BtnCreate(Calib_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_0_text,defscheme);
-		BtnCreate(Calib_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_1_text,defscheme);
-		BtnCreate(Calib_OBJ_BUTTON_2,3,140,236,178,10,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_2_text,defscheme);
-		BtnCreate(Calib_OBJ_BUTTON_3,3,186,236,224,10,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_3_text,defscheme);
-		BtnCreate(Calib_OBJ_BUTTON_4,3,232,236,270,10,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_4_text,defscheme);
-		BtnCreate(Calib_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(XCHAR*)Calib_OBJ_BUTTON_9_text*/NULL,botbar);
+		GFX_GOL_ButtonCreate(Calib_OBJ_BUTTON_0,3,48,236,86,10,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_0_text,defscheme);
+		GFX_GOL_ButtonCreate(Calib_OBJ_BUTTON_1,3,94,236,132,10,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_1_text,defscheme);
+		GFX_GOL_ButtonCreate(Calib_OBJ_BUTTON_2,3,140,236,178,10,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_2_text,defscheme);
+		GFX_GOL_ButtonCreate(Calib_OBJ_BUTTON_3,3,186,236,224,10,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_3_text,defscheme);
+		GFX_GOL_ButtonCreate(Calib_OBJ_BUTTON_4,3,232,236,270,10,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_4_text,defscheme);
+		GFX_GOL_ButtonCreate(Calib_OBJ_BUTTON_9,170,277,230,313,5,BTN_DRAW,(void *)&Rarrow,/*(XCHAR*)Calib_OBJ_BUTTON_9_text*/NULL,botbar);
 	
 	}
 	else
 	{
-		BtnCreate(Calib_OBJ_BUTTON_5,3,48,236,86,10,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_5_text,defscheme);
-		BtnCreate(Calib_OBJ_BUTTON_6,3,94,236,132,10,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_6_text,defscheme);
-		BtnCreate(Calib_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(XCHAR*)Calib_OBJ_BUTTON_8_text*/NULL,botbar);
+		GFX_GOL_ButtonCreate(Calib_OBJ_BUTTON_5,3,48,236,86,10,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_5_text,defscheme);
+		GFX_GOL_ButtonCreate(Calib_OBJ_BUTTON_6,3,94,236,132,10,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_6_text,defscheme);
+		GFX_GOL_ButtonCreate(Calib_OBJ_BUTTON_8,92,277,152,313,5,BTN_DRAW,(void *)&Larrow,/*(XCHAR*)Calib_OBJ_BUTTON_8_text*/NULL,botbar);
 	}
  
-	BtnCreate(Calib_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_7_text,botbar);
+	GFX_GOL_ButtonCreate(Calib_OBJ_BUTTON_7,5,277,66,313,5,BTN_DRAW,NULL,(XCHAR*)Calib_OBJ_BUTTON_7_text,botbar);
 
 	StCreate(Calib_OBJ_STATICTEXT_0,1,0,238,30,ST_DRAW|ST_CENTER_ALIGN,(XCHAR*)Calib_OBJ_STATICTEXT_0_text,topbar);
 
