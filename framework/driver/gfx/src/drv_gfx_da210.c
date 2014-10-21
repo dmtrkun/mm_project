@@ -442,8 +442,7 @@ void DRV_GFX_EPMPInitialize(void)
 
 #if defined (GFX_EPMP_CS2_BASE_ADDRESS)
 
-//    PMCS2BS = (GFX_EPMP_CS2_BASE_ADDRESS >> 8); // CS2 start address
-    PMCS2BS = 0x60000; // CS2 start address
+    PMCS2BS = (GFX_EPMP_CS2_BASE_ADDRESS >> 8); // CS2 start address
 
     // check if how many address lines to use
     // Note:
