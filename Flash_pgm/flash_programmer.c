@@ -173,55 +173,113 @@ int ProgramExternalMemory(
 
         SST39LF400ChipErase();
 
-//        WORD    pD;
-//        DWORD   addr;
-//        WORD    wr_pD = 0x55aa;
-//        DWORD   wr_addr = -1;
-//        DWORD   wr_err_cntr = 0;
-//        DWORD   rd_err_cntr = 0;
-//
-//        while(1)
-//        {
-////            addr = (0x40000>>1);
-//            addr = (0x555555>>1);
-//            pD = lRead16(addr);
-//            addr = (0xaaaaaa>>1);
-//            pD = lRead16(addr);
-//        }
+        WORD    pD;
+        DWORD   addr;
+        WORD    wr_pD = 0x55aa;
+        DWORD   wr_addr = -1;
+        DWORD   wr_err_cntr = 0;
+        DWORD   rd_err_cntr = 0;
 
-//
-//        for(addr = 0; addr < (0x80000>>1); addr++)
-//        {
-//            pD = lRead16(addr);
-//            if(pD!=0xffff)
-//            {
-//                rd_err_cntr = -1;
-//                break;
-//            }
-//        }
-//
-//
-//
-//
-//        for(wr_addr = 0; wr_addr < 0x80000; wr_addr += 2)
-//        {
-//            if(!SST39LF400WriteArray(wr_addr, (BYTE*)&wr_pD, 2))
-//            {
-//                wr_err_cntr++;
-//            }
-//            for(addr = ((wr_addr+2)>>1); addr < (0x80000>>1); addr++)
-//            {
-//                pD = lRead16(addr);
-//                if(pD!=0xffff)
-//                {
-//                    rd_err_cntr = 1;
-//                    break;
-//                }
-//            }
-//
-//        }
-//
-//
+
+
+
+
+
+
+
+
+
+
+
+
+        while(1)
+        {
+//            addr = (0x40000>>1);
+            addr = (0x555555>>1);
+            pD = lRead16(addr);
+            addr = (0xaaaaaa>>1);
+            pD = lRead16(addr);
+        }
+
+
+
+
+
+
+
+
+
+
+
+        for(addr = 0; addr < (0x80000>>1); addr++)
+        {
+            pD = lRead16(addr);
+            if(pD!=0xffff)
+            {
+                rd_err_cntr = -1;
+                break;
+            }
+        }
+
+
+
+
+        for(wr_addr = 0; wr_addr < 0x80000; wr_addr += 2)
+        {
+            if(!SST39LF400WriteArray(wr_addr, (BYTE*)&wr_pD, 2))
+            {
+                wr_err_cntr++;
+            }
+            for(addr = ((wr_addr+2)>>1); addr < (0x80000>>1); addr++)
+            {
+                pD = lRead16(addr);
+                if(pD!=0xffff)
+                {
+                    rd_err_cntr = 1;
+                    break;
+                }
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     //HardwareButtonInit();
@@ -329,17 +387,17 @@ bool BinaryHandlePacket(void)
         tst_num = 0;
         tst_verif_flg = 0;
 //        DelayMs(1000);
-//        WORD    pD;
-//        DWORD   addr;
-//        for(addr = 0; addr < (0x80000>>1); addr++)
-//        {
-//            pD = lRead16(addr);
-//            if(pD!=0xffff)
-//            {
-//                tst_verif_flg = 1;
-//                break;
-//            }
-//        }
+        WORD    pD;
+        DWORD   addr;
+        for(addr = 0; addr < (0x80000>>1); addr++)
+        {
+            pD = lRead16(addr);
+            if(pD!=0xffff)
+            {
+                tst_verif_flg = 1;
+                break;
+            }
+        }
 //        if(addr<(0x80000>>1))
 //        	pDataChipEraseFunc();
 

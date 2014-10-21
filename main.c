@@ -36,7 +36,6 @@ extern USB_HANDLE USBGenericInHandle;
 static void prvSetupHardware( void );
 
 //unsigned char tempor_byte1, tempor_byte2;
-    DWORD   addr_test;
 
 /////////////////////////////////////////////////////////////////////////////
 // void CheckExternalFlashHex(void)
@@ -67,8 +66,34 @@ void CheckExternalFlashHex()
 //    GOLInit();
 
 
-    DRV_GFX_Initialize();
-    GFX_Initialize();
+//    DRV_GFX_Initialize();
+//    GFX_Initialize();
+
+    DRV_GFX_EPMPInitialize();
+    PMCON2bits.MSTSEL = 0;		// set CPU as Master
+
+    SST39LF400ChipErase();
+
+    WORD    pD;
+    DWORD   addr;
+    WORD    wr_pD = 0x55aa;
+    DWORD   wr_addr = -1;
+    DWORD   wr_err_cntr = 0;
+    DWORD   rd_err_cntr = 0;
+
+
+
+
+        while(1)
+        {
+//            addr = (0x40000>>1);
+            addr = 0x01c000;
+            pD = lRead16(addr);
+            addr = 0x0000;
+            pD = lRead16(addr);
+        }
+
+
 
 
     pFont = (void*) &Gentium8;
@@ -103,7 +128,7 @@ void CheckExternalFlashHex()
             setProgram = TRUE;
         }
     }
-//     setProgram = TRUE;
+     setProgram = TRUE;
 
     if (setProgram == TRUE)
     {
@@ -154,28 +179,7 @@ void CheckExternalFlashHex()
 		while((IO_reg&0x01) == 1);				 
 				
 		PMCON2bits.MSTSEL = 0;		// set CPU as Master
-
-//    WORD    pD;
-//    WORD    wr_pD = 0x55aa;
-//    DWORD   wr_addr = -1;
-//    DWORD   wr_err_cntr = 0;
-//    DWORD   rd_err_cntr = 0;
-//
-//
-//            addr_test = 0x01ffff;
-//
-//
-//        while(1)
-//        {
-////            addr = (0x40000>>1);
-//            pD = lRead16(addr_test);
-//            pD = lRead16(0x00000);
-//        }
-
-
-
-
-                // Call the external flash programming routine
+        // Call the external flash programming routine
 //        ProgramFlash();
         SYSTEM_ProgramExternalMemory();
 #if defined (USE_COMM_PKT_MEDIA_USB)
