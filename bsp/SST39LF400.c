@@ -50,8 +50,8 @@
 
 #include "framework/driver/gfx/drv_gfx_pmp.h"
 
-#define  	CS2_BASE_ADDRESS   		GFX_EPMP_CS2_BASE_ADDRESS  
-#define 	SST39LF400_FLASH_SIZE	0x00400000ul
+#define  	CS2_BASE_ADDRESS   		GFX_EPMP_CS2_BASE_ADDRESS
+#define 	SST39LF400_FLASH_SIZE	0x0040000ul
 
 // dummy declaration for EPMP CS2 start address 
 __eds__ WORD __attribute__((eds, noload, address(CS2_BASE_ADDRESS))) EPMPCS2Start;
@@ -148,22 +148,6 @@ BYTE SST39LF400WriteArray(DWORD address, BYTE *pData, WORD nCount)
     WORD    data;
     WORD    *pD;
     DWORD   addr;
-
-
-//    if (address <= 0x000033E0)
-//    {
-//
-//        addr = 0x000033E0 >> 1;
-//    // verify
-//        for(counter = 0; counter < (nCount>>1); counter++)
-//        {
-//            data = SST39LF400ReadWord(addr++);
-//            if(data !=0xffff)
-//                return (0);
-//        }
-//    }
-//    if (address == 0x000136f0)
-//        return (1);
 
     // Note that shifting of the address and count is performed
     // here since the incoming data is addressed on a byte location 

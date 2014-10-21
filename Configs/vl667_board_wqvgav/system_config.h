@@ -413,7 +413,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #define EPMPCS1_RD_POLARITY                 GFX_ACTIVE_LOW
 #define EPMPCS1_BE_POLARITY                 GFX_ACTIVE_LOW
 
-#define EPMPCS1_ACCESS_TIME                 (10)    // chip select 1 Alternate Master access time.
+//#define EPMPCS1_ACCESS_TIME                 (10)    // chip select 1 Alternate Master access time.
+#define EPMPCS1_ACCESS_TIME                 (12)    // chip select 1 Alternate Master access time.
 
         // values are based on the SST39VF400A Parallel Flash Device (55 ns access time)
         // Since access time is 55 ns and Write Timing are the following:
